@@ -15,33 +15,35 @@ menu:
             icon: user
 ---
 
-# Who Am I?
-Hi, my name is Matías Di Bernardo. I'm a acoustic and computer engineer student from Argentina. I love learning new subjets and have interest in many topics, like algorithms, deep learning, DSP, acoustics, etc. On my free time I love to play music (I played the piano) and reading.
+# Who Am I? 
+Hi, my name is Matías Di Bernardo. I'm an acoustics and computer engineering student from Argentina. I love learning new subjects and have a wide range of interests, including algorithms, deep learning, DSP, acoustics, and more. In my free time, I enjoy playing music as a pianist and reading books mainly classics.
 
-## Studies
-I started studing in 2019 for the Sound Engineer degree on UNTREF University, I choose this carrer because it am a musician but I really like math and science and tought that this carrer could be a good fit in between, but I quicky understand that and engineer degree has a lot to offer and I really enjoy the basic courses on math, and specifically the courses on acoustics and digital signal processing. 
+## Studies 
+I began studying in 2019 for a Sound Engineering degree at UNTREF University. I chose this career because, as a musician, I wanted to combine my passion for music with my love for math and science. I quickly realized that an engineering degree offers so much more than I initially imagined, and I especially enjoyed the foundational math courses, as well as those focused on acoustics and digital signal processing.
 
-This enhance my passion for programming and computers in general and thats way on 2022 I start the Computer Engineer carrer on paralel on the same university. With the new courses I can solidify my programming concepts, like data strcutures and desing patterns, and explore the teortical part of Artificial Inteligence, a subject that I always have a big interest in.
+This experience deepened my interest in programming and computers, leading me to start a Computer Engineering degree in 2022, running parallel to my first degree at the same university. Through these studies, I’ve been able to solidify my programming skills, explore concepts like data structures and design patterns, and dive into the theoretical aspects of Artificial Intelligence—a subject I’ve always been passionate about.
 
-I am currently on my last year for the Sound Engineer Degree and I am on the third year of the Computer Engineer Degree.
+Currently, I’m in my final year of the Sound Engineering degree and my third year of the Computer Engineering degree.
+In addition to my formal education, I’m always seeking out additional learning materials on platforms like YouTube or online courses. For example, two courses that have greatly enhanced my knowledge are *DSP for Music Applications* on Coursera and *Learning from Data*, a YouTube series from Caltech University.
 
-Aside from my formal education, I'am always looking for material on youtube or curses on different platforms that explain topics that I am intetested in. For example, two courses that help me a lot in my education outside my fromal education are *DSP for music application* from Coursera and *Learning from Data*, the youtube series from Caltech University. 
+## Work 
+I have a strong interest in deep learning, and I’ve taken several courses on the topic. In 2022, I joined an academic research group at my university called Intercambios Transorgánicos, which focuses on using technology to help people.
 
-## Work
-I have a strong interest on deep learning and I attend some courses on the topic. In 2022, I applied for an academic reaserch group in my university called *Intercambios transorgánicos*, where the objetive is to use technology to help people. In this context, the reasearch group is working on a *Text-to-Speech* model that captures the rio-platense accent, making the technology more accesible and usable for people that lost their voice and use this system to communicate.
+As part of this group, I’ve been working on a Text-to-Speech (TTS) model that captures the rio-platense accent (Buenos Aires), making this technology more accessible for individuals who have lost their voices and rely on such systems for communication.
 
-This proyect fit my interest perfectly because it combines deep learning, speech processing, dsp and acoustics. I quickly started to get involved with more task and responsabilities, and in 2024 I was promoted to CTO *Chief Technical Officer* and I manage all the technical decisions. Currently I lead a team of 4 students and make reasearch on different key aspects of TTS to improve the capabilities of this technology and make it more accesible.
+This project perfectly aligns with my interests as it combines deep learning, speech processing, DSP, and acoustics. I quickly took on more tasks and responsibilities, and in 2024, I was promoted to CTO (Chief Technical Officer). In this role, I manage all technical decisions, lead a team of four students, and conduct research to improve TTS technology, with a focus on accessibility and innovation.
 
-## Why I started this blog?
-Many projects that I start end up in nothing or I finish them abrouptly, in that regard the blog format is excelent to organice and make the most out of a proyect. Also, it is important to me to keep track of what I am doing and it can serve as a good reference for future projects or work, because it is easier to access previos information if I have it well documented here.
+## Why I started this blog? 
+Many of the projects I’ve started in the past have either fizzled out or ended abruptly. A blog, however, is an excellent way to stay organized and get the most out of my work.
 
-For now this blog will be only realted to tech and science, but maybe I do not close the door to open to differente topics in the future.
+Additionally, documenting my projects here allows me to keep track of my progress and serves as a useful reference for future endeavours. For now, the blog will primarily focus on tech and science topics, but I’m open to expanding into other areas in the future.
 
-## Best reference books?
-As a bouns, I let the books that work the best for me on different topics:
-* Acoustics: Sound Fields, Transducers and Vibration (2nd Edition) by Leo Beranek
+## Best reference books? 
+As a bonus, here are some of the books that have been most helpful to me across different topics:
+
+* Acoustics: Sound Fields, Transducers and Vibration (2nd Edition) by Leo Beranek 
 * Fundamental of Music Processing by Meinard Müller 
-* Deep Learning by Ian Goodfellow
-* Fundations of Signal Processing by Martin Vetterli
+* Deep Learning by Ian Goodfellow 
+* Fundations of Signal Processing by Martin Vetterli 
 
-This are the ones that I enjoy the most!
+These are some of my favorites, and I highly recommend them!
