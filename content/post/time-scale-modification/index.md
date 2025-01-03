@@ -45,5 +45,4 @@ The study was preseented with my classmates on the *JAAS* (Jornadas de Acustica,
 > ALGORITMOS DE MODIFICACIÓN DE ESCALA TEMPORAL.<br>
 > — <cite>Matías Di Bernardo; Matías Vereertbruhggen; Sebastían Carro [^2]</cite>
 
-
 [^2]: JAAS 2023 - Algoritmos de Modificación de Escala Temporal [paper](https://drive.google.com/file/d/12kPB3qBjczyx7X2XV3ZpBDo1GDO2u4qR/view?usp=sharing).

@@ -2,6 +2,6 @@ images:
   - image: "/images/thd/thd1.jpeg"
     content_html: ""
   - image: "/images/thd/thd2.jpeg"
-    content_html: "Caption for Photo 2"
+    content_html: ""
   - image: "/images/thd/thd3.jpeg"
-    content_html: "Caption for Photo 3"
+    content_html: ""
