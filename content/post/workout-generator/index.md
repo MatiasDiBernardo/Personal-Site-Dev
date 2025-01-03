@@ -47,5 +47,3 @@ This is the first iteration of the project and it is fully functional but we pla
 
 ## Conclusions
 With this project I solidify my knowledege on programming topics like data structurs and algorithms because we used the theory seen in class and applied it to a real case scenario. Also it help me to get used to the Go langeage and it became a leangauge that I really enjoy coding on it. The code for this project is avaliable on this [repository](https://github.com/MatiasDiBernardo/Workout-routine-generator).
-
-
