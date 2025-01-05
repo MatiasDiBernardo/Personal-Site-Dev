@@ -1,8 +1,8 @@
 ---
 author: "Matías Di Bernardo"
-title: "Building and design of a personal Speaker"
-date: "2024-11-25"
-description: "Construction, design and measurements of a personal speaker."
+title: "Building and design of a personal loudspeaker"
+date: "2024-11-20"
+description: "Construction, design and measurements of a personal loudspeaker."
 categories: [
     "Acoustics",
     "Electronics",

@@ -1,7 +1,7 @@
 ---
 author: "Matías Di Bernardo"
 title: "Construcción y diseño de un altoparlante personal"
-date: "2024-11-25"
+date: "2024-11-20"
 description: "Contrucción, diseño, medición y validación de un sistema de sonido hogareño."
 categories: [
     "Acoustics",

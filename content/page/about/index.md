@@ -16,7 +16,7 @@ menu:
 ---
 
 # Who Am I? 
-Hi, my name is Matías Di Bernardo. I'm an acoustics and computer engineering student from Argentina. I love learning new subjects and have a wide range of interests, including algorithms, deep learning, DSP, acoustics, and more. In my free time, I enjoy playing music as a pianist and reading books mainly classics.
+Hi, my name is Matías Di Bernardo. I'm an acoustics and computer engineering student from Argentina. I love learning new subjects and have a wide range of interests, including algorithms, deep learning, DSP, acoustics, and more. In my free time, I enjoy playing music as a pianist and reading books, mainly classics.
 
 ## Studies 
 I began studying in 2019 for a Sound Engineering degree at UNTREF University. I chose this career because, as a musician, I wanted to combine my passion for music with my love for math and science. I quickly realized that an engineering degree offers so much more than I initially imagined, and I especially enjoyed the foundational math courses, as well as those focused on acoustics and digital signal processing.
