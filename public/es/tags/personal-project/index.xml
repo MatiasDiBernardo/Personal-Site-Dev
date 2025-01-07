@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Personal Project on Matias Di Bernardo</title>
+        <link>http://localhost:1313/es/tags/personal-project/</link>
+        <description>Recent content in Personal Project on Matias Di Bernardo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>es</language>
+        <copyright>Matías Di Bernardo</copyright>
+        <lastBuildDate>Sat, 12 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/tags/personal-project/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Z-Plane Visualizer</title>
+        <link>http://localhost:1313/es/p/z-plane-visualizer/</link>
+        <pubDate>Sat, 12 Aug 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/z-plane-visualizer/</guid>
+        <description>&lt;img src="http://localhost:1313/p/z-plane-visualizer/frontz.PNG" alt="Featured image of post Z-Plane Visualizer" /&gt;&lt;p&gt;En el curso de &lt;em&gt;Procesamiento Digital de Señales&lt;/em&gt; (DSP) en la UNTREF, exploramos el plano Z para el diseño de filtros con variables discretas. Durante la clase, el profesor presentó una herramienta construida en MatLab que visualiza los gráficos de transferencia y fase en relación con las posiciones de los ceros y polos en el plano Z.&lt;/p&gt;
+&lt;p&gt;Inspirado en esto, decidí recrear esta herramienta en Python. Aprovechando mi experiencia con la biblioteca PyGame, logré construir una aplicación en tiempo real que permite mover los polos y ceros, permitiendo a los usuarios ver cómo cambia la función de transferencia en tiempo real.&lt;/p&gt;
+&lt;h2 id=&#34;cómo-funciona&#34;&gt;Cómo Funciona
+&lt;/h2&gt;&lt;p&gt;Primero, mapeo las posiciones de los píxeles en el plano Z a coordenadas de acuerdo con la representación del círculo unitario. Luego, construyo la función de transferencia, donde cada cero $z_{n}$ es un término en el numerador y cada polo $z_{i}$ es un término en el denominador. Con la función de transferencia $H(z)$, puedo graficar tanto el magnitud como el gráfico de fase, que también son representaciones mapeadas de la respuesta normalizada dentro de la aplicación.&lt;/p&gt;
+$$ 
+H(z) = \frac{\sum_{n=0}^{N} (z - z_{n})}{\sum_{i=0}^{N} (z - z_{i})}
+$$&lt;p&gt;Cada fotograma recalcula la función de transferencia. El programa funciona de manera eficiente porque almaceno los ceros y polos en arreglos, lo que permite cálculos más rápidos gracias a numpy, que ya está altamente optimizado. Esto permite visualizar los cambios en tiempo real y proporciona una comprensión más intuitiva del comportamiento del plano Z. El siguiente fragmento de código muestra como se calcula la magnitud y fase utilizando exponenciales complejas.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;transfer_function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zeros&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;poles&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;w&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;linspace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RES&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zero&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zeros&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zero&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pole&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;poles&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;den&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pole&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;H_z&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;den&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;mag&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;abs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;H_z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;ang&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;angle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;H_z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mag&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ang&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Este proyecto está diseñado como material educativo, proporcionando a los estudiantes una herramienta práctica para comprender mejor las interacciones entre los polos y ceros en el plano Z. No está destinado como una herramienta profesional para el diseño de filtros.&lt;/p&gt;
+&lt;h2 id=&#34;funcionalidad&#34;&gt;Funcionalidad
+&lt;/h2&gt;&lt;p&gt;La aplicación ofrece las siguientes características:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Mostrar y mover polos/ceros&lt;/strong&gt;: Los usuarios pueden seleccionar y mover los polos y ceros en el plano Z. Cuando la opción de simetría está activa, todos los polos y ceros seleccionados o movidos se colocan de manera simétrica respecto al eje imaginario.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Orden&lt;/strong&gt;: Los usuarios pueden ajustar el orden de los polos y ceros desplazando la rueda del mouse. El orden puede incrementarse o disminuirse, con soporte hasta un orden de 4. El color de cada polo o cero cambia según su orden.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Información&lt;/strong&gt;: Al pasar el cursor sobre un polo o cero, se muestra información sobre su posición, simetría y orden.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Zoom&lt;/strong&gt;: El usuario puede acercar o alejar el plano Z usando los botones de más y menos.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Eliminar&lt;/strong&gt;: El ícono de la papelera elimina todos los polos y ceros del plano. Los usuarios también pueden eliminar polos o ceros individuales haciendo clic derecho sobre ellos.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Gráfico de Magnitud&lt;/strong&gt;: El espectro de magnitud mostrado en la aplicación está normalizado. Esta decisión asegura que el enfoque permanezca en la forma de la magnitud, haciendo que el gráfico sea visualmente significativo para los usuarios. Sin embargo, no captura la diferencia en los valores máximos.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Gráfico de Fase&lt;/strong&gt;: La fase se muestra sin envolver entre $-\pi$ y $\pi$.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;demo&#34;&gt;Demo
+&lt;/h2&gt;&lt;p&gt;Aquí tienes una demostración rápida de la aplicación en acción:&lt;/p&gt;
+&lt;p&gt;El código fuente de este proyecto se encuentra en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Z-Plane_Visualizer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Evaluación de diferentes modelos de Separación del Hablante</title>
+        <link>http://localhost:1313/es/p/evaluaci%C3%B3n-de-diferentes-modelos-de-separaci%C3%B3n-del-hablante/</link>
+        <pubDate>Fri, 04 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/evaluaci%C3%B3n-de-diferentes-modelos-de-separaci%C3%B3n-del-hablante/</guid>
+        <description>&lt;p&gt;Este proyecto comenzó como el trabajo final para un seminario de la UNTREF llamado &lt;em&gt;Seminario en Aplicaciones de Redes Neuronales en la recuperación de información musical&lt;/em&gt;. El objetivo era utilizar una Red Neuronal Siamés (SNN, por sus siglas en inglés) en un contexto diferente al visto en clase (detección de similitud musical).&lt;/p&gt;
+&lt;p&gt;Para el proyecto final de este curso, desarrollamos un modelo SNN desde cero utilizando el framework &lt;em&gt;Keras&lt;/em&gt; y la arquitectura &lt;em&gt;SincNet&lt;/em&gt; para reducir la dimensionalidad del audio, logrando buenos resultados. Más adelante, para expandir este proyecto, probé otro enfoque utilizando &lt;em&gt;Wav2Vec&lt;/em&gt; para la reducción de dimensionalidad y reimplementé todo el proyecto en el framework &lt;em&gt;PyTorch&lt;/em&gt;. Sin embargo, este intento arrojó resultados subóptimos, lo que indica que la reducción de dimensionalidad con Wav2Vec perdió información crítica necesaria para la tarea de diarización de locutores.&lt;/p&gt;
+&lt;h2 id=&#34;tarea-de-diarización-de-locutores&#34;&gt;Tarea de Diarización de Locutores
+&lt;/h2&gt;&lt;p&gt;El objetivo de un modelo de diarización de locutores es identificar diferentes hablantes en un flujo de audio que contiene múltiples voces. Por ejemplo, en un podcast con dos personas (A y B), el modelo debe determinar los pasos de tiempo en los que el hablante A está hablando y los pasos de tiempo en los que el hablante B está hablando (e identificar implícitamente los períodos de silencio). Estos modelos son extremadamente útiles para la edición de audio y el análisis de largas secuencias de audio con múltiples hablantes.&lt;/p&gt;
+&lt;h2 id=&#34;por-qué-redes-neuronales-siamés&#34;&gt;¿Por qué Redes Neuronales Siamés?
+&lt;/h2&gt;&lt;p&gt;En clase, exploramos la arquitectura siamés para comparar similitudes entre piezas musicales, desarrollando una herramienta capaz de identificar versiones de canciones famosas.&lt;/p&gt;
+&lt;p&gt;Una Red Neuronal Siamés consiste en dos o más subredes idénticas que comparten los mismos pesos y parámetros. Está diseñada para comparar pares de entradas y medir su similitud, generalmente utilizando una métrica de distancia como la distancia euclidiana. Cada subred procesa una entrada, y las salidas se combinan para calcular un puntaje de similitud.&lt;/p&gt;
+&lt;p&gt;Con esta comparación de similitudes en mente, quisimos aplicar estas redes a la tarea de diarización de locutores. La idea era generar embeddings de hablantes a partir de audio utilizando un modelo preentrenado y comparar las salidas de diferentes segmentos de audio. Basándonos en el puntaje de similitud, buscamos identificar los segmentos donde diferentes hablantes están hablando.&lt;/p&gt;
+&lt;h2 id=&#34;experimentos&#34;&gt;Experimentos
+&lt;/h2&gt;&lt;p&gt;Probé dos métodos diferentes para la extracción de características de audio que servirían como embeddings de hablantes.&lt;/p&gt;
+&lt;h3 id=&#34;implementación-en-keras-con-sincnet&#34;&gt;Implementación en Keras con SincNet
+&lt;/h3&gt;&lt;p&gt;En este enfoque, utilizamos la arquitectura SincNet para extraer características específicas de los hablantes a partir del audio. SincNet aplica funciones sinc aprendibles como sus filtros, que son particularmente adecuadas para el procesamiento de audio, ya que imitan los filtros de paso de banda tradicionales. Estas características se introdujeron en la Red Neuronal Siamés, que comparó pares de segmentos de audio para calcular sus puntajes de similitud. El modelo se entrenó con conjuntos de datos de audio etiquetados y observamos un rendimiento sólido al agrupar segmentos de audio por hablante, logrando límites claros entre diferentes hablantes.&lt;/p&gt;
+&lt;p&gt;Un informe con los resultados puede encontrarse en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Speaker-Diarization-with-SNN/blob/master/TP%20Final%20Seminario%20Redes%20-%20Di%20Bernardo%20Ferreyra.ipynb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;notebook de Jupyter&lt;/a&gt; (en español).&lt;/p&gt;
+&lt;h3 id=&#34;implementación-en-pytorch-con-wav2vec&#34;&gt;Implementación en PyTorch con Wav2Vec
+&lt;/h3&gt;&lt;p&gt;Para este método, utilicé Wav2Vec, un modelo preentrenado poderoso para la extracción de embeddings profundos de audio. A diferencia de SincNet, los embeddings de Wav2Vec se derivan del aprendizaje autosupervisado, capturando representaciones de alto nivel del audio. Estos embeddings se usaron en la Red Neuronal Siamés para comparaciones de similitud. Sin embargo, los resultados fueron subóptimos para la tarea de diarización. Parece que Wav2Vec, aunque excelente para tareas de reconocimiento de voz, perdió algunos detalles específicos del hablante necesarios para distinguir entre diferentes voces en nuestro contexto.&lt;/p&gt;
+&lt;h2 id=&#34;resultados&#34;&gt;Resultados
+&lt;/h2&gt;&lt;p&gt;Los experimentos demostraron que la elección del método de extracción de características es crucial para la diarización de locutores. La implementación en Keras con SincNet superó a la implementación en PyTorch con Wav2Vec, mostrando mayor precisión al identificar transiciones entre hablantes. Esto sugiere que la extracción de características específicas para la tarea, como SincNet, es más efectiva que los embeddings de propósito general como Wav2Vec para la diarización de locutores.&lt;/p&gt;
+&lt;p&gt;El código de este proyecto está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Speaker-Diarization-with-SNN&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Este proyecto fue una de mis primeras experiencias con modelos de aprendizaje profundo, donde apliqué mis conocimientos a un problema sin seguir un artículo específico o utilizar un modelo preentrenado. Exploré diferentes soluciones y concluí sobre la importancia de la extracción de características y la selección del modelo.&lt;/p&gt;
+&lt;p&gt;También me ayudó a familiarizarme con la sintaxis de los frameworks de aprendizaje profundo más populares y a solidificar mi comprensión en el proceso.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

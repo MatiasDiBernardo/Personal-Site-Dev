@@ -1,6 +1,6 @@
 ---
 title: About me
-description: I introuce my academic background and work expirence and why I start this blog.
+description: I introuce my academic background, work expirence and why I start this blog.
 date: '2022-02-18'
 aliases:
   - about-us
@@ -23,7 +23,7 @@ I began studying in 2019 for a Sound Engineering degree at UNTREF University. I 
 
 This experience deepened my interest in programming and computers, leading me to start a Computer Engineering degree in 2022, running parallel to my first degree at the same university. Through these studies, I’ve been able to solidify my programming skills, explore concepts like data structures and design patterns, and dive into the theoretical aspects of Artificial Intelligence—a subject I’ve always been passionate about.
 
-Currently, I’m in my final year of the Sound Engineering degree and my third year of the Computer Engineering degree.
+I'm going to finish my Sound Engineering degree at the end of 2025 and my Computer Engineering degree in 2027/2028.
 In addition to my formal education, I’m always seeking out additional learning materials on platforms like YouTube or online courses. For example, two courses that have greatly enhanced my knowledge are *DSP for Music Applications* on Coursera and *Learning from Data*, a YouTube series from Caltech University.
 
 ## Work 

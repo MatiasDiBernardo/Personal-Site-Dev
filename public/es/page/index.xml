@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on Matias Di Bernardo</title>
+        <link>http://localhost:1313/es/page/</link>
+        <description>Recent content in Pages on Matias Di Bernardo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>es</language>
+        <copyright>Matías Di Bernardo</copyright>
+        <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Archivos</title>
+        <link>http://localhost:1313/es/archives/</link>
+        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Buscar</title>
+        <link>http://localhost:1313/es/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/search/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Sobre mí</title>
+        <link>http://localhost:1313/es/sobre-m%C3%AD/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/sobre-m%C3%AD/</guid>
+        <description>&lt;p&gt;Hola, mi nombre es Matías Di Bernardo. Soy estudiante de Ingeniería en Sonido e Ingeniería en Computación en Argentina. Me encanta aprender cosas nuevas y tengo una amplia gama de intereses, incluyendo algoritmos, aprendizaje profundo, procesamiento digital de señales (DSP), acústica y más. En mi tiempo libre, disfruto tocar música (toco el piano) y leer.&lt;/p&gt;
+&lt;h2 id=&#34;estudios&#34;&gt;Estudios
+&lt;/h2&gt;&lt;p&gt;Comencé a estudiar en 2019 para obtener el título de Ingeniero en Sonido en la UNTREF. Elegí esta carrera porque, como músico, quería combinar mi pasión por la música con mi interés en las matemáticas y las ciencias. Rápidamente me di cuenta de que una carrera en ingeniería ofrece mucho más de lo que imaginaba, y disfruté especialmente los cursos básicos de matemáticas, así como aquellos enfocados en acústica y procesamiento digital de señales.&lt;/p&gt;
+&lt;p&gt;Esta experiencia profundizó mi interés en la programación y la computación, lo que me llevó a comenzar la carrera de Ingeniería en Computación en 2022, en paralelo con la primera, también en la UNTREF. A través de estos estudios, he podido solidificar mis conocimientos de programación, explorar conceptos como estructuras de datos y patrones de diseño, y adentrarme en los aspectos teóricos de la Inteligencia Artificial, un tema que siempre me ha apasionado.&lt;/p&gt;
+&lt;p&gt;Actualmente estoy en mi último año de la carrera de Ingeniería en Sonido y en mi tercer año de la carrera de Ingeniería en Computación.&lt;/p&gt;
+&lt;p&gt;Además de mi educación formal, siempre estoy buscando materiales adicionales en plataformas como YouTube o cursos en línea. Por ejemplo, dos cursos que han enriquecido mucho mi aprendizaje son &lt;em&gt;DSP for Music Applications&lt;/em&gt; en Coursera y &lt;em&gt;Learning from Data&lt;/em&gt;, una serie de YouTube de la Universidad de Caltech.&lt;/p&gt;
+&lt;h2 id=&#34;trabajo&#34;&gt;Trabajo
+&lt;/h2&gt;&lt;p&gt;Tengo un gran interés en el aprendizaje profundo y he realizado varios cursos sobre el tema. En 2022, me uní a un grupo de investigación académica en mi universidad llamado Intercambios Transorgánicos, que se enfoca en utilizar la tecnología para ayudar a las personas.&lt;/p&gt;
+&lt;p&gt;Como parte de este grupo, he trabajado en un modelo de Text-to-Speech (TTS) que captura el acento rioplatense, haciendo esta tecnología más accesible para las personas que han perdido la voz y dependen de estos sistemas para comunicarse.&lt;/p&gt;
+&lt;p&gt;Este proyecto encaja perfectamente con mis intereses, ya que combina aprendizaje profundo, procesamiento del habla, DSP y acústica. Rápidamente asumí más tareas y responsabilidades, y en 2024 fui promovido a CTO (Chief Technical Officer). En este rol, gestiono todas las decisiones técnicas, lidero un equipo de cuatro estudiantes y realizo investigaciones para mejorar la tecnología TTS, con un enfoque en la accesibilidad y la innovación.&lt;/p&gt;
+&lt;h2 id=&#34;por-qué-comencé-este-blog&#34;&gt;¿Por qué comencé este blog?
+&lt;/h2&gt;&lt;p&gt;Muchos de los proyectos que he iniciado en el pasado se han quedado a medias o han terminado abruptamente. Sin embargo, un blog es una excelente manera de mantenerme organizado y aprovechar al máximo mi trabajo.&lt;/p&gt;
+&lt;p&gt;Además, documentar mis proyectos aquí me permite hacer un seguimiento de mi progreso y sirve como una referencia útil para futuros proyectos. Por ahora, el blog se centrará principalmente en temas de tecnología y ciencia, aunque no descarto expandirme a otras áreas en el futuro.&lt;/p&gt;
+&lt;h2 id=&#34;mis-libros-de-referencia-favoritos&#34;&gt;Mis libros de referencia favoritos
+&lt;/h2&gt;&lt;p&gt;Dejo un extra adicional que nadie pidió, aquí están algunos de los libros que más me han ayudado en diferentes temas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Acoustics: Sound Fields, Transducers and Vibration (2nd Edition) by Leo Beranek&lt;/li&gt;
+&lt;li&gt;Fundamental of Music Processing by Meinard Müller&lt;/li&gt;
+&lt;li&gt;Deep Learning by Ian Goodfellow&lt;/li&gt;
+&lt;li&gt;Fundations of Signal Processing by Martin Vetterli&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;¡Estos son algunos de mis favoritos, y los recomiendo mucho!&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

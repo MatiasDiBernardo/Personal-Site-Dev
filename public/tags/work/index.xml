@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Work on Matias Di Bernardo</title>
+        <link>http://localhost:1313/tags/work/</link>
+        <description>Recent content in Work on Matias Di Bernardo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>Matías Di Bernardo</copyright>
+        <lastBuildDate>Wed, 23 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/work/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Understanding FastPitch and the Transformer Architecture</title>
+        <link>http://localhost:1313/p/understanding-fastpitch-and-the-transformer-architecture/</link>
+        <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/understanding-fastpitch-and-the-transformer-architecture/</guid>
+        <description>&lt;img src="http://localhost:1313/p/understanding-fastpitch-and-the-transformer-architecture/front.png" alt="Featured image of post Understanding FastPitch and the Transformer Architecture" /&gt;&lt;p&gt;Understanding a modern deep learning model is challenging due to the extensive prior knowledge required and the rapid pace of advancements in the field. In the research project &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt;, we are working with TTS, specifically the FastPitch model from Nvidia. I have studied this model to fine-tune it for Spanish and shared my research process in a class to help my colleagues in the research group understand it better.&lt;/p&gt;
+&lt;h2 id=&#34;understanding-seq2seq-models&#34;&gt;Understanding Seq2Seq Models
+&lt;/h2&gt;&lt;p&gt;In &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt;, we previously used Tacotron2 as our TTS model. While Tacotron2 performs well, it has several issues, primarily during training and inference, due to its auto-regressive nature. In contrast, FastPitch is a non-auto-regressive (NAR) model. To grasp these distinctions, I delved into seq2seq models, exploring their evolution over time and creating a quick overview of the sequence analysis models that have been pivotal:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RNN&lt;/li&gt;
+&lt;li&gt;LSTM&lt;/li&gt;
+&lt;li&gt;Transformers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tacotron2 is based on an LSTM (AR) model, whereas FastPitch utilizes Transformers (NAR). Understanding this technological progression provides crucial background knowledge, particularly about transformers, including positional encoding, a key factor in their non-auto-regressive nature, and the attention mechanism.&lt;/p&gt;
+&lt;h2 id=&#34;the-transformer-architecture&#34;&gt;The Transformer Architecture
+&lt;/h2&gt;&lt;p&gt;I began by studying the transformer architecture, as it is fundamental to the FastPitch model. I reviewed online resources and the seminal &lt;em&gt;Attention is All You Need&lt;/em&gt; paper. Below are some key points I noted during my study:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Self-Attention Mechanism&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Purpose&lt;/strong&gt;: Dynamically focuses on different parts of the input sequence.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Query (Q), Key (K), Value (V): Derived from input embeddings.&lt;/li&gt;
+&lt;li&gt;Attention scores are computed as the dot product of Q and K, scaled by the square root of the dimension.&lt;/li&gt;
+&lt;li&gt;Scores are normalized using softmax to create attention weights.&lt;/li&gt;
+&lt;li&gt;A weighted sum of V is computed based on these weights to produce the output.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Multi-Head Attention&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Purpose&lt;/strong&gt;: Captures diverse relationships between tokens by applying multiple self-attention mechanisms in parallel.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;: Outputs from multiple attention heads are concatenated and linearly transformed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Positional Encoding&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Purpose&lt;/strong&gt;: Provides information about token order in the sequence, compensating for the Transformer&amp;rsquo;s lack of built-in sequence order (unlike RNNs).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;: A fixed or learnable vector is added to the input embeddings.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Encoder-Decoder Structure&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Encoder&lt;/strong&gt;: Processes the input sequence into context-rich representations.
+&lt;ul&gt;
+&lt;li&gt;Components:
+&lt;ul&gt;
+&lt;li&gt;Multi-head self-attention&lt;/li&gt;
+&lt;li&gt;Feed-forward neural network (FFN)&lt;/li&gt;
+&lt;li&gt;Layer normalization and residual connections&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Decoder&lt;/strong&gt;: Generates the output sequence by attending to both encoder outputs and previously generated tokens.
+&lt;ul&gt;
+&lt;li&gt;Components:
+&lt;ul&gt;
+&lt;li&gt;Masked multi-head self-attention (prevents attending to future tokens)&lt;/li&gt;
+&lt;li&gt;Multi-head attention over encoder outputs&lt;/li&gt;
+&lt;li&gt;FFN, layer normalization, and residual connections&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Feed-Forward Network (FFN)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Purpose&lt;/strong&gt;: Introduces non-linearity and processes each token independently.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;: Two linear layers with a ReLU activation in between.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Layer Normalization and Residual Connections&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Purpose&lt;/strong&gt;: Stabilizes training and improves gradient flow by normalizing inputs to each layer and adding skip connections.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;fastpitch&#34;&gt;FastPitch
+&lt;/h2&gt;&lt;p&gt;After covering the theory, I examined each section of the FastPitch architecture in detail. I provided a brief explanation of word embeddings and positional encoding, as these are complex topics, and I wanted to keep the class concise.
+FastPitch converts text into mel spectrograms, which are then transformed into audio by another model (in our case, HiFi-GAN). The training sequence involves the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Text to Word Embedding&lt;/li&gt;
+&lt;li&gt;Word Embedding concatenated with mel spectrogram&lt;/li&gt;
+&lt;li&gt;Positional encoding and FFT (Feed-Forward Transformer block)&lt;/li&gt;
+&lt;li&gt;Pitch Prediction&lt;/li&gt;
+&lt;li&gt;Phoneme Duration Prediction&lt;/li&gt;
+&lt;li&gt;Another FFT block&lt;/li&gt;
+&lt;li&gt;Fully connected layer&lt;/li&gt;
+&lt;li&gt;Output mel spectrogram&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For each block, I presented the corresponding equations and provided qualitative explanations for their roles in the model. For instance, phoneme duration prediction is crucial for aligning a phoneme&amp;rsquo;s duration with the expected duration in the spectrogram.&lt;/p&gt;
+&lt;h2 id=&#34;online-class&#34;&gt;Online Class
+&lt;/h2&gt;&lt;p&gt;Finally, I summarized the most important points and conducted an online class to share these concepts with my colleagues. You can watch it here (in Spanish):&lt;/p&gt;
+&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/v4bt8bGIM00&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

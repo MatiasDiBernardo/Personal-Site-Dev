@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Evaluación subjetiva de la preferencia y naturalidad de sistemas TTS entrenados con diferentes algoritmos de denoising.">
+<title>Efecto de algorítmos de reducción de rudio en sistemas de TTS</title>
+
+<link rel='canonical' href='http://localhost:1313/es/p/efecto-de-algor%C3%ADtmos-de-reducci%C3%B3n-de-rudio-en-sistemas-de-tts/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Efecto de algorítmos de reducción de rudio en sistemas de TTS">
+<meta property='og:description' content="Evaluación subjetiva de la preferencia y naturalidad de sistemas TTS entrenados con diferentes algoritmos de denoising.">
+<meta property='og:url' content='http://localhost:1313/es/p/efecto-de-algor%C3%ADtmos-de-reducci%C3%B3n-de-rudio-en-sistemas-de-tts/'>
+<meta property='og:site_name' content='Matias Di Bernardo'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Academic' /><meta property='article:published_time' content='2024-11-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-22T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Efecto de algorítmos de reducción de rudio en sistemas de TTS">
+<meta name="twitter:description" content="Evaluación subjetiva de la preferencia y naturalidad de sistemas TTS entrenados con diferentes algoritmos de denoising.">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Ocultar menú">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/es/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pic_web_hu16898994747421290757.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/es">Matias Di Bernardo</a></h1>
+            <h2 class="site-description">Blog personal y portfolio.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/MatiasDiBernardo'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/mat%C3%ADas-di-bernardo-46425b16b/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="none">
+    <path d="m15.15 8.4a5.83 5.83 0 0 0 -5.85 5.82v5.88a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a1.94 1.94 0 0 1 2.15-1.93 2 2 0 0 1 1.75 2v5.81a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a5.83 5.83 0 0 0 -5.85-5.82z"/>
+    <rect height="11.7" rx=".9" width="4.5" x="3" y="9.3"/><circle cx="5.25" cy="5.25" r="2.25"/></g>
+</svg>
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/es/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Inicio</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/es/sobre-m%C3%AD/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>Sobre mí</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/es/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archivos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/es/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Buscar</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" >English</option>
+                                
+                                    <option value="http://localhost:1313/es/" selected>Español</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Modo oscuro</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Tabla de contenido</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#resumen">Resumen</a></li>
+    <li><a href="#metodología">Metodología</a></li>
+    <li><a href="#principales-hallazgos">Principales Hallazgos</a></li>
+    <li><a href="#implicaciones">Implicaciones</a></li>
+    <li><a href="#conclusiones">Conclusiones</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/es/categories/acoustics/" >
+                Acoustics
+            </a>
+        
+            <a href="/es/categories/deep-learning/" >
+                Deep Learning
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/es/p/efecto-de-algor%C3%ADtmos-de-reducci%C3%B3n-de-rudio-en-sistemas-de-tts/">Efecto de algorítmos de reducción de rudio en sistemas de TTS</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Evaluación subjetiva de la preferencia y naturalidad de sistemas TTS entrenados con diferentes algoritmos de denoising.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">nov. 22, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    Tiempo de lectura 3 minutos
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="http://localhost:1313/p/the-effect-of-denosing-on-tts/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Este estudio se realizó en el contexto de la clase <em>Laboratorio de Acústica</em> en la UNTREF. Elegí este tema porque está alineado con investigaciones que he estado desarrollando como parte del grupo <em>Intercambios Transorgánicos</em>. La consigna para el trabajo de clase consistió en realizar un estudio subjetivo utilizando una encuesta para explorar la relación entre variables objetivas y subjetivas.</p>
+<p>En mi grupo de investigación, he estado investigando cómo los algoritmos de reducción de ruido afectan a los sistemas de síntesis de voz (TTS) entrenados con grabaciones de baja calidad. El enfoque está en el español rioplatense, un acento regional con datos de alta calidad limitados. En este contexto, fue natural combinar ambas tareas y realizar una prueba subjetiva sobre el impacto de los algoritmos de reducción de ruido en los sistemas TTS.</p>
+<h2 id="resumen">Resumen
+</h2><p>Los puntos clave de esta investigación son:</p>
+<ul>
+<li>Evaluación de tres algoritmos de reducción de ruido: Wave U-Net, HiFi-GAN y DeepFilterNet.</li>
+<li>Uso de métricas subjetivas (CMOS) y objetivas (PESQ, STOI, MCD).</li>
+<li>Ideas sobre el desarrollo de modelos TTS eficientes en recursos para acentos poco representados.</li>
+</ul>
+<h2 id="metodología">Metodología
+</h2><ul>
+<li><strong>Algoritmos</strong>: Wave U-Net, HiFi-GAN y DeepFilterNet evaluados con el modelo TTS FastPitch.</li>
+<li><strong>Conjunto de datos</strong>: Subconjunto de la colección ArchiVoz (15 minutos de audio con ruido).</li>
+<li><strong>Pruebas</strong>: Prueba subjetiva CMOS y métricas objetivas (PESQ, STOI, MCD).</li>
+<li><strong>Participantes</strong>: 24 respuestas válidas, incluyendo tanto expertos como no expertos.</li>
+</ul>
+<h2 id="principales-hallazgos">Principales Hallazgos
+</h2><ol>
+<li>
+<p><strong>Rendimiento de DeepFilterNet</strong>:</p>
+<ul>
+<li>Obtuvo la puntuación CMOS más alta, reflejando la mejor calidad subjetiva.</li>
+<li>Mostró mejoras significativas en la salida TTS a pesar de las correlaciones mixtas con las métricas objetivas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Análisis de Métricas Objetivas</strong>:</p>
+<ul>
+<li>PESQ y MCD mostraron una correlación limitada con las preferencias subjetivas.</li>
+<li>Las puntuaciones STOI fueron consistentes entre los algoritmos, indicando inteligibilidad preservada.</li>
+</ul>
+</li>
+<li>
+<p><strong>Comparación de Algoritmos</strong>:</p>
+<ul>
+<li><strong>DeepFilterNet</strong>: Evaluaciones subjetivas superiores, MCD moderado.</li>
+<li><strong>Demucs</strong>: Comparable a DeepFilterNet en PESQ, pero con puntuaciones subjetivas inferiores.</li>
+<li><strong>Wave U-Net</strong>: Bajo rendimiento tanto subjetivo como objetivo.</li>
+</ul>
+</li>
+<li>
+<p><strong>Experiencia de los Participantes</strong>:</p>
+<ul>
+<li>No se observaron diferencias significativas entre las evaluaciones subjetivas de expertos y no expertos.</li>
+</ul>
+</li>
+</ol>
+<h2 id="implicaciones">Implicaciones
+</h2><ul>
+<li><strong>Eficiencia</strong>: Métodos avanzados de reducción de ruido como DeepFilterNet pueden mejorar los sistemas TTS sin necesidad de grabaciones de alta calidad.</li>
+<li><strong>Limitaciones</strong>: Las métricas objetivas como PESQ y MCD no son indicadores suficientes por sí solas de la calidad subjetiva en TTS.</li>
+<li><strong>Trabajo Futuro</strong>:
+<ul>
+<li>Ampliar los conjuntos de datos y niveles de ruido para un análisis más robusto.</li>
+<li>Explorar sistemas TTS entrenados conjuntamente con algoritmos de reducción de ruido.</li>
+</ul>
+</li>
+</ul>
+<h2 id="conclusiones">Conclusiones
+</h2><p>Este trabajo concluye que el preprocesamiento con DeepFilterNet mejora significativamente el rendimiento de los sistemas TTS, con un aumento de 1.1 en la puntuación CMOS. Estos hallazgos destacan la importancia de la selección de algoritmos para optimizar sistemas TTS con pocos recursos. Además, adquirí valiosos conocimientos sobre evaluaciones subjetivas y el análisis estadístico necesario para extraer conclusiones significativas de los datos.</p>
+<p>Toda la información de este estudio se encuentra en el <a class="link" href="https://drive.google.com/file/d/1F4aJGIU9FX2LT8OFik-Yjg4uSz6T09jw/view?usp=sharing"  target="_blank" rel="noopener"
+    >informe académico</a> (en inglés).</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/es/tags/academic/">Academic</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenidos relacionados</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/es/p/construcci%C3%B3n-y-dise%C3%B1o-de-un-altoparlante-personal/">
+        
+        
+            <div class="article-image">
+                <img src="/p/building-and-design-of-a-personal-loudspeaker/front_bass.57d3a404d11ab448ba7aa4ba54f20acd_hu17586735842976331624.PNG" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Construcción y diseño de un altoparlante personal"
+                        
+                        data-hash="md5-V9OkBNEatEi6eqS6VPIKzQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Construcción y diseño de un altoparlante personal</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/es/p/entendiendo-fastpitch-y-la-arquitectura-transformers/">
+        
+        
+            <div class="article-image">
+                <img src="/p/understanding-fastpitch-and-the-transformer-architecture/front.1b211b6859ce3757fe2b00fb1824392f_hu4001264290976053534.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Entendiendo FastPitch y la arquitectura Transformers"
+                        
+                        data-hash="md5-GyEbaFnON1f&#43;KwD7GCQ5Lw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Entendiendo FastPitch y la arquitectura Transformers</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/es/p/evaluaci%C3%B3n-de-diferentes-modelos-de-separaci%C3%B3n-del-hablante/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Evaluación de diferentes modelos de Separación del Hablante</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/es/p/dise%C3%B1o-de-un-auditorio/">
+        
+        
+            <div class="article-image">
+                <img src="/p/theather-acoustic-design/front.b6453ca8961027669084a0cc92036cad_hu3059409772273262371.PNG" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Diseño de un auditorio"
+                        
+                        data-hash="md5-tkU8qJYQJ2aQhKDMkgNsrQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Diseño de un auditorio</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2025 Matías Di Bernardo
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.0511f4da9331aeb0a842c33551d26e53240ed2a787a8401ae095d91bd84d13fb.js" defer></script><script type="text/javascript" src="/js/carousel.js"></script>
+<link rel="stylesheet" href="/css/carousel.css">
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

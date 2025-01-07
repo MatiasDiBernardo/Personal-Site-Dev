@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Personal Project on Matias Di Bernardo</title>
+        <link>http://localhost:1313/tags/personal-project/</link>
+        <description>Recent content in Personal Project on Matias Di Bernardo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>Matías Di Bernardo</copyright>
+        <lastBuildDate>Sat, 12 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/personal-project/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Z-Plane Visualizer</title>
+        <link>http://localhost:1313/p/z-plane-visualizer/</link>
+        <pubDate>Sat, 12 Aug 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/z-plane-visualizer/</guid>
+        <description>&lt;img src="http://localhost:1313/p/z-plane-visualizer/frontz.PNG" alt="Featured image of post Z-Plane Visualizer" /&gt;&lt;p&gt;On the &lt;em&gt;Procesamiento Digital de Señales&lt;/em&gt; (Digital Signal Processing) course at UNTREF, we explore the Z-Plane for filtering design with discrete variables. During the class, the professor introduced a tool built in MATLAB that visualizes the magnitude and phase plots in relation to the positions of zeros and poles on the Z-Plane. Inspired by this, I decided to recreate this tool in Python.&lt;/p&gt;
+&lt;p&gt;Leveraging my experience with the PyGame library, I was able to build a real-time application that allows for the movement of poles and zeros, enabling users to see how the transfer function changes in real time.&lt;/p&gt;
+&lt;h2 id=&#34;how-it-works&#34;&gt;How It Works
+&lt;/h2&gt;&lt;p&gt;First, I map the pixel positions on the Z-Plane to coordinates according to the unit circle representation. Then, I construct the transfer function, where each zero $z_{n}$ is a term in the numerator, and each pole $z_{i}$ is a term in the denominator. With the transfer function $H(z)$, I can plot both the magnitude and phase plots, which are also mappings from the normalized response into a space within the app.&lt;/p&gt;
+$$ 
+H(z) = \frac{\sum_{n=0}^{N} (z - z_{n})}{\sum_{i=0}^{N} (z - z_{i})}
+$$&lt;p&gt;Each frame recalculates the transfer function. The program performs efficiently because I store the zeros and poles in arrays, enabling faster computations with the help of numpy, which is already highly optimized. This allows real-time visualizations of the changes and provides a more intuitive understanding of the behavior of the Z-Plane. The following code snippet shows how the transfer function is computed using complex exponentials:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;transfer_function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zeros&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;poles&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;w&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;linspace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RES&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zero&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zeros&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zero&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pole&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;poles&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;den&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pole&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;H_z&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;den&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;mag&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;abs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;H_z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;ang&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;angle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;H_z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mag&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ang&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This project is designed as educational material, providing students with a practical tool to better understand the interactions between poles and zeros in the Z-Plane. It is not intended as a professional filter design tool.&lt;/p&gt;
+&lt;h2 id=&#34;functionality&#34;&gt;Functionality
+&lt;/h2&gt;&lt;p&gt;The application has the following functionality:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Display and move poles/zeros&lt;/strong&gt;: The user can select and choose the position of zero or pole in the Z plane. With the symmetry option active, all the poles and zeros selected or moved are attached to their symmetric par with respect to the imaginary axes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Order&lt;/strong&gt;: The order of the poles/zeros can be modified with the mouse wheel up to increse or down to decrease. It supports up to order 4. The color of the zero/pole change with the order.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Information&lt;/strong&gt;: Holding the cursor over a pole or zero displays information about the position, symmetry and order.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Zoom&lt;/strong&gt;: With the plus and minus symbols, the user can zoom in and out of the Z plane.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Delete&lt;/strong&gt;: The trash bin symbol clears all the poles and zeros from the plane, and the user can also delete specific poles or zeros by pressing right click on them.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Magnitude Graph&lt;/strong&gt;: The magnitude spectrum displayed in the app is normalized. This decision helps to keep the focus on the shape of the magnitude and it makes sure that the graph is visually meaningful for the user. The downside is that the difference in peak values is not captured.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Phase Graph&lt;/strong&gt;: The phase is displayed unwrapped between $-\pi$ and $\pi$.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;demo&#34;&gt;Demo
+&lt;/h2&gt;&lt;p&gt;Here is a quick demo of the app in action:&lt;/p&gt;
+&lt;p&gt;LINKEAR DEMO&lt;/p&gt;
+&lt;p&gt;The source code for this project can be found on this &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Z-Plane_Visualizer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repo&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Evaluation of different models for Speaker Diarization task</title>
+        <link>http://localhost:1313/p/evaluation-of-different-models-for-speaker-diarization-task/</link>
+        <pubDate>Fri, 04 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/evaluation-of-different-models-for-speaker-diarization-task/</guid>
+        <description>&lt;p&gt;This project started as the final assignment for a seminar class at UNTREF called &lt;em&gt;Seminario en Aplicaciones de Redes Neuronales en la recuperación de información musical&lt;/em&gt;. The objective was to use a Siamese Neural Network (SNN) in a different context than the one explored in class (music similarity detection).&lt;/p&gt;
+&lt;p&gt;For the final project of this course, we developed an SNN model from scratch using the &lt;em&gt;Keras&lt;/em&gt; framework and the &lt;em&gt;SincNet&lt;/em&gt; architecture to reduce audio dimensionality, achieving good results. Later, to expand this project, I tried another approach by using &lt;em&gt;Wav2Vec&lt;/em&gt; for dimensionality reduction and re-implementing the entire project in the &lt;em&gt;PyTorch&lt;/em&gt; framework. This attempt, however, yielded suboptimal results, indicating that the dimensionality reduction using Wav2Vec lost critical information required for the speaker diarization task.&lt;/p&gt;
+&lt;h2 id=&#34;speaker-diarization-task&#34;&gt;Speaker Diarization Task
+&lt;/h2&gt;&lt;p&gt;The goal of a speaker diarization model is to identify different speakers in an audio stream containing multiple speakers. For example, in a podcast with two people (A and B), the model must determine the time steps where speaker A is talking and the time steps where speaker B is speaking (and implicitly identify the periods of silence). These models are incredibly useful for audio editing and analyzing long audio sequences with multiple speakers.&lt;/p&gt;
+&lt;h2 id=&#34;why-siamese-neural-networks&#34;&gt;Why Siamese Neural Networks?
+&lt;/h2&gt;&lt;p&gt;In class, we explored the Siamese architecture to compare similarities between pieces of music, developing a tool capable of identifying covers of famous songs.&lt;/p&gt;
+&lt;p&gt;A Siamese Neural Network consists of two or more identical subnetworks sharing the same weights and parameters. It is designed to compare input pairs and measure their similarity, typically using a distance metric like Euclidean distance. Each subnetwork processes one input, and the outputs are combined to compute a similarity score.&lt;/p&gt;
+&lt;p&gt;With this similarity comparison in mind, we wanted to apply these networks to the speaker diarization task. The idea was to generate speaker embeddings from audio using a pre-trained model and compare the outputs of different audio segments. Based on the similarity score, we aimed to identify the segments where different speakers are talking.&lt;/p&gt;
+&lt;h2 id=&#34;experiments&#34;&gt;Experiments
+&lt;/h2&gt;&lt;p&gt;I tested two different methods for audio feature extraction to serve as speaker embeddings.&lt;/p&gt;
+&lt;h3 id=&#34;keras-implementation-with-sincnet&#34;&gt;Keras Implementation with SincNet
+&lt;/h3&gt;&lt;p&gt;In this approach, we used the SincNet architecture to extract speaker-specific features from audio. SincNet applies learnable sinc functions as its filters, which are particularly well-suited for audio processing as they mimic traditional bandpass filters. These features were then fed into the Siamese Neural Network, which compared pairs of audio segments to calculate their similarity scores. The model was trained on labeled audio datasets, and we observed strong performance in clustering audio segments by speaker, achieving clear boundaries between different speakers.&lt;/p&gt;
+&lt;p&gt;A report with the results can be found in the following &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Speaker-Diarization-with-SNN/blob/master/TP%20Final%20Seminario%20Redes%20-%20Di%20Bernardo%20Ferreyra.ipynb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Jupyter notebook&lt;/a&gt; (in Spanish).&lt;/p&gt;
+&lt;h3 id=&#34;pytorch-implementation-with-wav2vec&#34;&gt;PyTorch Implementation with Wav2Vec
+&lt;/h3&gt;&lt;p&gt;For this method, I utilized Wav2Vec, a powerful pre-trained model for extracting deep audio embeddings. Unlike SincNet, Wav2Vec embeddings are derived from self-supervised learning, capturing high-level representations of audio. These embeddings were used in the Siamese Neural Network for similarity comparisons. However, the results were suboptimal for the diarization task. It appears that Wav2Vec, while excellent for speech recognition tasks, lost some speaker-specific details necessary for distinguishing between speakers in our setup.&lt;/p&gt;
+&lt;h2 id=&#34;results&#34;&gt;Results
+&lt;/h2&gt;&lt;p&gt;The experiments demonstrated that the choice of feature extraction method is crucial for speaker diarization. The Keras implementation with SincNet outperformed the PyTorch implementation with Wav2Vec, showing higher accuracy in identifying speaker transitions. This suggests that task-specific feature extraction, like SincNet, is more effective than general-purpose embeddings like Wav2Vec for speaker diarization.&lt;/p&gt;
+&lt;p&gt;The code for this project is available in this &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Speaker-Diarization-with-SNN&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;conclusions&#34;&gt;Conclusions
+&lt;/h2&gt;&lt;p&gt;This project was one of my first experiences with deep learning models, where I applied my knowledge to a problem without following a specific paper or using a pre-trained model. I explored different solutions and concluded on the importance of feature extraction and model selection.&lt;/p&gt;
+&lt;p&gt;It also helped me become familiar with the syntax of the most popular deep learning frameworks and solidified my understanding in the process.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

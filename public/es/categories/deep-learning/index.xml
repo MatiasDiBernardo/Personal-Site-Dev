@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Deep Learning on Matias Di Bernardo</title>
+        <link>http://localhost:1313/es/categories/deep-learning/</link>
+        <description>Recent content in Deep Learning on Matias Di Bernardo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>es</language>
+        <copyright>Matías Di Bernardo</copyright>
+        <lastBuildDate>Fri, 22 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Efecto de algorítmos de reducción de rudio en sistemas de TTS</title>
+        <link>http://localhost:1313/es/p/efecto-de-algor%C3%ADtmos-de-reducci%C3%B3n-de-rudio-en-sistemas-de-tts/</link>
+        <pubDate>Fri, 22 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/efecto-de-algor%C3%ADtmos-de-reducci%C3%B3n-de-rudio-en-sistemas-de-tts/</guid>
+        <description>&lt;p&gt;Este estudio se realizó en el contexto de la clase &lt;em&gt;Laboratorio de Acústica&lt;/em&gt; en la UNTREF. Elegí este tema porque está alineado con investigaciones que he estado desarrollando como parte del grupo &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt;. La consigna para el trabajo de clase consistió en realizar un estudio subjetivo utilizando una encuesta para explorar la relación entre variables objetivas y subjetivas.&lt;/p&gt;
+&lt;p&gt;En mi grupo de investigación, he estado investigando cómo los algoritmos de reducción de ruido afectan a los sistemas de síntesis de voz (TTS) entrenados con grabaciones de baja calidad. El enfoque está en el español rioplatense, un acento regional con datos de alta calidad limitados. En este contexto, fue natural combinar ambas tareas y realizar una prueba subjetiva sobre el impacto de los algoritmos de reducción de ruido en los sistemas TTS.&lt;/p&gt;
+&lt;h2 id=&#34;resumen&#34;&gt;Resumen
+&lt;/h2&gt;&lt;p&gt;Los puntos clave de esta investigación son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Evaluación de tres algoritmos de reducción de ruido: Wave U-Net, HiFi-GAN y DeepFilterNet.&lt;/li&gt;
+&lt;li&gt;Uso de métricas subjetivas (CMOS) y objetivas (PESQ, STOI, MCD).&lt;/li&gt;
+&lt;li&gt;Ideas sobre el desarrollo de modelos TTS eficientes en recursos para acentos poco representados.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;metodología&#34;&gt;Metodología
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Algoritmos&lt;/strong&gt;: Wave U-Net, HiFi-GAN y DeepFilterNet evaluados con el modelo TTS FastPitch.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conjunto de datos&lt;/strong&gt;: Subconjunto de la colección ArchiVoz (15 minutos de audio con ruido).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pruebas&lt;/strong&gt;: Prueba subjetiva CMOS y métricas objetivas (PESQ, STOI, MCD).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Participantes&lt;/strong&gt;: 24 respuestas válidas, incluyendo tanto expertos como no expertos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;principales-hallazgos&#34;&gt;Principales Hallazgos
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Rendimiento de DeepFilterNet&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Obtuvo la puntuación CMOS más alta, reflejando la mejor calidad subjetiva.&lt;/li&gt;
+&lt;li&gt;Mostró mejoras significativas en la salida TTS a pesar de las correlaciones mixtas con las métricas objetivas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Análisis de Métricas Objetivas&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PESQ y MCD mostraron una correlación limitada con las preferencias subjetivas.&lt;/li&gt;
+&lt;li&gt;Las puntuaciones STOI fueron consistentes entre los algoritmos, indicando inteligibilidad preservada.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Comparación de Algoritmos&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DeepFilterNet&lt;/strong&gt;: Evaluaciones subjetivas superiores, MCD moderado.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Demucs&lt;/strong&gt;: Comparable a DeepFilterNet en PESQ, pero con puntuaciones subjetivas inferiores.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Wave U-Net&lt;/strong&gt;: Bajo rendimiento tanto subjetivo como objetivo.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Experiencia de los Participantes&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;No se observaron diferencias significativas entre las evaluaciones subjetivas de expertos y no expertos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;implicaciones&#34;&gt;Implicaciones
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Eficiencia&lt;/strong&gt;: Métodos avanzados de reducción de ruido como DeepFilterNet pueden mejorar los sistemas TTS sin necesidad de grabaciones de alta calidad.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Limitaciones&lt;/strong&gt;: Las métricas objetivas como PESQ y MCD no son indicadores suficientes por sí solas de la calidad subjetiva en TTS.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Trabajo Futuro&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Ampliar los conjuntos de datos y niveles de ruido para un análisis más robusto.&lt;/li&gt;
+&lt;li&gt;Explorar sistemas TTS entrenados conjuntamente con algoritmos de reducción de ruido.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Este trabajo concluye que el preprocesamiento con DeepFilterNet mejora significativamente el rendimiento de los sistemas TTS, con un aumento de 1.1 en la puntuación CMOS. Estos hallazgos destacan la importancia de la selección de algoritmos para optimizar sistemas TTS con pocos recursos. Además, adquirí valiosos conocimientos sobre evaluaciones subjetivas y el análisis estadístico necesario para extraer conclusiones significativas de los datos.&lt;/p&gt;
+&lt;p&gt;Toda la información de este estudio se encuentra en el &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1F4aJGIU9FX2LT8OFik-Yjg4uSz6T09jw/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe académico&lt;/a&gt; (en inglés).&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Entendiendo FastPitch y la arquitectura Transformers</title>
+        <link>http://localhost:1313/es/p/entendiendo-fastpitch-y-la-arquitectura-transformers/</link>
+        <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/entendiendo-fastpitch-y-la-arquitectura-transformers/</guid>
+        <description>&lt;img src="http://localhost:1313/p/understanding-fastpitch-and-the-transformer-architecture/front.png" alt="Featured image of post Entendiendo FastPitch y la arquitectura Transformers" /&gt;&lt;p&gt;Entender un modelo moderno de deep learning no es sencillo debido a la gran cantidad de conocimiento previo necesario y al rápido ritmo de avance en este campo. En el proyecto de investigación &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt;, estamos trabajando con TTS, específicamente con el modelo FastPitch de Nvidia. He estudiado este modelo para ajustarlo (fine-tuning) al español y he compartido este proceso de investigación en una clase para ayudar a mis colegas del grupo de investigación a comprenderlo mejor.&lt;/p&gt;
+&lt;h2 id=&#34;entendiendo-los-modelos-seq2seq&#34;&gt;Entendiendo los Modelos Seq2Seq
+&lt;/h2&gt;&lt;p&gt;En &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt; utilizábamos previamente Tacotron2 como modelo TTS. Este modelo funciona bien, pero presenta varios problemas, principalmente durante el entrenamiento y la inferencia, debido a su naturaleza auto-regresiva. En contraste, FastPitch es un modelo no auto-regresivo (NAR). Para entender estas diferencias, exploré en profundidad los modelos seq2seq, analizando su evolución a lo largo del tiempo, y realicé un resumen rápido de los modelos de análisis de secuencias más relevantes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RNN&lt;/li&gt;
+&lt;li&gt;LSTM&lt;/li&gt;
+&lt;li&gt;Transformers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tacotron2 se basa en un modelo LSTM (AR), mientras que FastPitch utiliza Transformers (NAR). Comprender esta progresión tecnológica proporciona un contexto esencial, especialmente sobre los transformers, incluyendo la codificación posicional, un elemento clave para su naturaleza no auto-regresiva, y el mecanismo de atención.&lt;/p&gt;
+&lt;h2 id=&#34;la-arquitectura-transformer&#34;&gt;La Arquitectura Transformer
+&lt;/h2&gt;&lt;p&gt;Comencé estudiando la arquitectura transformer, ya que es fundamental para el modelo FastPitch. Revisé recursos en línea y el influyente artículo &lt;em&gt;Attention is All You Need&lt;/em&gt;. A continuación, algunos puntos clave que anoté durante mi estudio:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Mecanismo de Auto-Atención&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Focalizar dinámicamente en diferentes partes de la secuencia de entrada.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mecanismo&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Query (Q), Key (K), Value (V): Derivados de las embeddings de entrada.&lt;/li&gt;
+&lt;li&gt;Los puntajes de atención se calculan como el producto punto de Q y K, escalado por la raíz cuadrada de la dimensión.&lt;/li&gt;
+&lt;li&gt;Los puntajes se normalizan con softmax para generar pesos de atención.&lt;/li&gt;
+&lt;li&gt;Se calcula una suma ponderada de V basada en estos pesos para producir la salida.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Atención Multi-Cabezal&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Capturar diferentes relaciones entre tokens aplicando múltiples mecanismos de auto-atención en paralelo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mecanismo&lt;/strong&gt;: Las salidas de las múltiples cabezas de atención se concatenan y se transforman linealmente.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Codificación Posicional&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Añadir información sobre el orden de los tokens en la secuencia, compensando la falta de un concepto incorporado de orden secuencial en los Transformers (a diferencia de los RNNs).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mecanismo&lt;/strong&gt;: Se añade un vector fijo o aprendible a las embeddings de entrada.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Estructura Codificador-Descodificador&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Codificador&lt;/strong&gt;: Procesa la secuencia de entrada en representaciones ricas en contexto.
+&lt;ul&gt;
+&lt;li&gt;Componentes:
+&lt;ul&gt;
+&lt;li&gt;Auto-atención multi-cabezal&lt;/li&gt;
+&lt;li&gt;Red neuronal feed-forward (FFN)&lt;/li&gt;
+&lt;li&gt;Normalización por capas y conexiones residuales&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Descodificador&lt;/strong&gt;: Genera la secuencia de salida atendiendo tanto a las salidas del codificador como a los tokens generados previamente.
+&lt;ul&gt;
+&lt;li&gt;Componentes:
+&lt;ul&gt;
+&lt;li&gt;Auto-atención multi-cabezal enmascarada (evita atender a tokens futuros)&lt;/li&gt;
+&lt;li&gt;Atención multi-cabezal sobre las salidas del codificador&lt;/li&gt;
+&lt;li&gt;FFN, normalización por capas y conexiones residuales&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Red Feed-Forward (FFN)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Introducir no linealidad y procesar cada token de manera independiente.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mecanismo&lt;/strong&gt;: Dos capas lineales con una activación ReLU entre ellas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Normalización por Capas y Conexiones Residuales&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Estabilizar el entrenamiento y mejorar el flujo de gradientes al normalizar las entradas de cada capa y añadir conexiones de salto.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;fastpitch&#34;&gt;FastPitch
+&lt;/h2&gt;&lt;p&gt;Con la teoría cubierta, examiné cada sección de la arquitectura de FastPitch en detalle. Ofrecí una breve explicación sobre las embeddings de palabras y la codificación posicional, ya que son temas complejos, y quise mantener la clase concisa.&lt;/p&gt;
+&lt;p&gt;FastPitch convierte texto en espectrogramas mel, que luego son transformados en audio por otro modelo (en nuestro caso, HiFi-GAN). La secuencia de entrenamiento incluye los siguientes pasos:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Texto a embeddings de palabras&lt;/li&gt;
+&lt;li&gt;Concatenación de embeddings de palabras con espectrogramas mel&lt;/li&gt;
+&lt;li&gt;Codificación posicional y FFT (bloque Transformer Feed-Forward)&lt;/li&gt;
+&lt;li&gt;Predicción de tono&lt;/li&gt;
+&lt;li&gt;Predicción de la duración de los fonemas&lt;/li&gt;
+&lt;li&gt;Otro bloque FFT&lt;/li&gt;
+&lt;li&gt;Capa completamente conectada&lt;/li&gt;
+&lt;li&gt;Salida del espectrograma mel&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;En cada bloque, presenté las ecuaciones correspondientes y proporcioné explicaciones cualitativas sobre su rol en el modelo. Por ejemplo, la predicción de la duración de los fonemas es crucial para alinear la duración de un fonema con la duración esperada en el espectrograma.&lt;/p&gt;
+&lt;h2 id=&#34;clase-online&#34;&gt;Clase Online
+&lt;/h2&gt;&lt;p&gt;Finalmente, resumí los puntos más importantes y realicé una clase online para compartir estos conceptos con mis colegas. Puedes verla aquí:&lt;/p&gt;
+&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/v4bt8bGIM00&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Evaluación de diferentes modelos de Separación del Hablante</title>
+        <link>http://localhost:1313/es/p/evaluaci%C3%B3n-de-diferentes-modelos-de-separaci%C3%B3n-del-hablante/</link>
+        <pubDate>Fri, 04 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/evaluaci%C3%B3n-de-diferentes-modelos-de-separaci%C3%B3n-del-hablante/</guid>
+        <description>&lt;p&gt;Este proyecto comenzó como el trabajo final para un seminario de la UNTREF llamado &lt;em&gt;Seminario en Aplicaciones de Redes Neuronales en la recuperación de información musical&lt;/em&gt;. El objetivo era utilizar una Red Neuronal Siamés (SNN, por sus siglas en inglés) en un contexto diferente al visto en clase (detección de similitud musical).&lt;/p&gt;
+&lt;p&gt;Para el proyecto final de este curso, desarrollamos un modelo SNN desde cero utilizando el framework &lt;em&gt;Keras&lt;/em&gt; y la arquitectura &lt;em&gt;SincNet&lt;/em&gt; para reducir la dimensionalidad del audio, logrando buenos resultados. Más adelante, para expandir este proyecto, probé otro enfoque utilizando &lt;em&gt;Wav2Vec&lt;/em&gt; para la reducción de dimensionalidad y reimplementé todo el proyecto en el framework &lt;em&gt;PyTorch&lt;/em&gt;. Sin embargo, este intento arrojó resultados subóptimos, lo que indica que la reducción de dimensionalidad con Wav2Vec perdió información crítica necesaria para la tarea de diarización de locutores.&lt;/p&gt;
+&lt;h2 id=&#34;tarea-de-diarización-de-locutores&#34;&gt;Tarea de Diarización de Locutores
+&lt;/h2&gt;&lt;p&gt;El objetivo de un modelo de diarización de locutores es identificar diferentes hablantes en un flujo de audio que contiene múltiples voces. Por ejemplo, en un podcast con dos personas (A y B), el modelo debe determinar los pasos de tiempo en los que el hablante A está hablando y los pasos de tiempo en los que el hablante B está hablando (e identificar implícitamente los períodos de silencio). Estos modelos son extremadamente útiles para la edición de audio y el análisis de largas secuencias de audio con múltiples hablantes.&lt;/p&gt;
+&lt;h2 id=&#34;por-qué-redes-neuronales-siamés&#34;&gt;¿Por qué Redes Neuronales Siamés?
+&lt;/h2&gt;&lt;p&gt;En clase, exploramos la arquitectura siamés para comparar similitudes entre piezas musicales, desarrollando una herramienta capaz de identificar versiones de canciones famosas.&lt;/p&gt;
+&lt;p&gt;Una Red Neuronal Siamés consiste en dos o más subredes idénticas que comparten los mismos pesos y parámetros. Está diseñada para comparar pares de entradas y medir su similitud, generalmente utilizando una métrica de distancia como la distancia euclidiana. Cada subred procesa una entrada, y las salidas se combinan para calcular un puntaje de similitud.&lt;/p&gt;
+&lt;p&gt;Con esta comparación de similitudes en mente, quisimos aplicar estas redes a la tarea de diarización de locutores. La idea era generar embeddings de hablantes a partir de audio utilizando un modelo preentrenado y comparar las salidas de diferentes segmentos de audio. Basándonos en el puntaje de similitud, buscamos identificar los segmentos donde diferentes hablantes están hablando.&lt;/p&gt;
+&lt;h2 id=&#34;experimentos&#34;&gt;Experimentos
+&lt;/h2&gt;&lt;p&gt;Probé dos métodos diferentes para la extracción de características de audio que servirían como embeddings de hablantes.&lt;/p&gt;
+&lt;h3 id=&#34;implementación-en-keras-con-sincnet&#34;&gt;Implementación en Keras con SincNet
+&lt;/h3&gt;&lt;p&gt;En este enfoque, utilizamos la arquitectura SincNet para extraer características específicas de los hablantes a partir del audio. SincNet aplica funciones sinc aprendibles como sus filtros, que son particularmente adecuadas para el procesamiento de audio, ya que imitan los filtros de paso de banda tradicionales. Estas características se introdujeron en la Red Neuronal Siamés, que comparó pares de segmentos de audio para calcular sus puntajes de similitud. El modelo se entrenó con conjuntos de datos de audio etiquetados y observamos un rendimiento sólido al agrupar segmentos de audio por hablante, logrando límites claros entre diferentes hablantes.&lt;/p&gt;
+&lt;p&gt;Un informe con los resultados puede encontrarse en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Speaker-Diarization-with-SNN/blob/master/TP%20Final%20Seminario%20Redes%20-%20Di%20Bernardo%20Ferreyra.ipynb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;notebook de Jupyter&lt;/a&gt; (en español).&lt;/p&gt;
+&lt;h3 id=&#34;implementación-en-pytorch-con-wav2vec&#34;&gt;Implementación en PyTorch con Wav2Vec
+&lt;/h3&gt;&lt;p&gt;Para este método, utilicé Wav2Vec, un modelo preentrenado poderoso para la extracción de embeddings profundos de audio. A diferencia de SincNet, los embeddings de Wav2Vec se derivan del aprendizaje autosupervisado, capturando representaciones de alto nivel del audio. Estos embeddings se usaron en la Red Neuronal Siamés para comparaciones de similitud. Sin embargo, los resultados fueron subóptimos para la tarea de diarización. Parece que Wav2Vec, aunque excelente para tareas de reconocimiento de voz, perdió algunos detalles específicos del hablante necesarios para distinguir entre diferentes voces en nuestro contexto.&lt;/p&gt;
+&lt;h2 id=&#34;resultados&#34;&gt;Resultados
+&lt;/h2&gt;&lt;p&gt;Los experimentos demostraron que la elección del método de extracción de características es crucial para la diarización de locutores. La implementación en Keras con SincNet superó a la implementación en PyTorch con Wav2Vec, mostrando mayor precisión al identificar transiciones entre hablantes. Esto sugiere que la extracción de características específicas para la tarea, como SincNet, es más efectiva que los embeddings de propósito general como Wav2Vec para la diarización de locutores.&lt;/p&gt;
+&lt;p&gt;El código de este proyecto está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Speaker-Diarization-with-SNN&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Este proyecto fue una de mis primeras experiencias con modelos de aprendizaje profundo, donde apliqué mis conocimientos a un problema sin seguir un artículo específico o utilizar un modelo preentrenado. Exploré diferentes soluciones y concluí sobre la importancia de la extracción de características y la selección del modelo.&lt;/p&gt;
+&lt;p&gt;También me ayudó a familiarizarme con la sintaxis de los frameworks de aprendizaje profundo más populares y a solidificar mi comprensión en el proceso.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

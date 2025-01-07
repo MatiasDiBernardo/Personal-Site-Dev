@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on Matias Di Bernardo</title>
+        <link>http://localhost:1313/page/</link>
+        <description>Recent content in Pages on Matias Di Bernardo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>Matías Di Bernardo</copyright>
+        <lastBuildDate>Wed, 09 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>About me</title>
+        <link>http://localhost:1313/about-me/</link>
+        <pubDate>Fri, 18 Feb 2022 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/about-me/</guid>
+        <description>&lt;h1 id=&#34;who-am-i&#34;&gt;Who Am I?
+&lt;/h1&gt;&lt;p&gt;Hi, my name is Matías Di Bernardo. I&amp;rsquo;m an acoustics and computer engineering student from Argentina. I love learning new subjects and have a wide range of interests, including algorithms, deep learning, DSP, acoustics, and more. In my free time, I enjoy playing music as a pianist and reading books, mainly classics.&lt;/p&gt;
+&lt;h2 id=&#34;studies&#34;&gt;Studies
+&lt;/h2&gt;&lt;p&gt;I began studying in 2019 for a Sound Engineering degree at UNTREF University. I chose this career because, as a musician, I wanted to combine my passion for music with my love for math and science. I quickly realized that an engineering degree offers so much more than I initially imagined, and I especially enjoyed the foundational math courses, as well as those focused on acoustics and digital signal processing.&lt;/p&gt;
+&lt;p&gt;This experience deepened my interest in programming and computers, leading me to start a Computer Engineering degree in 2022, running parallel to my first degree at the same university. Through these studies, I’ve been able to solidify my programming skills, explore concepts like data structures and design patterns, and dive into the theoretical aspects of Artificial Intelligence—a subject I’ve always been passionate about.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m going to finish my Sound Engineering degree at the end of 2025 and my Computer Engineering degree in 2027/2028.
+In addition to my formal education, I’m always seeking out additional learning materials on platforms like YouTube or online courses. For example, two courses that have greatly enhanced my knowledge are &lt;em&gt;DSP for Music Applications&lt;/em&gt; on Coursera and &lt;em&gt;Learning from Data&lt;/em&gt;, a YouTube series from Caltech University.&lt;/p&gt;
+&lt;h2 id=&#34;work&#34;&gt;Work
+&lt;/h2&gt;&lt;p&gt;I have a strong interest in deep learning, and I’ve taken several courses on the topic. In 2022, I joined an academic research group at my university called Intercambios Transorgánicos, which focuses on using technology to help people.&lt;/p&gt;
+&lt;p&gt;As part of this group, I’ve been working on a Text-to-Speech (TTS) model that captures the rio-platense accent (Buenos Aires), making this technology more accessible for individuals who have lost their voices and rely on such systems for communication.&lt;/p&gt;
+&lt;p&gt;This project perfectly aligns with my interests as it combines deep learning, speech processing, DSP, and acoustics. I quickly took on more tasks and responsibilities, and in 2024, I was promoted to CTO (Chief Technical Officer). In this role, I manage all technical decisions, lead a team of four students, and conduct research to improve TTS technology, with a focus on accessibility and innovation.&lt;/p&gt;
+&lt;h2 id=&#34;why-i-started-this-blog&#34;&gt;Why I started this blog?
+&lt;/h2&gt;&lt;p&gt;Many of the projects I’ve started in the past have either fizzled out or ended abruptly. A blog, however, is an excellent way to stay organized and get the most out of my work.&lt;/p&gt;
+&lt;p&gt;Additionally, documenting my projects here allows me to keep track of my progress and serves as a useful reference for future endeavours. For now, the blog will primarily focus on tech and science topics, but I’m open to expanding into other areas in the future.&lt;/p&gt;
+&lt;h2 id=&#34;best-reference-books&#34;&gt;Best reference books?
+&lt;/h2&gt;&lt;p&gt;As a bonus, here are some of the books that have been most helpful to me across different topics:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Acoustics: Sound Fields, Transducers and Vibration (2nd Edition) by Leo Beranek&lt;/li&gt;
+&lt;li&gt;Fundamental of Music Processing by Meinard Müller&lt;/li&gt;
+&lt;li&gt;Deep Learning by Ian Goodfellow&lt;/li&gt;
+&lt;li&gt;Fundations of Signal Processing by Martin Vetterli&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These are some of my favorites, and I highly recommend them!&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Archives</title>
+        <link>http://localhost:1313/archives/</link>
+        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Search</title>
+        <link>http://localhost:1313/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

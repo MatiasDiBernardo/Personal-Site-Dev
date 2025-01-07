@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Electronics on Matias Di Bernardo</title>
+        <link>http://localhost:1313/es/categories/electronics/</link>
+        <description>Recent content in Electronics on Matias Di Bernardo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>es</language>
+        <copyright>Matías Di Bernardo</copyright>
+        <lastBuildDate>Tue, 26 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/categories/electronics/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Medidor de THD&#43;N</title>
+        <link>http://localhost:1313/es/p/medidor-de-thd-n/</link>
+        <pubDate>Tue, 26 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/medidor-de-thd-n/</guid>
+        <description>&lt;img src="http://localhost:1313/p/thd-n-meter/port.jpeg" alt="Featured image of post Medidor de THD&#43;N" /&gt;&lt;h1 id=&#34;medidor-thdn&#34;&gt;Medidor THD+N
+&lt;/h1&gt;&lt;p&gt;Un medidor de THD+N mide la distorsión armónica de un dispositivo. En audio, esto es crucial para evaluar la calidad del equipo. Este proyecto fue desarrollado como parte de la asignatura &amp;ldquo;Instrumentos y Mediciones Electrónicas&amp;rdquo; en UNTREF. En este curso, los estudiantes diseñan y desarrollan diversos instrumentos electrónicos, y los proyectos son continuados por grupos sucesivos de estudiantes. Este proyecto en particular ya estaba en marcha, y nuestro enfoque fue desarrollar un desfasador para alinear dos señales.&lt;/p&gt;
+&lt;h2 id=&#34;teoría-sobre-como-medición-de-thd&#34;&gt;Teoría sobre como medición de THD
+&lt;/h2&gt;&lt;p&gt;Para medir la distorsión de un sistema, se introduce una señal sinusoidal con la menor distorsión posible al dispositivo bajo prueba. El objetivo es evaluar cuánta distorsión agrega el dispositivo a la señal. Esto se cuantifica midiendo la potencia de la señal original y la potencia de la señal después de pasar por el dispositivo, excluyendo la armónica fundamental.&lt;/p&gt;
+&lt;p&gt;Un amplificador diferencial se utiliza para restar la señal de salida del dispositivo de la señal de referencia, dejando solo las armónicas de orden superior.&lt;/p&gt;
+&lt;p&gt;El THD+N se calcula luego como un porcentaje usando la siguiente ecuación:&lt;/p&gt;
+$$
+THD+N = \frac{V_{filt}}{V_{tot}} \cdot 100
+$$&lt;p&gt;Donde:
+$V_{filt}$ es el valor RMS de la señal filtrada (excluyendo la armónica fundamental).
+$V_{tot}$ es el valor RMS de la señal original.&lt;/p&gt;
+&lt;h2 id=&#34;desfasador&#34;&gt;Desfasador
+&lt;/h2&gt;&lt;p&gt;Para lograr una cancelación efectiva en la sección diferencial, se requieren ajustes precisos de fase y ganancia de las dos señales. El ajuste de ganancia había sido implementado con éxito por el grupo anterior que trabajó en el proyecto. Sin embargo, lograr la rotación de fase necesaria de 360 grados en toda la gama de frecuencias audibles (20 Hz a 20 kHz) presentó un desafío.&lt;/p&gt;
+&lt;p&gt;Para abordar este problema, diseñamos dos filtros pasa-todo en serie y calculamos los valores de los componentes para lograr la rotación de fase deseada en el rango de frecuencias objetivo.&lt;/p&gt;
+&lt;p&gt;El diseño fue modular para facilitar la integración con las etapas anteriores.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/thd-n-meter/esquem_thd.PNG&#34;
+	width=&#34;991&#34;
+	height=&#34;597&#34;
+	srcset=&#34;http://localhost:1313/p/thd-n-meter/esquem_thd_hu7854488014118793125.PNG 480w, http://localhost:1313/p/thd-n-meter/esquem_thd_hu5535924513728456883.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Esquematico del desplazador de fase&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;165&#34;
+		data-flex-basis=&#34;398px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Probamos el circuito en un protoboard antes de diseñar la PCB utilizando &lt;em&gt;Altium Designer&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/thd-n-meter/pcb_thd.PNG&#34;
+	width=&#34;757&#34;
+	height=&#34;496&#34;
+	srcset=&#34;http://localhost:1313/p/thd-n-meter/pcb_thd_hu3351495035239025609.PNG 480w, http://localhost:1313/p/thd-n-meter/pcb_thd_hu4551021193416416361.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;PCB design of the circuit&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;152&#34;
+		data-flex-basis=&#34;366px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;el-dispositivo&#34;&gt;El dispositivo
+&lt;/h2&gt;&lt;p&gt;El dispositivo cuenta con varios controles para ajustar la fase y la ganancia. Tanto los ajustes de fase como de ganancia incluyen potenciómetros de ajuste fino para garantizar la máxima precisión.&lt;/p&gt;
+
+
+
+
+&lt;div id=&#34;carousel0&#34; class=&#34;carousel&#34; duration=&#34;70000&#34;&gt;
+    &lt;ul&gt;
+      
+        &lt;li id=&#34;c0_slide1&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/thd/thd1.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide2&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/thd/thd2.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide3&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/thd/thd3.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide1&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide2&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide3&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+    &lt;/ol&gt;
+    &lt;div class=&#34;prev&#34;&gt;&amp;lsaquo;&lt;/div&gt;
+    &lt;div class=&#34;next&#34;&gt;&amp;rsaquo;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Está equipado con entradas y salidas BNC, lo que permite a los usuarios visualizar la salida en un osciloscopio y lograr la máxima atenuación.&lt;/p&gt;
+&lt;h2 id=&#34;resultados&#34;&gt;Resultados
+&lt;/h2&gt;&lt;p&gt;Este dispositivo se comparó con un medidor de THD comercial (GW INSTEK GAD-201G), y los resultados fueron muy similares. La principal limitación fue el nivel de ruido base del entorno de medición, que restringió significativamente el valor más bajo de THD que pudimos medir.&lt;/p&gt;
+&lt;p&gt;Las especificaciones del dispositivo se resumen en la siguiente tabla (en español):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/thd-n-meter/specs_thd.PNG&#34;
+	width=&#34;1192&#34;
+	height=&#34;887&#34;
+	srcset=&#34;http://localhost:1313/p/thd-n-meter/specs_thd_hu7856985861425421171.PNG 480w, http://localhost:1313/p/thd-n-meter/specs_thd_hu9340525222663809333.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Especificaciones técnicas del dispositivo&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;134&#34;
+		data-flex-basis=&#34;322px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Un análisis detallado del dispositivo está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1b36O_s27LkEJAZ6-y5TcdTT5wKB1xdGk/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Construcción y diseño de un altoparlante personal</title>
+        <link>http://localhost:1313/es/p/construcci%C3%B3n-y-dise%C3%B1o-de-un-altoparlante-personal/</link>
+        <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/construcci%C3%B3n-y-dise%C3%B1o-de-un-altoparlante-personal/</guid>
+        <description>&lt;img src="http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/front_bass.PNG" alt="Featured image of post Construcción y diseño de un altoparlante personal" /&gt;&lt;h1 id=&#34;bassado-un-parlante-hogareño-semi-portable-de-bajo-costo&#34;&gt;&amp;ldquo;BassAdo&amp;rdquo; un parlante hogareño semi portable de bajo costo
+&lt;/h1&gt;&lt;p&gt;Este proyecto se enmarca en la materia Electroacústica II en UNTREF de la carrera Ingeniería de Sonido. La tarea era diseñar desde cero un altoparlante aplicando la teoría y conceptos explicados en clase.
+El trabajo se fue desarrollando durante todo el cuatrimestre con diferentes etapas a completar que se tenían que presentar con un informe. El parlante esta pensado para ser usado en un espacio grande, puede ser al aire libre, para poner música en un entorno de reunión. Se lo denomino &lt;em&gt;Bassado&lt;/em&gt; para combinar el asado (típica comida argentina donde la gente se reune) y la palabra bass, enfatizando la característica del altoparlante.&lt;/p&gt;
+&lt;h2 id=&#34;diseño&#34;&gt;Diseño
+&lt;/h2&gt;&lt;p&gt;El objetivo es diseñar un sistema de audio hogareño con prestaciones accesibles, que permita explorar temas de interés abordados en la materia. El diseño busca lograr una predominancia en graves, característica de los sistemas comerciales, priorizando la extensión del ancho de banda en bajas frecuencias por encima de un bajo retardo de grupo y control temporal del sistema.&lt;/p&gt;
+&lt;p&gt;Con respecto a los transductores a utilizar, el equipo contaba con unidades de la marca Yharo, que se pueden clasificar como no profesionales, consumidor-aficionado, con posibles aplicaciones en automóviles y/o sistemas hogareños.
+Se evalúa la respuesta en impedancia de los mismos y se selecciona un Woofer de 8” para cubrir la sección de bajas frecuencias, y dos de 4” para el rango de medias/altas.&lt;/p&gt;
+&lt;p&gt;Al medir los parámetros de Thielle-Small de los altoparlantes se encuentra que tiene un &lt;em&gt;Vas&lt;/em&gt; (Volumen Acústico Equivalente de Suspensión) muy alto, lo que requiere realizar un gabinete con mucho volumen para tener un buen control. Para solucionar este problema y dado la posibilidad de que se contaba con 2 Woofers de 8”, se decide hacer un altoparlante del tipo isobárico, colocando los 2 Woofers en serie acústicamente, para que tengan mayor control y poder hacer más chico el gabinete. Además, va a ser un gabinete ventilado para tener mejor respuesta en bajas.&lt;/p&gt;
+&lt;p&gt;La respuesta de los altoparlantes (paráemtros TS) fue obtenida en el software &lt;a class=&#34;link&#34; href=&#34;https://www.roomeqwizard.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;REW&lt;/a&gt;. Con esos parámetros, se simula en el software &lt;a class=&#34;link&#34; href=&#34;https://www.tolvan.com/index.php?page=/basta/basta.php&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Basta!&lt;/a&gt; y se optimizan los parámetros para obtener la respuesta deseada. Lo principal fue sintonizar la frecuencia de resonancia del port, ya que el objetivo del altoparlante era tener una buena respuesta en bajas. El transductor tenía una &lt;em&gt;fs&lt;/em&gt; en 45 Hz, y se busca sintonizar el port en 40 Hz controlando el largo del tubo y el volumen de aire del gabinete.&lt;/p&gt;
+&lt;p&gt;En base a estos resultados, se hace un modelo 3D del gabinete en el software &lt;a class=&#34;link&#34; href=&#34;https://www.solidworks.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SolidWorks&lt;/a&gt; con el que se manda a cortar las maderas para poder construir el gabinete.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/dise%C3%B1o_gab.PNG&#34;
+	width=&#34;422&#34;
+	height=&#34;306&#34;
+	srcset=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/dise%C3%B1o_gab_hu4105664598446689879.PNG 480w, http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/dise%C3%B1o_gab_hu11734023399320749680.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modelado 3D del gabinete del altoparlante&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;330px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;El detalle de todo este proceso esta documentado en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1uej1m6gwg99JoPEw5Jbu3cTq74ViIG58/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe de diseño&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;construcción&#34;&gt;Construcción
+&lt;/h2&gt;&lt;p&gt;Se mandaron a realizar los cortes a las maderas para hacer el gabinete según el modelo 3D y se realiza el ensamblado.&lt;/p&gt;
+
+
+
+
+&lt;div id=&#34;carousel0&#34; class=&#34;carousel&#34; duration=&#34;700000&#34;&gt;
+    &lt;ul&gt;
+      
+        &lt;li id=&#34;c0_slide1&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b1.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide2&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b2.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide3&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b3.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide4&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b4.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide5&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b5.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide6&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b6.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide1&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide2&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide3&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide4&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide5&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide6&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+    &lt;/ol&gt;
+    &lt;div class=&#34;prev&#34;&gt;&amp;lsaquo;&lt;/div&gt;
+    &lt;div class=&#34;next&#34;&gt;&amp;rsaquo;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Como se puede ver en las imágenes, se agregó lana de roca para hacer de absorbente acústico. Al realizar las mediciones nos dimos cuenta de que fue demasiado (la resonancia del port quedaba muy amortiguada) pero se le pudo sacar lana de roca hasta lograr el resultado deseado.&lt;/p&gt;
+&lt;h2 id=&#34;medición-y-calibración&#34;&gt;Medición y Calibración
+&lt;/h2&gt;&lt;p&gt;Se realizaron mediciones de respuesta en frecuencia y de directividad en el laboratorio de la universidad, teníamos a disposición el siguiente equipamiento:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Potencia Powersoft M50Q&lt;/li&gt;
+&lt;li&gt;Micrófono Earthworks M50&lt;/li&gt;
+&lt;li&gt;Placa de Audio RME Fireface UCX&lt;/li&gt;
+&lt;li&gt;Mesa Giratoria OUTLINE ET250-3D&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Con estas prestaciones y utilizando el software &lt;a class=&#34;link&#34; href=&#34;https://artalabs.hr/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Arta&lt;/a&gt;, se pudo caracterizar la respuesta acústica de los transductores por separado (lo cual nos va a servir para simular los filtros de cruze). También se evalúa la respuesta directiva en el eje vertical y el horizontal para poder determinar cual es la mejor disposición para utilizar el dispositivo. Se realizaron gráficos de la respuesta para los dos transductores.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/patron_polar.PNG&#34;
+	width=&#34;943&#34;
+	height=&#34;584&#34;
+	srcset=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/patron_polar_hu10205775189482527862.PNG 480w, http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/patron_polar_hu2898494236095029192.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Respuesta polar del driver de medias/altas frecuencias&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;161&#34;
+		data-flex-basis=&#34;387px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Todas las respuestas y el análisis en profundidad se encuentran en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1dPwJAqadPM3Ja80anA1P1Ei3EP9M8w-q/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe de medición&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;diseño-de-filtro-de-cruce&#34;&gt;Diseño de filtro de cruce
+&lt;/h2&gt;&lt;p&gt;Por último, se diseña la etapa del filtro de curce. Con las mediciones realizadas previamente, se subieron los datos al software &lt;a class=&#34;link&#34; href=&#34;https://kimmosaunisto.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;VituixCad&lt;/a&gt;. El objetivo del filtro de cruce es lograr una respuesta en frecuencia que suene agradable al reproducir un programa músical y que realce las bajas frecuencias. Se busca también, la mayor homogeneidad en la respuesta polar vertical.&lt;/p&gt;
+&lt;p&gt;Como se va utilizar una etapa de potencia que requiere alimentación, se va a realizar un filtro de cruce activo con la topología Sallen-Key. Se definen una cantidad de filtros según el espacio y el costo y se realizan los ajustes en el software para obtener la respuesta deseada. Por ejemplo, para los drivers de baja frecuencia se realizó el siguiente arreglo:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/filtro_cruce.PNG&#34;
+	width=&#34;1221&#34;
+	height=&#34;648&#34;
+	srcset=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/filtro_cruce_hu13251352229816192527.PNG 480w, http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/filtro_cruce_hu16925353032023854787.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Filtro de cruce para el driver de bajas frecuencias&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;452px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Donde:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;F1: Pasa altos fs=30 Hz | Q=0.67&lt;/li&gt;
+&lt;li&gt;F2: Pasa bajos fs=480 Hz | Q=0.5&lt;/li&gt;
+&lt;li&gt;F3: Elimina Banda 220 Hz&lt;/li&gt;
+&lt;li&gt;F4: Elimina Banda 400 x Hz&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Antes de realizar el filtro, se probó la configuración planteada con un filtro digital para evaluar de forma práctica la respuesta del sistema según el diseño planteado.
+Todos los detalles de esta sección estan plasmados en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/121wkPnp_QsODk99a2Jm44jfb-Xbl6ZKn/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe de filtro de cruce&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Con este trabajo, pudimos bajar muchos conceptos teóricos a la práctica y entender con más profundidad como es el desarrollo y los desafíos en un diseño de un sistema electroacústico.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Diseño de un auditorio sin refuerzo sonoro centrandose en la acústica del recinto.">
+<title>Diseño de un auditorio</title>
+
+<link rel='canonical' href='http://localhost:1313/es/p/dise%C3%B1o-de-un-auditorio/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Diseño de un auditorio">
+<meta property='og:description' content="Diseño de un auditorio sin refuerzo sonoro centrandose en la acústica del recinto.">
+<meta property='og:url' content='http://localhost:1313/es/p/dise%C3%B1o-de-un-auditorio/'>
+<meta property='og:site_name' content='Matias Di Bernardo'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='University' /><meta property='article:published_time' content='2022-06-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-06-22T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/p/theather-acoustic-design/front.PNG' />
+<meta name="twitter:title" content="Diseño de un auditorio">
+<meta name="twitter:description" content="Diseño de un auditorio sin refuerzo sonoro centrandose en la acústica del recinto."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/p/theather-acoustic-design/front.PNG' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Ocultar menú">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/es/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pic_web_hu16898994747421290757.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/es">Matias Di Bernardo</a></h1>
+            <h2 class="site-description">Blog personal y portfolio.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/MatiasDiBernardo'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/mat%C3%ADas-di-bernardo-46425b16b/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="none">
+    <path d="m15.15 8.4a5.83 5.83 0 0 0 -5.85 5.82v5.88a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a1.94 1.94 0 0 1 2.15-1.93 2 2 0 0 1 1.75 2v5.81a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a5.83 5.83 0 0 0 -5.85-5.82z"/>
+    <rect height="11.7" rx=".9" width="4.5" x="3" y="9.3"/><circle cx="5.25" cy="5.25" r="2.25"/></g>
+</svg>
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/es/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Inicio</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/es/sobre-m%C3%AD/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>Sobre mí</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/es/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archivos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/es/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Buscar</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" >English</option>
+                                
+                                    <option value="http://localhost:1313/es/" selected>Español</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Modo oscuro</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Tabla de contenido</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#ideas-principales-del-rediseño">Ideas Principales del Rediseño</a></li>
+    <li><a href="#detalles-de-construcción-y-regulaciones">Detalles de Construcción y Regulaciones</a></li>
+    <li><a href="#tratamiento-acústico">Tratamiento Acústico</a>
+      <ol>
+        <li><a href="#reflexiones">Reflexiones</a></li>
+        <li><a href="#materiales-y-tiempo-de-reverberación">Materiales y Tiempo de Reverberación</a></li>
+      </ol>
+    </li>
+    <li><a href="#modelado-3d">Modelado 3D</a></li>
+    <li><a href="#conclusiones">Conclusiones</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/es/p/dise%C3%B1o-de-un-auditorio/">
+                <img src="/p/theather-acoustic-design/front_hu7312752605559266791.PNG"
+                        srcset="/p/theather-acoustic-design/front_hu7312752605559266791.PNG 800w, /p/theather-acoustic-design/front_hu7325485345426117123.PNG 1600w"
+                        width="800" 
+                        height="342" 
+                        loading="lazy"
+                        alt="Featured image of post Diseño de un auditorio" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/es/categories/acoustics/" >
+                Acoustics
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/es/p/dise%C3%B1o-de-un-auditorio/">Diseño de un auditorio</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Diseño de un auditorio sin refuerzo sonoro centrandose en la acústica del recinto.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">jun. 22, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    Tiempo de lectura 4 minutos
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="http://localhost:1313/p/theather-acoustic-design/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Este proyecto es el trabajo final de la clase <em>Acústica y Psicoacústica II</em>, donde se nos encargó rediseñar un auditorio existente. El objetivo era aplicar la teoría vista en clase para crear un auditorio optimizado desde el punto de vista acústico. Para nuestro proyecto, elegimos rediseñar el Royal Albert Hall en Londres. Esto representó un desafío particular debido a las grandes dimensiones del auditorio, lo que dificulta asegurar que el sonido llegue de manera uniforme a todos los espectadores.</p>
+<h2 id="ideas-principales-del-rediseño">Ideas Principales del Rediseño
+</h2><p>El rediseño buscó preservar el concepto original del auditorio, incluyendo su gran volumen y capacidad de asientos, mientras se introducían cambios críticos para mejorar su acústica. Aunque el enfoque principal fue la mejora acústica, el rediseño también consideró otros factores esenciales, como las líneas de visión y una distribución adecuada de los asientos.</p>
+<p>A pesar de la intención de mantener las dimensiones originales del auditorio, su volumen resultó ser demasiado grande para lograr un tiempo de reverberación óptimo. Para abordar este problema, el rediseño incorporó un techo intermedio para reducir el volumen del techo esférico, y se redujo el área principal de asientos. Estos cambios permitieron obtener un mejor tiempo de reverberación en la sala, como se ilustra en la sección transversal a continuación.</p>
+<p><img src="/p/theather-acoustic-design/cross_section.PNG"
+	width="1324"
+	height="506"
+	srcset="/p/theather-acoustic-design/cross_section_hu8201639409724213049.PNG 480w, /p/theather-acoustic-design/cross_section_hu5610852418196906417.PNG 1024w"
+	loading="lazy"
+	
+		alt="Sección transversal del rediseño del auditorio"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="261"
+		data-flex-basis="627px"
+	
+></p>
+<h2 id="detalles-de-construcción-y-regulaciones">Detalles de Construcción y Regulaciones
+</h2><p>Para garantizar un rediseño factible y funcional, se consideraron cuidadosamente los siguientes aspectos clave:</p>
+<ul>
+<li>Distribución de asientos</li>
+<li>Espaciado de los pasillos</li>
+<li>Optimización de las líneas de visión</li>
+<li>Comodidad del escenario</li>
+</ul>
+<h2 id="tratamiento-acústico">Tratamiento Acústico
+</h2><p>El tratamiento acústico fue la parte más crítica de este estudio y se centró en dos aspectos principales: reflexiones y tiempo de reverberación.</p>
+<h3 id="reflexiones">Reflexiones
+</h3><p>El análisis de las reflexiones es esencial para la experiencia acústica del público. El Royal Albert Hall original cuenta con un techo esférico que centraliza las reflexiones, creando efectos acústicos indeseables. Para mitigar esto, el rediseño incorporó un techo intermedio con una geometría específica diseñada para distribuir las reflexiones de manera uniforme entre el público.</p>
+<p>El diseño escalonado del techo garantiza reflexiones adecuadas para todas las filas de asientos. En el balcón principal, se abordaron dos reflexiones específicas para compensar el menor nivel de presión sonora (SPL) debido a la gran distancia desde el escenario, como se muestra en la imagen a continuación.</p>
+<p><img src="/p/theather-acoustic-design/balcony_cel_ref.PNG"
+	width="1136"
+	height="462"
+	srcset="/p/theather-acoustic-design/balcony_cel_ref_hu8173242411301837287.PNG 480w, /p/theather-acoustic-design/balcony_cel_ref_hu890172879033338586.PNG 1024w"
+	loading="lazy"
+	
+		alt="Reflexiones en el techo del balcón"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="245"
+		data-flex-basis="590px"
+	
+></p>
+<p>También se optimizaron las reflexiones laterales mediante ajustes en la geometría del escenario y las paredes de los balcones laterales.</p>
+<p><img src="/p/theather-acoustic-design/lateral_ref.PNG"
+	width="642"
+	height="521"
+	srcset="/p/theather-acoustic-design/lateral_ref_hu2629534869006446785.PNG 480w, /p/theather-acoustic-design/lateral_ref_hu11386676131120321573.PNG 1024w"
+	loading="lazy"
+	
+		alt="Reflexiones laterales en el público principal"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="123"
+		data-flex-basis="295px"
+	
+></p>
+<p>Además, el rediseño buscó minimizar el ITDG (Initial Time Delay Gap) en los diferentes puntos del público.</p>
+<h3 id="materiales-y-tiempo-de-reverberación">Materiales y Tiempo de Reverberación
+</h3><p>El rediseño siguió las recomendaciones del libro <em>Acoustic Absorbers and Diffusers</em> para lograr un equilibrio entre absorción, difusión y reflexiones especulares. Se utilizaron materiales reflectantes en el techo y en partes de los balcones laterales para garantizar reflexiones especulares efectivas. Para reducir el tiempo de reverberación (RT), se aplicaron materiales con coeficientes de absorción más altos en otras superficies.</p>
+<p>Usando los materiales seleccionados y la ecuación de Sabine, calculamos el RT estimado del auditorio. El tiempo de reverberación para las diferentes frecuencias se muestra a continuación:</p>
+<p><img src="/p/theather-acoustic-design/rt.PNG"
+	width="848"
+	height="644"
+	srcset="/p/theather-acoustic-design/rt_hu5951076229482181811.PNG 480w, /p/theather-acoustic-design/rt_hu15811556200730072255.PNG 1024w"
+	loading="lazy"
+	
+		alt="Tiempo de reverberación por frecuencia"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="131"
+		data-flex-basis="316px"
+	
+></p>
+<p>El RT calculado para frecuencias medias es de 2,51 segundos. Aunque este valor está ligeramente por encima del máximo recomendado de 2,4 segundos para una acústica óptima, es aceptable dado el gran volumen del auditorio.</p>
+<h2 id="modelado-3d">Modelado 3D
+</h2><p>Renderizamos el auditorio rediseñado utilizando el software <em>SketchUp</em>. A continuación, se presentan algunas visualizaciones:</p>
+
+
+
+
+<div id="carousel0" class="carousel" duration="70000">
+    <ul>
+      
+        <li id="c0_slide1" style="min-width: calc(100%/1); padding-bottom: 450px;"><img src="/images/royal/r1.PNG" alt="" /><div><div></div></div></li>
+      
+        <li id="c0_slide2" style="min-width: calc(100%/1); padding-bottom: 450px;"><img src="/images/royal/r2.PNG" alt="" /><div><div></div></div></li>
+      
+        <li id="c0_slide3" style="min-width: calc(100%/1); padding-bottom: 450px;"><img src="/images/royal/r3.PNG" alt="" /><div><div></div></div></li>
+      
+        <li id="c0_slide4" style="min-width: calc(100%/1); padding-bottom: 450px;"><img src="/images/royal/r4.PNG" alt="" /><div><div></div></div></li>
+      
+    </ul>
+    <ol>
+      
+        <li><a href="#c0_slide1"></a></li>
+      
+        <li><a href="#c0_slide2"></a></li>
+      
+        <li><a href="#c0_slide3"></a></li>
+      
+        <li><a href="#c0_slide4"></a></li>
+      
+    </ol>
+    <div class="prev">&lsaquo;</div>
+    <div class="next">&rsaquo;</div>
+</div>
+<h2 id="conclusiones">Conclusiones
+</h2><p>Rediseñar el Royal Albert Hall para mejorar su acústica mientras se preserva su esencia original presentó desafíos significativos. El proyecto requirió soluciones innovadoras para abordar los problemas acústicos sin comprometer el diseño icónico del auditorio. Aunque fueron necesarios algunos cambios, el resultado final demuestra un rediseño cuidadosamente pensado que mejora la acústica mientras mantiene el carácter histórico del Royal Albert Hall. Este proyecto también profundizó nuestra comprensión de los conceptos de acústica y diseño de auditorios.</p>
+<p>Una descripción detallada de este proyecto está disponible en el siguiente <a class="link" href="https://drive.google.com/file/d/1CkX-t_gx2s_YlKbrjB-5IK_dmZIkpJrd/view?usp=sharing"  target="_blank" rel="noopener"
+    >artículo</a> (en inglés).</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/es/tags/university/">University</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenidos relacionados</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/es/p/construcci%C3%B3n-y-dise%C3%B1o-de-un-altoparlante-personal/">
+        
+        
+            <div class="article-image">
+                <img src="/p/building-and-design-of-a-personal-loudspeaker/front_bass.57d3a404d11ab448ba7aa4ba54f20acd_hu17586735842976331624.PNG" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Construcción y diseño de un altoparlante personal"
+                        
+                        data-hash="md5-V9OkBNEatEi6eqS6VPIKzQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Construcción y diseño de un altoparlante personal</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/es/p/efecto-de-algor%C3%ADtmos-de-reducci%C3%B3n-de-rudio-en-sistemas-de-tts/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Efecto de algorítmos de reducción de rudio en sistemas de TTS</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2025 Matías Di Bernardo
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.0511f4da9331aeb0a842c33551d26e53240ed2a787a8401ae095d91bd84d13fb.js" defer></script><script type="text/javascript" src="/js/carousel.js"></script>
+<link rel="stylesheet" href="/css/carousel.css">
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

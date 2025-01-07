@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Math on Matias Di Bernardo</title>
+        <link>http://localhost:1313/es/categories/math/</link>
+        <description>Recent content in Math on Matias Di Bernardo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>es</language>
+        <copyright>Matías Di Bernardo</copyright>
+        <lastBuildDate>Wed, 23 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/categories/math/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Entendiendo FastPitch y la arquitectura Transformers</title>
+        <link>http://localhost:1313/es/p/entendiendo-fastpitch-y-la-arquitectura-transformers/</link>
+        <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/entendiendo-fastpitch-y-la-arquitectura-transformers/</guid>
+        <description>&lt;img src="http://localhost:1313/p/understanding-fastpitch-and-the-transformer-architecture/front.png" alt="Featured image of post Entendiendo FastPitch y la arquitectura Transformers" /&gt;&lt;p&gt;Entender un modelo moderno de deep learning no es sencillo debido a la gran cantidad de conocimiento previo necesario y al rápido ritmo de avance en este campo. En el proyecto de investigación &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt;, estamos trabajando con TTS, específicamente con el modelo FastPitch de Nvidia. He estudiado este modelo para ajustarlo (fine-tuning) al español y he compartido este proceso de investigación en una clase para ayudar a mis colegas del grupo de investigación a comprenderlo mejor.&lt;/p&gt;
+&lt;h2 id=&#34;entendiendo-los-modelos-seq2seq&#34;&gt;Entendiendo los Modelos Seq2Seq
+&lt;/h2&gt;&lt;p&gt;En &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt; utilizábamos previamente Tacotron2 como modelo TTS. Este modelo funciona bien, pero presenta varios problemas, principalmente durante el entrenamiento y la inferencia, debido a su naturaleza auto-regresiva. En contraste, FastPitch es un modelo no auto-regresivo (NAR). Para entender estas diferencias, exploré en profundidad los modelos seq2seq, analizando su evolución a lo largo del tiempo, y realicé un resumen rápido de los modelos de análisis de secuencias más relevantes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RNN&lt;/li&gt;
+&lt;li&gt;LSTM&lt;/li&gt;
+&lt;li&gt;Transformers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tacotron2 se basa en un modelo LSTM (AR), mientras que FastPitch utiliza Transformers (NAR). Comprender esta progresión tecnológica proporciona un contexto esencial, especialmente sobre los transformers, incluyendo la codificación posicional, un elemento clave para su naturaleza no auto-regresiva, y el mecanismo de atención.&lt;/p&gt;
+&lt;h2 id=&#34;la-arquitectura-transformer&#34;&gt;La Arquitectura Transformer
+&lt;/h2&gt;&lt;p&gt;Comencé estudiando la arquitectura transformer, ya que es fundamental para el modelo FastPitch. Revisé recursos en línea y el influyente artículo &lt;em&gt;Attention is All You Need&lt;/em&gt;. A continuación, algunos puntos clave que anoté durante mi estudio:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Mecanismo de Auto-Atención&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Focalizar dinámicamente en diferentes partes de la secuencia de entrada.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mecanismo&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Query (Q), Key (K), Value (V): Derivados de las embeddings de entrada.&lt;/li&gt;
+&lt;li&gt;Los puntajes de atención se calculan como el producto punto de Q y K, escalado por la raíz cuadrada de la dimensión.&lt;/li&gt;
+&lt;li&gt;Los puntajes se normalizan con softmax para generar pesos de atención.&lt;/li&gt;
+&lt;li&gt;Se calcula una suma ponderada de V basada en estos pesos para producir la salida.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Atención Multi-Cabezal&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Capturar diferentes relaciones entre tokens aplicando múltiples mecanismos de auto-atención en paralelo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mecanismo&lt;/strong&gt;: Las salidas de las múltiples cabezas de atención se concatenan y se transforman linealmente.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Codificación Posicional&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Añadir información sobre el orden de los tokens en la secuencia, compensando la falta de un concepto incorporado de orden secuencial en los Transformers (a diferencia de los RNNs).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mecanismo&lt;/strong&gt;: Se añade un vector fijo o aprendible a las embeddings de entrada.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Estructura Codificador-Descodificador&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Codificador&lt;/strong&gt;: Procesa la secuencia de entrada en representaciones ricas en contexto.
+&lt;ul&gt;
+&lt;li&gt;Componentes:
+&lt;ul&gt;
+&lt;li&gt;Auto-atención multi-cabezal&lt;/li&gt;
+&lt;li&gt;Red neuronal feed-forward (FFN)&lt;/li&gt;
+&lt;li&gt;Normalización por capas y conexiones residuales&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Descodificador&lt;/strong&gt;: Genera la secuencia de salida atendiendo tanto a las salidas del codificador como a los tokens generados previamente.
+&lt;ul&gt;
+&lt;li&gt;Componentes:
+&lt;ul&gt;
+&lt;li&gt;Auto-atención multi-cabezal enmascarada (evita atender a tokens futuros)&lt;/li&gt;
+&lt;li&gt;Atención multi-cabezal sobre las salidas del codificador&lt;/li&gt;
+&lt;li&gt;FFN, normalización por capas y conexiones residuales&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Red Feed-Forward (FFN)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Introducir no linealidad y procesar cada token de manera independiente.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mecanismo&lt;/strong&gt;: Dos capas lineales con una activación ReLU entre ellas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Normalización por Capas y Conexiones Residuales&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Estabilizar el entrenamiento y mejorar el flujo de gradientes al normalizar las entradas de cada capa y añadir conexiones de salto.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;fastpitch&#34;&gt;FastPitch
+&lt;/h2&gt;&lt;p&gt;Con la teoría cubierta, examiné cada sección de la arquitectura de FastPitch en detalle. Ofrecí una breve explicación sobre las embeddings de palabras y la codificación posicional, ya que son temas complejos, y quise mantener la clase concisa.&lt;/p&gt;
+&lt;p&gt;FastPitch convierte texto en espectrogramas mel, que luego son transformados en audio por otro modelo (en nuestro caso, HiFi-GAN). La secuencia de entrenamiento incluye los siguientes pasos:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Texto a embeddings de palabras&lt;/li&gt;
+&lt;li&gt;Concatenación de embeddings de palabras con espectrogramas mel&lt;/li&gt;
+&lt;li&gt;Codificación posicional y FFT (bloque Transformer Feed-Forward)&lt;/li&gt;
+&lt;li&gt;Predicción de tono&lt;/li&gt;
+&lt;li&gt;Predicción de la duración de los fonemas&lt;/li&gt;
+&lt;li&gt;Otro bloque FFT&lt;/li&gt;
+&lt;li&gt;Capa completamente conectada&lt;/li&gt;
+&lt;li&gt;Salida del espectrograma mel&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;En cada bloque, presenté las ecuaciones correspondientes y proporcioné explicaciones cualitativas sobre su rol en el modelo. Por ejemplo, la predicción de la duración de los fonemas es crucial para alinear la duración de un fonema con la duración esperada en el espectrograma.&lt;/p&gt;
+&lt;h2 id=&#34;clase-online&#34;&gt;Clase Online
+&lt;/h2&gt;&lt;p&gt;Finalmente, resumí los puntos más importantes y realicé una clase online para compartir estos conceptos con mis colegas. Puedes verla aquí:&lt;/p&gt;
+&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/v4bt8bGIM00&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

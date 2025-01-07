@@ -1,5 +1,5 @@
 ---
-title: About
+title: Sobre mí
 menu:
     main: 
         weight: -90
@@ -7,7 +7,6 @@ menu:
             icon: user
 ---
 
-# Sobre mí
 Hola, mi nombre es Matías Di Bernardo. Soy estudiante de Ingeniería en Sonido e Ingeniería en Computación en Argentina. Me encanta aprender cosas nuevas y tengo una amplia gama de intereses, incluyendo algoritmos, aprendizaje profundo, procesamiento digital de señales (DSP), acústica y más. En mi tiempo libre, disfruto tocar música (toco el piano) y leer.
 
 ## Estudios

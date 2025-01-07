@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Acoustics on Matias Di Bernardo</title>
+        <link>http://localhost:1313/es/categories/acoustics/</link>
+        <description>Recent content in Acoustics on Matias Di Bernardo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>es</language>
+        <copyright>Matías Di Bernardo</copyright>
+        <lastBuildDate>Fri, 22 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/categories/acoustics/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Efecto de algorítmos de reducción de rudio en sistemas de TTS</title>
+        <link>http://localhost:1313/es/p/efecto-de-algor%C3%ADtmos-de-reducci%C3%B3n-de-rudio-en-sistemas-de-tts/</link>
+        <pubDate>Fri, 22 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/efecto-de-algor%C3%ADtmos-de-reducci%C3%B3n-de-rudio-en-sistemas-de-tts/</guid>
+        <description>&lt;p&gt;Este estudio se realizó en el contexto de la clase &lt;em&gt;Laboratorio de Acústica&lt;/em&gt; en la UNTREF. Elegí este tema porque está alineado con investigaciones que he estado desarrollando como parte del grupo &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt;. La consigna para el trabajo de clase consistió en realizar un estudio subjetivo utilizando una encuesta para explorar la relación entre variables objetivas y subjetivas.&lt;/p&gt;
+&lt;p&gt;En mi grupo de investigación, he estado investigando cómo los algoritmos de reducción de ruido afectan a los sistemas de síntesis de voz (TTS) entrenados con grabaciones de baja calidad. El enfoque está en el español rioplatense, un acento regional con datos de alta calidad limitados. En este contexto, fue natural combinar ambas tareas y realizar una prueba subjetiva sobre el impacto de los algoritmos de reducción de ruido en los sistemas TTS.&lt;/p&gt;
+&lt;h2 id=&#34;resumen&#34;&gt;Resumen
+&lt;/h2&gt;&lt;p&gt;Los puntos clave de esta investigación son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Evaluación de tres algoritmos de reducción de ruido: Wave U-Net, HiFi-GAN y DeepFilterNet.&lt;/li&gt;
+&lt;li&gt;Uso de métricas subjetivas (CMOS) y objetivas (PESQ, STOI, MCD).&lt;/li&gt;
+&lt;li&gt;Ideas sobre el desarrollo de modelos TTS eficientes en recursos para acentos poco representados.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;metodología&#34;&gt;Metodología
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Algoritmos&lt;/strong&gt;: Wave U-Net, HiFi-GAN y DeepFilterNet evaluados con el modelo TTS FastPitch.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conjunto de datos&lt;/strong&gt;: Subconjunto de la colección ArchiVoz (15 minutos de audio con ruido).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pruebas&lt;/strong&gt;: Prueba subjetiva CMOS y métricas objetivas (PESQ, STOI, MCD).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Participantes&lt;/strong&gt;: 24 respuestas válidas, incluyendo tanto expertos como no expertos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;principales-hallazgos&#34;&gt;Principales Hallazgos
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Rendimiento de DeepFilterNet&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Obtuvo la puntuación CMOS más alta, reflejando la mejor calidad subjetiva.&lt;/li&gt;
+&lt;li&gt;Mostró mejoras significativas en la salida TTS a pesar de las correlaciones mixtas con las métricas objetivas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Análisis de Métricas Objetivas&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PESQ y MCD mostraron una correlación limitada con las preferencias subjetivas.&lt;/li&gt;
+&lt;li&gt;Las puntuaciones STOI fueron consistentes entre los algoritmos, indicando inteligibilidad preservada.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Comparación de Algoritmos&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DeepFilterNet&lt;/strong&gt;: Evaluaciones subjetivas superiores, MCD moderado.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Demucs&lt;/strong&gt;: Comparable a DeepFilterNet en PESQ, pero con puntuaciones subjetivas inferiores.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Wave U-Net&lt;/strong&gt;: Bajo rendimiento tanto subjetivo como objetivo.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Experiencia de los Participantes&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;No se observaron diferencias significativas entre las evaluaciones subjetivas de expertos y no expertos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;implicaciones&#34;&gt;Implicaciones
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Eficiencia&lt;/strong&gt;: Métodos avanzados de reducción de ruido como DeepFilterNet pueden mejorar los sistemas TTS sin necesidad de grabaciones de alta calidad.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Limitaciones&lt;/strong&gt;: Las métricas objetivas como PESQ y MCD no son indicadores suficientes por sí solas de la calidad subjetiva en TTS.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Trabajo Futuro&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Ampliar los conjuntos de datos y niveles de ruido para un análisis más robusto.&lt;/li&gt;
+&lt;li&gt;Explorar sistemas TTS entrenados conjuntamente con algoritmos de reducción de ruido.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Este trabajo concluye que el preprocesamiento con DeepFilterNet mejora significativamente el rendimiento de los sistemas TTS, con un aumento de 1.1 en la puntuación CMOS. Estos hallazgos destacan la importancia de la selección de algoritmos para optimizar sistemas TTS con pocos recursos. Además, adquirí valiosos conocimientos sobre evaluaciones subjetivas y el análisis estadístico necesario para extraer conclusiones significativas de los datos.&lt;/p&gt;
+&lt;p&gt;Toda la información de este estudio se encuentra en el &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1F4aJGIU9FX2LT8OFik-Yjg4uSz6T09jw/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe académico&lt;/a&gt; (en inglés).&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Construcción y diseño de un altoparlante personal</title>
+        <link>http://localhost:1313/es/p/construcci%C3%B3n-y-dise%C3%B1o-de-un-altoparlante-personal/</link>
+        <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/construcci%C3%B3n-y-dise%C3%B1o-de-un-altoparlante-personal/</guid>
+        <description>&lt;img src="http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/front_bass.PNG" alt="Featured image of post Construcción y diseño de un altoparlante personal" /&gt;&lt;h1 id=&#34;bassado-un-parlante-hogareño-semi-portable-de-bajo-costo&#34;&gt;&amp;ldquo;BassAdo&amp;rdquo; un parlante hogareño semi portable de bajo costo
+&lt;/h1&gt;&lt;p&gt;Este proyecto se enmarca en la materia Electroacústica II en UNTREF de la carrera Ingeniería de Sonido. La tarea era diseñar desde cero un altoparlante aplicando la teoría y conceptos explicados en clase.
+El trabajo se fue desarrollando durante todo el cuatrimestre con diferentes etapas a completar que se tenían que presentar con un informe. El parlante esta pensado para ser usado en un espacio grande, puede ser al aire libre, para poner música en un entorno de reunión. Se lo denomino &lt;em&gt;Bassado&lt;/em&gt; para combinar el asado (típica comida argentina donde la gente se reune) y la palabra bass, enfatizando la característica del altoparlante.&lt;/p&gt;
+&lt;h2 id=&#34;diseño&#34;&gt;Diseño
+&lt;/h2&gt;&lt;p&gt;El objetivo es diseñar un sistema de audio hogareño con prestaciones accesibles, que permita explorar temas de interés abordados en la materia. El diseño busca lograr una predominancia en graves, característica de los sistemas comerciales, priorizando la extensión del ancho de banda en bajas frecuencias por encima de un bajo retardo de grupo y control temporal del sistema.&lt;/p&gt;
+&lt;p&gt;Con respecto a los transductores a utilizar, el equipo contaba con unidades de la marca Yharo, que se pueden clasificar como no profesionales, consumidor-aficionado, con posibles aplicaciones en automóviles y/o sistemas hogareños.
+Se evalúa la respuesta en impedancia de los mismos y se selecciona un Woofer de 8” para cubrir la sección de bajas frecuencias, y dos de 4” para el rango de medias/altas.&lt;/p&gt;
+&lt;p&gt;Al medir los parámetros de Thielle-Small de los altoparlantes se encuentra que tiene un &lt;em&gt;Vas&lt;/em&gt; (Volumen Acústico Equivalente de Suspensión) muy alto, lo que requiere realizar un gabinete con mucho volumen para tener un buen control. Para solucionar este problema y dado la posibilidad de que se contaba con 2 Woofers de 8”, se decide hacer un altoparlante del tipo isobárico, colocando los 2 Woofers en serie acústicamente, para que tengan mayor control y poder hacer más chico el gabinete. Además, va a ser un gabinete ventilado para tener mejor respuesta en bajas.&lt;/p&gt;
+&lt;p&gt;La respuesta de los altoparlantes (paráemtros TS) fue obtenida en el software &lt;a class=&#34;link&#34; href=&#34;https://www.roomeqwizard.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;REW&lt;/a&gt;. Con esos parámetros, se simula en el software &lt;a class=&#34;link&#34; href=&#34;https://www.tolvan.com/index.php?page=/basta/basta.php&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Basta!&lt;/a&gt; y se optimizan los parámetros para obtener la respuesta deseada. Lo principal fue sintonizar la frecuencia de resonancia del port, ya que el objetivo del altoparlante era tener una buena respuesta en bajas. El transductor tenía una &lt;em&gt;fs&lt;/em&gt; en 45 Hz, y se busca sintonizar el port en 40 Hz controlando el largo del tubo y el volumen de aire del gabinete.&lt;/p&gt;
+&lt;p&gt;En base a estos resultados, se hace un modelo 3D del gabinete en el software &lt;a class=&#34;link&#34; href=&#34;https://www.solidworks.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SolidWorks&lt;/a&gt; con el que se manda a cortar las maderas para poder construir el gabinete.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/dise%C3%B1o_gab.PNG&#34;
+	width=&#34;422&#34;
+	height=&#34;306&#34;
+	srcset=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/dise%C3%B1o_gab_hu4105664598446689879.PNG 480w, http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/dise%C3%B1o_gab_hu11734023399320749680.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modelado 3D del gabinete del altoparlante&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;330px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;El detalle de todo este proceso esta documentado en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1uej1m6gwg99JoPEw5Jbu3cTq74ViIG58/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe de diseño&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;construcción&#34;&gt;Construcción
+&lt;/h2&gt;&lt;p&gt;Se mandaron a realizar los cortes a las maderas para hacer el gabinete según el modelo 3D y se realiza el ensamblado.&lt;/p&gt;
+
+
+
+
+&lt;div id=&#34;carousel0&#34; class=&#34;carousel&#34; duration=&#34;700000&#34;&gt;
+    &lt;ul&gt;
+      
+        &lt;li id=&#34;c0_slide1&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b1.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide2&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b2.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide3&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b3.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide4&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b4.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide5&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b5.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide6&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b6.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide1&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide2&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide3&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide4&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide5&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide6&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+    &lt;/ol&gt;
+    &lt;div class=&#34;prev&#34;&gt;&amp;lsaquo;&lt;/div&gt;
+    &lt;div class=&#34;next&#34;&gt;&amp;rsaquo;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Como se puede ver en las imágenes, se agregó lana de roca para hacer de absorbente acústico. Al realizar las mediciones nos dimos cuenta de que fue demasiado (la resonancia del port quedaba muy amortiguada) pero se le pudo sacar lana de roca hasta lograr el resultado deseado.&lt;/p&gt;
+&lt;h2 id=&#34;medición-y-calibración&#34;&gt;Medición y Calibración
+&lt;/h2&gt;&lt;p&gt;Se realizaron mediciones de respuesta en frecuencia y de directividad en el laboratorio de la universidad, teníamos a disposición el siguiente equipamiento:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Potencia Powersoft M50Q&lt;/li&gt;
+&lt;li&gt;Micrófono Earthworks M50&lt;/li&gt;
+&lt;li&gt;Placa de Audio RME Fireface UCX&lt;/li&gt;
+&lt;li&gt;Mesa Giratoria OUTLINE ET250-3D&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Con estas prestaciones y utilizando el software &lt;a class=&#34;link&#34; href=&#34;https://artalabs.hr/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Arta&lt;/a&gt;, se pudo caracterizar la respuesta acústica de los transductores por separado (lo cual nos va a servir para simular los filtros de cruze). También se evalúa la respuesta directiva en el eje vertical y el horizontal para poder determinar cual es la mejor disposición para utilizar el dispositivo. Se realizaron gráficos de la respuesta para los dos transductores.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/patron_polar.PNG&#34;
+	width=&#34;943&#34;
+	height=&#34;584&#34;
+	srcset=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/patron_polar_hu10205775189482527862.PNG 480w, http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/patron_polar_hu2898494236095029192.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Respuesta polar del driver de medias/altas frecuencias&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;161&#34;
+		data-flex-basis=&#34;387px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Todas las respuestas y el análisis en profundidad se encuentran en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1dPwJAqadPM3Ja80anA1P1Ei3EP9M8w-q/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe de medición&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;diseño-de-filtro-de-cruce&#34;&gt;Diseño de filtro de cruce
+&lt;/h2&gt;&lt;p&gt;Por último, se diseña la etapa del filtro de curce. Con las mediciones realizadas previamente, se subieron los datos al software &lt;a class=&#34;link&#34; href=&#34;https://kimmosaunisto.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;VituixCad&lt;/a&gt;. El objetivo del filtro de cruce es lograr una respuesta en frecuencia que suene agradable al reproducir un programa músical y que realce las bajas frecuencias. Se busca también, la mayor homogeneidad en la respuesta polar vertical.&lt;/p&gt;
+&lt;p&gt;Como se va utilizar una etapa de potencia que requiere alimentación, se va a realizar un filtro de cruce activo con la topología Sallen-Key. Se definen una cantidad de filtros según el espacio y el costo y se realizan los ajustes en el software para obtener la respuesta deseada. Por ejemplo, para los drivers de baja frecuencia se realizó el siguiente arreglo:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/filtro_cruce.PNG&#34;
+	width=&#34;1221&#34;
+	height=&#34;648&#34;
+	srcset=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/filtro_cruce_hu13251352229816192527.PNG 480w, http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/filtro_cruce_hu16925353032023854787.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Filtro de cruce para el driver de bajas frecuencias&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;452px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Donde:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;F1: Pasa altos fs=30 Hz | Q=0.67&lt;/li&gt;
+&lt;li&gt;F2: Pasa bajos fs=480 Hz | Q=0.5&lt;/li&gt;
+&lt;li&gt;F3: Elimina Banda 220 Hz&lt;/li&gt;
+&lt;li&gt;F4: Elimina Banda 400 x Hz&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Antes de realizar el filtro, se probó la configuración planteada con un filtro digital para evaluar de forma práctica la respuesta del sistema según el diseño planteado.
+Todos los detalles de esta sección estan plasmados en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/121wkPnp_QsODk99a2Jm44jfb-Xbl6ZKn/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe de filtro de cruce&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Con este trabajo, pudimos bajar muchos conceptos teóricos a la práctica y entender con más profundidad como es el desarrollo y los desafíos en un diseño de un sistema electroacústico.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Diseño de un auditorio</title>
+        <link>http://localhost:1313/es/p/dise%C3%B1o-de-un-auditorio/</link>
+        <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/dise%C3%B1o-de-un-auditorio/</guid>
+        <description>&lt;img src="http://localhost:1313/p/theather-acoustic-design/front.PNG" alt="Featured image of post Diseño de un auditorio" /&gt;&lt;p&gt;Este proyecto es el trabajo final de la clase &lt;em&gt;Acústica y Psicoacústica II&lt;/em&gt;, donde se nos encargó rediseñar un auditorio existente. El objetivo era aplicar la teoría vista en clase para crear un auditorio optimizado desde el punto de vista acústico. Para nuestro proyecto, elegimos rediseñar el Royal Albert Hall en Londres. Esto representó un desafío particular debido a las grandes dimensiones del auditorio, lo que dificulta asegurar que el sonido llegue de manera uniforme a todos los espectadores.&lt;/p&gt;
+&lt;h2 id=&#34;ideas-principales-del-rediseño&#34;&gt;Ideas Principales del Rediseño
+&lt;/h2&gt;&lt;p&gt;El rediseño buscó preservar el concepto original del auditorio, incluyendo su gran volumen y capacidad de asientos, mientras se introducían cambios críticos para mejorar su acústica. Aunque el enfoque principal fue la mejora acústica, el rediseño también consideró otros factores esenciales, como las líneas de visión y una distribución adecuada de los asientos.&lt;/p&gt;
+&lt;p&gt;A pesar de la intención de mantener las dimensiones originales del auditorio, su volumen resultó ser demasiado grande para lograr un tiempo de reverberación óptimo. Para abordar este problema, el rediseño incorporó un techo intermedio para reducir el volumen del techo esférico, y se redujo el área principal de asientos. Estos cambios permitieron obtener un mejor tiempo de reverberación en la sala, como se ilustra en la sección transversal a continuación.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/theather-acoustic-design/cross_section.PNG&#34;
+	width=&#34;1324&#34;
+	height=&#34;506&#34;
+	srcset=&#34;http://localhost:1313/p/theather-acoustic-design/cross_section_hu8201639409724213049.PNG 480w, http://localhost:1313/p/theather-acoustic-design/cross_section_hu5610852418196906417.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sección transversal del rediseño del auditorio&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;261&#34;
+		data-flex-basis=&#34;627px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;detalles-de-construcción-y-regulaciones&#34;&gt;Detalles de Construcción y Regulaciones
+&lt;/h2&gt;&lt;p&gt;Para garantizar un rediseño factible y funcional, se consideraron cuidadosamente los siguientes aspectos clave:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Distribución de asientos&lt;/li&gt;
+&lt;li&gt;Espaciado de los pasillos&lt;/li&gt;
+&lt;li&gt;Optimización de las líneas de visión&lt;/li&gt;
+&lt;li&gt;Comodidad del escenario&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tratamiento-acústico&#34;&gt;Tratamiento Acústico
+&lt;/h2&gt;&lt;p&gt;El tratamiento acústico fue la parte más crítica de este estudio y se centró en dos aspectos principales: reflexiones y tiempo de reverberación.&lt;/p&gt;
+&lt;h3 id=&#34;reflexiones&#34;&gt;Reflexiones
+&lt;/h3&gt;&lt;p&gt;El análisis de las reflexiones es esencial para la experiencia acústica del público. El Royal Albert Hall original cuenta con un techo esférico que centraliza las reflexiones, creando efectos acústicos indeseables. Para mitigar esto, el rediseño incorporó un techo intermedio con una geometría específica diseñada para distribuir las reflexiones de manera uniforme entre el público.&lt;/p&gt;
+&lt;p&gt;El diseño escalonado del techo garantiza reflexiones adecuadas para todas las filas de asientos. En el balcón principal, se abordaron dos reflexiones específicas para compensar el menor nivel de presión sonora (SPL) debido a la gran distancia desde el escenario, como se muestra en la imagen a continuación.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/theather-acoustic-design/balcony_cel_ref.PNG&#34;
+	width=&#34;1136&#34;
+	height=&#34;462&#34;
+	srcset=&#34;http://localhost:1313/p/theather-acoustic-design/balcony_cel_ref_hu8173242411301837287.PNG 480w, http://localhost:1313/p/theather-acoustic-design/balcony_cel_ref_hu890172879033338586.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Reflexiones en el techo del balcón&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;245&#34;
+		data-flex-basis=&#34;590px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;También se optimizaron las reflexiones laterales mediante ajustes en la geometría del escenario y las paredes de los balcones laterales.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/theather-acoustic-design/lateral_ref.PNG&#34;
+	width=&#34;642&#34;
+	height=&#34;521&#34;
+	srcset=&#34;http://localhost:1313/p/theather-acoustic-design/lateral_ref_hu2629534869006446785.PNG 480w, http://localhost:1313/p/theather-acoustic-design/lateral_ref_hu11386676131120321573.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Reflexiones laterales en el público principal&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;123&#34;
+		data-flex-basis=&#34;295px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Además, el rediseño buscó minimizar el ITDG (Initial Time Delay Gap) en los diferentes puntos del público.&lt;/p&gt;
+&lt;h3 id=&#34;materiales-y-tiempo-de-reverberación&#34;&gt;Materiales y Tiempo de Reverberación
+&lt;/h3&gt;&lt;p&gt;El rediseño siguió las recomendaciones del libro &lt;em&gt;Acoustic Absorbers and Diffusers&lt;/em&gt; para lograr un equilibrio entre absorción, difusión y reflexiones especulares. Se utilizaron materiales reflectantes en el techo y en partes de los balcones laterales para garantizar reflexiones especulares efectivas. Para reducir el tiempo de reverberación (RT), se aplicaron materiales con coeficientes de absorción más altos en otras superficies.&lt;/p&gt;
+&lt;p&gt;Usando los materiales seleccionados y la ecuación de Sabine, calculamos el RT estimado del auditorio. El tiempo de reverberación para las diferentes frecuencias se muestra a continuación:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/theather-acoustic-design/rt.PNG&#34;
+	width=&#34;848&#34;
+	height=&#34;644&#34;
+	srcset=&#34;http://localhost:1313/p/theather-acoustic-design/rt_hu5951076229482181811.PNG 480w, http://localhost:1313/p/theather-acoustic-design/rt_hu15811556200730072255.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Tiempo de reverberación por frecuencia&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;131&#34;
+		data-flex-basis=&#34;316px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;El RT calculado para frecuencias medias es de 2,51 segundos. Aunque este valor está ligeramente por encima del máximo recomendado de 2,4 segundos para una acústica óptima, es aceptable dado el gran volumen del auditorio.&lt;/p&gt;
+&lt;h2 id=&#34;modelado-3d&#34;&gt;Modelado 3D
+&lt;/h2&gt;&lt;p&gt;Renderizamos el auditorio rediseñado utilizando el software &lt;em&gt;SketchUp&lt;/em&gt;. A continuación, se presentan algunas visualizaciones:&lt;/p&gt;
+
+
+
+
+&lt;div id=&#34;carousel0&#34; class=&#34;carousel&#34; duration=&#34;70000&#34;&gt;
+    &lt;ul&gt;
+      
+        &lt;li id=&#34;c0_slide1&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 450px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/royal/r1.PNG&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide2&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 450px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/royal/r2.PNG&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide3&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 450px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/royal/r3.PNG&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide4&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 450px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/royal/r4.PNG&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide1&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide2&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide3&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide4&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+    &lt;/ol&gt;
+    &lt;div class=&#34;prev&#34;&gt;&amp;lsaquo;&lt;/div&gt;
+    &lt;div class=&#34;next&#34;&gt;&amp;rsaquo;&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Rediseñar el Royal Albert Hall para mejorar su acústica mientras se preserva su esencia original presentó desafíos significativos. El proyecto requirió soluciones innovadoras para abordar los problemas acústicos sin comprometer el diseño icónico del auditorio. Aunque fueron necesarios algunos cambios, el resultado final demuestra un rediseño cuidadosamente pensado que mejora la acústica mientras mantiene el carácter histórico del Royal Albert Hall. Este proyecto también profundizó nuestra comprensión de los conceptos de acústica y diseño de auditorios.&lt;/p&gt;
+&lt;p&gt;Una descripción detallada de este proyecto está disponible en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1CkX-t_gx2s_YlKbrjB-5IK_dmZIkpJrd/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;artículo&lt;/a&gt; (en inglés).&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

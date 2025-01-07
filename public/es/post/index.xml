@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Matias Di Bernardo</title>
+        <link>http://localhost:1313/es/post/</link>
+        <description>Recent content in Posts on Matias Di Bernardo</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>es</language>
+        <copyright>Matías Di Bernardo</copyright>
+        <lastBuildDate>Tue, 26 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Medidor de THD&#43;N</title>
+        <link>http://localhost:1313/es/p/medidor-de-thd-n/</link>
+        <pubDate>Tue, 26 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/medidor-de-thd-n/</guid>
+        <description>&lt;img src="http://localhost:1313/p/thd-n-meter/port.jpeg" alt="Featured image of post Medidor de THD&#43;N" /&gt;&lt;h1 id=&#34;medidor-thdn&#34;&gt;Medidor THD+N
+&lt;/h1&gt;&lt;p&gt;Un medidor de THD+N mide la distorsión armónica de un dispositivo. En audio, esto es crucial para evaluar la calidad del equipo. Este proyecto fue desarrollado como parte de la asignatura &amp;ldquo;Instrumentos y Mediciones Electrónicas&amp;rdquo; en UNTREF. En este curso, los estudiantes diseñan y desarrollan diversos instrumentos electrónicos, y los proyectos son continuados por grupos sucesivos de estudiantes. Este proyecto en particular ya estaba en marcha, y nuestro enfoque fue desarrollar un desfasador para alinear dos señales.&lt;/p&gt;
+&lt;h2 id=&#34;teoría-sobre-como-medición-de-thd&#34;&gt;Teoría sobre como medición de THD
+&lt;/h2&gt;&lt;p&gt;Para medir la distorsión de un sistema, se introduce una señal sinusoidal con la menor distorsión posible al dispositivo bajo prueba. El objetivo es evaluar cuánta distorsión agrega el dispositivo a la señal. Esto se cuantifica midiendo la potencia de la señal original y la potencia de la señal después de pasar por el dispositivo, excluyendo la armónica fundamental.&lt;/p&gt;
+&lt;p&gt;Un amplificador diferencial se utiliza para restar la señal de salida del dispositivo de la señal de referencia, dejando solo las armónicas de orden superior.&lt;/p&gt;
+&lt;p&gt;El THD+N se calcula luego como un porcentaje usando la siguiente ecuación:&lt;/p&gt;
+$$
+THD+N = \frac{V_{filt}}{V_{tot}} \cdot 100
+$$&lt;p&gt;Donde:
+$V_{filt}$ es el valor RMS de la señal filtrada (excluyendo la armónica fundamental).
+$V_{tot}$ es el valor RMS de la señal original.&lt;/p&gt;
+&lt;h2 id=&#34;desfasador&#34;&gt;Desfasador
+&lt;/h2&gt;&lt;p&gt;Para lograr una cancelación efectiva en la sección diferencial, se requieren ajustes precisos de fase y ganancia de las dos señales. El ajuste de ganancia había sido implementado con éxito por el grupo anterior que trabajó en el proyecto. Sin embargo, lograr la rotación de fase necesaria de 360 grados en toda la gama de frecuencias audibles (20 Hz a 20 kHz) presentó un desafío.&lt;/p&gt;
+&lt;p&gt;Para abordar este problema, diseñamos dos filtros pasa-todo en serie y calculamos los valores de los componentes para lograr la rotación de fase deseada en el rango de frecuencias objetivo.&lt;/p&gt;
+&lt;p&gt;El diseño fue modular para facilitar la integración con las etapas anteriores.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/thd-n-meter/esquem_thd.PNG&#34;
+	width=&#34;991&#34;
+	height=&#34;597&#34;
+	srcset=&#34;http://localhost:1313/p/thd-n-meter/esquem_thd_hu7854488014118793125.PNG 480w, http://localhost:1313/p/thd-n-meter/esquem_thd_hu5535924513728456883.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Esquematico del desplazador de fase&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;165&#34;
+		data-flex-basis=&#34;398px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Probamos el circuito en un protoboard antes de diseñar la PCB utilizando &lt;em&gt;Altium Designer&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/thd-n-meter/pcb_thd.PNG&#34;
+	width=&#34;757&#34;
+	height=&#34;496&#34;
+	srcset=&#34;http://localhost:1313/p/thd-n-meter/pcb_thd_hu3351495035239025609.PNG 480w, http://localhost:1313/p/thd-n-meter/pcb_thd_hu4551021193416416361.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;PCB design of the circuit&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;152&#34;
+		data-flex-basis=&#34;366px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;el-dispositivo&#34;&gt;El dispositivo
+&lt;/h2&gt;&lt;p&gt;El dispositivo cuenta con varios controles para ajustar la fase y la ganancia. Tanto los ajustes de fase como de ganancia incluyen potenciómetros de ajuste fino para garantizar la máxima precisión.&lt;/p&gt;
+
+
+
+
+&lt;div id=&#34;carousel0&#34; class=&#34;carousel&#34; duration=&#34;70000&#34;&gt;
+    &lt;ul&gt;
+      
+        &lt;li id=&#34;c0_slide1&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/thd/thd1.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide2&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/thd/thd2.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide3&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/thd/thd3.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide1&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide2&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide3&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+    &lt;/ol&gt;
+    &lt;div class=&#34;prev&#34;&gt;&amp;lsaquo;&lt;/div&gt;
+    &lt;div class=&#34;next&#34;&gt;&amp;rsaquo;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Está equipado con entradas y salidas BNC, lo que permite a los usuarios visualizar la salida en un osciloscopio y lograr la máxima atenuación.&lt;/p&gt;
+&lt;h2 id=&#34;resultados&#34;&gt;Resultados
+&lt;/h2&gt;&lt;p&gt;Este dispositivo se comparó con un medidor de THD comercial (GW INSTEK GAD-201G), y los resultados fueron muy similares. La principal limitación fue el nivel de ruido base del entorno de medición, que restringió significativamente el valor más bajo de THD que pudimos medir.&lt;/p&gt;
+&lt;p&gt;Las especificaciones del dispositivo se resumen en la siguiente tabla (en español):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/thd-n-meter/specs_thd.PNG&#34;
+	width=&#34;1192&#34;
+	height=&#34;887&#34;
+	srcset=&#34;http://localhost:1313/p/thd-n-meter/specs_thd_hu7856985861425421171.PNG 480w, http://localhost:1313/p/thd-n-meter/specs_thd_hu9340525222663809333.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Especificaciones técnicas del dispositivo&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;134&#34;
+		data-flex-basis=&#34;322px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Un análisis detallado del dispositivo está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1b36O_s27LkEJAZ6-y5TcdTT5wKB1xdGk/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Efecto de algorítmos de reducción de rudio en sistemas de TTS</title>
+        <link>http://localhost:1313/es/p/efecto-de-algor%C3%ADtmos-de-reducci%C3%B3n-de-rudio-en-sistemas-de-tts/</link>
+        <pubDate>Fri, 22 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/efecto-de-algor%C3%ADtmos-de-reducci%C3%B3n-de-rudio-en-sistemas-de-tts/</guid>
+        <description>&lt;p&gt;Este estudio se realizó en el contexto de la clase &lt;em&gt;Laboratorio de Acústica&lt;/em&gt; en la UNTREF. Elegí este tema porque está alineado con investigaciones que he estado desarrollando como parte del grupo &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt;. La consigna para el trabajo de clase consistió en realizar un estudio subjetivo utilizando una encuesta para explorar la relación entre variables objetivas y subjetivas.&lt;/p&gt;
+&lt;p&gt;En mi grupo de investigación, he estado investigando cómo los algoritmos de reducción de ruido afectan a los sistemas de síntesis de voz (TTS) entrenados con grabaciones de baja calidad. El enfoque está en el español rioplatense, un acento regional con datos de alta calidad limitados. En este contexto, fue natural combinar ambas tareas y realizar una prueba subjetiva sobre el impacto de los algoritmos de reducción de ruido en los sistemas TTS.&lt;/p&gt;
+&lt;h2 id=&#34;resumen&#34;&gt;Resumen
+&lt;/h2&gt;&lt;p&gt;Los puntos clave de esta investigación son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Evaluación de tres algoritmos de reducción de ruido: Wave U-Net, HiFi-GAN y DeepFilterNet.&lt;/li&gt;
+&lt;li&gt;Uso de métricas subjetivas (CMOS) y objetivas (PESQ, STOI, MCD).&lt;/li&gt;
+&lt;li&gt;Ideas sobre el desarrollo de modelos TTS eficientes en recursos para acentos poco representados.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;metodología&#34;&gt;Metodología
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Algoritmos&lt;/strong&gt;: Wave U-Net, HiFi-GAN y DeepFilterNet evaluados con el modelo TTS FastPitch.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conjunto de datos&lt;/strong&gt;: Subconjunto de la colección ArchiVoz (15 minutos de audio con ruido).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pruebas&lt;/strong&gt;: Prueba subjetiva CMOS y métricas objetivas (PESQ, STOI, MCD).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Participantes&lt;/strong&gt;: 24 respuestas válidas, incluyendo tanto expertos como no expertos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;principales-hallazgos&#34;&gt;Principales Hallazgos
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Rendimiento de DeepFilterNet&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Obtuvo la puntuación CMOS más alta, reflejando la mejor calidad subjetiva.&lt;/li&gt;
+&lt;li&gt;Mostró mejoras significativas en la salida TTS a pesar de las correlaciones mixtas con las métricas objetivas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Análisis de Métricas Objetivas&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PESQ y MCD mostraron una correlación limitada con las preferencias subjetivas.&lt;/li&gt;
+&lt;li&gt;Las puntuaciones STOI fueron consistentes entre los algoritmos, indicando inteligibilidad preservada.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Comparación de Algoritmos&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DeepFilterNet&lt;/strong&gt;: Evaluaciones subjetivas superiores, MCD moderado.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Demucs&lt;/strong&gt;: Comparable a DeepFilterNet en PESQ, pero con puntuaciones subjetivas inferiores.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Wave U-Net&lt;/strong&gt;: Bajo rendimiento tanto subjetivo como objetivo.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Experiencia de los Participantes&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;No se observaron diferencias significativas entre las evaluaciones subjetivas de expertos y no expertos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;implicaciones&#34;&gt;Implicaciones
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Eficiencia&lt;/strong&gt;: Métodos avanzados de reducción de ruido como DeepFilterNet pueden mejorar los sistemas TTS sin necesidad de grabaciones de alta calidad.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Limitaciones&lt;/strong&gt;: Las métricas objetivas como PESQ y MCD no son indicadores suficientes por sí solas de la calidad subjetiva en TTS.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Trabajo Futuro&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Ampliar los conjuntos de datos y niveles de ruido para un análisis más robusto.&lt;/li&gt;
+&lt;li&gt;Explorar sistemas TTS entrenados conjuntamente con algoritmos de reducción de ruido.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Este trabajo concluye que el preprocesamiento con DeepFilterNet mejora significativamente el rendimiento de los sistemas TTS, con un aumento de 1.1 en la puntuación CMOS. Estos hallazgos destacan la importancia de la selección de algoritmos para optimizar sistemas TTS con pocos recursos. Además, adquirí valiosos conocimientos sobre evaluaciones subjetivas y el análisis estadístico necesario para extraer conclusiones significativas de los datos.&lt;/p&gt;
+&lt;p&gt;Toda la información de este estudio se encuentra en el &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1F4aJGIU9FX2LT8OFik-Yjg4uSz6T09jw/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe académico&lt;/a&gt; (en inglés).&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Construcción y diseño de un altoparlante personal</title>
+        <link>http://localhost:1313/es/p/construcci%C3%B3n-y-dise%C3%B1o-de-un-altoparlante-personal/</link>
+        <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/construcci%C3%B3n-y-dise%C3%B1o-de-un-altoparlante-personal/</guid>
+        <description>&lt;img src="http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/front_bass.PNG" alt="Featured image of post Construcción y diseño de un altoparlante personal" /&gt;&lt;h1 id=&#34;bassado-un-parlante-hogareño-semi-portable-de-bajo-costo&#34;&gt;&amp;ldquo;BassAdo&amp;rdquo; un parlante hogareño semi portable de bajo costo
+&lt;/h1&gt;&lt;p&gt;Este proyecto se enmarca en la materia Electroacústica II en UNTREF de la carrera Ingeniería de Sonido. La tarea era diseñar desde cero un altoparlante aplicando la teoría y conceptos explicados en clase.
+El trabajo se fue desarrollando durante todo el cuatrimestre con diferentes etapas a completar que se tenían que presentar con un informe. El parlante esta pensado para ser usado en un espacio grande, puede ser al aire libre, para poner música en un entorno de reunión. Se lo denomino &lt;em&gt;Bassado&lt;/em&gt; para combinar el asado (típica comida argentina donde la gente se reune) y la palabra bass, enfatizando la característica del altoparlante.&lt;/p&gt;
+&lt;h2 id=&#34;diseño&#34;&gt;Diseño
+&lt;/h2&gt;&lt;p&gt;El objetivo es diseñar un sistema de audio hogareño con prestaciones accesibles, que permita explorar temas de interés abordados en la materia. El diseño busca lograr una predominancia en graves, característica de los sistemas comerciales, priorizando la extensión del ancho de banda en bajas frecuencias por encima de un bajo retardo de grupo y control temporal del sistema.&lt;/p&gt;
+&lt;p&gt;Con respecto a los transductores a utilizar, el equipo contaba con unidades de la marca Yharo, que se pueden clasificar como no profesionales, consumidor-aficionado, con posibles aplicaciones en automóviles y/o sistemas hogareños.
+Se evalúa la respuesta en impedancia de los mismos y se selecciona un Woofer de 8” para cubrir la sección de bajas frecuencias, y dos de 4” para el rango de medias/altas.&lt;/p&gt;
+&lt;p&gt;Al medir los parámetros de Thielle-Small de los altoparlantes se encuentra que tiene un &lt;em&gt;Vas&lt;/em&gt; (Volumen Acústico Equivalente de Suspensión) muy alto, lo que requiere realizar un gabinete con mucho volumen para tener un buen control. Para solucionar este problema y dado la posibilidad de que se contaba con 2 Woofers de 8”, se decide hacer un altoparlante del tipo isobárico, colocando los 2 Woofers en serie acústicamente, para que tengan mayor control y poder hacer más chico el gabinete. Además, va a ser un gabinete ventilado para tener mejor respuesta en bajas.&lt;/p&gt;
+&lt;p&gt;La respuesta de los altoparlantes (paráemtros TS) fue obtenida en el software &lt;a class=&#34;link&#34; href=&#34;https://www.roomeqwizard.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;REW&lt;/a&gt;. Con esos parámetros, se simula en el software &lt;a class=&#34;link&#34; href=&#34;https://www.tolvan.com/index.php?page=/basta/basta.php&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Basta!&lt;/a&gt; y se optimizan los parámetros para obtener la respuesta deseada. Lo principal fue sintonizar la frecuencia de resonancia del port, ya que el objetivo del altoparlante era tener una buena respuesta en bajas. El transductor tenía una &lt;em&gt;fs&lt;/em&gt; en 45 Hz, y se busca sintonizar el port en 40 Hz controlando el largo del tubo y el volumen de aire del gabinete.&lt;/p&gt;
+&lt;p&gt;En base a estos resultados, se hace un modelo 3D del gabinete en el software &lt;a class=&#34;link&#34; href=&#34;https://www.solidworks.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SolidWorks&lt;/a&gt; con el que se manda a cortar las maderas para poder construir el gabinete.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/dise%C3%B1o_gab.PNG&#34;
+	width=&#34;422&#34;
+	height=&#34;306&#34;
+	srcset=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/dise%C3%B1o_gab_hu4105664598446689879.PNG 480w, http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/dise%C3%B1o_gab_hu11734023399320749680.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Modelado 3D del gabinete del altoparlante&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;330px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;El detalle de todo este proceso esta documentado en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1uej1m6gwg99JoPEw5Jbu3cTq74ViIG58/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe de diseño&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;construcción&#34;&gt;Construcción
+&lt;/h2&gt;&lt;p&gt;Se mandaron a realizar los cortes a las maderas para hacer el gabinete según el modelo 3D y se realiza el ensamblado.&lt;/p&gt;
+
+
+
+
+&lt;div id=&#34;carousel0&#34; class=&#34;carousel&#34; duration=&#34;700000&#34;&gt;
+    &lt;ul&gt;
+      
+        &lt;li id=&#34;c0_slide1&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b1.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide2&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b2.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide3&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b3.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide4&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b4.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide5&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b5.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide6&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 700px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/bassado/b6.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide1&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide2&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide3&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide4&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide5&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide6&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+    &lt;/ol&gt;
+    &lt;div class=&#34;prev&#34;&gt;&amp;lsaquo;&lt;/div&gt;
+    &lt;div class=&#34;next&#34;&gt;&amp;rsaquo;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Como se puede ver en las imágenes, se agregó lana de roca para hacer de absorbente acústico. Al realizar las mediciones nos dimos cuenta de que fue demasiado (la resonancia del port quedaba muy amortiguada) pero se le pudo sacar lana de roca hasta lograr el resultado deseado.&lt;/p&gt;
+&lt;h2 id=&#34;medición-y-calibración&#34;&gt;Medición y Calibración
+&lt;/h2&gt;&lt;p&gt;Se realizaron mediciones de respuesta en frecuencia y de directividad en el laboratorio de la universidad, teníamos a disposición el siguiente equipamiento:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Potencia Powersoft M50Q&lt;/li&gt;
+&lt;li&gt;Micrófono Earthworks M50&lt;/li&gt;
+&lt;li&gt;Placa de Audio RME Fireface UCX&lt;/li&gt;
+&lt;li&gt;Mesa Giratoria OUTLINE ET250-3D&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Con estas prestaciones y utilizando el software &lt;a class=&#34;link&#34; href=&#34;https://artalabs.hr/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Arta&lt;/a&gt;, se pudo caracterizar la respuesta acústica de los transductores por separado (lo cual nos va a servir para simular los filtros de cruze). También se evalúa la respuesta directiva en el eje vertical y el horizontal para poder determinar cual es la mejor disposición para utilizar el dispositivo. Se realizaron gráficos de la respuesta para los dos transductores.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/patron_polar.PNG&#34;
+	width=&#34;943&#34;
+	height=&#34;584&#34;
+	srcset=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/patron_polar_hu10205775189482527862.PNG 480w, http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/patron_polar_hu2898494236095029192.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Respuesta polar del driver de medias/altas frecuencias&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;161&#34;
+		data-flex-basis=&#34;387px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Todas las respuestas y el análisis en profundidad se encuentran en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1dPwJAqadPM3Ja80anA1P1Ei3EP9M8w-q/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe de medición&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;diseño-de-filtro-de-cruce&#34;&gt;Diseño de filtro de cruce
+&lt;/h2&gt;&lt;p&gt;Por último, se diseña la etapa del filtro de curce. Con las mediciones realizadas previamente, se subieron los datos al software &lt;a class=&#34;link&#34; href=&#34;https://kimmosaunisto.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;VituixCad&lt;/a&gt;. El objetivo del filtro de cruce es lograr una respuesta en frecuencia que suene agradable al reproducir un programa músical y que realce las bajas frecuencias. Se busca también, la mayor homogeneidad en la respuesta polar vertical.&lt;/p&gt;
+&lt;p&gt;Como se va utilizar una etapa de potencia que requiere alimentación, se va a realizar un filtro de cruce activo con la topología Sallen-Key. Se definen una cantidad de filtros según el espacio y el costo y se realizan los ajustes en el software para obtener la respuesta deseada. Por ejemplo, para los drivers de baja frecuencia se realizó el siguiente arreglo:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/filtro_cruce.PNG&#34;
+	width=&#34;1221&#34;
+	height=&#34;648&#34;
+	srcset=&#34;http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/filtro_cruce_hu13251352229816192527.PNG 480w, http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/filtro_cruce_hu16925353032023854787.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Filtro de cruce para el driver de bajas frecuencias&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;452px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Donde:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;F1: Pasa altos fs=30 Hz | Q=0.67&lt;/li&gt;
+&lt;li&gt;F2: Pasa bajos fs=480 Hz | Q=0.5&lt;/li&gt;
+&lt;li&gt;F3: Elimina Banda 220 Hz&lt;/li&gt;
+&lt;li&gt;F4: Elimina Banda 400 x Hz&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Antes de realizar el filtro, se probó la configuración planteada con un filtro digital para evaluar de forma práctica la respuesta del sistema según el diseño planteado.
+Todos los detalles de esta sección estan plasmados en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/121wkPnp_QsODk99a2Jm44jfb-Xbl6ZKn/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe de filtro de cruce&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Con este trabajo, pudimos bajar muchos conceptos teóricos a la práctica y entender con más profundidad como es el desarrollo y los desafíos en un diseño de un sistema electroacústico.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Entendiendo FastPitch y la arquitectura Transformers</title>
+        <link>http://localhost:1313/es/p/entendiendo-fastpitch-y-la-arquitectura-transformers/</link>
+        <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/entendiendo-fastpitch-y-la-arquitectura-transformers/</guid>
+        <description>&lt;img src="http://localhost:1313/p/understanding-fastpitch-and-the-transformer-architecture/front.png" alt="Featured image of post Entendiendo FastPitch y la arquitectura Transformers" /&gt;&lt;p&gt;Entender un modelo moderno de deep learning no es sencillo debido a la gran cantidad de conocimiento previo necesario y al rápido ritmo de avance en este campo. En el proyecto de investigación &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt;, estamos trabajando con TTS, específicamente con el modelo FastPitch de Nvidia. He estudiado este modelo para ajustarlo (fine-tuning) al español y he compartido este proceso de investigación en una clase para ayudar a mis colegas del grupo de investigación a comprenderlo mejor.&lt;/p&gt;
+&lt;h2 id=&#34;entendiendo-los-modelos-seq2seq&#34;&gt;Entendiendo los Modelos Seq2Seq
+&lt;/h2&gt;&lt;p&gt;En &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt; utilizábamos previamente Tacotron2 como modelo TTS. Este modelo funciona bien, pero presenta varios problemas, principalmente durante el entrenamiento y la inferencia, debido a su naturaleza auto-regresiva. En contraste, FastPitch es un modelo no auto-regresivo (NAR). Para entender estas diferencias, exploré en profundidad los modelos seq2seq, analizando su evolución a lo largo del tiempo, y realicé un resumen rápido de los modelos de análisis de secuencias más relevantes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RNN&lt;/li&gt;
+&lt;li&gt;LSTM&lt;/li&gt;
+&lt;li&gt;Transformers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tacotron2 se basa en un modelo LSTM (AR), mientras que FastPitch utiliza Transformers (NAR). Comprender esta progresión tecnológica proporciona un contexto esencial, especialmente sobre los transformers, incluyendo la codificación posicional, un elemento clave para su naturaleza no auto-regresiva, y el mecanismo de atención.&lt;/p&gt;
+&lt;h2 id=&#34;la-arquitectura-transformer&#34;&gt;La Arquitectura Transformer
+&lt;/h2&gt;&lt;p&gt;Comencé estudiando la arquitectura transformer, ya que es fundamental para el modelo FastPitch. Revisé recursos en línea y el influyente artículo &lt;em&gt;Attention is All You Need&lt;/em&gt;. A continuación, algunos puntos clave que anoté durante mi estudio:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Mecanismo de Auto-Atención&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Focalizar dinámicamente en diferentes partes de la secuencia de entrada.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mecanismo&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Query (Q), Key (K), Value (V): Derivados de las embeddings de entrada.&lt;/li&gt;
+&lt;li&gt;Los puntajes de atención se calculan como el producto punto de Q y K, escalado por la raíz cuadrada de la dimensión.&lt;/li&gt;
+&lt;li&gt;Los puntajes se normalizan con softmax para generar pesos de atención.&lt;/li&gt;
+&lt;li&gt;Se calcula una suma ponderada de V basada en estos pesos para producir la salida.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Atención Multi-Cabezal&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Capturar diferentes relaciones entre tokens aplicando múltiples mecanismos de auto-atención en paralelo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mecanismo&lt;/strong&gt;: Las salidas de las múltiples cabezas de atención se concatenan y se transforman linealmente.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Codificación Posicional&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Añadir información sobre el orden de los tokens en la secuencia, compensando la falta de un concepto incorporado de orden secuencial en los Transformers (a diferencia de los RNNs).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mecanismo&lt;/strong&gt;: Se añade un vector fijo o aprendible a las embeddings de entrada.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Estructura Codificador-Descodificador&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Codificador&lt;/strong&gt;: Procesa la secuencia de entrada en representaciones ricas en contexto.
+&lt;ul&gt;
+&lt;li&gt;Componentes:
+&lt;ul&gt;
+&lt;li&gt;Auto-atención multi-cabezal&lt;/li&gt;
+&lt;li&gt;Red neuronal feed-forward (FFN)&lt;/li&gt;
+&lt;li&gt;Normalización por capas y conexiones residuales&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Descodificador&lt;/strong&gt;: Genera la secuencia de salida atendiendo tanto a las salidas del codificador como a los tokens generados previamente.
+&lt;ul&gt;
+&lt;li&gt;Componentes:
+&lt;ul&gt;
+&lt;li&gt;Auto-atención multi-cabezal enmascarada (evita atender a tokens futuros)&lt;/li&gt;
+&lt;li&gt;Atención multi-cabezal sobre las salidas del codificador&lt;/li&gt;
+&lt;li&gt;FFN, normalización por capas y conexiones residuales&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Red Feed-Forward (FFN)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Introducir no linealidad y procesar cada token de manera independiente.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mecanismo&lt;/strong&gt;: Dos capas lineales con una activación ReLU entre ellas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Normalización por Capas y Conexiones Residuales&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Propósito&lt;/strong&gt;: Estabilizar el entrenamiento y mejorar el flujo de gradientes al normalizar las entradas de cada capa y añadir conexiones de salto.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;fastpitch&#34;&gt;FastPitch
+&lt;/h2&gt;&lt;p&gt;Con la teoría cubierta, examiné cada sección de la arquitectura de FastPitch en detalle. Ofrecí una breve explicación sobre las embeddings de palabras y la codificación posicional, ya que son temas complejos, y quise mantener la clase concisa.&lt;/p&gt;
+&lt;p&gt;FastPitch convierte texto en espectrogramas mel, que luego son transformados en audio por otro modelo (en nuestro caso, HiFi-GAN). La secuencia de entrenamiento incluye los siguientes pasos:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Texto a embeddings de palabras&lt;/li&gt;
+&lt;li&gt;Concatenación de embeddings de palabras con espectrogramas mel&lt;/li&gt;
+&lt;li&gt;Codificación posicional y FFT (bloque Transformer Feed-Forward)&lt;/li&gt;
+&lt;li&gt;Predicción de tono&lt;/li&gt;
+&lt;li&gt;Predicción de la duración de los fonemas&lt;/li&gt;
+&lt;li&gt;Otro bloque FFT&lt;/li&gt;
+&lt;li&gt;Capa completamente conectada&lt;/li&gt;
+&lt;li&gt;Salida del espectrograma mel&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;En cada bloque, presenté las ecuaciones correspondientes y proporcioné explicaciones cualitativas sobre su rol en el modelo. Por ejemplo, la predicción de la duración de los fonemas es crucial para alinear la duración de un fonema con la duración esperada en el espectrograma.&lt;/p&gt;
+&lt;h2 id=&#34;clase-online&#34;&gt;Clase Online
+&lt;/h2&gt;&lt;p&gt;Finalmente, resumí los puntos más importantes y realicé una clase online para compartir estos conceptos con mis colegas. Puedes verla aquí:&lt;/p&gt;
+&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/v4bt8bGIM00&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+        </item>
+        <item>
+        <title>Z-Plane Visualizer</title>
+        <link>http://localhost:1313/es/p/z-plane-visualizer/</link>
+        <pubDate>Sat, 12 Aug 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/z-plane-visualizer/</guid>
+        <description>&lt;img src="http://localhost:1313/p/z-plane-visualizer/frontz.PNG" alt="Featured image of post Z-Plane Visualizer" /&gt;&lt;p&gt;En el curso de &lt;em&gt;Procesamiento Digital de Señales&lt;/em&gt; (DSP) en la UNTREF, exploramos el plano Z para el diseño de filtros con variables discretas. Durante la clase, el profesor presentó una herramienta construida en MatLab que visualiza los gráficos de transferencia y fase en relación con las posiciones de los ceros y polos en el plano Z.&lt;/p&gt;
+&lt;p&gt;Inspirado en esto, decidí recrear esta herramienta en Python. Aprovechando mi experiencia con la biblioteca PyGame, logré construir una aplicación en tiempo real que permite mover los polos y ceros, permitiendo a los usuarios ver cómo cambia la función de transferencia en tiempo real.&lt;/p&gt;
+&lt;h2 id=&#34;cómo-funciona&#34;&gt;Cómo Funciona
+&lt;/h2&gt;&lt;p&gt;Primero, mapeo las posiciones de los píxeles en el plano Z a coordenadas de acuerdo con la representación del círculo unitario. Luego, construyo la función de transferencia, donde cada cero $z_{n}$ es un término en el numerador y cada polo $z_{i}$ es un término en el denominador. Con la función de transferencia $H(z)$, puedo graficar tanto el magnitud como el gráfico de fase, que también son representaciones mapeadas de la respuesta normalizada dentro de la aplicación.&lt;/p&gt;
+$$ 
+H(z) = \frac{\sum_{n=0}^{N} (z - z_{n})}{\sum_{i=0}^{N} (z - z_{i})}
+$$&lt;p&gt;Cada fotograma recalcula la función de transferencia. El programa funciona de manera eficiente porque almaceno los ceros y polos en arreglos, lo que permite cálculos más rápidos gracias a numpy, que ya está altamente optimizado. Esto permite visualizar los cambios en tiempo real y proporciona una comprensión más intuitiva del comportamiento del plano Z. El siguiente fragmento de código muestra como se calcula la magnitud y fase utilizando exponenciales complejas.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;root&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;transfer_function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;zeros&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;poles&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;w&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;linspace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pi&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RES&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zero&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zeros&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zero&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pole&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;poles&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;den&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pole&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;H_z&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;den&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;mag&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;abs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;H_z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;ang&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;angle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;H_z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mag&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ang&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Este proyecto está diseñado como material educativo, proporcionando a los estudiantes una herramienta práctica para comprender mejor las interacciones entre los polos y ceros en el plano Z. No está destinado como una herramienta profesional para el diseño de filtros.&lt;/p&gt;
+&lt;h2 id=&#34;funcionalidad&#34;&gt;Funcionalidad
+&lt;/h2&gt;&lt;p&gt;La aplicación ofrece las siguientes características:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Mostrar y mover polos/ceros&lt;/strong&gt;: Los usuarios pueden seleccionar y mover los polos y ceros en el plano Z. Cuando la opción de simetría está activa, todos los polos y ceros seleccionados o movidos se colocan de manera simétrica respecto al eje imaginario.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Orden&lt;/strong&gt;: Los usuarios pueden ajustar el orden de los polos y ceros desplazando la rueda del mouse. El orden puede incrementarse o disminuirse, con soporte hasta un orden de 4. El color de cada polo o cero cambia según su orden.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Información&lt;/strong&gt;: Al pasar el cursor sobre un polo o cero, se muestra información sobre su posición, simetría y orden.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Zoom&lt;/strong&gt;: El usuario puede acercar o alejar el plano Z usando los botones de más y menos.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Eliminar&lt;/strong&gt;: El ícono de la papelera elimina todos los polos y ceros del plano. Los usuarios también pueden eliminar polos o ceros individuales haciendo clic derecho sobre ellos.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Gráfico de Magnitud&lt;/strong&gt;: El espectro de magnitud mostrado en la aplicación está normalizado. Esta decisión asegura que el enfoque permanezca en la forma de la magnitud, haciendo que el gráfico sea visualmente significativo para los usuarios. Sin embargo, no captura la diferencia en los valores máximos.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Gráfico de Fase&lt;/strong&gt;: La fase se muestra sin envolver entre $-\pi$ y $\pi$.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;demo&#34;&gt;Demo
+&lt;/h2&gt;&lt;p&gt;Aquí tienes una demostración rápida de la aplicación en acción:&lt;/p&gt;
+&lt;p&gt;El código fuente de este proyecto se encuentra en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Z-Plane_Visualizer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Generador de ruitnas de entrenamiento automáticas</title>
+        <link>http://localhost:1313/es/p/generador-de-ruitnas-de-entrenamiento-autom%C3%A1ticas/</link>
+        <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/generador-de-ruitnas-de-entrenamiento-autom%C3%A1ticas/</guid>
+        <description>&lt;h1 id=&#34;generador-automático-de-rutinas-de-ejercicio&#34;&gt;Generador Automático de Rutinas de Ejercicio
+&lt;/h1&gt;&lt;p&gt;Este proyecto fue el trabajo final para la asignatura Algoritmos y Programación II en la UNTREF. La idea de la aplicación es funcionar como una planificación inteligente de rutinas de ejercicio, donde el usuario ingresa ciertos criterios y el programa establece la mejor rutina para maximizar las preferencias del usuario. El programa fue escrito en el lenguaje de programación Go.&lt;/p&gt;
+&lt;h2 id=&#34;gestión-de-datos&#34;&gt;Gestión de Datos
+&lt;/h2&gt;&lt;p&gt;Este curso no se centra en bases de datos, por lo que optamos por usar un archivo CSV para simular una base de datos. Este archivo contiene toda la información sobre las diferentes rutinas y sus atributos. Esto sirve como un archivo de persistencia mientras que toda la lógica es manejada por el programa.&lt;/p&gt;
+&lt;p&gt;Los diferentes ejercicios están categorizados por temáticas. Hay dos entidades en el programa que están representadas como structs en Go: los Ejercicios y las Rutinas.&lt;/p&gt;
+&lt;h3 id=&#34;ejercicio&#34;&gt;Ejercicio
+&lt;/h3&gt;&lt;p&gt;Todos los ejercicios tienen los siguientes atributos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nombre: Nombre del ejercicio.&lt;/li&gt;
+&lt;li&gt;Descripción: Descripción detallada del ejercicio.&lt;/li&gt;
+&lt;li&gt;Duración: Duración estimada del ejercicio.&lt;/li&gt;
+&lt;li&gt;Calorías: Número de calorías quemadas durante el ejercicio.&lt;/li&gt;
+&lt;li&gt;Tipo: Tipo de ejercicio (por ejemplo, cardio, fuerza, flexibilidad).&lt;/li&gt;
+&lt;li&gt;Grupo Muscular: Grupo muscular objetivo del ejercicio.&lt;/li&gt;
+&lt;li&gt;Puntos: Puntos asignados al ejercicio según sus tipos.&lt;/li&gt;
+&lt;li&gt;Dificultad: Nivel de dificultad del ejercicio.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;rutinas&#34;&gt;Rutinas
+&lt;/h3&gt;&lt;p&gt;Todas las rutinas son una colección de ejercicios. Estas se procesan como una lista enlazada de ejercicios. Además, las rutinas tienen los siguientes atributos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nombre: Nombre de la rutina.&lt;/li&gt;
+&lt;li&gt;Ejercicios: Cadena que almacena los IDs de los ejercicios en la rutina, separados por comas.&lt;/li&gt;
+&lt;li&gt;EjerciciosDisponibles: Lista enlazada de los ejercicios disponibles para crear la rutina.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;algoritmo&#34;&gt;Algoritmo
+&lt;/h2&gt;&lt;p&gt;La idea es maximizar diferentes parámetros, por ejemplo, la cantidad máxima de calorías quemadas en el menor tiempo posible, o la duración mínima para un grupo muscular o tipo de ejercicio específico. Para encontrar las mejores soluciones basadas en los datos existentes, proponemos un algoritmo de programación dinámica que busca todas las posibilidades a partir de los datos y encuentra el máximo o mínimo según las especificaciones del usuario. El enfoque de programación dinámica utiliza memoria para evitar recalcular combinaciones que ya fueron computadas, lo que optimiza el algoritmo lo suficiente como para generar las rutinas en milisegundos (con el conjunto de datos de prueba evaluado).&lt;/p&gt;
+&lt;h2 id=&#34;interfaz-de-usuario&#34;&gt;Interfaz de Usuario
+&lt;/h2&gt;&lt;p&gt;Actualmente, el programa está diseñado para ser utilizado desde la terminal como una aplicación CLI. El usuario puede crear un ejercicio y una rutina, listar las opciones disponibles y generar una rutina personalizada basada en las especificaciones que elija.&lt;/p&gt;
+&lt;p&gt;Esta es la primera iteración del proyecto y es completamente funcional, pero planeamos crear una interfaz gráfica para que sea más amigable para el usuario. Para este propósito, sería mejor usar un framework diferente y utilizar esta aplicación en Go como backend para un servicio web o una aplicación.&lt;/p&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Con este proyecto, solidifiqué mis conocimientos sobre temas de programación como estructuras de datos y algoritmos, ya que aplicamos la teoría vista en clase a un caso real. También me ayudó a familiarizarme con el lenguaje Go, que se convirtió en un lenguaje que disfruto mucho programar. El código de este proyecto está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Workout-routine-generator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Evaluación de diferentes modelos de Separación del Hablante</title>
+        <link>http://localhost:1313/es/p/evaluaci%C3%B3n-de-diferentes-modelos-de-separaci%C3%B3n-del-hablante/</link>
+        <pubDate>Fri, 04 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/evaluaci%C3%B3n-de-diferentes-modelos-de-separaci%C3%B3n-del-hablante/</guid>
+        <description>&lt;p&gt;Este proyecto comenzó como el trabajo final para un seminario de la UNTREF llamado &lt;em&gt;Seminario en Aplicaciones de Redes Neuronales en la recuperación de información musical&lt;/em&gt;. El objetivo era utilizar una Red Neuronal Siamés (SNN, por sus siglas en inglés) en un contexto diferente al visto en clase (detección de similitud musical).&lt;/p&gt;
+&lt;p&gt;Para el proyecto final de este curso, desarrollamos un modelo SNN desde cero utilizando el framework &lt;em&gt;Keras&lt;/em&gt; y la arquitectura &lt;em&gt;SincNet&lt;/em&gt; para reducir la dimensionalidad del audio, logrando buenos resultados. Más adelante, para expandir este proyecto, probé otro enfoque utilizando &lt;em&gt;Wav2Vec&lt;/em&gt; para la reducción de dimensionalidad y reimplementé todo el proyecto en el framework &lt;em&gt;PyTorch&lt;/em&gt;. Sin embargo, este intento arrojó resultados subóptimos, lo que indica que la reducción de dimensionalidad con Wav2Vec perdió información crítica necesaria para la tarea de diarización de locutores.&lt;/p&gt;
+&lt;h2 id=&#34;tarea-de-diarización-de-locutores&#34;&gt;Tarea de Diarización de Locutores
+&lt;/h2&gt;&lt;p&gt;El objetivo de un modelo de diarización de locutores es identificar diferentes hablantes en un flujo de audio que contiene múltiples voces. Por ejemplo, en un podcast con dos personas (A y B), el modelo debe determinar los pasos de tiempo en los que el hablante A está hablando y los pasos de tiempo en los que el hablante B está hablando (e identificar implícitamente los períodos de silencio). Estos modelos son extremadamente útiles para la edición de audio y el análisis de largas secuencias de audio con múltiples hablantes.&lt;/p&gt;
+&lt;h2 id=&#34;por-qué-redes-neuronales-siamés&#34;&gt;¿Por qué Redes Neuronales Siamés?
+&lt;/h2&gt;&lt;p&gt;En clase, exploramos la arquitectura siamés para comparar similitudes entre piezas musicales, desarrollando una herramienta capaz de identificar versiones de canciones famosas.&lt;/p&gt;
+&lt;p&gt;Una Red Neuronal Siamés consiste en dos o más subredes idénticas que comparten los mismos pesos y parámetros. Está diseñada para comparar pares de entradas y medir su similitud, generalmente utilizando una métrica de distancia como la distancia euclidiana. Cada subred procesa una entrada, y las salidas se combinan para calcular un puntaje de similitud.&lt;/p&gt;
+&lt;p&gt;Con esta comparación de similitudes en mente, quisimos aplicar estas redes a la tarea de diarización de locutores. La idea era generar embeddings de hablantes a partir de audio utilizando un modelo preentrenado y comparar las salidas de diferentes segmentos de audio. Basándonos en el puntaje de similitud, buscamos identificar los segmentos donde diferentes hablantes están hablando.&lt;/p&gt;
+&lt;h2 id=&#34;experimentos&#34;&gt;Experimentos
+&lt;/h2&gt;&lt;p&gt;Probé dos métodos diferentes para la extracción de características de audio que servirían como embeddings de hablantes.&lt;/p&gt;
+&lt;h3 id=&#34;implementación-en-keras-con-sincnet&#34;&gt;Implementación en Keras con SincNet
+&lt;/h3&gt;&lt;p&gt;En este enfoque, utilizamos la arquitectura SincNet para extraer características específicas de los hablantes a partir del audio. SincNet aplica funciones sinc aprendibles como sus filtros, que son particularmente adecuadas para el procesamiento de audio, ya que imitan los filtros de paso de banda tradicionales. Estas características se introdujeron en la Red Neuronal Siamés, que comparó pares de segmentos de audio para calcular sus puntajes de similitud. El modelo se entrenó con conjuntos de datos de audio etiquetados y observamos un rendimiento sólido al agrupar segmentos de audio por hablante, logrando límites claros entre diferentes hablantes.&lt;/p&gt;
+&lt;p&gt;Un informe con los resultados puede encontrarse en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Speaker-Diarization-with-SNN/blob/master/TP%20Final%20Seminario%20Redes%20-%20Di%20Bernardo%20Ferreyra.ipynb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;notebook de Jupyter&lt;/a&gt; (en español).&lt;/p&gt;
+&lt;h3 id=&#34;implementación-en-pytorch-con-wav2vec&#34;&gt;Implementación en PyTorch con Wav2Vec
+&lt;/h3&gt;&lt;p&gt;Para este método, utilicé Wav2Vec, un modelo preentrenado poderoso para la extracción de embeddings profundos de audio. A diferencia de SincNet, los embeddings de Wav2Vec se derivan del aprendizaje autosupervisado, capturando representaciones de alto nivel del audio. Estos embeddings se usaron en la Red Neuronal Siamés para comparaciones de similitud. Sin embargo, los resultados fueron subóptimos para la tarea de diarización. Parece que Wav2Vec, aunque excelente para tareas de reconocimiento de voz, perdió algunos detalles específicos del hablante necesarios para distinguir entre diferentes voces en nuestro contexto.&lt;/p&gt;
+&lt;h2 id=&#34;resultados&#34;&gt;Resultados
+&lt;/h2&gt;&lt;p&gt;Los experimentos demostraron que la elección del método de extracción de características es crucial para la diarización de locutores. La implementación en Keras con SincNet superó a la implementación en PyTorch con Wav2Vec, mostrando mayor precisión al identificar transiciones entre hablantes. Esto sugiere que la extracción de características específicas para la tarea, como SincNet, es más efectiva que los embeddings de propósito general como Wav2Vec para la diarización de locutores.&lt;/p&gt;
+&lt;p&gt;El código de este proyecto está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Speaker-Diarization-with-SNN&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Este proyecto fue una de mis primeras experiencias con modelos de aprendizaje profundo, donde apliqué mis conocimientos a un problema sin seguir un artículo específico o utilizar un modelo preentrenado. Exploré diferentes soluciones y concluí sobre la importancia de la extracción de características y la selección del modelo.&lt;/p&gt;
+&lt;p&gt;También me ayudó a familiarizarme con la sintaxis de los frameworks de aprendizaje profundo más populares y a solidificar mi comprensión en el proceso.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Diseño de un auditorio</title>
+        <link>http://localhost:1313/es/p/dise%C3%B1o-de-un-auditorio/</link>
+        <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/dise%C3%B1o-de-un-auditorio/</guid>
+        <description>&lt;img src="http://localhost:1313/p/theather-acoustic-design/front.PNG" alt="Featured image of post Diseño de un auditorio" /&gt;&lt;p&gt;Este proyecto es el trabajo final de la clase &lt;em&gt;Acústica y Psicoacústica II&lt;/em&gt;, donde se nos encargó rediseñar un auditorio existente. El objetivo era aplicar la teoría vista en clase para crear un auditorio optimizado desde el punto de vista acústico. Para nuestro proyecto, elegimos rediseñar el Royal Albert Hall en Londres. Esto representó un desafío particular debido a las grandes dimensiones del auditorio, lo que dificulta asegurar que el sonido llegue de manera uniforme a todos los espectadores.&lt;/p&gt;
+&lt;h2 id=&#34;ideas-principales-del-rediseño&#34;&gt;Ideas Principales del Rediseño
+&lt;/h2&gt;&lt;p&gt;El rediseño buscó preservar el concepto original del auditorio, incluyendo su gran volumen y capacidad de asientos, mientras se introducían cambios críticos para mejorar su acústica. Aunque el enfoque principal fue la mejora acústica, el rediseño también consideró otros factores esenciales, como las líneas de visión y una distribución adecuada de los asientos.&lt;/p&gt;
+&lt;p&gt;A pesar de la intención de mantener las dimensiones originales del auditorio, su volumen resultó ser demasiado grande para lograr un tiempo de reverberación óptimo. Para abordar este problema, el rediseño incorporó un techo intermedio para reducir el volumen del techo esférico, y se redujo el área principal de asientos. Estos cambios permitieron obtener un mejor tiempo de reverberación en la sala, como se ilustra en la sección transversal a continuación.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/theather-acoustic-design/cross_section.PNG&#34;
+	width=&#34;1324&#34;
+	height=&#34;506&#34;
+	srcset=&#34;http://localhost:1313/p/theather-acoustic-design/cross_section_hu8201639409724213049.PNG 480w, http://localhost:1313/p/theather-acoustic-design/cross_section_hu5610852418196906417.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sección transversal del rediseño del auditorio&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;261&#34;
+		data-flex-basis=&#34;627px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;detalles-de-construcción-y-regulaciones&#34;&gt;Detalles de Construcción y Regulaciones
+&lt;/h2&gt;&lt;p&gt;Para garantizar un rediseño factible y funcional, se consideraron cuidadosamente los siguientes aspectos clave:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Distribución de asientos&lt;/li&gt;
+&lt;li&gt;Espaciado de los pasillos&lt;/li&gt;
+&lt;li&gt;Optimización de las líneas de visión&lt;/li&gt;
+&lt;li&gt;Comodidad del escenario&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tratamiento-acústico&#34;&gt;Tratamiento Acústico
+&lt;/h2&gt;&lt;p&gt;El tratamiento acústico fue la parte más crítica de este estudio y se centró en dos aspectos principales: reflexiones y tiempo de reverberación.&lt;/p&gt;
+&lt;h3 id=&#34;reflexiones&#34;&gt;Reflexiones
+&lt;/h3&gt;&lt;p&gt;El análisis de las reflexiones es esencial para la experiencia acústica del público. El Royal Albert Hall original cuenta con un techo esférico que centraliza las reflexiones, creando efectos acústicos indeseables. Para mitigar esto, el rediseño incorporó un techo intermedio con una geometría específica diseñada para distribuir las reflexiones de manera uniforme entre el público.&lt;/p&gt;
+&lt;p&gt;El diseño escalonado del techo garantiza reflexiones adecuadas para todas las filas de asientos. En el balcón principal, se abordaron dos reflexiones específicas para compensar el menor nivel de presión sonora (SPL) debido a la gran distancia desde el escenario, como se muestra en la imagen a continuación.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/theather-acoustic-design/balcony_cel_ref.PNG&#34;
+	width=&#34;1136&#34;
+	height=&#34;462&#34;
+	srcset=&#34;http://localhost:1313/p/theather-acoustic-design/balcony_cel_ref_hu8173242411301837287.PNG 480w, http://localhost:1313/p/theather-acoustic-design/balcony_cel_ref_hu890172879033338586.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Reflexiones en el techo del balcón&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;245&#34;
+		data-flex-basis=&#34;590px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;También se optimizaron las reflexiones laterales mediante ajustes en la geometría del escenario y las paredes de los balcones laterales.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/theather-acoustic-design/lateral_ref.PNG&#34;
+	width=&#34;642&#34;
+	height=&#34;521&#34;
+	srcset=&#34;http://localhost:1313/p/theather-acoustic-design/lateral_ref_hu2629534869006446785.PNG 480w, http://localhost:1313/p/theather-acoustic-design/lateral_ref_hu11386676131120321573.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Reflexiones laterales en el público principal&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;123&#34;
+		data-flex-basis=&#34;295px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Además, el rediseño buscó minimizar el ITDG (Initial Time Delay Gap) en los diferentes puntos del público.&lt;/p&gt;
+&lt;h3 id=&#34;materiales-y-tiempo-de-reverberación&#34;&gt;Materiales y Tiempo de Reverberación
+&lt;/h3&gt;&lt;p&gt;El rediseño siguió las recomendaciones del libro &lt;em&gt;Acoustic Absorbers and Diffusers&lt;/em&gt; para lograr un equilibrio entre absorción, difusión y reflexiones especulares. Se utilizaron materiales reflectantes en el techo y en partes de los balcones laterales para garantizar reflexiones especulares efectivas. Para reducir el tiempo de reverberación (RT), se aplicaron materiales con coeficientes de absorción más altos en otras superficies.&lt;/p&gt;
+&lt;p&gt;Usando los materiales seleccionados y la ecuación de Sabine, calculamos el RT estimado del auditorio. El tiempo de reverberación para las diferentes frecuencias se muestra a continuación:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/theather-acoustic-design/rt.PNG&#34;
+	width=&#34;848&#34;
+	height=&#34;644&#34;
+	srcset=&#34;http://localhost:1313/p/theather-acoustic-design/rt_hu5951076229482181811.PNG 480w, http://localhost:1313/p/theather-acoustic-design/rt_hu15811556200730072255.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Tiempo de reverberación por frecuencia&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;131&#34;
+		data-flex-basis=&#34;316px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;El RT calculado para frecuencias medias es de 2,51 segundos. Aunque este valor está ligeramente por encima del máximo recomendado de 2,4 segundos para una acústica óptima, es aceptable dado el gran volumen del auditorio.&lt;/p&gt;
+&lt;h2 id=&#34;modelado-3d&#34;&gt;Modelado 3D
+&lt;/h2&gt;&lt;p&gt;Renderizamos el auditorio rediseñado utilizando el software &lt;em&gt;SketchUp&lt;/em&gt;. A continuación, se presentan algunas visualizaciones:&lt;/p&gt;
+
+
+
+
+&lt;div id=&#34;carousel0&#34; class=&#34;carousel&#34; duration=&#34;70000&#34;&gt;
+    &lt;ul&gt;
+      
+        &lt;li id=&#34;c0_slide1&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 450px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/royal/r1.PNG&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide2&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 450px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/royal/r2.PNG&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide3&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 450px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/royal/r3.PNG&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide4&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 450px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/royal/r4.PNG&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide1&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide2&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide3&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide4&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+    &lt;/ol&gt;
+    &lt;div class=&#34;prev&#34;&gt;&amp;lsaquo;&lt;/div&gt;
+    &lt;div class=&#34;next&#34;&gt;&amp;rsaquo;&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Rediseñar el Royal Albert Hall para mejorar su acústica mientras se preserva su esencia original presentó desafíos significativos. El proyecto requirió soluciones innovadoras para abordar los problemas acústicos sin comprometer el diseño icónico del auditorio. Aunque fueron necesarios algunos cambios, el resultado final demuestra un rediseño cuidadosamente pensado que mejora la acústica mientras mantiene el carácter histórico del Royal Albert Hall. Este proyecto también profundizó nuestra comprensión de los conceptos de acústica y diseño de auditorios.&lt;/p&gt;
+&lt;p&gt;Una descripción detallada de este proyecto está disponible en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1CkX-t_gx2s_YlKbrjB-5IK_dmZIkpJrd/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;artículo&lt;/a&gt; (en inglés).&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Algorítmos de modificación de escala temporal</title>
+        <link>http://localhost:1313/es/p/algor%C3%ADtmos-de-modificaci%C3%B3n-de-escala-temporal/</link>
+        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/algor%C3%ADtmos-de-modificaci%C3%B3n-de-escala-temporal/</guid>
+        <description>&lt;img src="http://localhost:1313/p/time-scale-modification-algorithms/tsm.PNG" alt="Featured image of post Algorítmos de modificación de escala temporal" /&gt;&lt;h1 id=&#34;time-scale-modification-tsm&#34;&gt;Time Scale Modification (TSM)
+&lt;/h1&gt;&lt;p&gt;Time scale modifications algorithms&lt;/p&gt;
+&lt;h2 id=&#34;algorithm-comparison&#34;&gt;Algorithm comparison
+&lt;/h2&gt;&lt;p&gt;OLA
+PV&lt;/p&gt;
+&lt;h2 id=&#34;results&#34;&gt;Results
+&lt;/h2&gt;&lt;p&gt;Very good&lt;/p&gt;
+&lt;h2 id=&#34;academic-presentation&#34;&gt;Academic Presentation
+&lt;/h2&gt;&lt;p&gt;Paper y Presentación en JAAS&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
