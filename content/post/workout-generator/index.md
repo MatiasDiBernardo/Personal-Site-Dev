@@ -1,7 +1,7 @@
 ---
 author: "Matías Di Bernardo"
 title: "Automatic Workout Routine Generator"
-date: "2023-04-17"
+date: "2024-04-17"
 description: "Smart application that defines a workout routine based on input parameters."
 categories: [
     "Programming",

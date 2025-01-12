@@ -312,6 +312,46 @@ Todos los detalles de esta sección estan plasmados en el siguiente &lt;a class=
 </description>
         </item>
         <item>
+        <title>Generador de ruitnas de entrenamiento automáticas</title>
+        <link>http://localhost:1313/es/p/generador-de-ruitnas-de-entrenamiento-autom%C3%A1ticas/</link>
+        <pubDate>Wed, 17 Apr 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/generador-de-ruitnas-de-entrenamiento-autom%C3%A1ticas/</guid>
+        <description>&lt;h1 id=&#34;generador-automático-de-rutinas-de-ejercicio&#34;&gt;Generador Automático de Rutinas de Ejercicio
+&lt;/h1&gt;&lt;p&gt;Este proyecto fue el trabajo final para la asignatura Algoritmos y Programación II en la UNTREF. La idea de la aplicación es funcionar como una planificación inteligente de rutinas de ejercicio, donde el usuario ingresa ciertos criterios y el programa establece la mejor rutina para maximizar las preferencias del usuario. El programa fue escrito en el lenguaje de programación Go.&lt;/p&gt;
+&lt;h2 id=&#34;gestión-de-datos&#34;&gt;Gestión de Datos
+&lt;/h2&gt;&lt;p&gt;Este curso no se centra en bases de datos, por lo que optamos por usar un archivo CSV para simular una base de datos. Este archivo contiene toda la información sobre las diferentes rutinas y sus atributos. Esto sirve como un archivo de persistencia mientras que toda la lógica es manejada por el programa.&lt;/p&gt;
+&lt;p&gt;Los diferentes ejercicios están categorizados por temáticas. Hay dos entidades en el programa que están representadas como structs en Go: los Ejercicios y las Rutinas.&lt;/p&gt;
+&lt;h3 id=&#34;ejercicio&#34;&gt;Ejercicio
+&lt;/h3&gt;&lt;p&gt;Todos los ejercicios tienen los siguientes atributos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nombre: Nombre del ejercicio.&lt;/li&gt;
+&lt;li&gt;Descripción: Descripción detallada del ejercicio.&lt;/li&gt;
+&lt;li&gt;Duración: Duración estimada del ejercicio.&lt;/li&gt;
+&lt;li&gt;Calorías: Número de calorías quemadas durante el ejercicio.&lt;/li&gt;
+&lt;li&gt;Tipo: Tipo de ejercicio (por ejemplo, cardio, fuerza, flexibilidad).&lt;/li&gt;
+&lt;li&gt;Grupo Muscular: Grupo muscular objetivo del ejercicio.&lt;/li&gt;
+&lt;li&gt;Puntos: Puntos asignados al ejercicio según sus tipos.&lt;/li&gt;
+&lt;li&gt;Dificultad: Nivel de dificultad del ejercicio.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;rutinas&#34;&gt;Rutinas
+&lt;/h3&gt;&lt;p&gt;Todas las rutinas son una colección de ejercicios. Estas se procesan como una lista enlazada de ejercicios. Además, las rutinas tienen los siguientes atributos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nombre: Nombre de la rutina.&lt;/li&gt;
+&lt;li&gt;Ejercicios: Cadena que almacena los IDs de los ejercicios en la rutina, separados por comas.&lt;/li&gt;
+&lt;li&gt;EjerciciosDisponibles: Lista enlazada de los ejercicios disponibles para crear la rutina.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;algoritmo&#34;&gt;Algoritmo
+&lt;/h2&gt;&lt;p&gt;La idea es maximizar diferentes parámetros, por ejemplo, la cantidad máxima de calorías quemadas en el menor tiempo posible, o la duración mínima para un grupo muscular o tipo de ejercicio específico. Para encontrar las mejores soluciones basadas en los datos existentes, proponemos un algoritmo de programación dinámica que busca todas las posibilidades a partir de los datos y encuentra el máximo o mínimo según las especificaciones del usuario. El enfoque de programación dinámica utiliza memoria para evitar recalcular combinaciones que ya fueron computadas, lo que optimiza el algoritmo lo suficiente como para generar las rutinas en milisegundos (con el conjunto de datos de prueba evaluado).&lt;/p&gt;
+&lt;h2 id=&#34;interfaz-de-usuario&#34;&gt;Interfaz de Usuario
+&lt;/h2&gt;&lt;p&gt;Actualmente, el programa está diseñado para ser utilizado desde la terminal como una aplicación CLI. El usuario puede crear un ejercicio y una rutina, listar las opciones disponibles y generar una rutina personalizada basada en las especificaciones que elija.&lt;/p&gt;
+&lt;p&gt;Esta es la primera iteración del proyecto y es completamente funcional, pero planeamos crear una interfaz gráfica para que sea más amigable para el usuario. Para este propósito, sería mejor usar un framework diferente y utilizar esta aplicación en Go como backend para un servicio web o una aplicación.&lt;/p&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Con este proyecto, solidifiqué mis conocimientos sobre temas de programación como estructuras de datos y algoritmos, ya que aplicamos la teoría vista en clase a un caso real. También me ayudó a familiarizarme con el lenguaje Go, que se convirtió en un lenguaje que disfruto mucho programar. El código de este proyecto está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Workout-routine-generator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Entendiendo FastPitch y la arquitectura Transformers</title>
         <link>http://localhost:1313/es/p/entendiendo-fastpitch-y-la-arquitectura-transformers/</link>
         <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
@@ -508,47 +548,102 @@ $$&lt;p&gt;Cada fotograma recalcula la función de transferencia. El programa fu
 &lt;/ul&gt;
 &lt;h2 id=&#34;demo&#34;&gt;Demo
 &lt;/h2&gt;&lt;p&gt;Aquí tienes una demostración rápida de la aplicación en acción:&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045497647&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
 &lt;p&gt;El código fuente de este proyecto se encuentra en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Z-Plane_Visualizer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>Generador de ruitnas de entrenamiento automáticas</title>
-        <link>http://localhost:1313/es/p/generador-de-ruitnas-de-entrenamiento-autom%C3%A1ticas/</link>
-        <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
+        <title>IA aprende a jugar 2048</title>
+        <link>http://localhost:1313/es/p/ia-aprende-a-jugar-2048/</link>
+        <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/es/p/generador-de-ruitnas-de-entrenamiento-autom%C3%A1ticas/</guid>
-        <description>&lt;h1 id=&#34;generador-automático-de-rutinas-de-ejercicio&#34;&gt;Generador Automático de Rutinas de Ejercicio
-&lt;/h1&gt;&lt;p&gt;Este proyecto fue el trabajo final para la asignatura Algoritmos y Programación II en la UNTREF. La idea de la aplicación es funcionar como una planificación inteligente de rutinas de ejercicio, donde el usuario ingresa ciertos criterios y el programa establece la mejor rutina para maximizar las preferencias del usuario. El programa fue escrito en el lenguaje de programación Go.&lt;/p&gt;
-&lt;h2 id=&#34;gestión-de-datos&#34;&gt;Gestión de Datos
-&lt;/h2&gt;&lt;p&gt;Este curso no se centra en bases de datos, por lo que optamos por usar un archivo CSV para simular una base de datos. Este archivo contiene toda la información sobre las diferentes rutinas y sus atributos. Esto sirve como un archivo de persistencia mientras que toda la lógica es manejada por el programa.&lt;/p&gt;
-&lt;p&gt;Los diferentes ejercicios están categorizados por temáticas. Hay dos entidades en el programa que están representadas como structs en Go: los Ejercicios y las Rutinas.&lt;/p&gt;
-&lt;h3 id=&#34;ejercicio&#34;&gt;Ejercicio
-&lt;/h3&gt;&lt;p&gt;Todos los ejercicios tienen los siguientes atributos:&lt;/p&gt;
+        <guid>http://localhost:1313/es/p/ia-aprende-a-jugar-2048/</guid>
+        <description>&lt;img src="http://localhost:1313/p/ai-learns-to-play-2048-game/game_img.jpg" alt="Featured image of post IA aprende a jugar 2048" /&gt;&lt;p&gt;Usé este proyecto como introducción al Aprendizaje por Refuerzo (Reinforcement Learning). Habiendo trabajado principalmente con aprendizaje supervisado y no supervisado, quería comenzar con un proyecto pequeño y sencillo para comprender rápidamente las ideas principales y crear algo divertido. Seguí este &lt;a class=&#34;link&#34; href=&#34;https://youtu.be/L8ypSXwyBds&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;video de YouTube&lt;/a&gt; como referencia, el cual explica cómo usar Aprendizaje por Refuerzo (RL) para entrenar un modelo capaz de jugar al juego de la serpiente. Para hacerlo más desafiante, apliqué la misma red al juego 2048.&lt;/p&gt;
+&lt;h2 id=&#34;código&#34;&gt;Código
+&lt;/h2&gt;&lt;p&gt;El código tiene tres componentes principales:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Nombre: Nombre del ejercicio.&lt;/li&gt;
-&lt;li&gt;Descripción: Descripción detallada del ejercicio.&lt;/li&gt;
-&lt;li&gt;Duración: Duración estimada del ejercicio.&lt;/li&gt;
-&lt;li&gt;Calorías: Número de calorías quemadas durante el ejercicio.&lt;/li&gt;
-&lt;li&gt;Tipo: Tipo de ejercicio (por ejemplo, cardio, fuerza, flexibilidad).&lt;/li&gt;
-&lt;li&gt;Grupo Muscular: Grupo muscular objetivo del ejercicio.&lt;/li&gt;
-&lt;li&gt;Puntos: Puntos asignados al ejercicio según sus tipos.&lt;/li&gt;
-&lt;li&gt;Dificultad: Nivel de dificultad del ejercicio.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;El Juego&lt;/strong&gt;: Implementa la lógica del juego y la interfaz gráfica (GUI).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Agente&lt;/strong&gt;: Controla la jugabilidad.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Modelo de IA&lt;/strong&gt;: Una red neuronal que aprende a jugar y guía al agente.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;rutinas&#34;&gt;Rutinas
-&lt;/h3&gt;&lt;p&gt;Todas las rutinas son una colección de ejercicios. Estas se procesan como una lista enlazada de ejercicios. Además, las rutinas tienen los siguientes atributos:&lt;/p&gt;
+&lt;h3 id=&#34;estado-del-juego&#34;&gt;Estado del Juego
+&lt;/h3&gt;&lt;p&gt;Modelé el estado del juego como una matriz de 4x4 que representa el tablero. Las acciones del juego están representadas por un vector con las siguientes posibilidades:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Nombre: Nombre de la rutina.&lt;/li&gt;
-&lt;li&gt;Ejercicios: Cadena que almacena los IDs de los ejercicios en la rutina, separados por comas.&lt;/li&gt;
-&lt;li&gt;EjerciciosDisponibles: Lista enlazada de los ejercicios disponibles para crear la rutina.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Izquierda&lt;/strong&gt;: [1, 0, 0, 0]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Derecha&lt;/strong&gt;: [0, 1, 0, 0]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Arriba&lt;/strong&gt;: [0, 0, 1, 0]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Abajo&lt;/strong&gt;: [0, 0, 0, 1]&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;algoritmo&#34;&gt;Algoritmo
-&lt;/h2&gt;&lt;p&gt;La idea es maximizar diferentes parámetros, por ejemplo, la cantidad máxima de calorías quemadas en el menor tiempo posible, o la duración mínima para un grupo muscular o tipo de ejercicio específico. Para encontrar las mejores soluciones basadas en los datos existentes, proponemos un algoritmo de programación dinámica que busca todas las posibilidades a partir de los datos y encuentra el máximo o mínimo según las especificaciones del usuario. El enfoque de programación dinámica utiliza memoria para evitar recalcular combinaciones que ya fueron computadas, lo que optimiza el algoritmo lo suficiente como para generar las rutinas en milisegundos (con el conjunto de datos de prueba evaluado).&lt;/p&gt;
-&lt;h2 id=&#34;interfaz-de-usuario&#34;&gt;Interfaz de Usuario
-&lt;/h2&gt;&lt;p&gt;Actualmente, el programa está diseñado para ser utilizado desde la terminal como una aplicación CLI. El usuario puede crear un ejercicio y una rutina, listar las opciones disponibles y generar una rutina personalizada basada en las especificaciones que elija.&lt;/p&gt;
-&lt;p&gt;Esta es la primera iteración del proyecto y es completamente funcional, pero planeamos crear una interfaz gráfica para que sea más amigable para el usuario. Para este propósito, sería mejor usar un framework diferente y utilizar esta aplicación en Go como backend para un servicio web o una aplicación.&lt;/p&gt;
-&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
-&lt;/h2&gt;&lt;p&gt;Con este proyecto, solidifiqué mis conocimientos sobre temas de programación como estructuras de datos y algoritmos, ya que aplicamos la teoría vista en clase a un caso real. También me ayudó a familiarizarme con el lenguaje Go, que se convirtió en un lenguaje que disfruto mucho programar. El código de este proyecto está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Workout-routine-generator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h3 id=&#34;recompensa&#34;&gt;Recompensa
+&lt;/h3&gt;&lt;p&gt;El modelo de RL funciona con recompensas para cuantificar cuándo el agente actúa bien o mal. Inicialmente, definí las siguientes recompensas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;+10 puntos&lt;/strong&gt;: Cuando el agente duplica los puntos. Esto es crucial porque, en 2048, los puntos aumentan exponencialmente.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;-10 puntos&lt;/strong&gt;: Cuando se pierde el juego. Esto sirve como una penalización sencilla.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Al principio, el modelo mostraba una mejora lenta. Para solucionarlo, añadí una recompensa adicional:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;+2 puntos&lt;/strong&gt;: Cuando se incrementan los puntos. Esta recompensa incentiva acciones que maximicen la limpieza del tablero y el progreso.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;cómo-funciona-el-modelo&#34;&gt;Cómo Funciona el Modelo
+&lt;/h2&gt;&lt;p&gt;El modelo es una red neuronal lineal simple. Toma el estado del juego como entrada y predice la mejor acción siguiente para maximizar la recompensa.&lt;/p&gt;
+&lt;p&gt;Las recompensas se gestionan utilizando una técnica llamada Q-Learning. Un &lt;em&gt;valor Q&lt;/em&gt; representa la calidad de una decisión basada en la función de pérdida. La función de pérdida se deriva de la &lt;em&gt;Ecuación de Bellman&lt;/em&gt;:&lt;/p&gt;
+$$
+NewQ(s, a) = Q(s, a) + \alpha [R(s, a) + \lambda \, \text{max}Q&#39;(s&#39;, a&#39;) - Q(s, a)]
+$$&lt;p&gt;Donde:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$Q(s, a)$: El &lt;em&gt;valor Q&lt;/em&gt; para un estado y acción específicos.&lt;/li&gt;
+&lt;li&gt;$\alpha$: Tasa de aprendizaje.&lt;/li&gt;
+&lt;li&gt;$R(s, a)$: Recompensa para un estado y acción específicos.&lt;/li&gt;
+&lt;li&gt;$\lambda$: Tasa de descuento.&lt;/li&gt;
+&lt;li&gt;$\text{max}Q&amp;rsquo;(s&amp;rsquo;, a&amp;rsquo;)$: Recompensa futura máxima esperada.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;experimentos-y-resultados&#34;&gt;Experimentos y Resultados
+&lt;/h2&gt;&lt;h3 id=&#34;prueba-aleatoria-como-línea-base&#34;&gt;Prueba Aleatoria como Línea Base
+&lt;/h3&gt;&lt;p&gt;Para establecer una línea base, probé el puntaje promedio que se puede lograr tomando acciones aleatorias. Después de 1,000 iteraciones, el puntaje promedio fue de &lt;strong&gt;170&lt;/strong&gt;, muy por debajo de los 2048 puntos necesarios para ganar el juego.&lt;/p&gt;
+&lt;h3 id=&#34;resultados-iniciales&#34;&gt;Resultados Iniciales
+&lt;/h3&gt;&lt;p&gt;Mis primeros intentos fueron desalentadores. El modelo tenía un desempeño peor que los movimientos aleatorios. Aquí algunos resultados iniciales:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Juego 1,000&lt;/strong&gt; | Puntaje: 208 | Récord: 416 | Puntaje Promedio: 200 | Recompensa: 640&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Juego 1,000&lt;/strong&gt; | Puntaje: 116 | Récord: 346 | Puntaje Promedio: 161 | Recompensa: 310&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Juego 1,000&lt;/strong&gt; | Puntaje: 112 | Récord: 348 | Puntaje Promedio: 146 | Recompensa: 320&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;En estos intentos, el agente desarrolló una estrategia subóptima de llenar el tablero antes de incrementar los puntos.&lt;/p&gt;
+&lt;h3 id=&#34;mejoras&#34;&gt;Mejoras
+&lt;/h3&gt;&lt;p&gt;Tras experimentar con los parámetros de recompensa, me centré en la fase de exploración. Inicialmente, el parámetro de &lt;em&gt;juegos de exploración&lt;/em&gt;, que elige movimientos aleatorios, estaba configurado en 25 juegos. Al aumentar este parámetro, el agente pudo explorar más estrategias, logrando mejores resultados:&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Juego 1,000&lt;/strong&gt; | Puntaje: 478 | Récord: 478 | Puntaje Promedio: 230&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Juego 1,000&lt;/strong&gt; | Puntaje: 514 | Récord: 964 | Puntaje Promedio: 382&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A medida que el modelo mejoraba, extendí el entrenamiento a más juegos:&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Juego 3,796&lt;/strong&gt; | Puntaje: 770 | Récord: 1,366 | Puntaje Promedio: 469&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Juego 4,852&lt;/strong&gt; | Puntaje: 631 | Récord: 1,462 | Puntaje Promedio: 483&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Finalmente, con 200 juegos de exploración y 5,000 juegos de entrenamiento, los resultados fueron los siguientes:&lt;/p&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Juego 5,000&lt;/strong&gt; | Puntaje: 840 | Récord: 1,678 | Puntaje Promedio: 512&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Aunque el modelo no logró ganar el juego, quedé satisfecho con el progreso. Creo que con más tiempo de entrenamiento (el último intento duró 4 horas) y capas adicionales en la red, sería posible ganar el juego con esta arquitectura.&lt;/p&gt;
+&lt;h2 id=&#34;demo&#34;&gt;Demo
+&lt;/h2&gt;&lt;p&gt;Aquí tienes una demostración de la aplicación, mostrando el proceso de aprendizaje del agente:&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045495533&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Implementé atajos de teclado para controlar la velocidad del juego, ofreciendo tres opciones:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Rápida&lt;/strong&gt;: Para un entrenamiento acelerado.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lenta&lt;/strong&gt;: Para observar y analizar el progreso del agente y sus errores.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Media&lt;/strong&gt;: Casi no la utilicé.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;El código completo para este proyecto está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/RF_2048-game&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
 </description>
         </item>
@@ -720,15 +815,55 @@ $$&lt;p&gt;Cada fotograma recalcula la función de transferencia. El programa fu
         <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/es/p/algor%C3%ADtmos-de-modificaci%C3%B3n-de-escala-temporal/</guid>
-        <description>&lt;img src="http://localhost:1313/p/time-scale-modification-algorithms/tsm.PNG" alt="Featured image of post Algorítmos de modificación de escala temporal" /&gt;&lt;h1 id=&#34;time-scale-modification-tsm&#34;&gt;Time Scale Modification (TSM)
-&lt;/h1&gt;&lt;p&gt;Time scale modifications algorithms&lt;/p&gt;
-&lt;h2 id=&#34;algorithm-comparison&#34;&gt;Algorithm comparison
-&lt;/h2&gt;&lt;p&gt;OLA
-PV&lt;/p&gt;
-&lt;h2 id=&#34;results&#34;&gt;Results
-&lt;/h2&gt;&lt;p&gt;Very good&lt;/p&gt;
-&lt;h2 id=&#34;academic-presentation&#34;&gt;Academic Presentation
-&lt;/h2&gt;&lt;p&gt;Paper y Presentación en JAAS&lt;/p&gt;
+        <description>&lt;img src="http://localhost:1313/p/time-scale-modification-algorithms/tsm.PNG" alt="Featured image of post Algorítmos de modificación de escala temporal" /&gt;&lt;p&gt;Los algoritmos de modificación de escala temporal se utilizan para acelerar o desacelerar la velocidad de reproducción de un audio. Cuando se cambia la tasa de muestreo de un audio, la velocidad cambia, pero también lo hace el tono (al acelerar el audio, suena con un tono más alto). Existen diferentes algoritmos que permiten modificar la velocidad del audio manteniendo constante el tono.&lt;/p&gt;
+&lt;p&gt;La principal referencia para este estudio es el siguiente artículo, donde se describen en detalle los distintos algoritmos.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A Review of Time-Scale Modification of Music Signals.&lt;br&gt;
+— &lt;cite&gt;Jonathan Driedger y Meinard Müller&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;comparación-de-algoritmos&#34;&gt;Comparación de algoritmos
+&lt;/h2&gt;&lt;p&gt;Existen dos algoritmos principales, el &lt;em&gt;Overlap-and-add&lt;/em&gt; (OLA) y el &lt;em&gt;Phase Vocoder&lt;/em&gt; (PV). Ambos logran buenos resultados bajo diferentes señales y condiciones. Para aprovechar las ventajas de ambos métodos, se utiliza una implementación final basada en la &lt;em&gt;Separación Armónico-Percusiva&lt;/em&gt; (HPS), que combina ambos algoritmos y logra los mejores resultados.&lt;/p&gt;
+&lt;h3 id=&#34;ola&#34;&gt;OLA
+&lt;/h3&gt;&lt;p&gt;Este método trabaja en el dominio del tiempo, superponiendo secciones del audio (ventanas) y reorganizándolas para lograr un cambio deseado en la velocidad. Este método funciona bien para señales percusivas, pero introduce artefactos cuando se utiliza con señales armónicas o tonales.&lt;/p&gt;
+&lt;h3 id=&#34;pv&#34;&gt;PV
+&lt;/h3&gt;&lt;p&gt;Este método opera en el dominio de la frecuencia, combinando fragmentos de audio en este dominio para lograr el cambio deseado en el tiempo. Utiliza el principio del vocoder de fase para propagar la fase entre ventanas, garantizando la continuidad al aplicarse a señales armónicas. Sin embargo, no es efectivo para señales percusivas, ya que el proceso de propagación de fase elimina los transitorios en las señales.&lt;/p&gt;
+&lt;p&gt;Creé visualizaciones usando &lt;em&gt;Manim&lt;/em&gt; para mejorar mi presentación en clase. El primer video muestra cómo el algoritmo PV alinea las ventanas para garantizar transiciones suaves en la señal generada a lo largo del tiempo. Para lograrlo, se aplica una ventana gaussiana que mantiene la continuidad y suavidad, incluso al inicio y al final de la secuencia.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045495557&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;El segundo video muestra los efectos de aplicar el algoritmo PV a una señal que contiene transitorios.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045495634&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Como predice la teoría, los transitorios desaparecen porque el algoritmo PV interrumpe la alineación vertical de la fase. Aunque estos ejemplos utilizan señales idealizadas, demuestran de manera efectiva las principales fortalezas y limitaciones del algoritmo.&lt;/p&gt;
+&lt;h3 id=&#34;hps&#34;&gt;HPS
+&lt;/h3&gt;&lt;p&gt;Para utilizar ambos métodos con las señales ideales, se emplea el algoritmo HPS. Este algoritmo separa la señal en sus componentes armónicas y percusivas. Funciona comparando la continuidad de la señal en la representación STFT, utilizando un filtro que compara la presencia vertical contra la horizontal en el espectrograma. Con un umbral, se puede definir una máscara binaria sobre el espectrograma para separar las partes percusivas de las secciones armónicas.&lt;/p&gt;
+&lt;h2 id=&#34;resultados&#34;&gt;Resultados
+&lt;/h2&gt;&lt;p&gt;Implementamos con éxito todos los algoritmos y los comparamos, verificando los contenidos teóricos presentados en el artículo de referencia. Durante el proceso, desarrollamos un conjunto de herramientas para utilizar estos algoritmos con el lenguaje de programación Python. Todo el código está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/TSM_Toolkit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;presentación-académica&#34;&gt;Presentación académica
+&lt;/h2&gt;&lt;p&gt;El estudio fue presentado junto a mis compañeros en las &lt;em&gt;JAAS&lt;/em&gt; (Jornadas de Acústica, Audio y Sonido). Las principales ideas y conclusiones se expusieron en la conferencia. En el siguiente informe se encuentran todos los detalles y análisis realizados para este proyecto (en español).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ALGORITMOS DE MODIFICACIÓN DE ESCALA TEMPORAL.&lt;br&gt;
+— &lt;cite&gt;Matías Di Bernardo; Matías Vereertbruhggen; Sebastían Carro&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;A Review of Time-Scale Modification of Music Signal &lt;a class=&#34;link&#34; href=&#34;https://www.researchgate.net/publication/295082364_A_Review_of_Time-Scale_Modification_of_Music_Signals&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;paper&lt;/a&gt;.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;JAAS 2023 - Algoritmos de Modificación de Escala Temporal &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/12kPB3qBjczyx7X2XV3ZpBDo1GDO2u4qR/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;paper&lt;/a&gt;.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 </description>
         </item>
         <item>

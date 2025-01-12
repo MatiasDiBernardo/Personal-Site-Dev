@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Used reinforcement learning to train an agent to be able to play the game 2048 using Q-learning and neuronal networks.">
+<title>AI learns to play 2048 game</title>
+
+<link rel='canonical' href='http://localhost:1313/p/ai-learns-to-play-2048-game/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="AI learns to play 2048 game">
+<meta property='og:description' content="Used reinforcement learning to train an agent to be able to play the game 2048 using Q-learning and neuronal networks.">
+<meta property='og:url' content='http://localhost:1313/p/ai-learns-to-play-2048-game/'>
+<meta property='og:site_name' content='Matias Di Bernardo'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Personal Project' /><meta property='article:published_time' content='2023-02-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-02-17T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/p/ai-learns-to-play-2048-game/game_img.jpg' />
+<meta name="twitter:title" content="AI learns to play 2048 game">
+<meta name="twitter:description" content="Used reinforcement learning to train an agent to be able to play the game 2048 using Q-learning and neuronal networks."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/p/ai-learns-to-play-2048-game/game_img.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pic_web_hu16898994747421290757.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Matias Di Bernardo</a></h1>
+            <h2 class="site-description">Personal blog and portfolio.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/MatiasDiBernardo'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/mat%C3%ADas-di-bernardo-46425b16b/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="none">
+    <path d="m15.15 8.4a5.83 5.83 0 0 0 -5.85 5.82v5.88a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a1.94 1.94 0 0 1 2.15-1.93 2 2 0 0 1 1.75 2v5.81a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a5.83 5.83 0 0 0 -5.85-5.82z"/>
+    <rect height="11.7" rx=".9" width="4.5" x="3" y="9.3"/><circle cx="5.25" cy="5.25" r="2.25"/></g>
+</svg>
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" selected>English</option>
+                                
+                                    <option value="http://localhost:1313/es/" >Español</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#code">Code</a>
+      <ol>
+        <li><a href="#game-state">Game State</a></li>
+        <li><a href="#reward">Reward</a></li>
+      </ol>
+    </li>
+    <li><a href="#how-the-model-works">How the Model Works</a></li>
+    <li><a href="#experiments-and-results">Experiments and Results</a>
+      <ol>
+        <li><a href="#random-test-as-a-baseline">Random Test as a Baseline</a></li>
+        <li><a href="#initial-results">Initial Results</a></li>
+        <li><a href="#improvements">Improvements</a></li>
+      </ol>
+    </li>
+    <li><a href="#demo">Demo</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/ai-learns-to-play-2048-game/">
+                <img src="/p/ai-learns-to-play-2048-game/game_img_hu5331835201752360263.jpg"
+                        srcset="/p/ai-learns-to-play-2048-game/game_img_hu5331835201752360263.jpg 800w, /p/ai-learns-to-play-2048-game/game_img_hu9706064599863953679.jpg 1600w"
+                        width="800" 
+                        height="400" 
+                        loading="lazy"
+                        alt="Featured image of post AI learns to play 2048 game" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/programming/" style="background-color: #296939; color: #fff;">
+                Programming
+            </a>
+        
+            <a href="/categories/deep-learning/" style="background-color: #345bbf; color: #fff;">
+                Deep Learning
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/ai-learns-to-play-2048-game/">AI learns to play 2048 game</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Used reinforcement learning to train an agent to be able to play the game 2048 using Q-learning and neuronal networks.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 17, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="http://localhost:1313/es/p/ia-aprende-a-jugar-2048/" class="link">Español</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>I used this project as an introduction to Reinforcement Learning. Having mostly worked with supervised and unsupervised learning, I wanted to start with a small, simple project to quickly grasp the main ideas and create something fun. I followed this <a class="link" href="https://youtu.be/L8ypSXwyBds"  target="_blank" rel="noopener"
+    >YouTube video</a> as a reference, which explains how to use Reinforcement Learning (RL) to train a model capable of playing the snake game. To make it more challenging, I applied the same network to the 2048 game.</p>
+<h2 id="code">Code
+</h2><p>The code has three main components:</p>
+<ul>
+<li><strong>The Game</strong>: Implements the game logic and the graphical user interface (GUI).</li>
+<li><strong>Agent</strong>: Controls the gameplay.</li>
+<li><strong>AI Model</strong>: A neural network that learns how to play and guides the agent.</li>
+</ul>
+<h3 id="game-state">Game State
+</h3><p>I modeled the game state as a 4x4 matrix representing the board. The actions in the game are represented by a vector, with the following possibilities:</p>
+<ul>
+<li><strong>Left</strong>: [1, 0, 0, 0]</li>
+<li><strong>Right</strong>: [0, 1, 0, 0]</li>
+<li><strong>Up</strong>: [0, 0, 1, 0]</li>
+<li><strong>Down</strong>: [0, 0, 0, 1]</li>
+</ul>
+<h3 id="reward">Reward
+</h3><p>The RL model works with rewards to quantify when the agent performs well or poorly. Initially, I defined the following rewards:</p>
+<ul>
+<li><strong>+10 points</strong>: When the agent doubles the points. This is crucial because, in 2048, points increase exponentially.</li>
+<li><strong>-10 points</strong>: When the game is lost. This serves as a straightforward negative reward.</li>
+</ul>
+<p>Initially, the model showed slow improvement. To address this, I added an additional reward:</p>
+<ul>
+<li><strong>+2 points</strong>: When points are increased. This reward incentivizes actions that maximize board clearance and progress.</li>
+</ul>
+<h2 id="how-the-model-works">How the Model Works
+</h2><p>The model is a simple linear neural network. It takes the game state as input and predicts the best next action to maximize the reward.</p>
+<p>Rewards are managed using a technique called Q-Learning. A <em>Q Value</em> represents the quality of a decision based on the loss function. The loss function is derived from the <em>Bellman Equation</em>:</p>
+$$
+NewQ(s, a) = Q(s, a) + \alpha [R(s, a) + \lambda \, \text{max}Q'(s', a') - Q(s, a)]
+$$<p>Where:</p>
+<ul>
+<li>$Q(s, a)$: The <em>Q Value</em> for a specific state and action.</li>
+<li>$\alpha$: Learning rate.</li>
+<li>$R(s, a)$: Reward for a specific state and action.</li>
+<li>$\lambda$: Discount rate.</li>
+<li>$\text{max}Q&rsquo;(s&rsquo;, a&rsquo;)$: Maximum expected future reward.</li>
+</ul>
+<h2 id="experiments-and-results">Experiments and Results
+</h2><h3 id="random-test-as-a-baseline">Random Test as a Baseline
+</h3><p>To establish a baseline, I tested the average score achievable by taking random actions. After 1,000 iterations, the average score was <strong>170</strong>, far below the 2048 points needed to win the game.</p>
+<h3 id="initial-results">Initial Results
+</h3><p>My initial attempts were discouraging. The model performed worse than random movements. Here are some early results:</p>
+<ol>
+<li><strong>Game 1,000</strong> | Score: 208 | Record: 416 | Mean Score: 200 | Reward: 640</li>
+<li><strong>Game 1,000</strong> | Score: 116 | Record: 346 | Mean Score: 161 | Reward: 310</li>
+<li><strong>Game 1,000</strong> | Score: 112 | Record: 348 | Mean Score: 146 | Reward: 320</li>
+</ol>
+<p>In these attempts, the agent developed a suboptimal strategy of filling the board before increasing points.</p>
+<h3 id="improvements">Improvements
+</h3><p>After experimenting with the reward parameters, I focused on the exploration phase. Initially, the <em>exploration games</em> parameter, which randomly picks moves, was set to 25 games. Increasing this parameter allowed the agent to explore more strategies, leading to better results:</p>
+<ol start="4">
+<li><strong>Game 1,000</strong> | Score: 478 | Record: 478 | Mean Score: 230</li>
+<li><strong>Game 1,000</strong> | Score: 514 | Record: 964 | Mean Score: 382</li>
+</ol>
+<p>As the model improved, I extended the training to more games:</p>
+<ol start="6">
+<li><strong>Game 3,796</strong> | Score: 770 | Record: 1,366 | Mean Score: 469</li>
+<li><strong>Game 4,852</strong> | Score: 631 | Record: 1,462 | Mean Score: 483</li>
+</ol>
+<p>Finally, with 200 exploration games and 5,000 training games, the results were as follows:</p>
+<ol start="8">
+<li><strong>Game 5,000</strong> | Score: 840 | Record: 1,678 | Mean Score: 512</li>
+</ol>
+<p>Although the model didn&rsquo;t beat the game, I was satisfied with the progress. I believe that with longer training (the final run lasted 4 hours) and additional network layers, it would be possible to win the game using this architecture.</p>
+<h2 id="demo">Demo
+</h2><p>Here is a demo of the application, showcasing the agent&rsquo;s learning process:</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://player.vimeo.com/video/1045495533" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+
+<p>I implemented keybindings to control the game&rsquo;s speed, providing three options:</p>
+<ul>
+<li><strong>Fast</strong>: For rapid training.</li>
+<li><strong>Slow</strong>: To observe and analyze the agent&rsquo;s progress and mistakes.</li>
+<li><strong>Medium</strong>: Rarely used.</li>
+</ul>
+<p>The complete code for this project is available in this <a class="link" href="https://github.com/MatiasDiBernardo/RF_2048-game"  target="_blank" rel="noopener"
+    >repository</a>.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/personal-project/">Personal Project</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/z-plane-visualizer/">
+        
+        
+            <div class="article-image">
+                <img src="/p/z-plane-visualizer/frontz.38f5b2d6bb2b196ee7c4838d2d4292b6_hu1326903014979221131.PNG" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Z-Plane Visualizer"
+                        
+                        data-hash="md5-OPWy1rsrGW7nxIONLUKStg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Z-Plane Visualizer</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/evaluation-of-different-models-for-speaker-diarization-task/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Evaluation of different models for Speaker Diarization task</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/the-effect-of-denosing-on-tts/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">The effect of denosing on TTS</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/automatic-workout-routine-generator/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Automatic Workout Routine Generator</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/understanding-fastpitch-and-the-transformer-architecture/">
+        
+        
+            <div class="article-image">
+                <img src="/p/understanding-fastpitch-and-the-transformer-architecture/front.1b211b6859ce3757fe2b00fb1824392f_hu4001264290976053534.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Understanding FastPitch and the Transformer Architecture"
+                        
+                        data-hash="md5-GyEbaFnON1f&#43;KwD7GCQ5Lw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Understanding FastPitch and the Transformer Architecture</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2025 Matías Di Bernardo
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.0511f4da9331aeb0a842c33551d26e53240ed2a787a8401ae095d91bd84d13fb.js" defer></script><script type="text/javascript" src="/js/carousel.js"></script>
+<link rel="stylesheet" href="/css/carousel.css">
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

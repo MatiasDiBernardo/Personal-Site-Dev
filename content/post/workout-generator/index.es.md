@@ -1,7 +1,7 @@
 ---
 author: "Matías Di Bernardo"
 title: "Generador de ruitnas de entrenamiento automáticas"
-date: "2023-04-17"
+date: "2024-04-17"
 description: "Aplicación inteligante que genera rutinas de entrenamiento en base a datos ingresados por el usuario."
 categories: [
     "Programming",

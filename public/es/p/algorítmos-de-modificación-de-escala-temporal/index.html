@@ -270,9 +270,15 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#algorithm-comparison">Algorithm comparison</a></li>
-    <li><a href="#results">Results</a></li>
-    <li><a href="#academic-presentation">Academic Presentation</a></li>
+    <li><a href="#comparación-de-algoritmos">Comparación de algoritmos</a>
+      <ol>
+        <li><a href="#ola">OLA</a></li>
+        <li><a href="#pv">PV</a></li>
+        <li><a href="#hps">HPS</a></li>
+      </ol>
+    </li>
+    <li><a href="#resultados">Resultados</a></li>
+    <li><a href="#presentación-académica">Presentación académica</a></li>
   </ol>
 </nav>
         </div>
@@ -357,7 +363,7 @@
 
 
                 <time class="article-time--reading">
-                    Tiempo de lectura 1 minuto
+                    Tiempo de lectura 3 minutos
                 </time>
             </div>
         
@@ -391,15 +397,55 @@
     <section class="article-content">
     
     
-    <h1 id="time-scale-modification-tsm">Time Scale Modification (TSM)
-</h1><p>Time scale modifications algorithms</p>
-<h2 id="algorithm-comparison">Algorithm comparison
-</h2><p>OLA
-PV</p>
-<h2 id="results">Results
-</h2><p>Very good</p>
-<h2 id="academic-presentation">Academic Presentation
-</h2><p>Paper y Presentación en JAAS</p>
+    <p>Los algoritmos de modificación de escala temporal se utilizan para acelerar o desacelerar la velocidad de reproducción de un audio. Cuando se cambia la tasa de muestreo de un audio, la velocidad cambia, pero también lo hace el tono (al acelerar el audio, suena con un tono más alto). Existen diferentes algoritmos que permiten modificar la velocidad del audio manteniendo constante el tono.</p>
+<p>La principal referencia para este estudio es el siguiente artículo, donde se describen en detalle los distintos algoritmos.</p>
+<blockquote>
+<p>A Review of Time-Scale Modification of Music Signals.<br>
+— <cite>Jonathan Driedger y Meinard Müller<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite></p>
+</blockquote>
+<h2 id="comparación-de-algoritmos">Comparación de algoritmos
+</h2><p>Existen dos algoritmos principales, el <em>Overlap-and-add</em> (OLA) y el <em>Phase Vocoder</em> (PV). Ambos logran buenos resultados bajo diferentes señales y condiciones. Para aprovechar las ventajas de ambos métodos, se utiliza una implementación final basada en la <em>Separación Armónico-Percusiva</em> (HPS), que combina ambos algoritmos y logra los mejores resultados.</p>
+<h3 id="ola">OLA
+</h3><p>Este método trabaja en el dominio del tiempo, superponiendo secciones del audio (ventanas) y reorganizándolas para lograr un cambio deseado en la velocidad. Este método funciona bien para señales percusivas, pero introduce artefactos cuando se utiliza con señales armónicas o tonales.</p>
+<h3 id="pv">PV
+</h3><p>Este método opera en el dominio de la frecuencia, combinando fragmentos de audio en este dominio para lograr el cambio deseado en el tiempo. Utiliza el principio del vocoder de fase para propagar la fase entre ventanas, garantizando la continuidad al aplicarse a señales armónicas. Sin embargo, no es efectivo para señales percusivas, ya que el proceso de propagación de fase elimina los transitorios en las señales.</p>
+<p>Creé visualizaciones usando <em>Manim</em> para mejorar mi presentación en clase. El primer video muestra cómo el algoritmo PV alinea las ventanas para garantizar transiciones suaves en la señal generada a lo largo del tiempo. Para lograrlo, se aplica una ventana gaussiana que mantiene la continuidad y suavidad, incluso al inicio y al final de la secuencia.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://player.vimeo.com/video/1045495557" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+
+<p>El segundo video muestra los efectos de aplicar el algoritmo PV a una señal que contiene transitorios.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://player.vimeo.com/video/1045495634" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+
+<p>Como predice la teoría, los transitorios desaparecen porque el algoritmo PV interrumpe la alineación vertical de la fase. Aunque estos ejemplos utilizan señales idealizadas, demuestran de manera efectiva las principales fortalezas y limitaciones del algoritmo.</p>
+<h3 id="hps">HPS
+</h3><p>Para utilizar ambos métodos con las señales ideales, se emplea el algoritmo HPS. Este algoritmo separa la señal en sus componentes armónicas y percusivas. Funciona comparando la continuidad de la señal en la representación STFT, utilizando un filtro que compara la presencia vertical contra la horizontal en el espectrograma. Con un umbral, se puede definir una máscara binaria sobre el espectrograma para separar las partes percusivas de las secciones armónicas.</p>
+<h2 id="resultados">Resultados
+</h2><p>Implementamos con éxito todos los algoritmos y los comparamos, verificando los contenidos teóricos presentados en el artículo de referencia. Durante el proceso, desarrollamos un conjunto de herramientas para utilizar estos algoritmos con el lenguaje de programación Python. Todo el código está disponible en este <a class="link" href="https://github.com/MatiasDiBernardo/TSM_Toolkit"  target="_blank" rel="noopener"
+    >repositorio</a>.</p>
+<h2 id="presentación-académica">Presentación académica
+</h2><p>El estudio fue presentado junto a mis compañeros en las <em>JAAS</em> (Jornadas de Acústica, Audio y Sonido). Las principales ideas y conclusiones se expusieron en la conferencia. En el siguiente informe se encuentran todos los detalles y análisis realizados para este proyecto (en español).</p>
+<blockquote>
+<p>ALGORITMOS DE MODIFICACIÓN DE ESCALA TEMPORAL.<br>
+— <cite>Matías Di Bernardo; Matías Vereertbruhggen; Sebastían Carro<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite></p>
+</blockquote>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>A Review of Time-Scale Modification of Music Signal <a class="link" href="https://www.researchgate.net/publication/295082364_A_Review_of_Time-Scale_Modification_of_Music_Signals"  target="_blank" rel="noopener"
+    >paper</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>JAAS 2023 - Algoritmos de Modificación de Escala Temporal <a class="link" href="https://drive.google.com/file/d/12kPB3qBjczyx7X2XV3ZpBDo1GDO2u4qR/view?usp=sharing"  target="_blank" rel="noopener"
+    >paper</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 
 </section>
 
@@ -479,6 +525,30 @@ PV</p>
 </article>
 
             
+                
+<article class="has-image">
+    <a href="/es/p/ia-aprende-a-jugar-2048/">
+        
+        
+            <div class="article-image">
+                <img src="/p/ai-learns-to-play-2048-game/game_img.0223cfdbcdd0a4ef7f84b6d2780b5cb6_hu5576651053822552112.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post IA aprende a jugar 2048"
+                        
+                        data-hash="md5-AiPP283QpO9/hLbSeAtctg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">IA aprende a jugar 2048</h2>
+        </div>
+    </a>
+</article>
+
+            
         </div>
     </div>
 </aside>
@@ -486,48 +556,6 @@ PV</p>
      
     
         
-    <div class="disqus-container">
-    <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
-
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
-
     
 
     <footer class="site-footer">

@@ -311,6 +311,46 @@ Details of this section are provided in the following &lt;a class=&#34;link&#34;
 </description>
         </item>
         <item>
+        <title>Automatic Workout Routine Generator</title>
+        <link>http://localhost:1313/p/automatic-workout-routine-generator/</link>
+        <pubDate>Wed, 17 Apr 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/automatic-workout-routine-generator/</guid>
+        <description>&lt;h1 id=&#34;automatic-workout-routine-generator&#34;&gt;Automatic Workout Routine Generator
+&lt;/h1&gt;&lt;p&gt;This project was the final project asignment for the Algoritmos y Programación II on UNTREF. The idea of the application is to function as a smart workout planification, where the user input certain criterias and the program establish the best workout routine to maximice the users preference. The program was written in the Go programming language.&lt;/p&gt;
+&lt;h2 id=&#34;data-management&#34;&gt;Data Management
+&lt;/h2&gt;&lt;p&gt;This course does not focues on databases, so we choose to use a CSV to simulate a database. This file contains all the information of the different routines and the differente attributes. This serve as a presistency file wheras all the logic is handle by the program.&lt;/p&gt;
+&lt;p&gt;Different exercises are categorized by tematics. There are two entities on the program that are represented as structs in Go, this are the Exercise and the Routines.&lt;/p&gt;
+&lt;h3 id=&#34;exercise&#34;&gt;Exercise
+&lt;/h3&gt;&lt;p&gt;All the exercises have the following attributes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Name: Name of the exercise.&lt;/li&gt;
+&lt;li&gt;Description: Detailed description of the exercise.&lt;/li&gt;
+&lt;li&gt;Duration: Estimated duration of the exercise.&lt;/li&gt;
+&lt;li&gt;Calories: Number of calories burned during the exercise.&lt;/li&gt;
+&lt;li&gt;Type: Type of exercise (e.g., cardio, strength, flexibility).&lt;/li&gt;
+&lt;li&gt;Muscle Group: Muscle group targeted by the exercise.&lt;/li&gt;
+&lt;li&gt;Points: Points assigned to the exercise for each of its types.&lt;/li&gt;
+&lt;li&gt;Difficulty: Difficulty level of the exercise.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;routines&#34;&gt;Routines
+&lt;/h3&gt;&lt;p&gt;All the routines are a collection of exercises. This are paresed as a linked list of exercise. Aside from this, the routins have the following attributes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Name: Name of the routine.&lt;/li&gt;
+&lt;li&gt;Exercises: String that stores the IDs of the exercises in the routine, separated by commas.&lt;/li&gt;
+&lt;li&gt;AvailableExercises: Linked list of the exercises available for creating the routine.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;algorithm&#34;&gt;Algorithm
+&lt;/h2&gt;&lt;p&gt;The idea is to maximice different parameters, for example, maximum calories burnt in the least ammount of time, or the minimum duration for this muscle group or type of exercise. To find the best solutions based on the existing data we propose a dynamic programming algorithm that searches for all the posiblities from the data and find the maximum or minimum according to the specifications of the user. The DP apprach uses memory to avoid recalculation combinantions that already were computed, with this optimization the algorithm is fast enough that can generate the routines in miliseconds (with the test dataset under evaluation).&lt;/p&gt;
+&lt;h2 id=&#34;user-interface&#34;&gt;User Interface
+&lt;/h2&gt;&lt;p&gt;At the moment, the programm is designed to be used form the terminal as a CLI application. The user can crear an exersice and a rutine, list the avaliable optionas, and generate a custom routine base on the specifications that he choose.&lt;/p&gt;
+&lt;p&gt;This is the first iteration of the project and it is fully functional but we plan to create a custom GUI to be user friendly, but for this proposse it will be better to use a different framework and use this GO application as the backend for a web or app service.&lt;/p&gt;
+&lt;h2 id=&#34;conclusions&#34;&gt;Conclusions
+&lt;/h2&gt;&lt;p&gt;With this project I solidify my knowledege on programming topics like data structurs and algorithms because we used the theory seen in class and applied it to a real case scenario. Also it help me to get used to the Go langeage and it became a leangauge that I really enjoy coding on it. The code for this project is avaliable on this &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Workout-routine-generator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repository&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Understanding FastPitch and the Transformer Architecture</title>
         <link>http://localhost:1313/p/understanding-fastpitch-and-the-transformer-architecture/</link>
         <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
@@ -507,48 +547,102 @@ $$&lt;p&gt;Each frame recalculates the transfer function. The program performs e
 &lt;/ul&gt;
 &lt;h2 id=&#34;demo&#34;&gt;Demo
 &lt;/h2&gt;&lt;p&gt;Here is a quick demo of the app in action:&lt;/p&gt;
-&lt;p&gt;LINKEAR DEMO&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045497647&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
 &lt;p&gt;The source code for this project can be found on this &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Z-Plane_Visualizer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;repo&lt;/a&gt;.&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>Automatic Workout Routine Generator</title>
-        <link>http://localhost:1313/p/automatic-workout-routine-generator/</link>
-        <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
+        <title>AI learns to play 2048 game</title>
+        <link>http://localhost:1313/p/ai-learns-to-play-2048-game/</link>
+        <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/automatic-workout-routine-generator/</guid>
-        <description>&lt;h1 id=&#34;automatic-workout-routine-generator&#34;&gt;Automatic Workout Routine Generator
-&lt;/h1&gt;&lt;p&gt;This project was the final project asignment for the Algoritmos y Programación II on UNTREF. The idea of the application is to function as a smart workout planification, where the user input certain criterias and the program establish the best workout routine to maximice the users preference. The program was written in the Go programming language.&lt;/p&gt;
-&lt;h2 id=&#34;data-management&#34;&gt;Data Management
-&lt;/h2&gt;&lt;p&gt;This course does not focues on databases, so we choose to use a CSV to simulate a database. This file contains all the information of the different routines and the differente attributes. This serve as a presistency file wheras all the logic is handle by the program.&lt;/p&gt;
-&lt;p&gt;Different exercises are categorized by tematics. There are two entities on the program that are represented as structs in Go, this are the Exercise and the Routines.&lt;/p&gt;
-&lt;h3 id=&#34;exercise&#34;&gt;Exercise
-&lt;/h3&gt;&lt;p&gt;All the exercises have the following attributes:&lt;/p&gt;
+        <guid>http://localhost:1313/p/ai-learns-to-play-2048-game/</guid>
+        <description>&lt;img src="http://localhost:1313/p/ai-learns-to-play-2048-game/game_img.jpg" alt="Featured image of post AI learns to play 2048 game" /&gt;&lt;p&gt;I used this project as an introduction to Reinforcement Learning. Having mostly worked with supervised and unsupervised learning, I wanted to start with a small, simple project to quickly grasp the main ideas and create something fun. I followed this &lt;a class=&#34;link&#34; href=&#34;https://youtu.be/L8ypSXwyBds&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;YouTube video&lt;/a&gt; as a reference, which explains how to use Reinforcement Learning (RL) to train a model capable of playing the snake game. To make it more challenging, I applied the same network to the 2048 game.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code
+&lt;/h2&gt;&lt;p&gt;The code has three main components:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Name: Name of the exercise.&lt;/li&gt;
-&lt;li&gt;Description: Detailed description of the exercise.&lt;/li&gt;
-&lt;li&gt;Duration: Estimated duration of the exercise.&lt;/li&gt;
-&lt;li&gt;Calories: Number of calories burned during the exercise.&lt;/li&gt;
-&lt;li&gt;Type: Type of exercise (e.g., cardio, strength, flexibility).&lt;/li&gt;
-&lt;li&gt;Muscle Group: Muscle group targeted by the exercise.&lt;/li&gt;
-&lt;li&gt;Points: Points assigned to the exercise for each of its types.&lt;/li&gt;
-&lt;li&gt;Difficulty: Difficulty level of the exercise.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The Game&lt;/strong&gt;: Implements the game logic and the graphical user interface (GUI).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Agent&lt;/strong&gt;: Controls the gameplay.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AI Model&lt;/strong&gt;: A neural network that learns how to play and guides the agent.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;routines&#34;&gt;Routines
-&lt;/h3&gt;&lt;p&gt;All the routines are a collection of exercises. This are paresed as a linked list of exercise. Aside from this, the routins have the following attributes:&lt;/p&gt;
+&lt;h3 id=&#34;game-state&#34;&gt;Game State
+&lt;/h3&gt;&lt;p&gt;I modeled the game state as a 4x4 matrix representing the board. The actions in the game are represented by a vector, with the following possibilities:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Name: Name of the routine.&lt;/li&gt;
-&lt;li&gt;Exercises: String that stores the IDs of the exercises in the routine, separated by commas.&lt;/li&gt;
-&lt;li&gt;AvailableExercises: Linked list of the exercises available for creating the routine.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Left&lt;/strong&gt;: [1, 0, 0, 0]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Right&lt;/strong&gt;: [0, 1, 0, 0]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Up&lt;/strong&gt;: [0, 0, 1, 0]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Down&lt;/strong&gt;: [0, 0, 0, 1]&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;algorithm&#34;&gt;Algorithm
-&lt;/h2&gt;&lt;p&gt;The idea is to maximice different parameters, for example, maximum calories burnt in the least ammount of time, or the minimum duration for this muscle group or type of exercise. To find the best solutions based on the existing data we propose a dynamic programming algorithm that searches for all the posiblities from the data and find the maximum or minimum according to the specifications of the user. The DP apprach uses memory to avoid recalculation combinantions that already were computed, with this optimization the algorithm is fast enough that can generate the routines in miliseconds (with the test dataset under evaluation).&lt;/p&gt;
-&lt;h2 id=&#34;user-interface&#34;&gt;User Interface
-&lt;/h2&gt;&lt;p&gt;At the moment, the programm is designed to be used form the terminal as a CLI application. The user can crear an exersice and a rutine, list the avaliable optionas, and generate a custom routine base on the specifications that he choose.&lt;/p&gt;
-&lt;p&gt;This is the first iteration of the project and it is fully functional but we plan to create a custom GUI to be user friendly, but for this proposse it will be better to use a different framework and use this GO application as the backend for a web or app service.&lt;/p&gt;
-&lt;h2 id=&#34;conclusions&#34;&gt;Conclusions
-&lt;/h2&gt;&lt;p&gt;With this project I solidify my knowledege on programming topics like data structurs and algorithms because we used the theory seen in class and applied it to a real case scenario. Also it help me to get used to the Go langeage and it became a leangauge that I really enjoy coding on it. The code for this project is avaliable on this &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Workout-routine-generator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h3 id=&#34;reward&#34;&gt;Reward
+&lt;/h3&gt;&lt;p&gt;The RL model works with rewards to quantify when the agent performs well or poorly. Initially, I defined the following rewards:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;+10 points&lt;/strong&gt;: When the agent doubles the points. This is crucial because, in 2048, points increase exponentially.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;-10 points&lt;/strong&gt;: When the game is lost. This serves as a straightforward negative reward.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Initially, the model showed slow improvement. To address this, I added an additional reward:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;+2 points&lt;/strong&gt;: When points are increased. This reward incentivizes actions that maximize board clearance and progress.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;how-the-model-works&#34;&gt;How the Model Works
+&lt;/h2&gt;&lt;p&gt;The model is a simple linear neural network. It takes the game state as input and predicts the best next action to maximize the reward.&lt;/p&gt;
+&lt;p&gt;Rewards are managed using a technique called Q-Learning. A &lt;em&gt;Q Value&lt;/em&gt; represents the quality of a decision based on the loss function. The loss function is derived from the &lt;em&gt;Bellman Equation&lt;/em&gt;:&lt;/p&gt;
+$$
+NewQ(s, a) = Q(s, a) + \alpha [R(s, a) + \lambda \, \text{max}Q&#39;(s&#39;, a&#39;) - Q(s, a)]
+$$&lt;p&gt;Where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$Q(s, a)$: The &lt;em&gt;Q Value&lt;/em&gt; for a specific state and action.&lt;/li&gt;
+&lt;li&gt;$\alpha$: Learning rate.&lt;/li&gt;
+&lt;li&gt;$R(s, a)$: Reward for a specific state and action.&lt;/li&gt;
+&lt;li&gt;$\lambda$: Discount rate.&lt;/li&gt;
+&lt;li&gt;$\text{max}Q&amp;rsquo;(s&amp;rsquo;, a&amp;rsquo;)$: Maximum expected future reward.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;experiments-and-results&#34;&gt;Experiments and Results
+&lt;/h2&gt;&lt;h3 id=&#34;random-test-as-a-baseline&#34;&gt;Random Test as a Baseline
+&lt;/h3&gt;&lt;p&gt;To establish a baseline, I tested the average score achievable by taking random actions. After 1,000 iterations, the average score was &lt;strong&gt;170&lt;/strong&gt;, far below the 2048 points needed to win the game.&lt;/p&gt;
+&lt;h3 id=&#34;initial-results&#34;&gt;Initial Results
+&lt;/h3&gt;&lt;p&gt;My initial attempts were discouraging. The model performed worse than random movements. Here are some early results:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Game 1,000&lt;/strong&gt; | Score: 208 | Record: 416 | Mean Score: 200 | Reward: 640&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game 1,000&lt;/strong&gt; | Score: 116 | Record: 346 | Mean Score: 161 | Reward: 310&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game 1,000&lt;/strong&gt; | Score: 112 | Record: 348 | Mean Score: 146 | Reward: 320&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In these attempts, the agent developed a suboptimal strategy of filling the board before increasing points.&lt;/p&gt;
+&lt;h3 id=&#34;improvements&#34;&gt;Improvements
+&lt;/h3&gt;&lt;p&gt;After experimenting with the reward parameters, I focused on the exploration phase. Initially, the &lt;em&gt;exploration games&lt;/em&gt; parameter, which randomly picks moves, was set to 25 games. Increasing this parameter allowed the agent to explore more strategies, leading to better results:&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Game 1,000&lt;/strong&gt; | Score: 478 | Record: 478 | Mean Score: 230&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game 1,000&lt;/strong&gt; | Score: 514 | Record: 964 | Mean Score: 382&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As the model improved, I extended the training to more games:&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Game 3,796&lt;/strong&gt; | Score: 770 | Record: 1,366 | Mean Score: 469&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game 4,852&lt;/strong&gt; | Score: 631 | Record: 1,462 | Mean Score: 483&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Finally, with 200 exploration games and 5,000 training games, the results were as follows:&lt;/p&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Game 5,000&lt;/strong&gt; | Score: 840 | Record: 1,678 | Mean Score: 512&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Although the model didn&amp;rsquo;t beat the game, I was satisfied with the progress. I believe that with longer training (the final run lasted 4 hours) and additional network layers, it would be possible to win the game using this architecture.&lt;/p&gt;
+&lt;h2 id=&#34;demo&#34;&gt;Demo
+&lt;/h2&gt;&lt;p&gt;Here is a demo of the application, showcasing the agent&amp;rsquo;s learning process:&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045495533&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I implemented keybindings to control the game&amp;rsquo;s speed, providing three options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fast&lt;/strong&gt;: For rapid training.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slow&lt;/strong&gt;: To observe and analyze the agent&amp;rsquo;s progress and mistakes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Medium&lt;/strong&gt;: Rarely used.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The complete code for this project is available in this &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/RF_2048-game&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;repository&lt;/a&gt;.&lt;/p&gt;
 </description>
         </item>
@@ -558,8 +652,7 @@ $$&lt;p&gt;Each frame recalculates the transfer function. The program performs e
         <pubDate>Sat, 11 Feb 2023 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/p/time-scale-modification-algorithms/</guid>
-        <description>&lt;img src="http://localhost:1313/p/time-scale-modification-algorithms/tsm.PNG" alt="Featured image of post Time Scale Modification Algorithms" /&gt;&lt;h1 id=&#34;time-scale-modification-tsm&#34;&gt;Time Scale Modification (TSM)
-&lt;/h1&gt;&lt;p&gt;Time scale modifications algorithms are used to speed up or slow down the reproduction velocity of an audio. When you change the sample rate of an audio, the velocity changes but it also changes the pitch (when the audio is speed up it sounds highier pitch). There are different algorithms that change the velocity of the audio but mantain the pitch.&lt;/p&gt;
+        <description>&lt;img src="http://localhost:1313/p/time-scale-modification-algorithms/tsm.PNG" alt="Featured image of post Time Scale Modification Algorithms" /&gt;&lt;p&gt;Time scale modifications algorithms are used to speed up or slow down the reproduction velocity of an audio. When you change the sample rate of an audio, the velocity changes but it also changes the pitch (when the audio is speed up it sounds highier pitch). There are different algorithms that change the velocity of the audio but mantain the pitch.&lt;/p&gt;
 &lt;p&gt;The main reference for this study is the following article, where all the different algorithms are describe in detail.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;A Review of Time-Scale Modification of Music Signals.&lt;br&gt;
@@ -571,6 +664,19 @@ $$&lt;p&gt;Each frame recalculates the transfer function. The program performs e
 &lt;/h3&gt;&lt;p&gt;This method works on time domain and overlap sections of the audio (windows) and rearange it to achive a certain desire change on speed. This method works well for percussive signals, but it introduces artifacts when used with harmonic or tonal signals.&lt;/p&gt;
 &lt;h3 id=&#34;pv&#34;&gt;PV
 &lt;/h3&gt;&lt;p&gt;This method works on frequency domain, and it combines chunks of audio in the frequency domain to achieve the desire change in time. This uses the phase vocoder principle to propagate the phase between the windows, this grantice the continuity of when applied to harmonic signals. On the contrary, it does not work for percussive signals becouse the phase propagation process eliminate the transients in the signals.&lt;/p&gt;
+&lt;p&gt;I created visualizations using &lt;em&gt;Manim&lt;/em&gt; to enhance my class presentation. The first video demonstrates how the PV algorithm aligns windows to ensure smooth transitions in the generated signal over time. To achieve this, a Gaussian window is applied, which maintains continuity and smoothness, even at the start and end of the sequence.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045495557&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The second video showcases the effects of applying the PV algorithm to a signal containing transients.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045495634&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As predicted by theory, the transients vanish because the PV algorithm disrupts the vertical phase alignment. While these examples utilize idealized signals, they effectively demonstrate the key strengths and limitations of the algorithm.&lt;/p&gt;
 &lt;h3 id=&#34;hps&#34;&gt;HPS
 &lt;/h3&gt;&lt;p&gt;To use both methods with their ideal signals, the HPS algorithms is used. This algorithm separete the signal into the harmonics and the percussive parts. It works by comparing the continuty of the signal in the STFT representation and using a filter to compare vertical versus horizontal presence on the spectrogram. With a threshold, a binary mask can be define over the spectrogram to separete the percussive parts from the harmoincs sections.&lt;/p&gt;
 &lt;h2 id=&#34;results&#34;&gt;Results

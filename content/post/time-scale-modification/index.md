@@ -13,8 +13,6 @@ tags: [
 ]
 image: "tsm.PNG"
 ---
-
-# Time Scale Modification (TSM)
 Time scale modifications algorithms are used to speed up or slow down the reproduction velocity of an audio. When you change the sample rate of an audio, the velocity changes but it also changes the pitch (when the audio is speed up it sounds highier pitch). There are different algorithms that change the velocity of the audio but mantain the pitch.
 
 The main reference for this study is the following article, where all the different algorithms are describe in detail.
@@ -32,6 +30,16 @@ This method works on time domain and overlap sections of the audio (windows) and
 
 ### PV
 This method works on frequency domain, and it combines chunks of audio in the frequency domain to achieve the desire change in time. This uses the phase vocoder principle to propagate the phase between the windows, this grantice the continuity of when applied to harmonic signals. On the contrary, it does not work for percussive signals becouse the phase propagation process eliminate the transients in the signals.  
+
+I created visualizations using *Manim* to enhance my class presentation. The first video demonstrates how the PV algorithm aligns windows to ensure smooth transitions in the generated signal over time. To achieve this, a Gaussian window is applied, which maintains continuity and smoothness, even at the start and end of the sequence.
+
+{{< vimeo 1045495557 >}}
+
+The second video showcases the effects of applying the PV algorithm to a signal containing transients.
+
+{{< vimeo 1045495634 >}}
+
+As predicted by theory, the transients vanish because the PV algorithm disrupts the vertical phase alignment. While these examples utilize idealized signals, they effectively demonstrate the key strengths and limitations of the algorithm.
 
 ### HPS 
 To use both methods with their ideal signals, the HPS algorithms is used. This algorithm separete the signal into the harmonics and the percussive parts. It works by comparing the continuty of the signal in the STFT representation and using a filter to compare vertical versus horizontal presence on the spectrogram. With a threshold, a binary mask can be define over the spectrogram to separete the percussive parts from the harmoincs sections.

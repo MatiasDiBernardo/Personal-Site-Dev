@@ -262,6 +262,19 @@
                 href="http://localhost:1313/es/p/generador-de-ruitnas-de-entrenamiento-autom%C3%A1ticas/"
                 />
   </url><url>
+    <loc>http://localhost:1313/es/p/ia-aprende-a-jugar-2048/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/p/ai-learns-to-play-2048-game/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/p/ia-aprende-a-jugar-2048/"
+                />
+  </url><url>
     <loc>http://localhost:1313/es/p/evaluaci%C3%B3n-de-diferentes-modelos-de-separaci%C3%B3n-del-hablante/</loc>
     <lastmod>2022-11-04T00:00:00+00:00</lastmod>
     <xhtml:link

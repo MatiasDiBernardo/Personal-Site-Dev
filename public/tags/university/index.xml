@@ -286,8 +286,7 @@ Details of this section are provided in the following &lt;a class=&#34;link&#34;
         <pubDate>Sat, 11 Feb 2023 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/p/time-scale-modification-algorithms/</guid>
-        <description>&lt;img src="http://localhost:1313/p/time-scale-modification-algorithms/tsm.PNG" alt="Featured image of post Time Scale Modification Algorithms" /&gt;&lt;h1 id=&#34;time-scale-modification-tsm&#34;&gt;Time Scale Modification (TSM)
-&lt;/h1&gt;&lt;p&gt;Time scale modifications algorithms are used to speed up or slow down the reproduction velocity of an audio. When you change the sample rate of an audio, the velocity changes but it also changes the pitch (when the audio is speed up it sounds highier pitch). There are different algorithms that change the velocity of the audio but mantain the pitch.&lt;/p&gt;
+        <description>&lt;img src="http://localhost:1313/p/time-scale-modification-algorithms/tsm.PNG" alt="Featured image of post Time Scale Modification Algorithms" /&gt;&lt;p&gt;Time scale modifications algorithms are used to speed up or slow down the reproduction velocity of an audio. When you change the sample rate of an audio, the velocity changes but it also changes the pitch (when the audio is speed up it sounds highier pitch). There are different algorithms that change the velocity of the audio but mantain the pitch.&lt;/p&gt;
 &lt;p&gt;The main reference for this study is the following article, where all the different algorithms are describe in detail.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;A Review of Time-Scale Modification of Music Signals.&lt;br&gt;
@@ -299,6 +298,19 @@ Details of this section are provided in the following &lt;a class=&#34;link&#34;
 &lt;/h3&gt;&lt;p&gt;This method works on time domain and overlap sections of the audio (windows) and rearange it to achive a certain desire change on speed. This method works well for percussive signals, but it introduces artifacts when used with harmonic or tonal signals.&lt;/p&gt;
 &lt;h3 id=&#34;pv&#34;&gt;PV
 &lt;/h3&gt;&lt;p&gt;This method works on frequency domain, and it combines chunks of audio in the frequency domain to achieve the desire change in time. This uses the phase vocoder principle to propagate the phase between the windows, this grantice the continuity of when applied to harmonic signals. On the contrary, it does not work for percussive signals becouse the phase propagation process eliminate the transients in the signals.&lt;/p&gt;
+&lt;p&gt;I created visualizations using &lt;em&gt;Manim&lt;/em&gt; to enhance my class presentation. The first video demonstrates how the PV algorithm aligns windows to ensure smooth transitions in the generated signal over time. To achieve this, a Gaussian window is applied, which maintains continuity and smoothness, even at the start and end of the sequence.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045495557&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The second video showcases the effects of applying the PV algorithm to a signal containing transients.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045495634&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As predicted by theory, the transients vanish because the PV algorithm disrupts the vertical phase alignment. While these examples utilize idealized signals, they effectively demonstrate the key strengths and limitations of the algorithm.&lt;/p&gt;
 &lt;h3 id=&#34;hps&#34;&gt;HPS
 &lt;/h3&gt;&lt;p&gt;To use both methods with their ideal signals, the HPS algorithms is used. This algorithm separete the signal into the harmonics and the percussive parts. It works by comparing the continuty of the signal in the STFT representation and using a filter to compare vertical versus horizontal presence on the spectrogram. With a threshold, a binary mask can be define over the spectrogram to separete the percussive parts from the harmoincs sections.&lt;/p&gt;
 &lt;h2 id=&#34;results&#34;&gt;Results

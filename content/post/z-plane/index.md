@@ -69,6 +69,6 @@ The application has the following functionality:
 ## Demo
 Here is a quick demo of the app in action:
 
-LINKEAR DEMO
+{{< vimeo 1045497647 >}}
 
 The source code for this project can be found on this [repo](https://github.com/MatiasDiBernardo/Z-Plane_Visualizer).

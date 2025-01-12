@@ -90,9 +90,103 @@ $$&lt;p&gt;Each frame recalculates the transfer function. The program performs e
 &lt;/ul&gt;
 &lt;h2 id=&#34;demo&#34;&gt;Demo
 &lt;/h2&gt;&lt;p&gt;Here is a quick demo of the app in action:&lt;/p&gt;
-&lt;p&gt;LINKEAR DEMO&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045497647&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
 &lt;p&gt;The source code for this project can be found on this &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Z-Plane_Visualizer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;repo&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>AI learns to play 2048 game</title>
+        <link>http://localhost:1313/p/ai-learns-to-play-2048-game/</link>
+        <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/ai-learns-to-play-2048-game/</guid>
+        <description>&lt;img src="http://localhost:1313/p/ai-learns-to-play-2048-game/game_img.jpg" alt="Featured image of post AI learns to play 2048 game" /&gt;&lt;p&gt;I used this project as an introduction to Reinforcement Learning. Having mostly worked with supervised and unsupervised learning, I wanted to start with a small, simple project to quickly grasp the main ideas and create something fun. I followed this &lt;a class=&#34;link&#34; href=&#34;https://youtu.be/L8ypSXwyBds&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;YouTube video&lt;/a&gt; as a reference, which explains how to use Reinforcement Learning (RL) to train a model capable of playing the snake game. To make it more challenging, I applied the same network to the 2048 game.&lt;/p&gt;
+&lt;h2 id=&#34;code&#34;&gt;Code
+&lt;/h2&gt;&lt;p&gt;The code has three main components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;The Game&lt;/strong&gt;: Implements the game logic and the graphical user interface (GUI).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Agent&lt;/strong&gt;: Controls the gameplay.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AI Model&lt;/strong&gt;: A neural network that learns how to play and guides the agent.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;game-state&#34;&gt;Game State
+&lt;/h3&gt;&lt;p&gt;I modeled the game state as a 4x4 matrix representing the board. The actions in the game are represented by a vector, with the following possibilities:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Left&lt;/strong&gt;: [1, 0, 0, 0]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Right&lt;/strong&gt;: [0, 1, 0, 0]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Up&lt;/strong&gt;: [0, 0, 1, 0]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Down&lt;/strong&gt;: [0, 0, 0, 1]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;reward&#34;&gt;Reward
+&lt;/h3&gt;&lt;p&gt;The RL model works with rewards to quantify when the agent performs well or poorly. Initially, I defined the following rewards:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;+10 points&lt;/strong&gt;: When the agent doubles the points. This is crucial because, in 2048, points increase exponentially.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;-10 points&lt;/strong&gt;: When the game is lost. This serves as a straightforward negative reward.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Initially, the model showed slow improvement. To address this, I added an additional reward:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;+2 points&lt;/strong&gt;: When points are increased. This reward incentivizes actions that maximize board clearance and progress.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;how-the-model-works&#34;&gt;How the Model Works
+&lt;/h2&gt;&lt;p&gt;The model is a simple linear neural network. It takes the game state as input and predicts the best next action to maximize the reward.&lt;/p&gt;
+&lt;p&gt;Rewards are managed using a technique called Q-Learning. A &lt;em&gt;Q Value&lt;/em&gt; represents the quality of a decision based on the loss function. The loss function is derived from the &lt;em&gt;Bellman Equation&lt;/em&gt;:&lt;/p&gt;
+$$
+NewQ(s, a) = Q(s, a) + \alpha [R(s, a) + \lambda \, \text{max}Q&#39;(s&#39;, a&#39;) - Q(s, a)]
+$$&lt;p&gt;Where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$Q(s, a)$: The &lt;em&gt;Q Value&lt;/em&gt; for a specific state and action.&lt;/li&gt;
+&lt;li&gt;$\alpha$: Learning rate.&lt;/li&gt;
+&lt;li&gt;$R(s, a)$: Reward for a specific state and action.&lt;/li&gt;
+&lt;li&gt;$\lambda$: Discount rate.&lt;/li&gt;
+&lt;li&gt;$\text{max}Q&amp;rsquo;(s&amp;rsquo;, a&amp;rsquo;)$: Maximum expected future reward.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;experiments-and-results&#34;&gt;Experiments and Results
+&lt;/h2&gt;&lt;h3 id=&#34;random-test-as-a-baseline&#34;&gt;Random Test as a Baseline
+&lt;/h3&gt;&lt;p&gt;To establish a baseline, I tested the average score achievable by taking random actions. After 1,000 iterations, the average score was &lt;strong&gt;170&lt;/strong&gt;, far below the 2048 points needed to win the game.&lt;/p&gt;
+&lt;h3 id=&#34;initial-results&#34;&gt;Initial Results
+&lt;/h3&gt;&lt;p&gt;My initial attempts were discouraging. The model performed worse than random movements. Here are some early results:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Game 1,000&lt;/strong&gt; | Score: 208 | Record: 416 | Mean Score: 200 | Reward: 640&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game 1,000&lt;/strong&gt; | Score: 116 | Record: 346 | Mean Score: 161 | Reward: 310&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game 1,000&lt;/strong&gt; | Score: 112 | Record: 348 | Mean Score: 146 | Reward: 320&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In these attempts, the agent developed a suboptimal strategy of filling the board before increasing points.&lt;/p&gt;
+&lt;h3 id=&#34;improvements&#34;&gt;Improvements
+&lt;/h3&gt;&lt;p&gt;After experimenting with the reward parameters, I focused on the exploration phase. Initially, the &lt;em&gt;exploration games&lt;/em&gt; parameter, which randomly picks moves, was set to 25 games. Increasing this parameter allowed the agent to explore more strategies, leading to better results:&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Game 1,000&lt;/strong&gt; | Score: 478 | Record: 478 | Mean Score: 230&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game 1,000&lt;/strong&gt; | Score: 514 | Record: 964 | Mean Score: 382&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As the model improved, I extended the training to more games:&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Game 3,796&lt;/strong&gt; | Score: 770 | Record: 1,366 | Mean Score: 469&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game 4,852&lt;/strong&gt; | Score: 631 | Record: 1,462 | Mean Score: 483&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Finally, with 200 exploration games and 5,000 training games, the results were as follows:&lt;/p&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Game 5,000&lt;/strong&gt; | Score: 840 | Record: 1,678 | Mean Score: 512&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Although the model didn&amp;rsquo;t beat the game, I was satisfied with the progress. I believe that with longer training (the final run lasted 4 hours) and additional network layers, it would be possible to win the game using this architecture.&lt;/p&gt;
+&lt;h2 id=&#34;demo&#34;&gt;Demo
+&lt;/h2&gt;&lt;p&gt;Here is a demo of the application, showcasing the agent&amp;rsquo;s learning process:&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045495533&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I implemented keybindings to control the game&amp;rsquo;s speed, providing three options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fast&lt;/strong&gt;: For rapid training.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slow&lt;/strong&gt;: To observe and analyze the agent&amp;rsquo;s progress and mistakes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Medium&lt;/strong&gt;: Rarely used.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The complete code for this project is available in this &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/RF_2048-game&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repository&lt;/a&gt;.&lt;/p&gt;
 </description>
         </item>
         <item>
