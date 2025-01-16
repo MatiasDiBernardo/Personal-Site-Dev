@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Evalué las diferencias entre la transformada de Fourier, la transformada Wavlet y la transformanda Huang-Hilbert.">
+<title>Comparación de diferentes transformaciones tiempo-frecuencia</title>
+
+<link rel='canonical' href='http://localhost:1313/es/p/comparaci%C3%B3n-de-diferentes-transformaciones-tiempo-frecuencia/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Comparación de diferentes transformaciones tiempo-frecuencia">
+<meta property='og:description' content="Evalué las diferencias entre la transformada de Fourier, la transformada Wavlet y la transformanda Huang-Hilbert.">
+<meta property='og:url' content='http://localhost:1313/es/p/comparaci%C3%B3n-de-diferentes-transformaciones-tiempo-frecuencia/'>
+<meta property='og:site_name' content='Matias Di Bernardo'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Academic' /><meta property='article:tag' content='University' /><meta property='article:published_time' content='2022-11-11T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-11-11T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/p/comparative-analysis-of-time-frequency-transformations/fourier.jpg' />
+<meta name="twitter:title" content="Comparación de diferentes transformaciones tiempo-frecuencia">
+<meta name="twitter:description" content="Evalué las diferencias entre la transformada de Fourier, la transformada Wavlet y la transformanda Huang-Hilbert."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/p/comparative-analysis-of-time-frequency-transformations/fourier.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Ocultar menú">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/es/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pic_web_hu16898994747421290757.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/es">Matias Di Bernardo</a></h1>
+            <h2 class="site-description">Blog personal y portfolio.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/MatiasDiBernardo'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/mat%C3%ADas-di-bernardo-46425b16b/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="none">
+    <path d="m15.15 8.4a5.83 5.83 0 0 0 -5.85 5.82v5.88a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a1.94 1.94 0 0 1 2.15-1.93 2 2 0 0 1 1.75 2v5.81a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a5.83 5.83 0 0 0 -5.85-5.82z"/>
+    <rect height="11.7" rx=".9" width="4.5" x="3" y="9.3"/><circle cx="5.25" cy="5.25" r="2.25"/></g>
+</svg>
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/es/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Inicio</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/es/sobre-m%C3%AD/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>Sobre mí</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/es/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archivos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/es/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Buscar</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" >English</option>
+                                
+                                    <option value="http://localhost:1313/es/" selected>Español</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Modo oscuro</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Tabla de contenido</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#objetivo">Objetivo</a></li>
+    <li><a href="#algoritmos">Algoritmos</a>
+      <ol>
+        <li><a href="#fft">FFT</a></li>
+        <li><a href="#wt">WT</a></li>
+        <li><a href="#hht">HHT</a></li>
+      </ol>
+    </li>
+    <li><a href="#procedimiento">Procedimiento</a></li>
+    <li><a href="#resultados">Resultados</a></li>
+    <li><a href="#conclusiones">Conclusiones</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/es/p/comparaci%C3%B3n-de-diferentes-transformaciones-tiempo-frecuencia/">
+                <img src="/p/comparative-analysis-of-time-frequency-transformations/fourier_hu9030106378665468839.jpg"
+                        srcset="/p/comparative-analysis-of-time-frequency-transformations/fourier_hu9030106378665468839.jpg 800w, /p/comparative-analysis-of-time-frequency-transformations/fourier_hu14722628760947779908.jpg 1600w"
+                        width="800" 
+                        height="671" 
+                        loading="lazy"
+                        alt="Featured image of post Comparación de diferentes transformaciones tiempo-frecuencia" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/es/categories/dsp/" >
+                DSP
+            </a>
+        
+            <a href="/es/categories/math/" >
+                Math
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/es/p/comparaci%C3%B3n-de-diferentes-transformaciones-tiempo-frecuencia/">Comparación de diferentes transformaciones tiempo-frecuencia</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Evalué las diferencias entre la transformada de Fourier, la transformada Wavlet y la transformanda Huang-Hilbert.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">nov. 11, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    Tiempo de lectura 5 minutos
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="http://localhost:1313/p/comparative-analysis-of-time-frequency-transformations/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Esta investigación se desarrolla en el marco de la materia <em>Metodología de la Investigación</em> en UNTREF. En el artículo se pretende comparar las diferencias entre tres tipos de transformaciones tiempo-frecuencia:</p>
+<ol>
+<li>Transformada de Fourier (FT)</li>
+<li>Transformada Wavelet (WT)</li>
+<li>Transformada Huang-Hilbert (HHT)</li>
+</ol>
+<p>El objetivo del trabajo es entender las diferencias entre estos tipos de transformaciones y profundizar mi conocimiento en el procesamiento de señales.</p>
+<h2 id="objetivo">Objetivo
+</h2><p>El objetivo general de la investigación es determinar con qué herramienta de análisis espectral se logra una mayor precisión en la tarea de detección de tono.</p>
+<p>Para alcanzar este objetivo, se plantean los siguientes puntos a completar:</p>
+<ul>
+<li>Determinar los parámetros necesarios para representar la señal en el dominio espectral según cada caso.</li>
+<li>Elegir un algoritmo que identifique el tono de la señal en base a su representación espectral.</li>
+<li>Generar los datos (señales de audio) con los cuales se realizará la comparación.</li>
+<li>Evaluar los datos generados con los distintos métodos de análisis y aplicar procesos estadísticos para validar los resultados.</li>
+<li>Establecer una medida de precisión en la tarea de detección de tono.</li>
+<li>Comparar los resultados de los distintos análisis y determinar cuál es el que consigue una mayor precisión en la detección de tono.</li>
+</ul>
+<p>Se eligió la tarea de detección de tono porque es una de las aplicaciones principales de este tipo de transformadas.</p>
+<h2 id="algoritmos">Algoritmos
+</h2><p>El análisis teórico de todas las transformadas se realiza en el dominio continuo, pero para llevar a cabo los experimentos y comparaciones se trabaja en el dominio discreto, de forma que todos los cálculos se realizan digitalmente.</p>
+<h3 id="fft">FFT
+</h3><p>La FFT es un algoritmo que optimiza la DFT (Transformada de Fourier de tiempo discreto). Con este algoritmo se obtiene la representación espectral de la señal de acuerdo al análisis de Fourier, descomponiendo una señal compleja en una suma de senos o cosenos. La DFT se calcula mediante la fórmula:</p>
+$$
+X_k = \sum_{n=0}^{N-1} e^{-i\frac{2\pi}{N}kn} x_n
+$$<p>Donde \( N \) es la cantidad de muestras de la señal y \( k \) son los números naturales de \( 0 \) hasta \( N – 1 \).</p>
+<h3 id="wt">WT
+</h3><p>La Transformada Wavelet (WT) utiliza una función ondulatoria (wavelet) y aplica una convolución entre la señal y la función de onda elegida para determinar si esa forma ondulatoria está presente en la señal. La onda se deforma en frecuencia y amplitud, permitiendo que una sola función ondulatoria recree todo el espectro de interés.</p>
+<p>Para esta investigación se empleará la CDWT (Cyclic Discrete Wavelet Transform), la implementación más común al discretizar la WT. Conceptualmente, esta transformada extiende el análisis de Fourier utilizando una base de funciones ondulatorias en lugar de senos y cosenos. Se calcula así:</p>
+$$
+Wf[n, a^j] = \sum_{m=0}^{N-1} f[m] \psi_j[m-n]
+$$<p>Donde \( N \) es la cantidad de muestras de la señal, \( \psi \) es la función ondulatoria y \( j \) representa la deformación de la onda según el banco de ondas seleccionado.</p>
+<h3 id="hht">HHT
+</h3><p>Por último, se empleará la Transformada Huang-Hilbert (HHT), que utiliza la Descomposición Empírica Modal (EMD) para descomponer la señal en subseñales relevantes. En lugar de descomponer en funciones senoidales u ondulatorias, el EMD encuentra funciones modales intrínsecas (IMF) específicas de cada señal.</p>
+<p>La relación entre las IMF y la frecuencia original se establece con la ecuación:</p>
+$$
+z(t) = f(t) + i H\{ f(t) \}
+$$<p>Donde \( f(t) \) es una IMF y \( H \) es la Transformada Hilbert. Esto permite proyectar la señal al eje imaginario y extraer la amplitud y la fase de cada instante, construyendo la representación espectral. Como una señal generalmente tiene múltiples IMF, este proceso se repite para todas y se suman para obtener el espectro completo.</p>
+<h2 id="procedimiento">Procedimiento
+</h2><p>Se analizará la relación entre los tipos de representación espectral y la precisión en la detección de tono.</p>
+<p>Primero, se seleccionarán los parámetros para las distintas transformadas, como el número de muestras para el ventaneo temporal, que determina la resolución temporal y frecuencial.</p>
+<p>Para comparar los métodos, se generarán datos representativos de distintos casos de interés, modelando cuatro tipos de señales:</p>
+<ul>
+<li><strong>Monótonas</strong>: Una sola nota correspondiente a la \( F_0 \).</li>
+<li><strong>Politonales</strong>: Múltiples notas, donde la armonía determina la \( F_0 \).</li>
+<li><strong>Transiciones lentas</strong>: Cambios de \( F_0 \) graduales.</li>
+<li><strong>Transiciones rápidas</strong>: Cambios de \( F_0 \) abruptos.</li>
+</ul>
+<p>Se comparará el valor real \( V(t) \) con el resultado \( P(t) \) de cada transformada, integrando la diferencia temporalmente para calcular la precisión.</p>
+<h2 id="resultados">Resultados
+</h2><p>En esta etapa, solo se requería completar el plan de investigación detallando el procedimiento y los métodos de análisis. Para ello, se generaron datos de ejemplo (<em>dummy data</em>) y se validaron estadísticamente los resultados esperados.</p>
+<p><img src="/p/comparative-analysis-of-time-frequency-transformations/res.PNG"
+	width="834"
+	height="550"
+	srcset="/p/comparative-analysis-of-time-frequency-transformations/res_hu8387233291062647437.PNG 480w, /p/comparative-analysis-of-time-frequency-transformations/res_hu2809804783985204141.PNG 1024w"
+	loading="lazy"
+	
+		alt="Gráfico con la precisión de cada transformada según el tipo de señal analizada"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="151"
+		data-flex-basis="363px"
+	
+></p>
+<p>El gráfico muestra la precisión obtenida con las tres transformadas en función del tipo de señal. Se espera que la Transformada Wavelet (WT) supere a la Transformada de Fourier (FT), y que la Transformada Huang-Hilbert (HHT) sea más precisa en general.</p>
+<h2 id="conclusiones">Conclusiones
+</h2><p>En la tarea de detección de tono por análisis frecuencial, la Transformada Huang-Hilbert (HHT) ofrece, en la mayoría de los casos, mayor precisión que la Transformada Rápida de Fourier (FFT) y la Transformada Wavelet Cíclica (CDWT).</p>
+<p>La magnitud de esta diferencia depende del tipo de señal analizada, siendo las señales con transiciones rápidas las menos beneficiadas por el cambio de transformada, mientras que las señales politonales muestran las mejoras más significativas al emplear la HHT.</p>
+<p>En este proyecto, profundicé mis conocimientos en procesamiento de señales y comprendí los fundamentos para usar herramientas como la WT y la HHT según las características de la señal.</p>
+<p>Más detalles del trabajo están disponibles en el siguiente <a class="link" href="https://drive.google.com/file/d/1G5kasP3BzZPVuxrXArHM72pUVlkN9b2Q/view?usp=sharing"  target="_blank" rel="noopener"
+    >informe</a>.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/es/tags/academic/">Academic</a>
+        
+            <a href="/es/tags/university/">University</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenidos relacionados</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/es/p/algor%C3%ADtmos-de-modificaci%C3%B3n-de-escala-temporal/">
+        
+        
+            <div class="article-image">
+                <img src="/p/time-scale-modification-algorithms/tsm.59262eed0cb764fd202d73f9b5c9056d_hu7563205251229415204.PNG" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Algorítmos de modificación de escala temporal"
+                        
+                        data-hash="md5-WSYu7Qy3ZP0gLXP5tckFbQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Algorítmos de modificación de escala temporal</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/es/p/entendiendo-fastpitch-y-la-arquitectura-transformers/">
+        
+        
+            <div class="article-image">
+                <img src="/p/understanding-fastpitch-and-the-transformer-architecture/front.1b211b6859ce3757fe2b00fb1824392f_hu4001264290976053534.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Entendiendo FastPitch y la arquitectura Transformers"
+                        
+                        data-hash="md5-GyEbaFnON1f&#43;KwD7GCQ5Lw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Entendiendo FastPitch y la arquitectura Transformers</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/es/p/z-plane-visualizer/">
+        
+        
+            <div class="article-image">
+                <img src="/p/z-plane-visualizer/frontz.38f5b2d6bb2b196ee7c4838d2d4292b6_hu1326903014979221131.PNG" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Z-Plane Visualizer"
+                        
+                        data-hash="md5-OPWy1rsrGW7nxIONLUKStg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Z-Plane Visualizer</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2025 Matías Di Bernardo
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.0511f4da9331aeb0a842c33551d26e53240ed2a787a8401ae095d91bd84d13fb.js" defer></script><script type="text/javascript" src="/js/carousel.js"></script>
+<link rel="stylesheet" href="/css/carousel.css">
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -158,6 +158,32 @@
                 href="http://localhost:1313/p/building-and-design-of-a-personal-loudspeaker/"
                 />
   </url><url>
+    <loc>http://localhost:1313/p/automatic-workout-routine-generator/</loc>
+    <lastmod>2024-04-17T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/p/generador-de-ruitnas-de-entrenamiento-autom%C3%A1ticas/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/p/automatic-workout-routine-generator/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/categories/programming/</loc>
+    <lastmod>2024-04-17T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/categories/programming/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/categories/programming/"
+                />
+  </url><url>
     <loc>http://localhost:1313/categories/math/</loc>
     <lastmod>2023-08-23T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -223,19 +249,6 @@
                 href="http://localhost:1313/tags/personal-project/"
                 />
   </url><url>
-    <loc>http://localhost:1313/categories/programming/</loc>
-    <lastmod>2023-08-12T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/categories/programming/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/categories/programming/"
-                />
-  </url><url>
     <loc>http://localhost:1313/p/z-plane-visualizer/</loc>
     <lastmod>2023-08-12T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -247,19 +260,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://localhost:1313/p/z-plane-visualizer/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/p/automatic-workout-routine-generator/</loc>
-    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/p/generador-de-ruitnas-de-entrenamiento-autom%C3%A1ticas/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/p/automatic-workout-routine-generator/"
                 />
   </url><url>
     <loc>http://localhost:1313/p/ai-learns-to-play-2048-game/</loc>
@@ -286,6 +286,19 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://localhost:1313/p/time-scale-modification-algorithms/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/p/comparative-analysis-of-time-frequency-transformations/</loc>
+    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/p/comparaci%C3%B3n-de-diferentes-transformaciones-tiempo-frecuencia/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/p/comparative-analysis-of-time-frequency-transformations/"
                 />
   </url><url>
     <loc>http://localhost:1313/p/evaluation-of-different-models-for-speaker-diarization-task/</loc>

@@ -7,7 +7,47 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>es</language>
         <copyright>Matías Di Bernardo</copyright>
-        <lastBuildDate>Sat, 12 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/categories/programming/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 17 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/categories/programming/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Generador de ruitnas de entrenamiento automáticas</title>
+        <link>http://localhost:1313/es/p/generador-de-ruitnas-de-entrenamiento-autom%C3%A1ticas/</link>
+        <pubDate>Wed, 17 Apr 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/generador-de-ruitnas-de-entrenamiento-autom%C3%A1ticas/</guid>
+        <description>&lt;h1 id=&#34;generador-automático-de-rutinas-de-ejercicio&#34;&gt;Generador Automático de Rutinas de Ejercicio
+&lt;/h1&gt;&lt;p&gt;Este proyecto fue el trabajo final para la asignatura Algoritmos y Programación II en la UNTREF. La idea de la aplicación es funcionar como una planificación inteligente de rutinas de ejercicio, donde el usuario ingresa ciertos criterios y el programa establece la mejor rutina para maximizar las preferencias del usuario. El programa fue escrito en el lenguaje de programación Go.&lt;/p&gt;
+&lt;h2 id=&#34;gestión-de-datos&#34;&gt;Gestión de Datos
+&lt;/h2&gt;&lt;p&gt;Este curso no se centra en bases de datos, por lo que optamos por usar un archivo CSV para simular una base de datos. Este archivo contiene toda la información sobre las diferentes rutinas y sus atributos. Esto sirve como un archivo de persistencia mientras que toda la lógica es manejada por el programa.&lt;/p&gt;
+&lt;p&gt;Los diferentes ejercicios están categorizados por temáticas. Hay dos entidades en el programa que están representadas como structs en Go: los Ejercicios y las Rutinas.&lt;/p&gt;
+&lt;h3 id=&#34;ejercicio&#34;&gt;Ejercicio
+&lt;/h3&gt;&lt;p&gt;Todos los ejercicios tienen los siguientes atributos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nombre: Nombre del ejercicio.&lt;/li&gt;
+&lt;li&gt;Descripción: Descripción detallada del ejercicio.&lt;/li&gt;
+&lt;li&gt;Duración: Duración estimada del ejercicio.&lt;/li&gt;
+&lt;li&gt;Calorías: Número de calorías quemadas durante el ejercicio.&lt;/li&gt;
+&lt;li&gt;Tipo: Tipo de ejercicio (por ejemplo, cardio, fuerza, flexibilidad).&lt;/li&gt;
+&lt;li&gt;Grupo Muscular: Grupo muscular objetivo del ejercicio.&lt;/li&gt;
+&lt;li&gt;Puntos: Puntos asignados al ejercicio según sus tipos.&lt;/li&gt;
+&lt;li&gt;Dificultad: Nivel de dificultad del ejercicio.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;rutinas&#34;&gt;Rutinas
+&lt;/h3&gt;&lt;p&gt;Todas las rutinas son una colección de ejercicios. Estas se procesan como una lista enlazada de ejercicios. Además, las rutinas tienen los siguientes atributos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nombre: Nombre de la rutina.&lt;/li&gt;
+&lt;li&gt;Ejercicios: Cadena que almacena los IDs de los ejercicios en la rutina, separados por comas.&lt;/li&gt;
+&lt;li&gt;EjerciciosDisponibles: Lista enlazada de los ejercicios disponibles para crear la rutina.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;algoritmo&#34;&gt;Algoritmo
+&lt;/h2&gt;&lt;p&gt;La idea es maximizar diferentes parámetros, por ejemplo, la cantidad máxima de calorías quemadas en el menor tiempo posible, o la duración mínima para un grupo muscular o tipo de ejercicio específico. Para encontrar las mejores soluciones basadas en los datos existentes, proponemos un algoritmo de programación dinámica que busca todas las posibilidades a partir de los datos y encuentra el máximo o mínimo según las especificaciones del usuario. El enfoque de programación dinámica utiliza memoria para evitar recalcular combinaciones que ya fueron computadas, lo que optimiza el algoritmo lo suficiente como para generar las rutinas en milisegundos (con el conjunto de datos de prueba evaluado).&lt;/p&gt;
+&lt;h2 id=&#34;interfaz-de-usuario&#34;&gt;Interfaz de Usuario
+&lt;/h2&gt;&lt;p&gt;Actualmente, el programa está diseñado para ser utilizado desde la terminal como una aplicación CLI. El usuario puede crear un ejercicio y una rutina, listar las opciones disponibles y generar una rutina personalizada basada en las especificaciones que elija.&lt;/p&gt;
+&lt;p&gt;Esta es la primera iteración del proyecto y es completamente funcional, pero planeamos crear una interfaz gráfica para que sea más amigable para el usuario. Para este propósito, sería mejor usar un framework diferente y utilizar esta aplicación en Go como backend para un servicio web o una aplicación.&lt;/p&gt;
+&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
+&lt;/h2&gt;&lt;p&gt;Con este proyecto, solidifiqué mis conocimientos sobre temas de programación como estructuras de datos y algoritmos, ya que aplicamos la teoría vista en clase a un caso real. También me ayudó a familiarizarme con el lenguaje Go, que se convirtió en un lenguaje que disfruto mucho programar. El código de este proyecto está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Workout-routine-generator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Z-Plane Visualizer</title>
         <link>http://localhost:1313/es/p/z-plane-visualizer/</link>
         <pubDate>Sat, 12 Aug 2023 00:00:00 +0000</pubDate>
@@ -96,46 +136,6 @@ $$&lt;p&gt;Cada fotograma recalcula la función de transferencia. El programa fu
 &lt;/div&gt;
 
 &lt;p&gt;El código fuente de este proyecto se encuentra en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Z-Plane_Visualizer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Generador de ruitnas de entrenamiento automáticas</title>
-        <link>http://localhost:1313/es/p/generador-de-ruitnas-de-entrenamiento-autom%C3%A1ticas/</link>
-        <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/es/p/generador-de-ruitnas-de-entrenamiento-autom%C3%A1ticas/</guid>
-        <description>&lt;h1 id=&#34;generador-automático-de-rutinas-de-ejercicio&#34;&gt;Generador Automático de Rutinas de Ejercicio
-&lt;/h1&gt;&lt;p&gt;Este proyecto fue el trabajo final para la asignatura Algoritmos y Programación II en la UNTREF. La idea de la aplicación es funcionar como una planificación inteligente de rutinas de ejercicio, donde el usuario ingresa ciertos criterios y el programa establece la mejor rutina para maximizar las preferencias del usuario. El programa fue escrito en el lenguaje de programación Go.&lt;/p&gt;
-&lt;h2 id=&#34;gestión-de-datos&#34;&gt;Gestión de Datos
-&lt;/h2&gt;&lt;p&gt;Este curso no se centra en bases de datos, por lo que optamos por usar un archivo CSV para simular una base de datos. Este archivo contiene toda la información sobre las diferentes rutinas y sus atributos. Esto sirve como un archivo de persistencia mientras que toda la lógica es manejada por el programa.&lt;/p&gt;
-&lt;p&gt;Los diferentes ejercicios están categorizados por temáticas. Hay dos entidades en el programa que están representadas como structs en Go: los Ejercicios y las Rutinas.&lt;/p&gt;
-&lt;h3 id=&#34;ejercicio&#34;&gt;Ejercicio
-&lt;/h3&gt;&lt;p&gt;Todos los ejercicios tienen los siguientes atributos:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Nombre: Nombre del ejercicio.&lt;/li&gt;
-&lt;li&gt;Descripción: Descripción detallada del ejercicio.&lt;/li&gt;
-&lt;li&gt;Duración: Duración estimada del ejercicio.&lt;/li&gt;
-&lt;li&gt;Calorías: Número de calorías quemadas durante el ejercicio.&lt;/li&gt;
-&lt;li&gt;Tipo: Tipo de ejercicio (por ejemplo, cardio, fuerza, flexibilidad).&lt;/li&gt;
-&lt;li&gt;Grupo Muscular: Grupo muscular objetivo del ejercicio.&lt;/li&gt;
-&lt;li&gt;Puntos: Puntos asignados al ejercicio según sus tipos.&lt;/li&gt;
-&lt;li&gt;Dificultad: Nivel de dificultad del ejercicio.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;rutinas&#34;&gt;Rutinas
-&lt;/h3&gt;&lt;p&gt;Todas las rutinas son una colección de ejercicios. Estas se procesan como una lista enlazada de ejercicios. Además, las rutinas tienen los siguientes atributos:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Nombre: Nombre de la rutina.&lt;/li&gt;
-&lt;li&gt;Ejercicios: Cadena que almacena los IDs de los ejercicios en la rutina, separados por comas.&lt;/li&gt;
-&lt;li&gt;EjerciciosDisponibles: Lista enlazada de los ejercicios disponibles para crear la rutina.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;algoritmo&#34;&gt;Algoritmo
-&lt;/h2&gt;&lt;p&gt;La idea es maximizar diferentes parámetros, por ejemplo, la cantidad máxima de calorías quemadas en el menor tiempo posible, o la duración mínima para un grupo muscular o tipo de ejercicio específico. Para encontrar las mejores soluciones basadas en los datos existentes, proponemos un algoritmo de programación dinámica que busca todas las posibilidades a partir de los datos y encuentra el máximo o mínimo según las especificaciones del usuario. El enfoque de programación dinámica utiliza memoria para evitar recalcular combinaciones que ya fueron computadas, lo que optimiza el algoritmo lo suficiente como para generar las rutinas en milisegundos (con el conjunto de datos de prueba evaluado).&lt;/p&gt;
-&lt;h2 id=&#34;interfaz-de-usuario&#34;&gt;Interfaz de Usuario
-&lt;/h2&gt;&lt;p&gt;Actualmente, el programa está diseñado para ser utilizado desde la terminal como una aplicación CLI. El usuario puede crear un ejercicio y una rutina, listar las opciones disponibles y generar una rutina personalizada basada en las especificaciones que elija.&lt;/p&gt;
-&lt;p&gt;Esta es la primera iteración del proyecto y es completamente funcional, pero planeamos crear una interfaz gráfica para que sea más amigable para el usuario. Para este propósito, sería mejor usar un framework diferente y utilizar esta aplicación en Go como backend para un servicio web o una aplicación.&lt;/p&gt;
-&lt;h2 id=&#34;conclusiones&#34;&gt;Conclusiones
-&lt;/h2&gt;&lt;p&gt;Con este proyecto, solidifiqué mis conocimientos sobre temas de programación como estructuras de datos y algoritmos, ya que aplicamos la teoría vista en clase a un caso real. También me ayudó a familiarizarme con el lenguaje Go, que se convirtió en un lenguaje que disfruto mucho programar. El código de este proyecto está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/Workout-routine-generator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
 </description>
         </item>

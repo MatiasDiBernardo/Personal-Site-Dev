@@ -32,6 +32,14 @@
         <description>&lt;img src="http://localhost:1313/categories/deep-learning/deep_img.jpeg" alt="Featured image of post Deep Learning" /&gt;</description>
         </item>
         <item>
+        <title>Programming</title>
+        <link>http://localhost:1313/categories/programming/</link>
+        <pubDate>Wed, 17 Apr 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/categories/programming/</guid>
+        <description>&lt;img src="http://localhost:1313/categories/programming/prog_img.jpg" alt="Featured image of post Programming" /&gt;</description>
+        </item>
+        <item>
         <title>Math</title>
         <link>http://localhost:1313/categories/math/</link>
         <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
@@ -46,14 +54,6 @@
         
         <guid>http://localhost:1313/categories/dsp/</guid>
         <description>&lt;img src="http://localhost:1313/categories/dsp/dsp_img.jpg" alt="Featured image of post DSP" /&gt;</description>
-        </item>
-        <item>
-        <title>Programming</title>
-        <link>http://localhost:1313/categories/programming/</link>
-        <pubDate>Sat, 12 Aug 2023 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/categories/programming/</guid>
-        <description>&lt;img src="http://localhost:1313/categories/programming/prog_img.jpg" alt="Featured image of post Programming" /&gt;</description>
         </item>
         
     </channel>

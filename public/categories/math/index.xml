@@ -121,6 +121,88 @@ FastPitch converts text into mel spectrograms, which are then transformed into a
 
 </description>
         </item>
+        <item>
+        <title>Comparative analysis of time-frequency transformations</title>
+        <link>http://localhost:1313/p/comparative-analysis-of-time-frequency-transformations/</link>
+        <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/comparative-analysis-of-time-frequency-transformations/</guid>
+        <description>&lt;img src="http://localhost:1313/p/comparative-analysis-of-time-frequency-transformations/fourier.jpg" alt="Featured image of post Comparative analysis of time-frequency transformations" /&gt;&lt;p&gt;This research is conducted as part of the subject &lt;em&gt;Metodología de la Investigación&lt;/em&gt; at UNTREF. The article aims to compare the differences between three types of time-frequency transformations:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Fourier Transform (FT)&lt;/li&gt;
+&lt;li&gt;Wavelet Transform (WT)&lt;/li&gt;
+&lt;li&gt;Huang-Hilbert Transform (HHT)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The objective of this work is to understand the differences between these types of transformations and deepen my knowledge of signal processing.&lt;/p&gt;
+&lt;h2 id=&#34;objective&#34;&gt;Objective
+&lt;/h2&gt;&lt;p&gt;The general objective of the research is to determine which spectral analysis tool achieves the highest accuracy in pitch detection tasks.&lt;/p&gt;
+&lt;p&gt;To achieve this objective, the following specific objectives are proposed:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Identify the parameters needed to represent the signal in the spectral domain for each case.&lt;/li&gt;
+&lt;li&gt;Select an algorithm that identifies the pitch of the signal based on its spectral representation.&lt;/li&gt;
+&lt;li&gt;Generate the data (audio signals) to be used for the comparison.&lt;/li&gt;
+&lt;li&gt;Evaluate the generated data with the different analysis methods and apply statistical processes to validate the results.&lt;/li&gt;
+&lt;li&gt;Establish a measure of accuracy for the pitch detection task.&lt;/li&gt;
+&lt;li&gt;Compare the results of the different analyses and determine which method achieves the highest accuracy in pitch detection.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The pitch detection task was chosen because it is one of the main applications of these types of transformations.&lt;/p&gt;
+&lt;h2 id=&#34;algorithms&#34;&gt;Algorithms
+&lt;/h2&gt;&lt;p&gt;The theoretical analysis of all the transformations is performed in the continuous domain, but to conduct the experiments and comparisons, the discrete domain is used, enabling all calculations to be performed digitally.&lt;/p&gt;
+&lt;h3 id=&#34;fft&#34;&gt;FFT
+&lt;/h3&gt;&lt;p&gt;The FFT is an algorithm that optimizes the DFT (Discrete Fourier Transform). With this algorithm, the spectral representation of the signal is obtained according to Fourier analysis, which decomposes a complex signal into a sum of sines or cosines. The DFT is calculated using the formula:&lt;/p&gt;
+$$
+X_k = \sum_{n=0}^{N-1} e^{-i\frac{2\pi}{N}kn} x_n
+$$&lt;p&gt;Where \( N \) is the number of signal samples, and \( k \) are natural numbers from \( 0 \) to \( N – 1 \).&lt;/p&gt;
+&lt;h3 id=&#34;wt&#34;&gt;WT
+&lt;/h3&gt;&lt;p&gt;The Wavelet Transform (WT) uses an oscillatory function (wavelet) and applies a convolution between the signal and the chosen wavelet function to determine whether that wave shape is present in the signal. The wavelet is stretched and scaled in frequency and amplitude, allowing a single wavelet function to recreate the entire spectrum of interest.&lt;/p&gt;
+&lt;p&gt;In this research, the CDWT (Cyclic Discrete Wavelet Transform) will be used, the most common implementation when discretizing the WT. Conceptually, this transform extends Fourier analysis by projecting the signal onto a basis of wavelet functions instead of sines and cosines. It is calculated as follows:&lt;/p&gt;
+$$
+Wf[n, a^j] = \sum_{m=0}^{N-1} f[m] \psi_j[m-n]
+$$&lt;p&gt;Where \( N \) is the number of signal samples, \( \psi \) is the wavelet function, and \( j \) represents the deformation of the wavelet according to the selected wavelet bank.&lt;/p&gt;
+&lt;h3 id=&#34;hht&#34;&gt;HHT
+&lt;/h3&gt;&lt;p&gt;Lastly, the Huang-Hilbert Transform (HHT) will be used for spectral representation. It employs a method called Empirical Mode Decomposition (EMD) to decompose the signal into subsignals that contain the relevant information of the original function.&lt;/p&gt;
+&lt;p&gt;Like the previous analysis methods, the key part of the analysis is the decomposition of the signal into simpler signals. However, instead of sine or wavelet functions, EMD finds intrinsic mode functions (IMFs) that form the basis of our decomposition and are unique to each signal.&lt;/p&gt;
+&lt;p&gt;The relationship between the IMFs and the frequency of the original signal is established with the equation:&lt;/p&gt;
+$$
+z(t) = f(t) + i H\{ f(t) \}
+$$&lt;p&gt;Where \( f(t) \) is an IMF of the original signal, and \( H \) is the Hilbert Transform. This allows the IMF to be represented as a complex signal by projecting it onto the imaginary axis using the Hilbert Transform.&lt;/p&gt;
+&lt;p&gt;Thus, the IMF is represented as a complex signal, and the amplitude and phase of each moment can be extracted to construct the spectral representation. Since a signal generally has multiple IMFs, this process is repeated for all of them, and the results are summed to obtain the complete spectrum.&lt;/p&gt;
+&lt;h2 id=&#34;procedure&#34;&gt;Procedure
+&lt;/h2&gt;&lt;p&gt;This research analyzes the relationship between types of spectral representation and accuracy in pitch detection.&lt;/p&gt;
+&lt;p&gt;First, the parameters for the different transformations will be selected. Among the most critical parameters to determine is the number of samples for temporal windowing, as it determines the trade-off between temporal and frequency resolution.&lt;/p&gt;
+&lt;p&gt;To ensure a fair comparison among the methods, data representing various cases of interest will be generated, including four types of signals:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Monophonic&lt;/strong&gt;: Signals with a single note corresponding to \( F_0 \).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Polyphonic&lt;/strong&gt;: Signals with multiple notes where harmony determines \( F_0 \).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slow Transitions&lt;/strong&gt;: Signals with gradual changes in \( F_0 \).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fast Transitions&lt;/strong&gt;: Signals with abrupt changes in \( F_0 \).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The real value \( V(t) \) will be compared to the result \( P(t) \) from each transform, integrating the difference over time to calculate the accuracy.&lt;/p&gt;
+&lt;h2 id=&#34;results&#34;&gt;Results
+&lt;/h2&gt;&lt;p&gt;At this stage, the task was to complete the research plan detailing the procedure and analysis methods. Dummy data was generated and statistically validated to simulate expected results.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/comparative-analysis-of-time-frequency-transformations/res.PNG&#34;
+	width=&#34;834&#34;
+	height=&#34;550&#34;
+	srcset=&#34;http://localhost:1313/p/comparative-analysis-of-time-frequency-transformations/res_hu8387233291062647437.PNG 480w, http://localhost:1313/p/comparative-analysis-of-time-frequency-transformations/res_hu2809804783985204141.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Graph showing the precision of each transform according to the type of signal analyzed&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;151&#34;
+		data-flex-basis=&#34;363px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The graph compares the precision achieved by the three transformations for different signal types. Based on the properties of the transforms, the Wavelet Transform (WT) is expected to outperform the Fourier Transform (FT), and the Huang-Hilbert Transform (HHT) is expected to achieve the highest precision overall.&lt;/p&gt;
+&lt;h2 id=&#34;conclusions&#34;&gt;Conclusions
+&lt;/h2&gt;&lt;p&gt;In pitch detection tasks using spectral analysis, the Huang-Hilbert Transform (HHT) generally provides higher precision than the Fast Fourier Transform (FFT) and the Cyclic Discrete Wavelet Transform (CDWT).&lt;/p&gt;
+&lt;p&gt;The significance of this precision gain depends on the type of signal being analyzed, with fast-transition signals benefiting the least from the transformation change, while polyphonic signals show the most significant improvement when using the HHT.&lt;/p&gt;
+&lt;p&gt;This project allowed me to deepen my understanding of signal processing and grasp the foundations of why tools like the WT and HHT are used based on the characteristics of the signal being analyzed.&lt;/p&gt;
+&lt;p&gt;All details of this work are available in the following &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1G5kasP3BzZPVuxrXArHM72pUVlkN9b2Q/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;report&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
         
     </channel>
 </rss>
