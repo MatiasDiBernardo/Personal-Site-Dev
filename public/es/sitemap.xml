@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/es/</loc>
-    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/es/categories/</loc>
-    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -26,6 +26,84 @@
                 rel="alternate"
                 hreflang="es"
                 href="http://localhost:1313/es/categories/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/categories/deep-learning/</loc>
+    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/categories/deep-learning/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/categories/deep-learning/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/p/ia-generativa-flow-matching-y-tts/</loc>
+    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/p/generative-ai-flow-matching-and-tts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/p/ia-generativa-flow-matching-y-tts/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/categories/math/</loc>
+    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/categories/math/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/categories/math/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/post/</loc>
+    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/post/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/tags/</loc>
+    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/tags/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/tags/work/</loc>
+    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/tags/work/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/tags/work/"
                 />
   </url><url>
     <loc>http://localhost:1313/es/categories/electronics/</loc>
@@ -52,32 +130,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="http://localhost:1313/es/p/medidor-de-thd-n/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/es/post/</loc>
-    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/post/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/es/tags/</loc>
-    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/tags/"
                 />
   </url><url>
     <loc>http://localhost:1313/es/tags/university/</loc>
@@ -117,19 +169,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="http://localhost:1313/es/categories/acoustics/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/es/categories/deep-learning/</loc>
-    <lastmod>2024-11-22T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/categories/deep-learning/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/categories/deep-learning/"
                 />
   </url><url>
     <loc>http://localhost:1313/es/p/efecto-de-algor%C3%ADtmos-de-reducci%C3%B3n-de-rudio-en-sistemas-de-tts/</loc>
@@ -195,32 +234,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="http://localhost:1313/es/p/entendiendo-fastpitch-y-la-arquitectura-transformers/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/es/categories/math/</loc>
-    <lastmod>2023-08-23T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/categories/math/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/categories/math/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/es/tags/work/</loc>
-    <lastmod>2023-08-23T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/tags/work/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/tags/work/"
                 />
   </url><url>
     <loc>http://localhost:1313/es/categories/dsp/</loc>

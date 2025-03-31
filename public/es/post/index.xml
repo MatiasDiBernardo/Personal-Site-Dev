@@ -7,7 +7,79 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>es</language>
         <copyright>Matías Di Bernardo</copyright>
-        <lastBuildDate>Tue, 26 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>IA Generativa, Flow Matching y TTS</title>
+        <link>http://localhost:1313/es/p/ia-generativa-flow-matching-y-tts/</link>
+        <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/ia-generativa-flow-matching-y-tts/</guid>
+        <description>&lt;img src="http://localhost:1313/p/generative-ai-flow-matching-and-tts/front.PNG" alt="Featured image of post IA Generativa, Flow Matching y TTS" /&gt;&lt;p&gt;En &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt;, trabajamos continuamente con modelos de &lt;em&gt;Deep Learning&lt;/em&gt; de última generación. Para ello, nos mantenemos en constante aprendizaje sobre los desarrollos más recientes en el campo. En esta presentación, el objetivo fue explicar los fundamentos del modelo &lt;em&gt;F5-TTS&lt;/em&gt;, un sistema de síntesis de voz de vanguardia. Durante el desarrollo, se introdujo el concepto de inteligencia artificial generativa y los modelos de flujo (&lt;em&gt;flow-based models&lt;/em&gt;), dado que &lt;em&gt;F5-TTS&lt;/em&gt; se basa en esta técnica. El propósito es compartir este conocimiento con el equipo y con cualquier persona interesada en iniciarse en los modelos de conversión de texto a voz (&lt;em&gt;Text-to-Speech&lt;/em&gt;).&lt;/p&gt;
+&lt;h2 id=&#34;introducción---ia-generativa-y-tts&#34;&gt;Introducción - IA Generativa y TTS
+&lt;/h2&gt;&lt;p&gt;La estructura de la clase se organizó de la siguiente manera:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Introducción a los modelos de TTS&lt;/strong&gt;: Se describen los diferentes modelos utilizados, sus principales características y las razones por las cuales se decidió cambiar de enfoque.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Evolución de los modelos TTS&lt;/strong&gt;: Se presenta un gráfico basado en encuestas que muestra la evolución de diversas tecnologías de TTS.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cambio de paradigma en modelos de lenguaje&lt;/strong&gt;: Se explica cómo el uso de grandes volúmenes de datos ha permitido una mejor generalización en modelos de lenguaje.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ejemplo de generalización&lt;/strong&gt;: Se presentan casos ilustrativos, como la generación de una imagen de un astronauta montando un caballo, ejemplos de audio y síntesis de acentos específicos (ej., un hablante cordobés enojado).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cambio en la estructuración de conjuntos de datos&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Enfoque tradicional&lt;/strong&gt;: Uso de un único hablante de alta calidad con gran cantidad de datos (modelo entrenado para cada hablante).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Enfoque actual y futuro&lt;/strong&gt;: Uso de conjuntos de datos diversos con etiquetas que permiten entrenar modelos capaces de entender el concepto del habla y generalizar en múltiples tareas (ejemplos extraídos de &lt;em&gt;VoiceBox&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Costo computacional&lt;/strong&gt;: Se menciona el aumento en el tamaño de los modelos y la dificultad de su entrenamiento, similar a los modelos de lenguaje a gran escala (&lt;em&gt;LLMs&lt;/em&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Explicación de IA Generativa&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Introducción a los modelos generativos y el concepto de distribución subyacente.&lt;/li&gt;
+&lt;li&gt;Explicación sobre &lt;em&gt;Transformers&lt;/em&gt; y su función en la clasificación con contexto. Se aclara que aunque los &lt;em&gt;Transformers&lt;/em&gt; son modelos &lt;em&gt;Non-Autoregressive&lt;/em&gt; (NAR) en entrenamiento, en inferencia funcionan de manera &lt;em&gt;Autoregressive&lt;/em&gt; (AR).&lt;/li&gt;
+&lt;li&gt;Diferencia entre modelos de clasificación y modelos generativos basados en reducción de dimensionalidad y variables latentes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;modelos-de-tts-voicebox-e2-y-f5&#34;&gt;Modelos de TTS: VoiceBox, E2 y F5
+&lt;/h2&gt;&lt;p&gt;Esta sección detalla los principales avances en modelos de TTS que han llevado al desarrollo de &lt;em&gt;F5-TTS&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;1-voicebox-tts---in-context-learning&#34;&gt;1. VoiceBox TTS - &lt;em&gt;In Context Learning&lt;/em&gt;
+&lt;/h3&gt;&lt;p&gt;Se introduce la arquitectura inicial de &lt;em&gt;VoiceBox&lt;/em&gt;, cuyo objetivo principal es la generalización mediante &lt;em&gt;In Context Learning&lt;/em&gt;. Este enfoque permite al modelo inferir información a partir de ejemplos previos. Para lograrlo, se le proporciona un fragmento de audio con una parte oculta, forzando al modelo a completarla de manera coherente.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;We show that Voicebox’s text-guided speech infilling approach is much more scalable in terms of data while subsuming many common speech generative tasks.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Este método, introducido por Meta en &lt;em&gt;VoiceBox&lt;/em&gt;, marca un cambio de paradigma al demostrar que los modelos de TTS pueden beneficiarse de técnicas previamente utilizadas en modelos de lenguaje e imagen.&lt;/p&gt;
+&lt;p&gt;No obstante, el modelo aún depende de técnicas clásicas en TTS, como el predictor de duración de fonemas y el &lt;em&gt;Forced Alignment&lt;/em&gt; para mapear fonemas a espectrogramas de Mel, ya que la longitud de estos no coincide con la de los tokens de texto.&lt;/p&gt;
+&lt;h3 id=&#34;2-e2-tts---filler-tokens&#34;&gt;2. E2 TTS - &lt;em&gt;Filler Tokens&lt;/em&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;E2 TTS&lt;/em&gt; simplifica varias de las decisiones arquitectónicas de &lt;em&gt;VoiceBox&lt;/em&gt;, especialmente en lo referente a la longitud de los espectrogramas de Mel y el texto. En lugar de utilizar alineación forzada, introduce los &lt;em&gt;Filler Tokens&lt;/em&gt;, que permiten igualar la dimensión entre texto y audio de manera más sencilla. Esta estrategia facilita que el modelo aprenda la asociación temporal entre ambos elementos.&lt;/p&gt;
+&lt;p&gt;Otro cambio significativo es que el modelo trabaja directamente con texto en lugar de fonemas. Aunque esto podría parecer una desventaja (dado que palabras homógrafas pueden tener pronunciaciones diferentes), el contexto provee suficiente información para inferir la pronunciación adecuada, de manera similar al procesamiento del lenguaje natural en humanos.&lt;/p&gt;
+&lt;h3 id=&#34;3-f5-tts---open-source&#34;&gt;3. F5 TTS - &lt;em&gt;Open Source&lt;/em&gt;
+&lt;/h3&gt;&lt;p&gt;Si bien &lt;em&gt;E2 TTS&lt;/em&gt; representa un avance importante, su entrenamiento es lento debido a la necesidad de inferir asociaciones previamente guiadas. &lt;em&gt;F5 TTS&lt;/em&gt; optimiza el modelo anterior con las siguientes mejoras:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Uso de ConvNeXt&lt;/strong&gt;: Mejora el procesamiento del texto de entrada.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cambio de arquitectura&lt;/strong&gt;: Sustitución de la red &lt;em&gt;U-Net&lt;/em&gt; por &lt;em&gt;DiT&lt;/em&gt; (&lt;em&gt;Diffusion Transformer&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sway Sampling&lt;/strong&gt;: Optimización en el proceso de inferencia.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Además, &lt;em&gt;F5 TTS&lt;/em&gt; es de código abierto, lo que facilita su adopción y mejora por parte de la comunidad.&lt;/p&gt;
+&lt;h2 id=&#34;flow-matching---fundamentos-teóricos&#34;&gt;Flow Matching - Fundamentos Teóricos
+&lt;/h2&gt;&lt;p&gt;Para comprender el funcionamiento de &lt;em&gt;F5-TTS&lt;/em&gt;, es necesario revisar los modelos en los que se basa, conocidos como &lt;em&gt;Flow Matching Models&lt;/em&gt;. Estos modelos han evolucionado a partir de técnicas previas en modelado de distribuciones probabilísticas.&lt;/p&gt;
+&lt;h3 id=&#34;1-normalizing-flow&#34;&gt;1. Normalizing Flow
+&lt;/h3&gt;&lt;p&gt;Los &lt;em&gt;Normalizing Flows&lt;/em&gt; son una familia de modelos probabilísticos que transforman una distribución simple en una más compleja mediante una serie de funciones invertibles y diferenciables. Se utilizan para modelar distribuciones de datos de alta dimensión y generar muestras realistas con un control preciso sobre la probabilidad.&lt;/p&gt;
+&lt;h3 id=&#34;2-residual-flow&#34;&gt;2. Residual Flow
+&lt;/h3&gt;&lt;p&gt;Los &lt;em&gt;Residual Flows&lt;/em&gt; extienden los &lt;em&gt;Normalizing Flows&lt;/em&gt; al permitir transformaciones más flexibles sin necesidad de cumplir estrictamente con la condición de invertibilidad. Esto se logra mediante redes residuales que aproximan las funciones de transformación sin restricciones de estructura.&lt;/p&gt;
+&lt;h3 id=&#34;3-continuous-normalizing-flows-cnf&#34;&gt;3. Continuous Normalizing Flows (CNF)
+&lt;/h3&gt;&lt;p&gt;Los &lt;em&gt;Continuous Normalizing Flows&lt;/em&gt; reformulan los &lt;em&gt;Normalizing Flows&lt;/em&gt; en términos de ecuaciones diferenciales ordinarias (ODEs). En lugar de aplicar transformaciones discretas en pasos sucesivos, estos modelos aprenden una dinámica continua en el espacio latente, lo que permite una mayor expresividad y eficiencia computacional.&lt;/p&gt;
+&lt;h3 id=&#34;4-flow-matching&#34;&gt;4. Flow Matching
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;Flow Matching&lt;/em&gt; es una técnica que optimiza la transformación de una distribución de referencia a una distribución objetivo utilizando un enfoque basado en la minimización de una función de costo específica. Se diferencia de los enfoques anteriores al no requerir el cálculo explícito de la función de densidad, lo que lo hace especialmente útil para modelos generativos de gran escala, como &lt;em&gt;F5-TTS&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;grabación-de-la-presentación&#34;&gt;Grabación de la presentación
+&lt;/h2&gt;&lt;p&gt;Cada sección detalla en este artículo se explica en profundidad en la presentación:&lt;/p&gt;
+&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/YIpvFC41NUw&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+        </item>
+        <item>
         <title>Medidor de THD&#43;N</title>
         <link>http://localhost:1313/es/p/medidor-de-thd-n/</link>
         <pubDate>Tue, 26 Nov 2024 00:00:00 +0000</pubDate>

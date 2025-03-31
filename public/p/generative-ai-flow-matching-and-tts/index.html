@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="A class I prepare to understand the model F5-TTS where I cover generative AI foundamentals and flow matching based models.">
+<title>Generative AI, Flow Matching and TTS</title>
+
+<link rel='canonical' href='http://localhost:1313/p/generative-ai-flow-matching-and-tts/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Generative AI, Flow Matching and TTS">
+<meta property='og:description' content="A class I prepare to understand the model F5-TTS where I cover generative AI foundamentals and flow matching based models.">
+<meta property='og:url' content='http://localhost:1313/p/generative-ai-flow-matching-and-tts/'>
+<meta property='og:site_name' content='Matias Di Bernardo'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Work' /><meta property='article:published_time' content='2025-03-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-24T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/p/generative-ai-flow-matching-and-tts/front2.PNG' />
+<meta name="twitter:title" content="Generative AI, Flow Matching and TTS">
+<meta name="twitter:description" content="A class I prepare to understand the model F5-TTS where I cover generative AI foundamentals and flow matching based models."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/p/generative-ai-flow-matching-and-tts/front2.PNG' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pic_web_hu16898994747421290757.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Matias Di Bernardo</a></h1>
+            <h2 class="site-description">Personal blog and portfolio.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/MatiasDiBernardo'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/mat%C3%ADas-di-bernardo-46425b16b/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="none">
+    <path d="m15.15 8.4a5.83 5.83 0 0 0 -5.85 5.82v5.88a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a1.94 1.94 0 0 1 2.15-1.93 2 2 0 0 1 1.75 2v5.81a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a5.83 5.83 0 0 0 -5.85-5.82z"/>
+    <rect height="11.7" rx=".9" width="4.5" x="3" y="9.3"/><circle cx="5.25" cy="5.25" r="2.25"/></g>
+</svg>
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" selected>English</option>
+                                
+                                    <option value="http://localhost:1313/es/" >Español</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introduction---generative-ai-and-tts">Introduction - Generative AI and TTS</a></li>
+    <li><a href="#tts-models-voicebox-e2-and-f5">TTS Models: VoiceBox, E2, and F5</a>
+      <ol>
+        <li><a href="#1-voicebox-tts---in-context-learning">1. VoiceBox TTS - <em>In Context Learning</em></a></li>
+        <li><a href="#2-e2-tts---filler-tokens">2. E2 TTS - <em>Filler Tokens</em></a></li>
+        <li><a href="#3-f5-tts---open-source">3. F5 TTS - <em>Open Source</em></a></li>
+      </ol>
+    </li>
+    <li><a href="#flow-matching---theoretical-foundations">Flow Matching - Theoretical Foundations</a>
+      <ol>
+        <li><a href="#1-normalizing-flow">1. Normalizing Flow</a></li>
+        <li><a href="#2-residual-flow">2. Residual Flow</a></li>
+        <li><a href="#3-continuous-normalizing-flows-cnf">3. Continuous Normalizing Flows (CNF)</a></li>
+        <li><a href="#4-flow-matching">4. Flow Matching</a></li>
+      </ol>
+    </li>
+    <li><a href="#online-presentation">Online Presentation</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/generative-ai-flow-matching-and-tts/">
+                <img src="/p/generative-ai-flow-matching-and-tts/front2_hu8725485796305683492.PNG"
+                        srcset="/p/generative-ai-flow-matching-and-tts/front2_hu8725485796305683492.PNG 800w, /p/generative-ai-flow-matching-and-tts/front2_hu2279324367155428287.PNG 1600w"
+                        width="800" 
+                        height="479" 
+                        loading="lazy"
+                        alt="Featured image of post Generative AI, Flow Matching and TTS" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/math/" style="background-color: #32a8a4; color: #fff;">
+                Math
+            </a>
+        
+            <a href="/categories/deep-learning/" style="background-color: #345bbf; color: #fff;">
+                Deep Learning
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/generative-ai-flow-matching-and-tts/">Generative AI, Flow Matching and TTS</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            A class I prepare to understand the model F5-TTS where I cover generative AI foundamentals and flow matching based models.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 24, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="http://localhost:1313/es/p/ia-generativa-flow-matching-y-tts/" class="link">Español</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>At <em>Intercambios Transorgánicos</em>, we continuously work with state-of-the-art <em>Deep Learning</em> models. To achieve this, we stay up to date with the latest developments in the field. In this presentation, the objective was to explain the fundamentals of the <em>F5-TTS</em> model, a cutting-edge speech synthesis system. During the session, the concept of generative artificial intelligence and flow-based models was introduced, as <em>F5-TTS</em> is based on this technique. The purpose is to share this knowledge with the team and with anyone interested in getting started with <em>Text-to-Speech</em> (TTS) models.</p>
+<h2 id="introduction---generative-ai-and-tts">Introduction - Generative AI and TTS
+</h2><p>The class was structured as follows:</p>
+<ol>
+<li><strong>Introduction to TTS models</strong>: Description of the different models used, their main characteristics, and the reasons behind changing approaches.</li>
+<li><strong>Evolution of TTS models</strong>: A graph-based survey illustrating the progression of various TTS technologies.</li>
+<li><strong>Paradigm shift in language models</strong>: Explanation of how using large datasets has enabled better generalization in language models.</li>
+<li><strong>Example of generalization</strong>: Illustrative cases, such as generating an image of an astronaut riding a horse, audio examples, and synthesis of specific accents (e.g., an angry Cordoban speaker).</li>
+<li><strong>Change in dataset structuring</strong>:
+<ul>
+<li><strong>Traditional approach</strong>: Use of a single high-quality speaker with a large amount of data (model trained for each speaker).</li>
+<li><strong>Current and future approach</strong>: Use of diverse datasets with labels that enable training models capable of understanding speech concepts and generalizing across multiple tasks (<em>VoiceBox</em> examples).</li>
+<li><strong>Computational cost</strong>: Discussion of the increasing model size and training difficulty, similar to large-scale language models (<em>LLMs</em>).</li>
+</ul>
+</li>
+<li><strong>Explanation of Generative AI</strong>:
+<ul>
+<li>Introduction to generative models and the concept of underlying distribution.</li>
+<li>Explanation of <em>Transformers</em> and their function in classification with context. Clarification that while <em>Transformers</em> are <em>Non-Autoregressive</em> (NAR) during training, they operate <em>Autoregressively</em> (AR) in inference.</li>
+<li>Difference between classification models and generative models based on dimensionality reduction and latent variables.</li>
+</ul>
+</li>
+</ol>
+<h2 id="tts-models-voicebox-e2-and-f5">TTS Models: VoiceBox, E2, and F5
+</h2><p>This section details the key advancements in TTS models leading to the development of <em>F5-TTS</em>.</p>
+<h3 id="1-voicebox-tts---in-context-learning">1. VoiceBox TTS - <em>In Context Learning</em>
+</h3><p>The initial architecture of <em>VoiceBox</em> is introduced, focusing on generalization through <em>In Context Learning</em>. This approach allows the model to infer information based on prior examples. To achieve this, it is given an audio sample with a missing segment, forcing it to complete it coherently.</p>
+<blockquote>
+<p><em>&ldquo;We show that Voicebox’s text-guided speech infilling approach is much more scalable in terms of data while subsuming many common speech generative tasks.&rdquo;</em></p>
+</blockquote>
+<p>This method, introduced by Meta in <em>VoiceBox</em>, represents a paradigm shift by demonstrating that TTS models can benefit from techniques previously used in language and image models.</p>
+<p>However, the model still relies on classical TTS techniques such as phoneme duration prediction and <em>Forced Alignment</em> to map phonemes to Mel spectrograms, as their lengths do not match those of text tokens.</p>
+<h3 id="2-e2-tts---filler-tokens">2. E2 TTS - <em>Filler Tokens</em>
+</h3><p><em>E2 TTS</em> simplifies many of the architectural decisions of <em>VoiceBox</em>, particularly in handling the differing lengths of Mel spectrograms and text. Instead of using forced alignment, it introduces <em>Filler Tokens</em>, which allow text and audio dimensions to be equalized more efficiently. This approach makes it easier for the model to learn temporal associations between the two elements.</p>
+<p>Another significant change is that the model directly processes text instead of phonemes. While this might seem disadvantageous (since homographic words can have different pronunciations), context provides enough information to infer the correct pronunciation, similar to how humans process natural language.</p>
+<h3 id="3-f5-tts---open-source">3. F5 TTS - <em>Open Source</em>
+</h3><p>Although <em>E2 TTS</em> is a major step forward, its training is slow due to the need to infer associations that were previously guided. <em>F5 TTS</em> optimizes the previous model with the following improvements:</p>
+<ul>
+<li><strong>Use of ConvNeXt</strong>: Enhances text processing.</li>
+<li><strong>Architectural change</strong>: Replaces the <em>U-Net</em> network with <em>DiT</em> (<em>Diffusion Transformer</em>).</li>
+<li><strong>Sway Sampling</strong>: Optimizes the inference process.</li>
+</ul>
+<p>Additionally, <em>F5-TTS</em> is open-source, facilitating adoption and improvement by the community.</p>
+<h2 id="flow-matching---theoretical-foundations">Flow Matching - Theoretical Foundations
+</h2><p>To understand how <em>F5-TTS</em> works, it is essential to review the models it is based on, known as <em>Flow Matching Models</em>. These models have evolved from previous techniques in probabilistic distribution modeling.</p>
+<h3 id="1-normalizing-flow">1. Normalizing Flow
+</h3><p><em>Normalizing Flows</em> are a family of probabilistic models that transform a simple distribution into a more complex one through a series of invertible and differentiable functions. They are used to model high-dimensional data distributions and generate realistic samples with precise control over probability.</p>
+<h3 id="2-residual-flow">2. Residual Flow
+</h3><p><em>Residual Flows</em> extend <em>Normalizing Flows</em> by allowing more flexible transformations without strictly adhering to the invertibility condition. This is achieved through residual networks that approximate transformation functions without structural constraints.</p>
+<h3 id="3-continuous-normalizing-flows-cnf">3. Continuous Normalizing Flows (CNF)
+</h3><p><em>Continuous Normalizing Flows</em> reformulate <em>Normalizing Flows</em> using ordinary differential equations (ODEs). Instead of applying discrete transformations in successive steps, these models learn a continuous dynamic in the latent space, allowing for greater expressiveness and computational efficiency.</p>
+<h3 id="4-flow-matching">4. Flow Matching
+</h3><p><em>Flow Matching</em> is a technique that optimizes the transformation of a reference distribution into a target distribution by minimizing a specific cost function. It differs from previous approaches by not requiring explicit density function calculations, making it particularly useful for large-scale generative models such as <em>F5-TTS</em>.</p>
+<h2 id="online-presentation">Online Presentation
+</h2><p>All of this sections are explained on the online class avaliable here:</p>
+<div class="video-wrapper">
+    <iframe loading="lazy" 
+            src="https://www.youtube.com/embed/YIpvFC41NUw" 
+            allowfullscreen 
+            title="YouTube Video"
+    >
+    </iframe>
+</div>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/work/">Work</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/understanding-fastpitch-and-the-transformer-architecture/">
+        
+        
+            <div class="article-image">
+                <img src="/p/understanding-fastpitch-and-the-transformer-architecture/front.1b211b6859ce3757fe2b00fb1824392f.1b211b6859ce3757fe2b00fb1824392f_hu4001264290976053534.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Understanding FastPitch and the Transformer Architecture"
+                        
+                        data-hash="md5-GyEbaFnON1f&#43;KwD7GCQ5Lw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Understanding FastPitch and the Transformer Architecture</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/the-effect-of-denosing-on-tts/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">The effect of denosing on TTS</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ai-learns-to-play-2048-game/">
+        
+        
+            <div class="article-image">
+                <img src="/p/ai-learns-to-play-2048-game/game_img.0223cfdbcdd0a4ef7f84b6d2780b5cb6.0223cfdbcdd0a4ef7f84b6d2780b5cb6_hu5576651053822552112.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post AI learns to play 2048 game"
+                        
+                        data-hash="md5-AiPP283QpO9/hLbSeAtctg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AI learns to play 2048 game</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/comparative-analysis-of-time-frequency-transformations/">
+        
+        
+            <div class="article-image">
+                <img src="/p/comparative-analysis-of-time-frequency-transformations/fourier.422c0a62cee95b5853f3f9f1bea9d90c.422c0a62cee95b5853f3f9f1bea9d90c_hu7449372461140327351.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Comparative analysis of time-frequency transformations"
+                        
+                        data-hash="md5-QiwKYs7pW1hT8/nxvqnZDA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Comparative analysis of time-frequency transformations</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/evaluation-of-different-models-for-speaker-diarization-task/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Evaluation of different models for Speaker Diarization task</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2025 Matías Di Bernardo
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.0511f4da9331aeb0a842c33551d26e53240ed2a787a8401ae095d91bd84d13fb.js" defer></script><script type="text/javascript" src="/js/carousel.js"></script>
+<link rel="stylesheet" href="/css/carousel.css">
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

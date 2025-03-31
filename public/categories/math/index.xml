@@ -7,7 +7,79 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Matías Di Bernardo</copyright>
-        <lastBuildDate>Wed, 23 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/math/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/math/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Generative AI, Flow Matching and TTS</title>
+        <link>http://localhost:1313/p/generative-ai-flow-matching-and-tts/</link>
+        <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/generative-ai-flow-matching-and-tts/</guid>
+        <description>&lt;img src="http://localhost:1313/p/generative-ai-flow-matching-and-tts/front.PNG" alt="Featured image of post Generative AI, Flow Matching and TTS" /&gt;&lt;p&gt;At &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt;, we continuously work with state-of-the-art &lt;em&gt;Deep Learning&lt;/em&gt; models. To achieve this, we stay up to date with the latest developments in the field. In this presentation, the objective was to explain the fundamentals of the &lt;em&gt;F5-TTS&lt;/em&gt; model, a cutting-edge speech synthesis system. During the session, the concept of generative artificial intelligence and flow-based models was introduced, as &lt;em&gt;F5-TTS&lt;/em&gt; is based on this technique. The purpose is to share this knowledge with the team and with anyone interested in getting started with &lt;em&gt;Text-to-Speech&lt;/em&gt; (TTS) models.&lt;/p&gt;
+&lt;h2 id=&#34;introduction---generative-ai-and-tts&#34;&gt;Introduction - Generative AI and TTS
+&lt;/h2&gt;&lt;p&gt;The class was structured as follows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Introduction to TTS models&lt;/strong&gt;: Description of the different models used, their main characteristics, and the reasons behind changing approaches.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Evolution of TTS models&lt;/strong&gt;: A graph-based survey illustrating the progression of various TTS technologies.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Paradigm shift in language models&lt;/strong&gt;: Explanation of how using large datasets has enabled better generalization in language models.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Example of generalization&lt;/strong&gt;: Illustrative cases, such as generating an image of an astronaut riding a horse, audio examples, and synthesis of specific accents (e.g., an angry Cordoban speaker).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Change in dataset structuring&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Traditional approach&lt;/strong&gt;: Use of a single high-quality speaker with a large amount of data (model trained for each speaker).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Current and future approach&lt;/strong&gt;: Use of diverse datasets with labels that enable training models capable of understanding speech concepts and generalizing across multiple tasks (&lt;em&gt;VoiceBox&lt;/em&gt; examples).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Computational cost&lt;/strong&gt;: Discussion of the increasing model size and training difficulty, similar to large-scale language models (&lt;em&gt;LLMs&lt;/em&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Explanation of Generative AI&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Introduction to generative models and the concept of underlying distribution.&lt;/li&gt;
+&lt;li&gt;Explanation of &lt;em&gt;Transformers&lt;/em&gt; and their function in classification with context. Clarification that while &lt;em&gt;Transformers&lt;/em&gt; are &lt;em&gt;Non-Autoregressive&lt;/em&gt; (NAR) during training, they operate &lt;em&gt;Autoregressively&lt;/em&gt; (AR) in inference.&lt;/li&gt;
+&lt;li&gt;Difference between classification models and generative models based on dimensionality reduction and latent variables.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;tts-models-voicebox-e2-and-f5&#34;&gt;TTS Models: VoiceBox, E2, and F5
+&lt;/h2&gt;&lt;p&gt;This section details the key advancements in TTS models leading to the development of &lt;em&gt;F5-TTS&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;1-voicebox-tts---in-context-learning&#34;&gt;1. VoiceBox TTS - &lt;em&gt;In Context Learning&lt;/em&gt;
+&lt;/h3&gt;&lt;p&gt;The initial architecture of &lt;em&gt;VoiceBox&lt;/em&gt; is introduced, focusing on generalization through &lt;em&gt;In Context Learning&lt;/em&gt;. This approach allows the model to infer information based on prior examples. To achieve this, it is given an audio sample with a missing segment, forcing it to complete it coherently.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;We show that Voicebox’s text-guided speech infilling approach is much more scalable in terms of data while subsuming many common speech generative tasks.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This method, introduced by Meta in &lt;em&gt;VoiceBox&lt;/em&gt;, represents a paradigm shift by demonstrating that TTS models can benefit from techniques previously used in language and image models.&lt;/p&gt;
+&lt;p&gt;However, the model still relies on classical TTS techniques such as phoneme duration prediction and &lt;em&gt;Forced Alignment&lt;/em&gt; to map phonemes to Mel spectrograms, as their lengths do not match those of text tokens.&lt;/p&gt;
+&lt;h3 id=&#34;2-e2-tts---filler-tokens&#34;&gt;2. E2 TTS - &lt;em&gt;Filler Tokens&lt;/em&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;E2 TTS&lt;/em&gt; simplifies many of the architectural decisions of &lt;em&gt;VoiceBox&lt;/em&gt;, particularly in handling the differing lengths of Mel spectrograms and text. Instead of using forced alignment, it introduces &lt;em&gt;Filler Tokens&lt;/em&gt;, which allow text and audio dimensions to be equalized more efficiently. This approach makes it easier for the model to learn temporal associations between the two elements.&lt;/p&gt;
+&lt;p&gt;Another significant change is that the model directly processes text instead of phonemes. While this might seem disadvantageous (since homographic words can have different pronunciations), context provides enough information to infer the correct pronunciation, similar to how humans process natural language.&lt;/p&gt;
+&lt;h3 id=&#34;3-f5-tts---open-source&#34;&gt;3. F5 TTS - &lt;em&gt;Open Source&lt;/em&gt;
+&lt;/h3&gt;&lt;p&gt;Although &lt;em&gt;E2 TTS&lt;/em&gt; is a major step forward, its training is slow due to the need to infer associations that were previously guided. &lt;em&gt;F5 TTS&lt;/em&gt; optimizes the previous model with the following improvements:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Use of ConvNeXt&lt;/strong&gt;: Enhances text processing.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Architectural change&lt;/strong&gt;: Replaces the &lt;em&gt;U-Net&lt;/em&gt; network with &lt;em&gt;DiT&lt;/em&gt; (&lt;em&gt;Diffusion Transformer&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sway Sampling&lt;/strong&gt;: Optimizes the inference process.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Additionally, &lt;em&gt;F5-TTS&lt;/em&gt; is open-source, facilitating adoption and improvement by the community.&lt;/p&gt;
+&lt;h2 id=&#34;flow-matching---theoretical-foundations&#34;&gt;Flow Matching - Theoretical Foundations
+&lt;/h2&gt;&lt;p&gt;To understand how &lt;em&gt;F5-TTS&lt;/em&gt; works, it is essential to review the models it is based on, known as &lt;em&gt;Flow Matching Models&lt;/em&gt;. These models have evolved from previous techniques in probabilistic distribution modeling.&lt;/p&gt;
+&lt;h3 id=&#34;1-normalizing-flow&#34;&gt;1. Normalizing Flow
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;Normalizing Flows&lt;/em&gt; are a family of probabilistic models that transform a simple distribution into a more complex one through a series of invertible and differentiable functions. They are used to model high-dimensional data distributions and generate realistic samples with precise control over probability.&lt;/p&gt;
+&lt;h3 id=&#34;2-residual-flow&#34;&gt;2. Residual Flow
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;Residual Flows&lt;/em&gt; extend &lt;em&gt;Normalizing Flows&lt;/em&gt; by allowing more flexible transformations without strictly adhering to the invertibility condition. This is achieved through residual networks that approximate transformation functions without structural constraints.&lt;/p&gt;
+&lt;h3 id=&#34;3-continuous-normalizing-flows-cnf&#34;&gt;3. Continuous Normalizing Flows (CNF)
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;Continuous Normalizing Flows&lt;/em&gt; reformulate &lt;em&gt;Normalizing Flows&lt;/em&gt; using ordinary differential equations (ODEs). Instead of applying discrete transformations in successive steps, these models learn a continuous dynamic in the latent space, allowing for greater expressiveness and computational efficiency.&lt;/p&gt;
+&lt;h3 id=&#34;4-flow-matching&#34;&gt;4. Flow Matching
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;Flow Matching&lt;/em&gt; is a technique that optimizes the transformation of a reference distribution into a target distribution by minimizing a specific cost function. It differs from previous approaches by not requiring explicit density function calculations, making it particularly useful for large-scale generative models such as &lt;em&gt;F5-TTS&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;online-presentation&#34;&gt;Online Presentation
+&lt;/h2&gt;&lt;p&gt;All of this sections are explained on the online class avaliable here:&lt;/p&gt;
+&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/YIpvFC41NUw&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+        </item>
+        <item>
         <title>Understanding FastPitch and the Transformer Architecture</title>
         <link>http://localhost:1313/p/understanding-fastpitch-and-the-transformer-architecture/</link>
         <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>

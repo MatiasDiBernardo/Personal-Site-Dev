@@ -7,7 +7,23 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Matías Di Bernardo</copyright>
-        <lastBuildDate>Tue, 26 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Deep Learning</title>
+        <link>http://localhost:1313/categories/deep-learning/</link>
+        <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/categories/deep-learning/</guid>
+        <description>&lt;img src="http://localhost:1313/categories/deep-learning/deep_img.jpeg" alt="Featured image of post Deep Learning" /&gt;</description>
+        </item>
+        <item>
+        <title>Math</title>
+        <link>http://localhost:1313/categories/math/</link>
+        <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/categories/math/</guid>
+        <description>&lt;img src="http://localhost:1313/categories/math/math_img.jpg" alt="Featured image of post Math" /&gt;</description>
+        </item>
+        <item>
         <title>Electronics</title>
         <link>http://localhost:1313/categories/electronics/</link>
         <pubDate>Tue, 26 Nov 2024 00:00:00 +0000</pubDate>
@@ -24,28 +40,12 @@
         <description>&lt;img src="http://localhost:1313/categories/acoustics/ac_img.PNG" alt="Featured image of post Acoustics" /&gt;</description>
         </item>
         <item>
-        <title>Deep Learning</title>
-        <link>http://localhost:1313/categories/deep-learning/</link>
-        <pubDate>Fri, 22 Nov 2024 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/categories/deep-learning/</guid>
-        <description>&lt;img src="http://localhost:1313/categories/deep-learning/deep_img.jpeg" alt="Featured image of post Deep Learning" /&gt;</description>
-        </item>
-        <item>
         <title>Programming</title>
         <link>http://localhost:1313/categories/programming/</link>
         <pubDate>Wed, 17 Apr 2024 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/categories/programming/</guid>
         <description>&lt;img src="http://localhost:1313/categories/programming/prog_img.jpg" alt="Featured image of post Programming" /&gt;</description>
-        </item>
-        <item>
-        <title>Math</title>
-        <link>http://localhost:1313/categories/math/</link>
-        <pubDate>Wed, 23 Aug 2023 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/categories/math/</guid>
-        <description>&lt;img src="http://localhost:1313/categories/math/math_img.jpg" alt="Featured image of post Math" /&gt;</description>
         </item>
         <item>
         <title>DSP</title>
