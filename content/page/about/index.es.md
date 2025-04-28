@@ -9,6 +9,8 @@ menu:
 
 Hola, mi nombre es Matías Di Bernardo. Soy estudiante de Ingeniería en Sonido e Ingeniería en Computación en Argentina. Me encanta aprender cosas nuevas y tengo una amplia gama de intereses, incluyendo algoritmos, aprendizaje profundo, procesamiento digital de señales (DSP), acústica y más. En mi tiempo libre, disfruto tocar música (toco el piano) y leer.
 
+{{< youtube O0v7Ruq_-uQ >}}
+
 ## Estudios
 Comencé a estudiar en 2019 para obtener el título de Ingeniero en Sonido en la UNTREF. Elegí esta carrera porque, como músico, quería combinar mi pasión por la música con mi interés en las matemáticas y las ciencias. Rápidamente me di cuenta de que una carrera en ingeniería ofrece mucho más de lo que imaginaba, y disfruté especialmente los cursos básicos de matemáticas, así como aquellos enfocados en acústica y procesamiento digital de señales.
 

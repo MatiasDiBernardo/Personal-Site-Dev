@@ -140,6 +140,63 @@ $$&lt;p&gt;Cada fotograma recalcula la función de transferencia. El programa fu
 </description>
         </item>
         <item>
+        <title>Algorítmos de modificación de escala temporal</title>
+        <link>http://localhost:1313/es/p/algor%C3%ADtmos-de-modificaci%C3%B3n-de-escala-temporal/</link>
+        <pubDate>Thu, 09 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/algor%C3%ADtmos-de-modificaci%C3%B3n-de-escala-temporal/</guid>
+        <description>&lt;img src="http://localhost:1313/p/time-scale-modification-algorithms/tsm.PNG" alt="Featured image of post Algorítmos de modificación de escala temporal" /&gt;&lt;p&gt;Los algoritmos de modificación de escala temporal se utilizan para acelerar o desacelerar la velocidad de reproducción de un audio. Cuando se cambia la tasa de muestreo de un audio, la velocidad cambia, pero también lo hace el tono (al acelerar el audio, suena con un tono más alto). Existen diferentes algoritmos que permiten modificar la velocidad del audio manteniendo constante el tono.&lt;/p&gt;
+&lt;p&gt;La principal referencia para este estudio es el siguiente artículo, donde se describen en detalle los distintos algoritmos.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A Review of Time-Scale Modification of Music Signals.&lt;br&gt;
+— &lt;cite&gt;Jonathan Driedger y Meinard Müller&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;comparación-de-algoritmos&#34;&gt;Comparación de algoritmos
+&lt;/h2&gt;&lt;p&gt;Existen dos algoritmos principales, el &lt;em&gt;Overlap-and-add&lt;/em&gt; (OLA) y el &lt;em&gt;Phase Vocoder&lt;/em&gt; (PV). Ambos logran buenos resultados bajo diferentes señales y condiciones. Para aprovechar las ventajas de ambos métodos, se utiliza una implementación final basada en la &lt;em&gt;Separación Armónico-Percusiva&lt;/em&gt; (HPS), que combina ambos algoritmos y logra los mejores resultados.&lt;/p&gt;
+&lt;h3 id=&#34;ola&#34;&gt;OLA
+&lt;/h3&gt;&lt;p&gt;Este método trabaja en el dominio del tiempo, superponiendo secciones del audio (ventanas) y reorganizándolas para lograr un cambio deseado en la velocidad. Este método funciona bien para señales percusivas, pero introduce artefactos cuando se utiliza con señales armónicas o tonales.&lt;/p&gt;
+&lt;h3 id=&#34;pv&#34;&gt;PV
+&lt;/h3&gt;&lt;p&gt;Este método opera en el dominio de la frecuencia, combinando fragmentos de audio en este dominio para lograr el cambio deseado en el tiempo. Utiliza el principio del vocoder de fase para propagar la fase entre ventanas, garantizando la continuidad al aplicarse a señales armónicas. Sin embargo, no es efectivo para señales percusivas, ya que el proceso de propagación de fase elimina los transitorios en las señales.&lt;/p&gt;
+&lt;p&gt;Creé visualizaciones usando &lt;em&gt;Manim&lt;/em&gt; para mejorar mi presentación en clase. El primer video muestra cómo el algoritmo PV alinea las ventanas para garantizar transiciones suaves en la señal generada a lo largo del tiempo. Para lograrlo, se aplica una ventana gaussiana que mantiene la continuidad y suavidad, incluso al inicio y al final de la secuencia.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045495557&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;El segundo video muestra los efectos de aplicar el algoritmo PV a una señal que contiene transitorios.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/1045495634&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Como predice la teoría, los transitorios desaparecen porque el algoritmo PV interrumpe la alineación vertical de la fase. Aunque estos ejemplos utilizan señales idealizadas, demuestran de manera efectiva las principales fortalezas y limitaciones del algoritmo.&lt;/p&gt;
+&lt;h3 id=&#34;hps&#34;&gt;HPS
+&lt;/h3&gt;&lt;p&gt;Para utilizar ambos métodos con las señales ideales, se emplea el algoritmo HPS. Este algoritmo separa la señal en sus componentes armónicas y percusivas. Funciona comparando la continuidad de la señal en la representación STFT, utilizando un filtro que compara la presencia vertical contra la horizontal en el espectrograma. Con un umbral, se puede definir una máscara binaria sobre el espectrograma para separar las partes percusivas de las secciones armónicas.&lt;/p&gt;
+&lt;h2 id=&#34;resultados&#34;&gt;Resultados
+&lt;/h2&gt;&lt;p&gt;Implementamos con éxito todos los algoritmos y los comparamos, verificando los contenidos teóricos presentados en el artículo de referencia. Durante el proceso, desarrollamos un conjunto de herramientas para utilizar estos algoritmos con el lenguaje de programación Python. Todo el código está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/TSM_Toolkit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;presentación-académica&#34;&gt;Presentación académica
+&lt;/h2&gt;&lt;p&gt;El estudio fue presentado junto a mis compañeros en las &lt;em&gt;JAAS&lt;/em&gt; (Jornadas de Acústica, Audio y Sonido). Las principales ideas y conclusiones se expusieron en la conferencia. En el siguiente informe se encuentran todos los detalles y análisis realizados para este proyecto (en español).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ALGORITMOS DE MODIFICACIÓN DE ESCALA TEMPORAL.&lt;br&gt;
+— &lt;cite&gt;Matías Di Bernardo; Matías Vereertbruhggen; Sebastían Carro&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;A Review of Time-Scale Modification of Music Signal &lt;a class=&#34;link&#34; href=&#34;https://www.researchgate.net/publication/295082364_A_Review_of_Time-Scale_Modification_of_Music_Signals&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;paper&lt;/a&gt;.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;JAAS 2023 - Algoritmos de Modificación de Escala Temporal &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/12kPB3qBjczyx7X2XV3ZpBDo1GDO2u4qR/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;paper&lt;/a&gt;.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        <item>
         <title>IA aprende a jugar 2048</title>
         <link>http://localhost:1313/es/p/ia-aprende-a-jugar-2048/</link>
         <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
@@ -227,63 +284,6 @@ $$&lt;p&gt;Donde:&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;El código completo para este proyecto está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/RF_2048-game&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Algorítmos de modificación de escala temporal</title>
-        <link>http://localhost:1313/es/p/algor%C3%ADtmos-de-modificaci%C3%B3n-de-escala-temporal/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/es/p/algor%C3%ADtmos-de-modificaci%C3%B3n-de-escala-temporal/</guid>
-        <description>&lt;img src="http://localhost:1313/p/time-scale-modification-algorithms/tsm.PNG" alt="Featured image of post Algorítmos de modificación de escala temporal" /&gt;&lt;p&gt;Los algoritmos de modificación de escala temporal se utilizan para acelerar o desacelerar la velocidad de reproducción de un audio. Cuando se cambia la tasa de muestreo de un audio, la velocidad cambia, pero también lo hace el tono (al acelerar el audio, suena con un tono más alto). Existen diferentes algoritmos que permiten modificar la velocidad del audio manteniendo constante el tono.&lt;/p&gt;
-&lt;p&gt;La principal referencia para este estudio es el siguiente artículo, donde se describen en detalle los distintos algoritmos.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A Review of Time-Scale Modification of Music Signals.&lt;br&gt;
-— &lt;cite&gt;Jonathan Driedger y Meinard Müller&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;comparación-de-algoritmos&#34;&gt;Comparación de algoritmos
-&lt;/h2&gt;&lt;p&gt;Existen dos algoritmos principales, el &lt;em&gt;Overlap-and-add&lt;/em&gt; (OLA) y el &lt;em&gt;Phase Vocoder&lt;/em&gt; (PV). Ambos logran buenos resultados bajo diferentes señales y condiciones. Para aprovechar las ventajas de ambos métodos, se utiliza una implementación final basada en la &lt;em&gt;Separación Armónico-Percusiva&lt;/em&gt; (HPS), que combina ambos algoritmos y logra los mejores resultados.&lt;/p&gt;
-&lt;h3 id=&#34;ola&#34;&gt;OLA
-&lt;/h3&gt;&lt;p&gt;Este método trabaja en el dominio del tiempo, superponiendo secciones del audio (ventanas) y reorganizándolas para lograr un cambio deseado en la velocidad. Este método funciona bien para señales percusivas, pero introduce artefactos cuando se utiliza con señales armónicas o tonales.&lt;/p&gt;
-&lt;h3 id=&#34;pv&#34;&gt;PV
-&lt;/h3&gt;&lt;p&gt;Este método opera en el dominio de la frecuencia, combinando fragmentos de audio en este dominio para lograr el cambio deseado en el tiempo. Utiliza el principio del vocoder de fase para propagar la fase entre ventanas, garantizando la continuidad al aplicarse a señales armónicas. Sin embargo, no es efectivo para señales percusivas, ya que el proceso de propagación de fase elimina los transitorios en las señales.&lt;/p&gt;
-&lt;p&gt;Creé visualizaciones usando &lt;em&gt;Manim&lt;/em&gt; para mejorar mi presentación en clase. El primer video muestra cómo el algoritmo PV alinea las ventanas para garantizar transiciones suaves en la señal generada a lo largo del tiempo. Para lograrlo, se aplica una ventana gaussiana que mantiene la continuidad y suavidad, incluso al inicio y al final de la secuencia.&lt;/p&gt;
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://player.vimeo.com/video/1045495557&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;p&gt;El segundo video muestra los efectos de aplicar el algoritmo PV a una señal que contiene transitorios.&lt;/p&gt;
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://player.vimeo.com/video/1045495634&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Como predice la teoría, los transitorios desaparecen porque el algoritmo PV interrumpe la alineación vertical de la fase. Aunque estos ejemplos utilizan señales idealizadas, demuestran de manera efectiva las principales fortalezas y limitaciones del algoritmo.&lt;/p&gt;
-&lt;h3 id=&#34;hps&#34;&gt;HPS
-&lt;/h3&gt;&lt;p&gt;Para utilizar ambos métodos con las señales ideales, se emplea el algoritmo HPS. Este algoritmo separa la señal en sus componentes armónicas y percusivas. Funciona comparando la continuidad de la señal en la representación STFT, utilizando un filtro que compara la presencia vertical contra la horizontal en el espectrograma. Con un umbral, se puede definir una máscara binaria sobre el espectrograma para separar las partes percusivas de las secciones armónicas.&lt;/p&gt;
-&lt;h2 id=&#34;resultados&#34;&gt;Resultados
-&lt;/h2&gt;&lt;p&gt;Implementamos con éxito todos los algoritmos y los comparamos, verificando los contenidos teóricos presentados en el artículo de referencia. Durante el proceso, desarrollamos un conjunto de herramientas para utilizar estos algoritmos con el lenguaje de programación Python. Todo el código está disponible en este &lt;a class=&#34;link&#34; href=&#34;https://github.com/MatiasDiBernardo/TSM_Toolkit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;repositorio&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;presentación-académica&#34;&gt;Presentación académica
-&lt;/h2&gt;&lt;p&gt;El estudio fue presentado junto a mis compañeros en las &lt;em&gt;JAAS&lt;/em&gt; (Jornadas de Acústica, Audio y Sonido). Las principales ideas y conclusiones se expusieron en la conferencia. En el siguiente informe se encuentran todos los detalles y análisis realizados para este proyecto (en español).&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;ALGORITMOS DE MODIFICACIÓN DE ESCALA TEMPORAL.&lt;br&gt;
-— &lt;cite&gt;Matías Di Bernardo; Matías Vereertbruhggen; Sebastían Carro&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34;&gt;
-&lt;p&gt;A Review of Time-Scale Modification of Music Signal &lt;a class=&#34;link&#34; href=&#34;https://www.researchgate.net/publication/295082364_A_Review_of_Time-Scale_Modification_of_Music_Signals&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;paper&lt;/a&gt;.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34;&gt;
-&lt;p&gt;JAAS 2023 - Algoritmos de Modificación de Escala Temporal &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/12kPB3qBjczyx7X2XV3ZpBDo1GDO2u4qR/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;paper&lt;/a&gt;.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
 </description>
         </item>
         

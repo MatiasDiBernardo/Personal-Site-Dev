@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/es/</loc>
-    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/es/categories/</loc>
-    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -29,7 +29,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/es/categories/deep-learning/</loc>
-    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -42,7 +42,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/es/p/ia-generativa-flow-matching-y-tts/</loc>
-    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -55,7 +55,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/es/categories/math/</loc>
-    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -68,7 +68,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/es/post/</loc>
-    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -81,7 +81,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/es/tags/</loc>
-    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -94,7 +94,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/es/tags/work/</loc>
-    <lastmod>2025-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -275,6 +275,19 @@
                 href="http://localhost:1313/es/p/z-plane-visualizer/"
                 />
   </url><url>
+    <loc>http://localhost:1313/es/p/algor%C3%ADtmos-de-modificaci%C3%B3n-de-escala-temporal/</loc>
+    <lastmod>2023-03-09T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/p/time-scale-modification-algorithms/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/p/algor%C3%ADtmos-de-modificaci%C3%B3n-de-escala-temporal/"
+                />
+  </url><url>
     <loc>http://localhost:1313/es/p/ia-aprende-a-jugar-2048/</loc>
     <lastmod>2023-02-17T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -351,19 +364,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="http://localhost:1313/es/page/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/es/p/algor%C3%ADtmos-de-modificaci%C3%B3n-de-escala-temporal/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/p/time-scale-modification-algorithms/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/p/algor%C3%ADtmos-de-modificaci%C3%B3n-de-escala-temporal/"
                 />
   </url><url>
     <loc>http://localhost:1313/es/search/</loc>

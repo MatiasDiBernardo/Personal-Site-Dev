@@ -67,7 +67,7 @@
 &lt;h3 id=&#34;4-flow-matching&#34;&gt;4. Flow Matching
 &lt;/h3&gt;&lt;p&gt;&lt;em&gt;Flow Matching&lt;/em&gt; is a technique that optimizes the transformation of a reference distribution into a target distribution by minimizing a specific cost function. It differs from previous approaches by not requiring explicit density function calculations, making it particularly useful for large-scale generative models such as &lt;em&gt;F5-TTS&lt;/em&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;online-presentation&#34;&gt;Online Presentation
-&lt;/h2&gt;&lt;p&gt;All of this sections are explained on the online class avaliable here:&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;All of this sections are explained in detail on the online class avaliable here (in Spanish):&lt;/p&gt;
 &lt;div class=&#34;video-wrapper&#34;&gt;
     &lt;iframe loading=&#34;lazy&#34; 
             src=&#34;https://www.youtube.com/embed/YIpvFC41NUw&#34; 

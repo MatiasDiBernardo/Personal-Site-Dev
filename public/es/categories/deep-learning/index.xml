@@ -7,13 +7,13 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>es</language>
         <copyright>Matías Di Bernardo</copyright>
-        <lastBuildDate>Sun, 16 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 24 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>IA Generativa, Flow Matching y TTS</title>
         <link>http://localhost:1313/es/p/ia-generativa-flow-matching-y-tts/</link>
-        <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 24 Mar 2025 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/es/p/ia-generativa-flow-matching-y-tts/</guid>
-        <description>&lt;img src="http://localhost:1313/p/generative-ai-flow-matching-and-tts/front.PNG" alt="Featured image of post IA Generativa, Flow Matching y TTS" /&gt;&lt;p&gt;En &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt;, trabajamos continuamente con modelos de &lt;em&gt;Deep Learning&lt;/em&gt; de última generación. Para ello, nos mantenemos en constante aprendizaje sobre los desarrollos más recientes en el campo. En esta presentación, el objetivo fue explicar los fundamentos del modelo &lt;em&gt;F5-TTS&lt;/em&gt;, un sistema de síntesis de voz de vanguardia. Durante el desarrollo, se introdujo el concepto de inteligencia artificial generativa y los modelos de flujo (&lt;em&gt;flow-based models&lt;/em&gt;), dado que &lt;em&gt;F5-TTS&lt;/em&gt; se basa en esta técnica. El propósito es compartir este conocimiento con el equipo y con cualquier persona interesada en iniciarse en los modelos de conversión de texto a voz (&lt;em&gt;Text-to-Speech&lt;/em&gt;).&lt;/p&gt;
+        <description>&lt;img src="http://localhost:1313/p/generative-ai-flow-matching-and-tts/front2.PNG" alt="Featured image of post IA Generativa, Flow Matching y TTS" /&gt;&lt;p&gt;En &lt;em&gt;Intercambios Transorgánicos&lt;/em&gt;, trabajamos continuamente con modelos de &lt;em&gt;Deep Learning&lt;/em&gt; de última generación. Para ello, nos mantenemos en constante aprendizaje sobre los desarrollos más recientes en el campo. En esta presentación, el objetivo fue explicar los fundamentos del modelo &lt;em&gt;F5-TTS&lt;/em&gt;, un sistema de síntesis de voz de vanguardia. Durante el desarrollo, se introdujo el concepto de inteligencia artificial generativa y los modelos de flujo (&lt;em&gt;flow-based models&lt;/em&gt;), dado que &lt;em&gt;F5-TTS&lt;/em&gt; se basa en esta técnica. El propósito es compartir este conocimiento con el equipo y con cualquier persona interesada en iniciarse en los modelos de conversión de texto a voz (&lt;em&gt;Text-to-Speech&lt;/em&gt;).&lt;/p&gt;
 &lt;h2 id=&#34;introducción---ia-generativa-y-tts&#34;&gt;Introducción - IA Generativa y TTS
 &lt;/h2&gt;&lt;p&gt;La estructura de la clase se organizó de la siguiente manera:&lt;/p&gt;
 &lt;ol&gt;
