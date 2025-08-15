@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/es/</loc>
-    <lastmod>2025-05-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-06-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -13,6 +13,84 @@
                 rel="alternate"
                 hreflang="es"
                 href="http://localhost:1313/es/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/p/algoritmo-de-optimizaci%C3%B3n-modal-para-recintos-peque%C3%B1os/</loc>
+    <lastmod>2025-06-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/p/algoritmo-de-optimizaci%C3%B3n-modal-para-recintos-peque%C3%B1os/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/categories/</loc>
+    <lastmod>2025-06-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/categories/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/categories/electronics/</loc>
+    <lastmod>2025-06-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/categories/electronics/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/categories/electronics/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/post/</loc>
+    <lastmod>2025-06-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/post/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/tags/</loc>
+    <lastmod>2025-06-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/tags/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/tags/university/</loc>
+    <lastmod>2025-06-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/tags/university/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/tags/university/"
                 />
   </url><url>
     <loc>http://localhost:1313/es/categories/acoustics/</loc>
@@ -28,19 +106,6 @@
                 href="http://localhost:1313/es/categories/acoustics/"
                 />
   </url><url>
-    <loc>http://localhost:1313/es/categories/</loc>
-    <lastmod>2025-05-09T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/categories/"
-                />
-  </url><url>
     <loc>http://localhost:1313/es/p/medici%C3%B3n-de-par%C3%A1metros-ac%C3%BAsticos-en-la-usina-del-arte/</loc>
     <lastmod>2025-05-09T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -52,45 +117,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="http://localhost:1313/es/p/medici%C3%B3n-de-par%C3%A1metros-ac%C3%BAsticos-en-la-usina-del-arte/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/es/post/</loc>
-    <lastmod>2025-05-09T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/post/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/es/tags/</loc>
-    <lastmod>2025-05-09T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/tags/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/es/tags/university/</loc>
-    <lastmod>2025-05-09T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/tags/university/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/tags/university/"
                 />
   </url><url>
     <loc>http://localhost:1313/es/categories/deep-learning/</loc>
@@ -143,19 +169,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="http://localhost:1313/es/tags/work/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/es/categories/electronics/</loc>
-    <lastmod>2024-11-26T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/categories/electronics/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/categories/electronics/"
                 />
   </url><url>
     <loc>http://localhost:1313/es/p/medidor-de-thd-n/</loc>

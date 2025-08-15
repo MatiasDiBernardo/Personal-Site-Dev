@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Desarrollo de software que optimiza la geometría de salas usando FEM para la simulación acústica y algorítmos genéticos para la optimización.">
+<title>Algoritmo de optimización modal para recintos pequeños</title>
+
+<link rel='canonical' href='http://localhost:1313/es/p/algoritmo-de-optimizaci%C3%B3n-modal-para-recintos-peque%C3%B1os/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Algoritmo de optimización modal para recintos pequeños">
+<meta property='og:description' content="Desarrollo de software que optimiza la geometría de salas usando FEM para la simulación acústica y algorítmos genéticos para la optimización.">
+<meta property='og:url' content='http://localhost:1313/es/p/algoritmo-de-optimizaci%C3%B3n-modal-para-recintos-peque%C3%B1os/'>
+<meta property='og:site_name' content='Matias Di Bernardo'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='University' /><meta property='article:published_time' content='2025-06-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-26T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/port.PNG' />
+<meta name="twitter:title" content="Algoritmo de optimización modal para recintos pequeños">
+<meta name="twitter:description" content="Desarrollo de software que optimiza la geometría de salas usando FEM para la simulación acústica y algorítmos genéticos para la optimización."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/port.PNG' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Ocultar menú">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/es/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/pic_web_hu16898994747421290757.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/es">Matias Di Bernardo</a></h1>
+            <h2 class="site-description">Blog personal y portfolio.</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/MatiasDiBernardo'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/mat%C3%ADas-di-bernardo-46425b16b/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="m0 0h24v24h-24z" fill="#fff" opacity="0" transform="matrix(-1 0 0 -1 24 24)"/><g fill="none">
+    <path d="m15.15 8.4a5.83 5.83 0 0 0 -5.85 5.82v5.88a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a1.94 1.94 0 0 1 2.15-1.93 2 2 0 0 1 1.75 2v5.81a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a5.83 5.83 0 0 0 -5.85-5.82z"/>
+    <rect height="11.7" rx=".9" width="4.5" x="3" y="9.3"/><circle cx="5.25" cy="5.25" r="2.25"/></g>
+</svg>
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/es/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Inicio</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/es/sobre-m%C3%AD/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>Sobre mí</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/es/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archivos</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/es/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Buscar</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" >English</option>
+                                
+                                    <option value="http://localhost:1313/es/" selected>Español</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Modo oscuro</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Tabla de contenido</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#introducción"><strong>Introducción</strong></a></li>
+        <li><a href="#marco-teórico-y-criterios-clásicos"><strong>Marco Teórico y Criterios Clásicos</strong></a></li>
+        <li><a href="#metodología-y-desarrollo-del-software"><strong>Metodología y Desarrollo del Software</strong></a></li>
+        <li><a href="#resultados-y-conclusiones"><strong>Resultados y Conclusiones</strong></a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/es/p/algoritmo-de-optimizaci%C3%B3n-modal-para-recintos-peque%C3%B1os/">
+                <img src="/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/port_hu7761813516164401286.PNG"
+                        srcset="/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/port_hu7761813516164401286.PNG 800w, /p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/port_hu2387329934198952507.PNG 1600w"
+                        width="800" 
+                        height="767" 
+                        loading="lazy"
+                        alt="Featured image of post Algoritmo de optimización modal para recintos pequeños" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/es/categories/electronics/" >
+                Electronics
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/es/p/algoritmo-de-optimizaci%C3%B3n-modal-para-recintos-peque%C3%B1os/">Algoritmo de optimización modal para recintos pequeños</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Desarrollo de software que optimiza la geometría de salas usando FEM para la simulación acústica y algorítmos genéticos para la optimización.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">jun. 26, 2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    Tiempo de lectura 4 minutos
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Este trabajo se desarrollo en el contexto de la materia <em>Instrumentos y Mediciones Acústicas</em> en UNTREF Argentina.</p>
+<h3 id="introducción"><strong>Introducción</strong>
+</h3><p>Las salas de control y los entornos de escucha crítica a menudo sufren de respuestas acústicas irregulares en bajas frecuencias. Estas irregularidades, causadas por una distribución dispersa de los modos de vibración, generan &ldquo;coloraciones&rdquo; que dificultan una evaluación sonora precisa. Tradicionalmente, se han utilizado criterios como los de Bonello, Bolt y Louden para optimizar la geometría de salas rectangulares y mejorar la distribución modal. Sin embargo, estas metodologías no consideran la influencia de contornos complejos ni la ubicación de la fuente y el oyente.</p>
+<p>Este trabajo presenta una herramienta de código abierto desarrollada en <strong>Python/FEniCS</strong> que aborda estas limitaciones. El software utiliza la optimización geométrica por fuerza bruta sobre modelos de elementos finitos (FEM) para encontrar dimensiones y contornos de sala que proporcionen una distribución modal más uniforme.</p>
+<h3 id="marco-teórico-y-criterios-clásicos"><strong>Marco Teórico y Criterios Clásicos</strong>
+</h3><p>El comportamiento de las bajas frecuencias en un recinto está dominado por las ondas estacionarias, o modos normales, que se caracterizan por nodos y antinodos de presión. Los modos axiales, tangenciales y oblicuos, cuyas frecuencias dependen de las dimensiones de la sala, pueden generar problemas de coloración si se agrupan.</p>
+<p>Los criterios clásicos de diseño, como los de <strong>Bolt</strong>, <strong>Bonello</strong> y <strong>Louden</strong>, se centran en evitar agrupamientos modales y proponen proporciones geométricas óptimas para salas rectangulares. Sin embargo, estos enfoques tienen una limitación importante: no consideran factores cruciales como la posición de la fuente sonora y el receptor, y están restringidos a geometrías simples.</p>
+<h3 id="metodología-y-desarrollo-del-software"><strong>Metodología y Desarrollo del Software</strong>
+</h3><p>La herramienta desarrollada combina un proceso de optimización en dos etapas.</p>
+<ol>
+<li><strong>Búsqueda Inicial:</strong> Primero, el software realiza una búsqueda rápida en geometrías de paralelepípedos rectangulares utilizando el método clásico de superposición modal (SM) para identificar las proporciones geométricas iniciales más prometedoras.</li>
+<li><strong>Refinamiento y Optimización:</strong> Luego, refina la búsqueda generando contornos planarios aleatorios con simetría forzada y aplica el <strong>Método de Elementos Finitos en el dominio de la Frecuencia (FD-FEM)</strong> para evaluar el mérito acústico de geometrías complejas. Este método es más preciso que la superposición modal para geometrías no rectangulares.</li>
+</ol>
+<p><img src="/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/geom.PNG"
+	width="663"
+	height="353"
+	srcset="/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/geom_hu10103050829635732771.PNG 480w, /p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/geom_hu14036568945277152459.PNG 1024w"
+	loading="lazy"
+	
+		alt="Generador de geometrías donde se presenta una geometría válida (izquierda) y un NO válida (derecha)"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="450px"
+	
+></p>
+<p>Para cuantificar el rendimiento acústico, se utiliza una figura de mérito combinada: la <strong>Desviación Media del Campo Sonoro (MSFD)</strong>. Esta métrica integra dos parámetros clave:</p>
+<ul>
+<li><strong>Desviación de Magnitud (MD):</strong> Mide cuán plana es la respuesta en frecuencia en una posición específica.</li>
+<li><strong>Desviación Espacial (SD):</strong> Mide la variación de la magnitud a lo largo del área de escucha.</li>
+</ul>
+<p>La herramienta cuenta con una interfaz gráfica (GUI) en <strong>PyQt5</strong> que permite al usuario definir las dimensiones, márgenes y posiciones de fuente y receptor, y visualizar los resultados y las geometrías optimizadas.</p>
+<p><img src="/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/gui.PNG"
+	width="927"
+	height="911"
+	srcset="/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/gui_hu10660350233230319476.PNG 480w, /p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/gui_hu7665759294953434962.PNG 1024w"
+	loading="lazy"
+	
+		alt="Captura de la GUI del programa"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="101"
+		data-flex-basis="244px"
+	
+></p>
+<h3 id="resultados-y-conclusiones"><strong>Resultados y Conclusiones</strong>
+</h3><p>Los estudios de caso en tres volúmenes de salas de control de referencia mostraron mejoras de <strong>MSFD de hasta 5 dB</strong> en comparación con el diseño base. Los resultados demuestran que:</p>
+<ul>
+<li><strong>Impacto de los Márgenes:</strong> A medida que se aumenta el espacio disponible para la optimización, se obtienen mejores resultados, mejorando la respuesta general en hasta 3 dB. Esta mejora se observa principalmente en la desviación de magnitud (MD).</li>
+</ul>
+<p><img src="/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/margenes.PNG"
+	width="769"
+	height="521"
+	srcset="/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/margenes_hu7235455855802676823.PNG 480w, /p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/margenes_hu1596749676858920027.PNG 1024w"
+	loading="lazy"
+	
+		alt="Resultado de la optimización variando los márgenes"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="147"
+		data-flex-basis="354px"
+	
+></p>
+<ul>
+<li><strong>Geometrías Complejas:</strong> El aumento de la cantidad de paredes en la geometría compleja permite obtener soluciones superiores a las de los paralelepípedos simples, con una diferencia media de 1.3 dB en el factor de mérito. El proceso de optimización no produce una única solución, sino una variedad de geometrías que presentan un mínimo de MSFD.</li>
+</ul>
+<p><img src="/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/complex.PNG"
+	width="1056"
+	height="484"
+	srcset="/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/complex_hu17276317947581166062.PNG 480w, /p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/complex_hu260113823065011408.PNG 1024w"
+	loading="lazy"
+	
+		alt="Resultado de la optimización variando la cantidad de paredes a generar"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="218"
+		data-flex-basis="523px"
+	
+></p>
+<ul>
+<li><strong>Comparación con Criterios Tradicionales:</strong> Una geometría optimizada compleja superó a las salas con dimensiones basadas en los criterios clásicos de Bolt, Louden y Cox. Aunque estos criterios son efectivos y de costo computacional nulo, la capacidad del software para modelar geometrías complejas y considerar la ubicación de fuentes y receptores provee una condición superior.</li>
+</ul>
+<p><img src="/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/compare.PNG"
+	width="882"
+	height="437"
+	srcset="/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/compare_hu6871012066806431324.PNG 480w, /p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/compare_hu17032096468667991809.PNG 1024w"
+	loading="lazy"
+	
+		alt="Comparación entre resultados clásicos de la literatura respecto a la solución de nuestro optimizador"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="201"
+		data-flex-basis="484px"
+	
+></p>
+<p>El estudio concluye que el software es una herramienta efectiva para la optimización de la acústica modal. Se sugieren mejoras futuras como la implementación de algoritmos de optimización más avanzados, como algoritmos genéticos, para reducir el tiempo de cálculo y mejorar la eficiencia del proceso.</p>
+<p>Un análisis detallado del desarrollo de este algoritmo está disponible en el siguiente <a class="link" href="https://drive.google.com/file/d/1bFloyBC-lmMt_NCkeMwyjXit8-o1ZzsZ/view?usp=sharing"  target="_blank" rel="noopener"
+    >trabajo</a>.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/es/tags/university/">University</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Contenidos relacionados</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/es/p/medidor-de-thd-n/">
+        
+        
+            <div class="article-image">
+                <img src="/p/thd-n-meter/port.abcc622dcd9bda97144e3e7ceeca6fb3_hu6239320992759469067.jpeg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Medidor de THD&#43;N"
+                        
+                        data-hash="md5-q8xiLc2b2pcUTj587spvsw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Medidor de THD&#43;N</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/es/p/construcci%C3%B3n-y-dise%C3%B1o-de-un-altoparlante-personal/">
+        
+        
+            <div class="article-image">
+                <img src="/p/building-and-design-of-a-personal-loudspeaker/front_bass.57d3a404d11ab448ba7aa4ba54f20acd_hu17586735842976331624.PNG" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Construcción y diseño de un altoparlante personal"
+                        
+                        data-hash="md5-V9OkBNEatEi6eqS6VPIKzQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Construcción y diseño de un altoparlante personal</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2025 Matías Di Bernardo
+    </section>
+    
+    <section class="powerby">
+        Creado con <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.0511f4da9331aeb0a842c33551d26e53240ed2a787a8401ae095d91bd84d13fb.js" defer></script><script type="text/javascript" src="/js/carousel.js"></script>
+<link rel="stylesheet" href="/css/carousel.css">
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

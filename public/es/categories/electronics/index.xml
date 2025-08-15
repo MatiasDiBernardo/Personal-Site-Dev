@@ -7,7 +7,118 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>es</language>
         <copyright>Matías Di Bernardo</copyright>
-        <lastBuildDate>Tue, 26 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/categories/electronics/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 26 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/categories/electronics/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Algoritmo de optimización modal para recintos pequeños</title>
+        <link>http://localhost:1313/es/p/algoritmo-de-optimizaci%C3%B3n-modal-para-recintos-peque%C3%B1os/</link>
+        <pubDate>Thu, 26 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/algoritmo-de-optimizaci%C3%B3n-modal-para-recintos-peque%C3%B1os/</guid>
+        <description>&lt;img src="http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/port.PNG" alt="Featured image of post Algoritmo de optimización modal para recintos pequeños" /&gt;&lt;p&gt;Este trabajo se desarrollo en el contexto de la materia &lt;em&gt;Instrumentos y Mediciones Acústicas&lt;/em&gt; en UNTREF Argentina.&lt;/p&gt;
+&lt;h3 id=&#34;introducción&#34;&gt;&lt;strong&gt;Introducción&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Las salas de control y los entornos de escucha crítica a menudo sufren de respuestas acústicas irregulares en bajas frecuencias. Estas irregularidades, causadas por una distribución dispersa de los modos de vibración, generan &amp;ldquo;coloraciones&amp;rdquo; que dificultan una evaluación sonora precisa. Tradicionalmente, se han utilizado criterios como los de Bonello, Bolt y Louden para optimizar la geometría de salas rectangulares y mejorar la distribución modal. Sin embargo, estas metodologías no consideran la influencia de contornos complejos ni la ubicación de la fuente y el oyente.&lt;/p&gt;
+&lt;p&gt;Este trabajo presenta una herramienta de código abierto desarrollada en &lt;strong&gt;Python/FEniCS&lt;/strong&gt; que aborda estas limitaciones. El software utiliza la optimización geométrica por fuerza bruta sobre modelos de elementos finitos (FEM) para encontrar dimensiones y contornos de sala que proporcionen una distribución modal más uniforme.&lt;/p&gt;
+&lt;h3 id=&#34;marco-teórico-y-criterios-clásicos&#34;&gt;&lt;strong&gt;Marco Teórico y Criterios Clásicos&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;El comportamiento de las bajas frecuencias en un recinto está dominado por las ondas estacionarias, o modos normales, que se caracterizan por nodos y antinodos de presión. Los modos axiales, tangenciales y oblicuos, cuyas frecuencias dependen de las dimensiones de la sala, pueden generar problemas de coloración si se agrupan.&lt;/p&gt;
+&lt;p&gt;Los criterios clásicos de diseño, como los de &lt;strong&gt;Bolt&lt;/strong&gt;, &lt;strong&gt;Bonello&lt;/strong&gt; y &lt;strong&gt;Louden&lt;/strong&gt;, se centran en evitar agrupamientos modales y proponen proporciones geométricas óptimas para salas rectangulares. Sin embargo, estos enfoques tienen una limitación importante: no consideran factores cruciales como la posición de la fuente sonora y el receptor, y están restringidos a geometrías simples.&lt;/p&gt;
+&lt;h3 id=&#34;metodología-y-desarrollo-del-software&#34;&gt;&lt;strong&gt;Metodología y Desarrollo del Software&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;La herramienta desarrollada combina un proceso de optimización en dos etapas.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Búsqueda Inicial:&lt;/strong&gt; Primero, el software realiza una búsqueda rápida en geometrías de paralelepípedos rectangulares utilizando el método clásico de superposición modal (SM) para identificar las proporciones geométricas iniciales más prometedoras.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Refinamiento y Optimización:&lt;/strong&gt; Luego, refina la búsqueda generando contornos planarios aleatorios con simetría forzada y aplica el &lt;strong&gt;Método de Elementos Finitos en el dominio de la Frecuencia (FD-FEM)&lt;/strong&gt; para evaluar el mérito acústico de geometrías complejas. Este método es más preciso que la superposición modal para geometrías no rectangulares.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/geom.PNG&#34;
+	width=&#34;663&#34;
+	height=&#34;353&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/geom_hu10103050829635732771.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/geom_hu14036568945277152459.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Generador de geometrías donde se presenta una geometría válida (izquierda) y un NO válida (derecha)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;450px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Para cuantificar el rendimiento acústico, se utiliza una figura de mérito combinada: la &lt;strong&gt;Desviación Media del Campo Sonoro (MSFD)&lt;/strong&gt;. Esta métrica integra dos parámetros clave:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Desviación de Magnitud (MD):&lt;/strong&gt; Mide cuán plana es la respuesta en frecuencia en una posición específica.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Desviación Espacial (SD):&lt;/strong&gt; Mide la variación de la magnitud a lo largo del área de escucha.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La herramienta cuenta con una interfaz gráfica (GUI) en &lt;strong&gt;PyQt5&lt;/strong&gt; que permite al usuario definir las dimensiones, márgenes y posiciones de fuente y receptor, y visualizar los resultados y las geometrías optimizadas.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/gui.PNG&#34;
+	width=&#34;927&#34;
+	height=&#34;911&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/gui_hu10660350233230319476.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/gui_hu7665759294953434962.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Captura de la GUI del programa&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;101&#34;
+		data-flex-basis=&#34;244px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;resultados-y-conclusiones&#34;&gt;&lt;strong&gt;Resultados y Conclusiones&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Los estudios de caso en tres volúmenes de salas de control de referencia mostraron mejoras de &lt;strong&gt;MSFD de hasta 5 dB&lt;/strong&gt; en comparación con el diseño base. Los resultados demuestran que:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Impacto de los Márgenes:&lt;/strong&gt; A medida que se aumenta el espacio disponible para la optimización, se obtienen mejores resultados, mejorando la respuesta general en hasta 3 dB. Esta mejora se observa principalmente en la desviación de magnitud (MD).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/margenes.PNG&#34;
+	width=&#34;769&#34;
+	height=&#34;521&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/margenes_hu7235455855802676823.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/margenes_hu1596749676858920027.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Resultado de la optimización variando los márgenes&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;354px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Geometrías Complejas:&lt;/strong&gt; El aumento de la cantidad de paredes en la geometría compleja permite obtener soluciones superiores a las de los paralelepípedos simples, con una diferencia media de 1.3 dB en el factor de mérito. El proceso de optimización no produce una única solución, sino una variedad de geometrías que presentan un mínimo de MSFD.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/complex.PNG&#34;
+	width=&#34;1056&#34;
+	height=&#34;484&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/complex_hu17276317947581166062.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/complex_hu260113823065011408.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Resultado de la optimización variando la cantidad de paredes a generar&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;218&#34;
+		data-flex-basis=&#34;523px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Comparación con Criterios Tradicionales:&lt;/strong&gt; Una geometría optimizada compleja superó a las salas con dimensiones basadas en los criterios clásicos de Bolt, Louden y Cox. Aunque estos criterios son efectivos y de costo computacional nulo, la capacidad del software para modelar geometrías complejas y considerar la ubicación de fuentes y receptores provee una condición superior.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/compare.PNG&#34;
+	width=&#34;882&#34;
+	height=&#34;437&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/compare_hu6871012066806431324.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/compare_hu17032096468667991809.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Comparación entre resultados clásicos de la literatura respecto a la solución de nuestro optimizador&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;201&#34;
+		data-flex-basis=&#34;484px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;El estudio concluye que el software es una herramienta efectiva para la optimización de la acústica modal. Se sugieren mejoras futuras como la implementación de algoritmos de optimización más avanzados, como algoritmos genéticos, para reducir el tiempo de cálculo y mejorar la eficiencia del proceso.&lt;/p&gt;
+&lt;p&gt;Un análisis detallado del desarrollo de este algoritmo está disponible en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1bFloyBC-lmMt_NCkeMwyjXit8-o1ZzsZ/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;trabajo&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Medidor de THD&#43;N</title>
         <link>http://localhost:1313/es/p/medidor-de-thd-n/</link>
         <pubDate>Tue, 26 Nov 2024 00:00:00 +0000</pubDate>

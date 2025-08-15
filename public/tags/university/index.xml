@@ -7,13 +7,270 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Matías Di Bernardo</copyright>
-        <lastBuildDate>Fri, 09 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/university/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 26 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/university/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Acoustic modal response optimization for small rooms with genetic algorithms</title>
+        <link>http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/</link>
+        <pubDate>Thu, 26 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/</guid>
+        <description>&lt;img src="http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/port3.PNG" alt="Featured image of post Acoustic modal response optimization for small rooms with genetic algorithms" /&gt;&lt;p&gt;This work was developed in the context of the course &lt;em&gt;Instruments and Acoustic Measurements&lt;/em&gt; at UNTREF Argentina.&lt;/p&gt;
+&lt;h3 id=&#34;introduction&#34;&gt;&lt;strong&gt;Introduction&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Control rooms and critical listening environments often suffer from uneven low-frequency acoustic responses. These irregularities, caused by a clustered distribution of vibrational modes, produce “colorations” that hamper accurate sound evaluation. Traditionally, criteria such as those by Bonello, Bolt and Louden have been used to optimize the geometry of rectangular rooms and improve modal distribution. However, these methodologies do not consider the influence of complex boundaries nor the positions of source and listener.&lt;/p&gt;
+&lt;p&gt;This work presents an open-source tool developed in &lt;strong&gt;Python/FEniCS&lt;/strong&gt; that addresses these limitations. The software uses geometric optimization by brute force over finite element models (FEM) to find room dimensions and contours that provide a more uniform modal distribution.&lt;/p&gt;
+&lt;h3 id=&#34;theoretical-framework-and-classical-criteria&#34;&gt;&lt;strong&gt;Theoretical Framework and Classical Criteria&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Low-frequency behavior in an enclosure is dominated by standing waves, or normal modes, which are characterized by pressure nodes and antinodes. Axial, tangential and oblique modes — whose frequencies depend on the room dimensions — can produce coloration problems when they cluster.&lt;/p&gt;
+&lt;p&gt;Classical design criteria, such as those of &lt;strong&gt;Bolt&lt;/strong&gt;, &lt;strong&gt;Bonello&lt;/strong&gt; and &lt;strong&gt;Louden&lt;/strong&gt;, focus on avoiding modal clustering and propose optimal geometric ratios for rectangular rooms. However, these approaches have a major limitation: they do not consider crucial factors such as the position of the sound source and the receiver, and they are restricted to simple geometries.&lt;/p&gt;
+&lt;h3 id=&#34;methodology-and-software-development&#34;&gt;&lt;strong&gt;Methodology and Software Development&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;The developed tool combines a two-stage optimization process.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Initial Search:&lt;/strong&gt; First, the software performs a rapid search on rectangular parallelepipeds using the classical modal superposition (MS) method to identify the most promising initial geometric proportions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Refinement and Optimization:&lt;/strong&gt; Then, it refines the search by generating random planar contours with enforced symmetry and applies the &lt;strong&gt;Frequency-Domain Finite Element Method (FD-FEM)&lt;/strong&gt; to evaluate the acoustic merit of complex geometries. This method is more accurate than modal superposition for non-rectangular geometries.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/geom.PNG&#34;
+	width=&#34;663&#34;
+	height=&#34;353&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/geom_hu10103050829635732771.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/geom_hu14036568945277152459.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Geometry generator showing a valid geometry (left) and an INVALID one (right)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;450px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;To quantify acoustic performance, a combined figure of merit is used: the &lt;strong&gt;Mean Sound Field Deviation (MSFD)&lt;/strong&gt;. This metric integrates two key parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Magnitude Deviation (MD):&lt;/strong&gt; Measures how flat the frequency response is at a specific position.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spatial Deviation (SD):&lt;/strong&gt; Measures the variation of magnitude across the listening area.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The tool includes a graphical user interface (GUI) in &lt;strong&gt;PyQt5&lt;/strong&gt; that allows the user to define dimensions, margins, and source/receiver positions, and to visualize results and optimized geometries.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/gui.PNG&#34;
+	width=&#34;927&#34;
+	height=&#34;911&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/gui_hu10660350233230319476.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/gui_hu7665759294953434962.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Screenshot of the program GUI&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;101&#34;
+		data-flex-basis=&#34;244px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;results-and-conclusions&#34;&gt;&lt;strong&gt;Results and Conclusions&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Case studies on three reference control-room volumes showed &lt;strong&gt;MSFD improvements of up to 5 dB&lt;/strong&gt; compared to the baseline design. The results demonstrate that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Impact of Margins:&lt;/strong&gt; As the available design space for optimization increases, better results are obtained, improving the overall response by up to 3 dB. This improvement is observed mainly in the Magnitude Deviation (MD).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/margenes.PNG&#34;
+	width=&#34;769&#34;
+	height=&#34;521&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/margenes_hu7235455855802676823.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/margenes_hu1596749676858920027.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Optimization result varying the margins&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;354px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Complex Geometries:&lt;/strong&gt; Increasing the number of walls in a complex geometry produces solutions superior to simple rectangular parallelepipeds, with a mean difference of 1.3 dB in the merit factor. The optimization process does not yield a single solution but a variety of geometries that present a minimum MSFD.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/complex.PNG&#34;
+	width=&#34;1056&#34;
+	height=&#34;484&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/complex_hu17276317947581166062.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/complex_hu260113823065011408.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Optimization result varying the number of walls to generate&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;218&#34;
+		data-flex-basis=&#34;523px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Comparison with Traditional Criteria:&lt;/strong&gt; A complex optimized geometry outperformed rooms dimensioned according to classic criteria by Bolt, Louden and Cox. Although these criteria are effective and computationally free, the software’s ability to model complex geometries and consider the locations of sources and receivers provides a superior condition.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/compare.PNG&#34;
+	width=&#34;882&#34;
+	height=&#34;437&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/compare_hu6871012066806431324.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/compare_hu17032096468667991809.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Comparison between classical literature results and our optimizers solution&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;201&#34;
+		data-flex-basis=&#34;484px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The study concludes that the software is an effective tool for modal acoustic optimization. Future improvements are suggested, such as implementing more advanced optimization algorithms — for example, genetic algorithms — to reduce computation time and increase process efficiency.&lt;/p&gt;
+&lt;p&gt;A detailed analysis of the development of this algorithm is available in the following &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1bFloyBC-lmMt_NCkeMwyjXit8-o1ZzsZ/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;paper&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Acoustic measurement at Usina del Arte</title>
         <link>http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/</link>
         <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/</guid>
-        <description>&lt;img src="http://localhost:1313/portaxid.jpg" alt="Featured image of post Acoustic measurement at Usina del Arte" /&gt;</description>
+        <description>&lt;img src="http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/portadix.jpg" alt="Featured image of post Acoustic measurement at Usina del Arte" /&gt;&lt;h3 id=&#34;introduction&#34;&gt;&lt;strong&gt;Introduction&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;This measurement was part of the course &lt;em&gt;Instruments and Acoustic Measurements&lt;/em&gt; of the Sound Engineering program at UNTREF. The &lt;strong&gt;acoustic parameters&lt;/strong&gt; obtained from the impulse response are essential to evaluate the behavior of an enclosure. This report presents a comprehensive characterization of the main auditorium of the &lt;strong&gt;Usina del Arte&lt;/strong&gt;, a cultural center in Buenos Aires. The building, originally a 20th-century power plant with a distinctive Florentine-industrial style, was transformed with an acoustic design that sought a natural and balanced quality without the need for amplification. A decoupled structure (&lt;strong&gt;box-in-box&lt;/strong&gt;) was implemented for isolation and interior treatment with materials such as guatambú wood, diffusive surfaces, and a suspended acoustic reflector. The objective was a reverberation time of approximately &lt;strong&gt;2 seconds&lt;/strong&gt; and an even distribution of early lateral reflections for an enveloping sensation.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/vista_ext.PNG&#34;
+	width=&#34;1134&#34;
+	height=&#34;630&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/vista_ext_hu376550853728715864.PNG 480w, http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/vista_ext_hu11205598148463235636.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Exterior view of the Usina del Arte complex&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;432px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;measurement&#34;&gt;&lt;strong&gt;Measurement&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;The characterization was carried out on June 9, 2025, during which a total of &lt;strong&gt;162 impulse responses&lt;/strong&gt; (monaural and binaural) were recorded. Data were captured from 27 microphone positions and 3 source positions. An on-site survey of the auditorium was also performed to analyze its constructional characteristics and a perceptual analysis was conducted.&lt;/p&gt;
+&lt;p&gt;Prior to the measurements, a room model was created in &lt;strong&gt;EASE 4.3&lt;/strong&gt;, which estimated a volume of &lt;strong&gt;15,700 m³&lt;/strong&gt; and a Schroeder frequency of &lt;strong&gt;22.1 Hz&lt;/strong&gt;. Background noise was measured at eight positions to evaluate the isolation, confirming a signal-to-noise ratio greater than 40 dB. The microphone arrangement was based on the room’s symmetry to obtain a detailed mapping.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/mapeo_puntos.PNG&#34;
+	width=&#34;946&#34;
+	height=&#34;876&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/mapeo_puntos_hu16757661932159290668.PNG 480w, http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/mapeo_puntos_hu16618579752656839347.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Source and microphone positions (separated according to microphone type)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;107&#34;
+		data-flex-basis=&#34;259px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;More images from the measurement process:&lt;/p&gt;
+
+
+
+
+&lt;div id=&#34;carousel0&#34; class=&#34;carousel&#34; duration=&#34;70000&#34;&gt;
+    &lt;ul&gt;
+      
+        &lt;li id=&#34;c0_slide1&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 900px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med1.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide2&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 900px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med2.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide3&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 900px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med3.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide4&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 900px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med4.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide1&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide2&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide3&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide4&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+    &lt;/ol&gt;
+    &lt;div class=&#34;prev&#34;&gt;&amp;lsaquo;&lt;/div&gt;
+    &lt;div class=&#34;next&#34;&gt;&amp;rsaquo;&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;processing&#34;&gt;&lt;strong&gt;Processing&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Recordings were processed to obtain the impulse responses and various parameters were calculated following the &lt;strong&gt;ISO 3382-1&lt;/strong&gt; standard:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Reverberation time:&lt;/strong&gt; $T_{20}$, $T_{30}$ and EDT.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clarity:&lt;/strong&gt; $C_{50}$ and $C_{80}$.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Strength (G):&lt;/strong&gt; Difference in sound pressure level between the hall and an anechoic reference condition.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lateral Fraction (LF):&lt;/strong&gt; Proportion of sound energy perceived from the laterals.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Direct/reverberant ratio (D/R).&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Intelligibility:&lt;/strong&gt; The &lt;strong&gt;Speech Transmission Index (STI)&lt;/strong&gt; and the Articulation Loss of Consonants (%Alcons) were calculated.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stage support:&lt;/strong&gt; $ST_{Early}$ and $ST_{Late}$, to assess acoustic conditions for musicians.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Various commercial software tools were used, such as the Aurora Acoustical Parameters plugin and the EASERA software, and additional parameters were computed with specific Python scripts.&lt;/p&gt;
+&lt;h3 id=&#34;results&#34;&gt;&lt;strong&gt;Results&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;The results show that the auditorium behaves adequately for a concert hall, but with areas for improvement:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Reverberation time:&lt;/strong&gt; The global average was &lt;strong&gt;1.92 s&lt;/strong&gt;. However, notable variations were observed at low frequencies, where the floating stage acts as a resonator.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/rtres.PNG&#34;
+	width=&#34;786&#34;
+	height=&#34;509&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/rtres_hu93740916745270815.PNG 480w, http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/rtres_hu4110432717716336813.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;T30 and EDT results by frequency.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;370px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Clarity and Intelligibility:&lt;/strong&gt; Clarity values for speech are below recommended thresholds, and intelligibility issues were identified in certain zones.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Sound Strength (G):&lt;/strong&gt; The sound strength level shows a low variation considering the auditorium’s dimensions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/Gfactor.PNG&#34;
+	width=&#34;776&#34;
+	height=&#34;597&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/Gfactor_hu12495539726591375420.PNG 480w, http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/Gfactor_hu210762990484597037.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Mapping of the G value in space.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;311px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Lateral Fraction (LF):&lt;/strong&gt; Values exceed recommendations, suggesting that most of the sound energy comes from the laterals. This may be related to the large number of diffusers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Background Noise:&lt;/strong&gt; The room presents a noise level higher than recommended for a symphonic venue (NC-35 vs. NC-20), likely due to the ventilation system.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/ruido.PNG&#34;
+	width=&#34;1032&#34;
+	height=&#34;476&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/ruido_hu16139815568609075014.PNG 480w, http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/ruido_hu4680391019551906221.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Background noise measurement by frequency.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;216&#34;
+		data-flex-basis=&#34;520px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Sound Diffusion:&lt;/strong&gt; Repetition of a single sequence of diffusers reduces their effectiveness, producing a lobed behavior instead of stochastic diffusion.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Key improvements are proposed, such as reducing background noise, optimizing sound diffusion with non-periodic sequences, and balancing the spectral response by correcting low-frequency absorption.&lt;/p&gt;
+&lt;h3 id=&#34;conclusions&#34;&gt;&lt;strong&gt;Conclusions&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;We were able to effectively characterize the auditorium and apply most of the theoretical topics covered in class to a practical experience. The full report of this work with all results and measurement details can be found in the following &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1nSmWFrk30IFAhzBs9R42ZR61uK_ARc8z/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;report&lt;/a&gt;.&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>THD&#43;N Meter</title>

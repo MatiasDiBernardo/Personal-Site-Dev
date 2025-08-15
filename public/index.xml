@@ -7,7 +7,118 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>Matías Di Bernardo</copyright>
-        <lastBuildDate>Fri, 09 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 26 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Acoustic modal response optimization for small rooms with genetic algorithms</title>
+        <link>http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/</link>
+        <pubDate>Thu, 26 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/</guid>
+        <description>&lt;img src="http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/port3.PNG" alt="Featured image of post Acoustic modal response optimization for small rooms with genetic algorithms" /&gt;&lt;p&gt;This work was developed in the context of the course &lt;em&gt;Instruments and Acoustic Measurements&lt;/em&gt; at UNTREF Argentina.&lt;/p&gt;
+&lt;h3 id=&#34;introduction&#34;&gt;&lt;strong&gt;Introduction&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Control rooms and critical listening environments often suffer from uneven low-frequency acoustic responses. These irregularities, caused by a clustered distribution of vibrational modes, produce “colorations” that hamper accurate sound evaluation. Traditionally, criteria such as those by Bonello, Bolt and Louden have been used to optimize the geometry of rectangular rooms and improve modal distribution. However, these methodologies do not consider the influence of complex boundaries nor the positions of source and listener.&lt;/p&gt;
+&lt;p&gt;This work presents an open-source tool developed in &lt;strong&gt;Python/FEniCS&lt;/strong&gt; that addresses these limitations. The software uses geometric optimization by brute force over finite element models (FEM) to find room dimensions and contours that provide a more uniform modal distribution.&lt;/p&gt;
+&lt;h3 id=&#34;theoretical-framework-and-classical-criteria&#34;&gt;&lt;strong&gt;Theoretical Framework and Classical Criteria&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Low-frequency behavior in an enclosure is dominated by standing waves, or normal modes, which are characterized by pressure nodes and antinodes. Axial, tangential and oblique modes — whose frequencies depend on the room dimensions — can produce coloration problems when they cluster.&lt;/p&gt;
+&lt;p&gt;Classical design criteria, such as those of &lt;strong&gt;Bolt&lt;/strong&gt;, &lt;strong&gt;Bonello&lt;/strong&gt; and &lt;strong&gt;Louden&lt;/strong&gt;, focus on avoiding modal clustering and propose optimal geometric ratios for rectangular rooms. However, these approaches have a major limitation: they do not consider crucial factors such as the position of the sound source and the receiver, and they are restricted to simple geometries.&lt;/p&gt;
+&lt;h3 id=&#34;methodology-and-software-development&#34;&gt;&lt;strong&gt;Methodology and Software Development&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;The developed tool combines a two-stage optimization process.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Initial Search:&lt;/strong&gt; First, the software performs a rapid search on rectangular parallelepipeds using the classical modal superposition (MS) method to identify the most promising initial geometric proportions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Refinement and Optimization:&lt;/strong&gt; Then, it refines the search by generating random planar contours with enforced symmetry and applies the &lt;strong&gt;Frequency-Domain Finite Element Method (FD-FEM)&lt;/strong&gt; to evaluate the acoustic merit of complex geometries. This method is more accurate than modal superposition for non-rectangular geometries.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/geom.PNG&#34;
+	width=&#34;663&#34;
+	height=&#34;353&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/geom_hu10103050829635732771.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/geom_hu14036568945277152459.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Geometry generator showing a valid geometry (left) and an INVALID one (right)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;450px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;To quantify acoustic performance, a combined figure of merit is used: the &lt;strong&gt;Mean Sound Field Deviation (MSFD)&lt;/strong&gt;. This metric integrates two key parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Magnitude Deviation (MD):&lt;/strong&gt; Measures how flat the frequency response is at a specific position.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spatial Deviation (SD):&lt;/strong&gt; Measures the variation of magnitude across the listening area.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The tool includes a graphical user interface (GUI) in &lt;strong&gt;PyQt5&lt;/strong&gt; that allows the user to define dimensions, margins, and source/receiver positions, and to visualize results and optimized geometries.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/gui.PNG&#34;
+	width=&#34;927&#34;
+	height=&#34;911&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/gui_hu10660350233230319476.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/gui_hu7665759294953434962.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Screenshot of the program GUI&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;101&#34;
+		data-flex-basis=&#34;244px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;results-and-conclusions&#34;&gt;&lt;strong&gt;Results and Conclusions&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Case studies on three reference control-room volumes showed &lt;strong&gt;MSFD improvements of up to 5 dB&lt;/strong&gt; compared to the baseline design. The results demonstrate that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Impact of Margins:&lt;/strong&gt; As the available design space for optimization increases, better results are obtained, improving the overall response by up to 3 dB. This improvement is observed mainly in the Magnitude Deviation (MD).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/margenes.PNG&#34;
+	width=&#34;769&#34;
+	height=&#34;521&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/margenes_hu7235455855802676823.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/margenes_hu1596749676858920027.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Optimization result varying the margins&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;354px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Complex Geometries:&lt;/strong&gt; Increasing the number of walls in a complex geometry produces solutions superior to simple rectangular parallelepipeds, with a mean difference of 1.3 dB in the merit factor. The optimization process does not yield a single solution but a variety of geometries that present a minimum MSFD.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/complex.PNG&#34;
+	width=&#34;1056&#34;
+	height=&#34;484&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/complex_hu17276317947581166062.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/complex_hu260113823065011408.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Optimization result varying the number of walls to generate&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;218&#34;
+		data-flex-basis=&#34;523px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Comparison with Traditional Criteria:&lt;/strong&gt; A complex optimized geometry outperformed rooms dimensioned according to classic criteria by Bolt, Louden and Cox. Although these criteria are effective and computationally free, the software’s ability to model complex geometries and consider the locations of sources and receivers provides a superior condition.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/compare.PNG&#34;
+	width=&#34;882&#34;
+	height=&#34;437&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/compare_hu6871012066806431324.PNG 480w, http://localhost:1313/p/acoustic-modal-response-optimization-for-small-rooms-with-genetic-algorithms/compare_hu17032096468667991809.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Comparison between classical literature results and our optimizers solution&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;201&#34;
+		data-flex-basis=&#34;484px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;The study concludes that the software is an effective tool for modal acoustic optimization. Future improvements are suggested, such as implementing more advanced optimization algorithms — for example, genetic algorithms — to reduce computation time and increase process efficiency.&lt;/p&gt;
+&lt;p&gt;A detailed analysis of the development of this algorithm is available in the following &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1bFloyBC-lmMt_NCkeMwyjXit8-o1ZzsZ/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;paper&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Acoustic measurement at Usina del Arte</title>
         <link>http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/</link>
         <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
@@ -1171,17 +1282,9 @@ $$&lt;p&gt;Where \( f(t) \) is an IMF of the original signal, and \( H \) is the
         <pubDate>Fri, 18 Feb 2022 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/about-me/</guid>
-        <description>&lt;h1 id=&#34;who-am-i&#34;&gt;Who Am I?
-&lt;/h1&gt;&lt;p&gt;Hi, my name is Matías Di Bernardo. I&amp;rsquo;m an acoustics and computer engineering student from Argentina. I love learning new subjects and have a wide range of interests, including algorithms, deep learning, DSP, acoustics, and more. In my free time, I enjoy playing music as a pianist and reading books, mainly classics.&lt;/p&gt;
-&lt;h2 id=&#34;studies&#34;&gt;Studies
-&lt;/h2&gt;&lt;p&gt;I began studying in 2019 for a Sound Engineering degree at UNTREF University. I chose this career because, as a musician, I wanted to combine my passion for music with my love for math and science. I quickly realized that an engineering degree offers so much more than I initially imagined, and I especially enjoyed the foundational math courses, as well as those focused on acoustics and digital signal processing.&lt;/p&gt;
-&lt;p&gt;This experience deepened my interest in programming and computers, leading me to start a Computer Engineering degree in 2022, running parallel to my first degree at the same university. Through these studies, I’ve been able to solidify my programming skills, explore concepts like data structures and design patterns, and dive into the theoretical aspects of Artificial Intelligence—a subject I’ve always been passionate about.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;m going to finish my Sound Engineering degree at the end of 2025 and my Computer Engineering degree in 2027/2028.
-In addition to my formal education, I’m always seeking out additional learning materials on platforms like YouTube or online courses. For example, two courses that have greatly enhanced my knowledge are &lt;em&gt;DSP for Music Applications&lt;/em&gt; on Coursera and &lt;em&gt;Learning from Data&lt;/em&gt;, a YouTube series from Caltech University.&lt;/p&gt;
-&lt;h2 id=&#34;work&#34;&gt;Work
-&lt;/h2&gt;&lt;p&gt;I have a strong interest in deep learning, and I’ve taken several courses on the topic. In 2022, I joined an academic research group at my university called Intercambios Transorgánicos, which focuses on using technology to help people.&lt;/p&gt;
-&lt;p&gt;As part of this group, I’ve been working on a Text-to-Speech (TTS) model that captures the rio-platense accent (Buenos Aires), making this technology more accessible for individuals who have lost their voices and rely on such systems for communication.&lt;/p&gt;
-&lt;p&gt;This project perfectly aligns with my interests as it combines deep learning, speech processing, DSP, and acoustics. I quickly took on more tasks and responsibilities, and in 2024, I was promoted to CTO (Chief Technical Officer). In this role, I manage all technical decisions, lead a team of four students, and conduct research to improve TTS technology, with a focus on accessibility and innovation.&lt;/p&gt;
+        <description>&lt;h2 id=&#34;bio&#34;&gt;Bio
+&lt;/h2&gt;&lt;p&gt;I am completing a double major in Sound Engineering and Computer Engineering at the National University of Tres de Febrero (UNTREF). I am currently in my final year of the Sound Engineering program and concurrently finishing my studies in Computer Engineering. As CTO of the research group Intercambios Transorgánicos, I lead the development of voice-synthesis technologies tailored to the Argentine (Rioplatense) accent, coordinating everything from data collection and acoustic measurement to model development and deployment.&lt;/p&gt;
+&lt;p&gt;My work sits at the intersection of digital signal processing and deep learning applied to speech: I design and implement pipelines that combine classical DSP techniques with modern neural approaches to improve robustness and naturalness in TTS systems. I enjoy bridging the methodological rigor of acoustics with practical software engineering, and I focus on reproducible, data-driven solutions that are sensitive to regional phonetic and prosodic characteristics. I am especially interested in scalable methods for dataset creation, automated cleaning, and model fine-tuning that reduce annotation effort while preserving linguistic and acoustic diversity.&lt;/p&gt;
 &lt;h2 id=&#34;why-i-started-this-blog&#34;&gt;Why I started this blog?
 &lt;/h2&gt;&lt;p&gt;Many of the projects I’ve started in the past have either fizzled out or ended abruptly. A blog, however, is an excellent way to stay organized and get the most out of my work.&lt;/p&gt;
 &lt;p&gt;Additionally, documenting my projects here allows me to keep track of my progress and serves as a useful reference for future endeavours. For now, the blog will primarily focus on tech and science topics, but I’m open to expanding into other areas in the future.&lt;/p&gt;

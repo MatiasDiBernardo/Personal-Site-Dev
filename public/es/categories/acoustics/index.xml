@@ -54,13 +54,13 @@
 &lt;div id=&#34;carousel0&#34; class=&#34;carousel&#34; duration=&#34;70000&#34;&gt;
     &lt;ul&gt;
       
-        &lt;li id=&#34;c0_slide1&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med1.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+        &lt;li id=&#34;c0_slide1&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 900px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med1.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
       
-        &lt;li id=&#34;c0_slide2&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med2.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+        &lt;li id=&#34;c0_slide2&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 900px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med2.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
       
-        &lt;li id=&#34;c0_slide3&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med3.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+        &lt;li id=&#34;c0_slide3&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 900px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med3.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
       
-        &lt;li id=&#34;c0_slide4&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med4.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+        &lt;li id=&#34;c0_slide4&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 900px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med4.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
       
     &lt;/ul&gt;
     &lt;ol&gt;
