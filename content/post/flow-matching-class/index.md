@@ -2,7 +2,7 @@
 author: "Matías Di Bernardo"
 title: "Generative AI, Flow Matching and TTS"
 date: "2025-03-24"
-description: "A class I prepare to understand the model F5-TTS where I cover generative AI foundamentals and flow matching based models."
+description: "Material for a class I prepare to understand the model F5-TTS where I cover generative AI foundamentals and flow matching based models."
 categories: [
     "Math",
     "Deep Learning",

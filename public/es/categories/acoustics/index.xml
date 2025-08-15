@@ -7,7 +7,161 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>es</language>
         <copyright>Matías Di Bernardo</copyright>
-        <lastBuildDate>Fri, 22 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/categories/acoustics/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 09 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/es/categories/acoustics/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Medición de parámetros acústicos en la Usina del Arte</title>
+        <link>http://localhost:1313/es/p/medici%C3%B3n-de-par%C3%A1metros-ac%C3%BAsticos-en-la-usina-del-arte/</link>
+        <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/es/p/medici%C3%B3n-de-par%C3%A1metros-ac%C3%BAsticos-en-la-usina-del-arte/</guid>
+        <description>&lt;img src="http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/portadix.jpg" alt="Featured image of post Medición de parámetros acústicos en la Usina del Arte" /&gt;&lt;h3 id=&#34;introducción&#34;&gt;&lt;strong&gt;Introducción&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Esta medición fue parte de la materia &lt;em&gt;Instrumentos y mediciónes Acústica&lt;/em&gt; del programa de Ingeniería de Sonido en UNTREF. Los &lt;strong&gt;parámetros acústicos&lt;/strong&gt; obtenidos a partir de la respuesta al impulso son esenciales para evaluar el comportamiento de un recinto. Este informe presenta una caracterización integral del auditorio principal de la &lt;strong&gt;Usina del Arte&lt;/strong&gt;, un centro cultural en Buenos Aires. El edificio, originalmente una planta generadora de energía del siglo XX con un distintivo estilo florentino-industrial, fue transformado con un diseño acústico que buscaba una calidad natural y equilibrada, sin necesidad de amplificación. Se implementó una estructura desacoplada (&lt;strong&gt;box-in-box&lt;/strong&gt;) para el aislamiento y un acondicionamiento interior con materiales como madera de guatambú, superficies difusoras y un reflector acústico suspendido. El objetivo era un tiempo de reverberación de aproximadamente &lt;strong&gt;2 segundos&lt;/strong&gt; y una distribución uniforme de las reflexiones tempranas laterales para una sensación envolvente.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/vista_ext.PNG&#34;
+	width=&#34;1134&#34;
+	height=&#34;630&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/vista_ext_hu376550853728715864.PNG 480w, http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/vista_ext_hu11205598148463235636.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Vista exterior del complejo Usina del Arte&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;432px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;medición&#34;&gt;&lt;strong&gt;Medición&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;La caracterización se llevó a cabo el 9 de junio de 2025, donde se registraron  un total de &lt;strong&gt;162 respuestas al impulso&lt;/strong&gt; monoaurales y binaurales. Se registraron datos desde 27 posiciones de micrófono y 3 de fuente. También se realizó un relevamiento del auditorio para analizar sus características constructivas y un análisis perceptivo.&lt;/p&gt;
+&lt;p&gt;Previo a las mediciones, se construyó un modelo del recinto en el software &lt;strong&gt;EASE 4.3&lt;/strong&gt;, que estimó un volumen de &lt;strong&gt;15,700 m³&lt;/strong&gt; y una frecuencia de Schroeder de &lt;strong&gt;22.1 Hz&lt;/strong&gt;. El ruido de fondo se midió en ocho posiciones para evaluar el aislamiento, confirmando una relación señal/ruido superior a 40 dB. La disposición de los micrófonos se basó en la simetría del recinto para obtener un mapeo detallado.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/mapeo_puntos.PNG&#34;
+	width=&#34;946&#34;
+	height=&#34;876&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/mapeo_puntos_hu16757661932159290668.PNG 480w, http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/mapeo_puntos_hu16618579752656839347.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Posición de fuente y micrófono (separados según tipo de micrófono)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;107&#34;
+		data-flex-basis=&#34;259px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Mas imágenes del proceso de la medición:&lt;/p&gt;
+
+
+
+
+&lt;div id=&#34;carousel0&#34; class=&#34;carousel&#34; duration=&#34;70000&#34;&gt;
+    &lt;ul&gt;
+      
+        &lt;li id=&#34;c0_slide1&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med1.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide2&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med2.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide3&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med3.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+        &lt;li id=&#34;c0_slide4&#34; style=&#34;min-width: calc(100%/1); padding-bottom: 600px;&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/usina/med4.jpeg&#34; alt=&#34;&#34; /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/li&gt;
+      
+    &lt;/ul&gt;
+    &lt;ol&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide1&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide2&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide3&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+        &lt;li&gt;&lt;a href=&#34;#c0_slide4&#34;&gt;&lt;/a&gt;&lt;/li&gt;
+      
+    &lt;/ol&gt;
+    &lt;div class=&#34;prev&#34;&gt;&amp;lsaquo;&lt;/div&gt;
+    &lt;div class=&#34;next&#34;&gt;&amp;rsaquo;&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;procesamiento&#34;&gt;&lt;strong&gt;Procesamiento&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Se procesaron las grabaciones para obtener las respuestas al impulso y se calcularon diversos parámetros, siguiendo la norma &lt;strong&gt;ISO 3382-1&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tiempo de reverberación:&lt;/strong&gt; $T_{20}$, $T_{30}$ y EDT.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Claridad:&lt;/strong&gt; $C_{50}$ y $C_{80}$.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fuerza (G):&lt;/strong&gt; Diferencia de nivel de presión sonora entre la sala y una condición anecoica.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fracción lateral (LF):&lt;/strong&gt; Proporción de energía sonora percibida desde los laterales.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Relación directo/reverberante (D/R).&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inteligibilidad:&lt;/strong&gt; Se calculó el &lt;strong&gt;Speech Transmission Index (STI)&lt;/strong&gt; y el Articulation Loss of Consonants (%Alcons).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Soporte de escenario:&lt;/strong&gt; $ST_{Early}$ y $ST_{Late}$, para evaluar las condiciones acústicas para los músicos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Se utilizaron diferentes software comericales como el plugin Aurora Acoustical Parameters, el software EASERA, y también se calcularon otros parámetros con un scripts específicos en Python.&lt;/p&gt;
+&lt;h3 id=&#34;resultados&#34;&gt;&lt;strong&gt;Resultados&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Los resultados muestran que el auditorio se comporta adecuadamente para una sala de conciertos, pero con áreas de mejora:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tiempo de reverberación:&lt;/strong&gt; El promedio global fue de &lt;strong&gt;1.92 s&lt;/strong&gt;. Sin embargo, se observaron variaciones notables en bajas frecuencias, donde el escenario flotante actúa como un resonador.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/rtres.PNG&#34;
+	width=&#34;786&#34;
+	height=&#34;509&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/rtres_hu93740916745270815.PNG 480w, http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/rtres_hu4110432717716336813.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Resultado de T30 y EDT por frecuencia.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;370px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Claridad e Inteligibilidad:&lt;/strong&gt; Los valores de claridad para el habla están por debajo de los umbrales recomendados, y se identificaron problemas de inteligibilidad en ciertas zonas.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Factor de Nivel Sonoro (G):&lt;/strong&gt; El nivel de fuerza sonora presenta una variación baja considerando las dimensiones del auditorio.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/Gfactor.PNG&#34;
+	width=&#34;776&#34;
+	height=&#34;597&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/Gfactor_hu12495539726591375420.PNG 480w, http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/Gfactor_hu210762990484597037.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Mapeo del valor de G en el espacio.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;311px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Fracción Lateral (LF):&lt;/strong&gt; Los valores superan las recomendaciones, sugiriendo que la mayor parte del sonido proviene de los laterales. Esto podría estar relacionado con la gran cantidad de difusores.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ruido de Fondo:&lt;/strong&gt; La sala presenta un nivel de ruido superior al recomendado para un recinto sinfónico (NC-35 vs. NC-20), probablemente debido al sistema de ventilación.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/ruido.PNG&#34;
+	width=&#34;1032&#34;
+	height=&#34;476&#34;
+	srcset=&#34;http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/ruido_hu16139815568609075014.PNG 480w, http://localhost:1313/p/acoustic-measurement-at-usina-del-arte/ruido_hu4680391019551906221.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Medición de ruido de fondo por frecuecia.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;216&#34;
+		data-flex-basis=&#34;520px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Difusión Sonora:&lt;/strong&gt; La repetición de una única secuencia de difusores disminuye su eficacia, generando un comportamiento lobular en lugar de una difusión estocástica.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Se proponen mejoras clave como reducir el ruido de fondo, optimizar la difusión sonora con secuencias no periódicas y equilibrar la respuesta espectral, corrigiendo la absorción en bajas frecuencias.&lt;/p&gt;
+&lt;h3 id=&#34;conclusiones&#34;&gt;&lt;strong&gt;Conclusiones&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;Pudimos caracterizar de forma efectiva el auditorio y se aplicaron la mayoría de temas teóricos vistos en clase a una experiencia práctica. El informe completo de este trabajo con todos los resultados y detalles de la medición se puede encontrar en el siguiente &lt;a class=&#34;link&#34; href=&#34;https://drive.google.com/file/d/1nSmWFrk30IFAhzBs9R42ZR61uK_ARc8z/view?usp=sharing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;informe&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Efecto de algorítmos de reducción de rudio en sistemas de TTS</title>
         <link>http://localhost:1313/es/p/efecto-de-algor%C3%ADtmos-de-reducci%C3%B3n-de-rudio-en-sistemas-de-tts/</link>
         <pubDate>Fri, 22 Nov 2024 00:00:00 +0000</pubDate>
